@@ -4,11 +4,11 @@
   
     
     <entry>
-      <title>wp</title>
-      <link href="/2024/03/06/swpuctf-2021-xin-sheng-sai-traditional-wp/"/>
-      <url>/2024/03/06/swpuctf-2021-xin-sheng-sai-traditional-wp/</url>
+      <title>test</title>
+      <link href="/2024/03/06/test/"/>
+      <url>/2024/03/06/test/</url>
       
-        <content type="html"><![CDATA[<h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>西方的二进制数学的发明者莱布尼茨，从中国的八卦图当中受到启发，演绎并推论出了数学矩<br>阵，<br>最后创造的二进制数学。二进制数学的诞生为计算机的发明奠定了理论基础。而计算机现在改<br>变<br>了我们整个世界，改变了我们生活，而他的源头却是来自于八卦图。现在，给你一组由八卦图<br>方位<br>组成的密文，你能破解出其中的含义吗？<br> 震坤艮 震艮震 坤巽坤 坤巽震 震巽兑 震艮震 震离艮 震离艮<br> 格式：NSSCTF{}</p><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p> 根据文中提到的信息，我们尝试找到了一个图解来展示二进制和中国八卦之间的关系<br><img src="/image.png" alt="alt text"><br>结合八卦与二叉树之间的的关系，将密文转化为：</p><p>100000001 100001100 000011000 000011100 100011110 100001100 100101001 100101001</p><p>再转为ASCII码</p><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">m = <span class="string">&quot;001000100 001100001 000110000 000110001 001110011 001100001 001101100 001101100&quot;</span></span><br><span class="line">m = m.split(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(m)):</span><br><span class="line">    print(chr(int(m[i], <span class="number">2</span>)), <span class="keyword">end</span>=<span class="string">&#x27; &#x27;</span>)</span><br></pre></td></tr></table></figure><p>但是结果发现为乱码</p><p>按理说不应该啊，怀疑是不是图片给错了，找了好几张类似的，发现图片没错，那就是题目的问题了，尝试了一下把最高位和最低位反着来读</p><p>001000100 001100001 000110000 000110001 001110011 001100001 001101100<br>001101100</p><p>这样就可以了。。。<br><img src="/image-1.png" alt="alt text"><br>严重怀疑这题是不是出题人搞错了，因为二叉树的下面是高位，上面是低位</p>]]></content>
+        <content type="html"><![CDATA[<h3 id="我是一个测试"><a href="#我是一个测试" class="headerlink" title="我是一个测试"></a>我是一个测试</h3><h4 id="hhh"><a href="#hhh" class="headerlink" title="hhh"></a>hhh</h4>]]></content>
       
       
       
@@ -17,11 +17,11 @@
     
     
     <entry>
-      <title>test</title>
-      <link href="/2024/03/06/test/"/>
-      <url>/2024/03/06/test/</url>
+      <title>WP-[SWPUCTF 2021 新生赛]traditional</title>
+      <link href="/2024/03/04/swpuctf-2021-xin-sheng-sai-traditional-wp/"/>
+      <url>/2024/03/04/swpuctf-2021-xin-sheng-sai-traditional-wp/</url>
       
-        <content type="html"><![CDATA[<h3 id="我是一个测试"><a href="#我是一个测试" class="headerlink" title="我是一个测试"></a>我是一个测试</h3><h4 id="hhh"><a href="#hhh" class="headerlink" title="hhh"></a>hhh</h4>]]></content>
+        <content type="html"><![CDATA[<h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>西方的二进制数学的发明者莱布尼茨，从中国的八卦图当中受到启发，演绎并推论出了数学矩<br>阵，<br>最后创造的二进制数学。二进制数学的诞生为计算机的发明奠定了理论基础。而计算机现在改<br>变<br>了我们整个世界，改变了我们生活，而他的源头却是来自于八卦图。现在，给你一组由八卦图<br>方位<br>组成的密文，你能破解出其中的含义吗？<br> 震坤艮 震艮震 坤巽坤 坤巽震 震巽兑 震艮震 震离艮 震离艮<br> 格式：NSSCTF{}</p><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p> 根据文中提到的信息，我们尝试找到了一个图解来展示二进制和中国八卦之间的关系<br><img src="https://pic.imgdb.cn/item/65e7f3549f345e8d03a152f9.jpg" alt="alt text"><br>结合八卦与二叉树之间的的关系，将密文转化为：</p><p>100000001 100001100 000011000 000011100 100011110 100001100 100101001 100101001</p><p>再转为ASCII码</p><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">m = <span class="string">&quot;001000100 001100001 000110000 000110001 001110011 001100001 001101100 001101100&quot;</span></span><br><span class="line">m = m.split(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(m)):</span><br><span class="line">    print(chr(int(m[i], <span class="number">2</span>)), <span class="keyword">end</span>=<span class="string">&#x27; &#x27;</span>)</span><br></pre></td></tr></table></figure><p>但是结果发现为乱码<br><img src="https://pic.imgdb.cn/item/65e7f38c9f345e8d03a1fbbf.jpg" alt="alt text"></p><p>按理说不应该啊，怀疑是不是图片给错了，找了好几张类似的，发现图片没错，那就是题目的问题了，尝试了一下把最高位和最低位反着来读</p><p>001000100 001100001 000110000 000110001 001110011 001100001 001101100<br>001101100</p><p>这样就可以了。。。<br><img src="https://pic.imgdb.cn/item/65e7f39a9f345e8d03a229cb.jpg" alt="alt text"><br>严重怀疑这题是不是出题人搞错了，因为二叉树的下面是高位，上面是低位</p>]]></content>
       
       
       
