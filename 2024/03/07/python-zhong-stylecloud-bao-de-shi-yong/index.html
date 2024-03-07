@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="stylecloud介绍stylecloud是一款比较好用的python包，常用于数据可视化操作，具体的介绍看看别人写的吧 https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;B23uDxzLUa_45uDh2R9Vlw https:&#x2F;&#x2F;cloud.tencent.com&#x2F;developer&#x2F;article&#x2F;1699651 蒙版图片参考网址：https:&#x2F;&#x2F;fontawesome.com&#x2F;lic">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python中stylecloud包的使用">
+<meta property="og:url" content="http://jrhu0048.github.io/2024/03/07/python-zhong-stylecloud-bao-de-shi-yong/index.html">
+<meta property="og:site_name" content="welcome">
+<meta property="og:description" content="stylecloud介绍stylecloud是一款比较好用的python包，常用于数据可视化操作，具体的介绍看看别人写的吧 https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;B23uDxzLUa_45uDh2R9Vlw https:&#x2F;&#x2F;cloud.tencent.com&#x2F;developer&#x2F;article&#x2F;1699651 蒙版图片参考网址：https:&#x2F;&#x2F;fontawesome.com&#x2F;lic">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-03-07T14:25:29.000Z">
+<meta property="article:modified_time" content="2024-03-07T14:37:03.615Z">
+<meta property="article:author" content="jr.hu">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>python中stylecloud包的使用</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2024/03/07/python-bao-cuo-ji-he/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/03/07/python-zhong-stylecloud-bao-de-shi-yong/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/03/07/python-zhong-stylecloud-bao-de-shi-yong/&text=python中stylecloud包的使用"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/03/07/python-zhong-stylecloud-bao-de-shi-yong/&title=python中stylecloud包的使用"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/03/07/python-zhong-stylecloud-bao-de-shi-yong/&is_video=false&description=python中stylecloud包的使用"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=python中stylecloud包的使用&body=Check out this article: http://jrhu0048.github.io/2024/03/07/python-zhong-stylecloud-bao-de-shi-yong/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/03/07/python-zhong-stylecloud-bao-de-shi-yong/&title=python中stylecloud包的使用"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/03/07/python-zhong-stylecloud-bao-de-shi-yong/&title=python中stylecloud包的使用"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/03/07/python-zhong-stylecloud-bao-de-shi-yong/&title=python中stylecloud包的使用"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/03/07/python-zhong-stylecloud-bao-de-shi-yong/&title=python中stylecloud包的使用"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/03/07/python-zhong-stylecloud-bao-de-shi-yong/&name=python中stylecloud包的使用&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/03/07/python-zhong-stylecloud-bao-de-shi-yong/&t=python中stylecloud包的使用"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#stylecloud%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">stylecloud介绍</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        python中stylecloud包的使用
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">jr.hu</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-03-07T14:25:29.000Z" class="dt-published" itemprop="datePublished">2024-03-07</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="stylecloud介绍"><a href="#stylecloud介绍" class="headerlink" title="stylecloud介绍"></a>stylecloud介绍</h2><p>stylecloud是一款比较好用的python包，常用于数据可视化操作，具体的介绍看看别人写的吧</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/B23uDxzLUa_45uDh2R9Vlw">https://mp.weixin.qq.com/s/B23uDxzLUa_45uDh2R9Vlw</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1699651">https://cloud.tencent.com/developer/article/1699651</a></p>
+<p>蒙版图片参考网址：<a target="_blank" rel="noopener" href="https://fontawesome.com/license/free">https://fontawesome.com/license/free</a></p>
+<p>中文版：<a target="_blank" rel="noopener" href="https://fa5.dashgame.com/#/%E5%9B%BE%E6%A0%87">https://fa5.dashgame.com/#/%E5%9B%BE%E6%A0%87</a></p>
+<p>配色：palettable： <a target="_blank" rel="noopener" href="https://jiffyclub.github.io/palettable/">https://jiffyclub.github.io/palettable/</a></p>
+<p>特别需要注意的是蒙版图片的调用：<br>例如：fa-grin-beam，在python中调用好像得改为fa.grin-beam才行，有时候都不行，还是得自己多试试，搞不懂。</p>
+<p>下面是个实例：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">from stylecloud import gen_stylecloud</span><br><span class="line">import jieba</span><br><span class="line">import re</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取数据</span></span><br><span class="line">with open(<span class="string">&#x27;xxxx.txt&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) as <span class="symbol">f:</span></span><br><span class="line">    data = f.read()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 文本预处理  去除一些无用的字符   只提取出中文出来</span></span><br><span class="line">new_data = re.findall(<span class="string">&#x27;[\u4e00-\u9fa5]+&#x27;</span>, data, re.S)</span><br><span class="line">new_data = <span class="string">&quot;/&quot;</span>.join(new_data)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 文本分词</span></span><br><span class="line">seg_list_exact = jieba.cut(new_data, cut_all=<span class="title class_">True</span>)</span><br><span class="line"></span><br><span class="line">result_list = []</span><br><span class="line">with open(<span class="string">&#x27;stopword.txt&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) as <span class="symbol">f:</span></span><br><span class="line">    con = f.readlines()</span><br><span class="line">    stop_words = set()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="symbol">con:</span></span><br><span class="line">        i = i.replace(<span class="string">&quot;\n&quot;</span>, <span class="string">&quot;&quot;</span>)   <span class="comment"># 去掉读取每一行数据的\n</span></span><br><span class="line">        stop_words.add(i)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> word <span class="keyword">in</span> <span class="symbol">seg_list_exact:</span></span><br><span class="line">    <span class="comment"># 设置停用词</span></span><br><span class="line">    <span class="keyword">if</span> word <span class="keyword">not</span> <span class="keyword">in</span> stop_words <span class="keyword">and</span> len(word) &gt; <span class="number">1</span>:</span><br><span class="line">        result_list.append(word)</span><br><span class="line">print(result_list)</span><br><span class="line"></span><br><span class="line">gen_stylecloud(</span><br><span class="line">    text=<span class="string">&#x27; &#x27;</span>.join(result_list),                   <span class="comment"># 文本数据</span></span><br><span class="line">    size=<span class="number">600</span>,                                     <span class="comment"># 词云图大小</span></span><br><span class="line">    font_path=r<span class="string">&#x27;‪C:\Windows\Fonts\msyh.ttc&#x27;</span>, <span class="comment"># 中文词云  显示需要设置字体</span></span><br><span class="line">    output_name=<span class="string">&#x27;词云12.png&#x27;</span>,                       <span class="comment"># 输出词云图名称</span></span><br><span class="line">    icon_name=<span class="string">&#x27;fas fa.grin-beam&#x27;</span>,                   <span class="comment"># 图标   图片选择网址：https://fontawesome.com/license/free   # https://fontawesome.dashgame.com/</span></span><br><span class="line">    <span class="comment"># palette=&quot;Dark2_7&quot;  # 可以选择不同的配色方案，网址：palettable https://jiffyclub.github.io/palettable/</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/tags/">标签</a></li>
+        
+          <li><a href="/categories/">分类</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#stylecloud%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">stylecloud介绍</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/03/07/python-zhong-stylecloud-bao-de-shi-yong/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/03/07/python-zhong-stylecloud-bao-de-shi-yong/&text=python中stylecloud包的使用"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/03/07/python-zhong-stylecloud-bao-de-shi-yong/&title=python中stylecloud包的使用"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/03/07/python-zhong-stylecloud-bao-de-shi-yong/&is_video=false&description=python中stylecloud包的使用"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=python中stylecloud包的使用&body=Check out this article: http://jrhu0048.github.io/2024/03/07/python-zhong-stylecloud-bao-de-shi-yong/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/03/07/python-zhong-stylecloud-bao-de-shi-yong/&title=python中stylecloud包的使用"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/03/07/python-zhong-stylecloud-bao-de-shi-yong/&title=python中stylecloud包的使用"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/03/07/python-zhong-stylecloud-bao-de-shi-yong/&title=python中stylecloud包的使用"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/03/07/python-zhong-stylecloud-bao-de-shi-yong/&title=python中stylecloud包的使用"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/03/07/python-zhong-stylecloud-bao-de-shi-yong/&name=python中stylecloud包的使用&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/03/07/python-zhong-stylecloud-bao-de-shi-yong/&t=python中stylecloud包的使用"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022-2024
+    jr.hu
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
