@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="题目123456789101112131415161718192021222324252627282930313233343536&quot;&quot;&quot;小肖在学习的过程中,了解到了一种填充图片的算法,兴奋的她用它和RSA加密了偶像的照片,但是在传输的过程中丢失了一部分加密算法,你能帮她补全,并解出来偶像的照片吗?&quot;&quot;&quot;from PIL import Im">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WP_2024HSCCTF_CRYPTO_STAR_CHASING_DIARY">
+<meta property="og:url" content="http://jrhu0048.github.io/2024/03/10/wp-2024hscctf-crypto-star-chasing-diary/index.html">
+<meta property="og:site_name" content="welcome">
+<meta property="og:description" content="题目123456789101112131415161718192021222324252627282930313233343536&quot;&quot;&quot;小肖在学习的过程中,了解到了一种填充图片的算法,兴奋的她用它和RSA加密了偶像的照片,但是在传输的过程中丢失了一部分加密算法,你能帮她补全,并解出来偶像的照片吗?&quot;&quot;&quot;from PIL import Im">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65ed83e99f345e8d039b761d.jpg">
+<meta property="og:image" content="https://pic.imgdb.cn/item/65ed838c9f345e8d03996bca.png">
+<meta property="article:published_time" content="2024-03-10T09:32:46.000Z">
+<meta property="article:modified_time" content="2024-03-10T10:01:09.843Z">
+<meta property="article:author" content="jr.hu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/65ed83e99f345e8d039b761d.jpg">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>WP_2024HSCCTF_CRYPTO_STAR_CHASING_DIARY</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2024/03/10/wp-2024hscctf-crypto-mixed/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/03/10/wp-2024hscctf-crypto-star-chasing-diary/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/03/10/wp-2024hscctf-crypto-star-chasing-diary/&text=WP_2024HSCCTF_CRYPTO_STAR_CHASING_DIARY"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/03/10/wp-2024hscctf-crypto-star-chasing-diary/&title=WP_2024HSCCTF_CRYPTO_STAR_CHASING_DIARY"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/03/10/wp-2024hscctf-crypto-star-chasing-diary/&is_video=false&description=WP_2024HSCCTF_CRYPTO_STAR_CHASING_DIARY"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=WP_2024HSCCTF_CRYPTO_STAR_CHASING_DIARY&body=Check out this article: http://jrhu0048.github.io/2024/03/10/wp-2024hscctf-crypto-star-chasing-diary/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/03/10/wp-2024hscctf-crypto-star-chasing-diary/&title=WP_2024HSCCTF_CRYPTO_STAR_CHASING_DIARY"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/03/10/wp-2024hscctf-crypto-star-chasing-diary/&title=WP_2024HSCCTF_CRYPTO_STAR_CHASING_DIARY"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/03/10/wp-2024hscctf-crypto-star-chasing-diary/&title=WP_2024HSCCTF_CRYPTO_STAR_CHASING_DIARY"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/03/10/wp-2024hscctf-crypto-star-chasing-diary/&title=WP_2024HSCCTF_CRYPTO_STAR_CHASING_DIARY"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/03/10/wp-2024hscctf-crypto-star-chasing-diary/&name=WP_2024HSCCTF_CRYPTO_STAR_CHASING_DIARY&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/03/10/wp-2024hscctf-crypto-star-chasing-diary/&t=WP_2024HSCCTF_CRYPTO_STAR_CHASING_DIARY"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3"><span class="toc-number">2.</span> <span class="toc-text">解</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        WP_2024HSCCTF_CRYPTO_STAR_CHASING_DIARY
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">jr.hu</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-03-10T09:32:46.000Z" class="dt-published" itemprop="datePublished">2024-03-10</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">小肖在学习的过程中,了解到了一种填充图片的算法,兴奋的她用它和RSA加密了偶像的照片,</span></span><br><span class="line"><span class="string">但是在传输的过程中丢失了一部分加密算法,你能帮她补全,并解出来偶像的照片吗?</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">n, x, y</span>):</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    m = <span class="number">1</span> &lt;&lt; (n - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">j = <span class="number">128</span></span><br><span class="line">mm = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">257</span>):</span><br><span class="line">    <span class="keyword">for</span> s <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">257</span>):</span><br><span class="line">        mm.append(f(j, i, s) - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">img = Image.<span class="built_in">open</span>(<span class="string">&#x27;flag.jpg&#x27;</span>)</span><br><span class="line">pixels = <span class="built_in">list</span>(img.getdata())</span><br><span class="line">data = [pixel <span class="keyword">for</span> pixel <span class="keyword">in</span> pixels]</span><br><span class="line"></span><br><span class="line">img = Image.<span class="built_in">open</span>(<span class="string">&#x27;key.png&#x27;</span>)</span><br><span class="line">pixels = <span class="built_in">list</span>(img.getdata())</span><br><span class="line">png_key = [pixel <span class="keyword">for</span> pixel <span class="keyword">in</span> pixels]</span><br><span class="line"></span><br><span class="line">enc = [<span class="number">0</span>] * <span class="number">65536</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">65536</span>):</span><br><span class="line">    enc[i] = data[mm[i]]</span><br><span class="line"><span class="keyword">for</span> s <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">65536</span>):</span><br><span class="line">    enc[s] = enc[s] ^ png_key[s]</span><br><span class="line"></span><br><span class="line">image = Image.new(<span class="string">&#x27;L&#x27;</span>, (<span class="number">256</span>, <span class="number">256</span>))</span><br><span class="line">image.putdata(enc)</span><br><span class="line">image.save(<span class="string">&#x27;enc.jpg&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>一张图片 enc.ipg</p>
+<p><img src="https://pic.imgdb.cn/item/65ed83e99f345e8d039b761d.jpg" alt="alt text"></p>
+<p>还有一个压缩包</p>
+<p>另外一个解密压缩包密码的文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">p = getPrime(<span class="number">512</span>)</span><br><span class="line">q = getPrime(<span class="number">512</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;p =&quot;</span>, p)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;q =&quot;</span>, q)</span><br><span class="line">n = p * q</span><br><span class="line">key = <span class="string">&#x27;********************&#x27;</span></span><br><span class="line">m = bytes_to_long(key.encode())</span><br><span class="line"><span class="keyword">assert</span> m.bit_length() &lt; <span class="number">300</span></span><br><span class="line">r = randint(<span class="number">1</span>, n)</span><br><span class="line">c = (<span class="built_in">pow</span>(n + <span class="number">1</span>, m, n * n) * <span class="built_in">pow</span>(r, n, n * n)) % (n * n)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;c =&quot;</span>, c)</span><br><span class="line"></span><br><span class="line"><span class="comment"># p = 7828612943367317778189697443061863547768704021648982642807960201410438190347546379219450386530108335470584219657007036386835647156694512102467911388214639</span></span><br><span class="line"><span class="comment"># q = 11560196429251786803557082533869761370530605728500211999842201987445533038949033226473164866960007192683170489064961432891988337343103657552186800680461299</span></span><br><span class="line"><span class="comment"># c = 768905250861905487717845092484035532140840941871031779930259407348955511757335716790249355464829607714399266689960353955065504221985891074636544161678177920296971444880997864168042745264256952808480926755620637239135808617643874771066244234690401223758004286234917537720362007827248701308605961814972773704288547887039586934111562590676930853945316673164146667949991176600280451163710564978897622310650541491271961315592017251211248379608602287809736613530069187936569470129814949302440734244885473716072898519354127964155042421376782226235081303957997587618278341829891036314980185040102049478608445519994654780162</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>这是一个 Paillier 加密，参考</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/106340045">https://zhuanlan.zhihu.com/p/106340045</a></p>
+<p>解密分为以下几个步骤：</p>
+<p>生成私钥： 私钥包含两个大质数 p 和 q。在本题中，p 和 q 已经给出了。</p>
+<p>计算 Carmichael λ 函数的值：其中 λ(n) &#x3D; lcm(p-1, q-1)，lcm 是最小公倍数函数。</p>
+<p>计算 μ： μ 是 n 的欧拉函数的模反元素，满足 </p>
+<p>(L(g^λ(n) mod n^2))^-1 mod n</p>
+<p>其中</p>
+<p>L(x) &#x3D; (x - 1) &#x2F; n</p>
+<p>g 是一个随机选择的整数且满足</p>
+<p>gcd(L(g^λ(n) mod n^2), n) &#x3D; 1</p>
+<p>解密密文： 密文 c 可以通过以下公式计算得到明文 m：</p>
+<p>m &#x3D; L(c^λ(n) mod n^2) * μ mod n</p>
+<p>代码参考：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line">p = <span class="number">7828612943367317778189697443061863547768704021648982642807960201410438190347546379219450386530108335470584219657007036386835647156694512102467911388214639</span></span><br><span class="line">q = <span class="number">11560196429251786803557082533869761370530605728500211999842201987445533038949033226473164866960007192683170489064961432891988337343103657552186800680461299</span></span><br><span class="line">c = <span class="number">768905250861905487717845092484035532140840941871031779930259407348955511757335716790249355464829607714399266689960353955065504221985891074636544161678177920296971444880997864168042745264256952808480926755620637239135808617643874771066244234690401223758004286234917537720362007827248701308605961814972773704288547887039586934111562590676930853945316673164146667949991176600280451163710564978897622310650541491271961315592017251211248379608602287809736613530069187936569470129814949302440734244885473716072898519354127964155042421376782226235081303957997587618278341829891036314980185040102049478608445519994654780162</span></span><br><span class="line">n = p * q</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算λ(n)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">lcm</span>(<span class="params">a, b</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">abs</span>(a*b) // math.gcd(a, b)</span><br><span class="line"></span><br><span class="line">lambda_n = lcm(p-<span class="number">1</span>, q-<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算μ</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">mod_inverse</span>(<span class="params">a, m</span>):</span><br><span class="line">    m0, x0, x1 = m, <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> a &gt; <span class="number">1</span>:</span><br><span class="line">        q = a // m</span><br><span class="line">        m, a = a % m, m</span><br><span class="line">        x0, x1 = x1 - q * x0, x0</span><br><span class="line">    <span class="keyword">return</span> x1 + m0 <span class="keyword">if</span> x1 &lt; <span class="number">0</span> <span class="keyword">else</span> x1</span><br><span class="line"></span><br><span class="line">mu = mod_inverse(lambda_n, n)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解密密文</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">decrypt</span>(<span class="params">c, lambda_n, n, mu</span>):</span><br><span class="line">    <span class="keyword">return</span> (<span class="built_in">pow</span>(c, lambda_n, n*n) - <span class="number">1</span>) // n * mu % n</span><br><span class="line"></span><br><span class="line">ciphertext = <span class="number">768905250861905487717845092484035532140840941871031779930259407348955511757335716790249355464829607714399266689960353955065504221985891074636544161678177920296971444880997864168042745264256952808480926755620637239135808617643874771066244234690401223758004286234917537720362007827248701308605961814972773704288547887039586934111562590676930853945316673164146667949991176600280451163710564978897622310650541491271961315592017251211248379608602287809736613530069187936569470129814949302440734244885473716072898519354127964155042421376782226235081303957997587618278341829891036314980185040102049478608445519994654780162</span></span><br><span class="line"></span><br><span class="line">plaintext = decrypt(ciphertext, lambda_n, n, mu)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;明文为:&quot;</span>, long_to_bytes(plaintext))</span><br><span class="line"><span class="comment"># 明文为: b&#x27;HSCCTF&#123;this_is_a_fake_flag&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>得到的 flag 为压缩包的密码，打开压缩包，发现了另外半份图片 key.png<br><img src="https://pic.imgdb.cn/item/65ed838c9f345e8d03996bca.png" alt="alt text"></p>
+<p>下面的首要问题是补全这个加密函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">n, x, y</span>):</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    m = <span class="number">1</span> &lt;&lt; (n - <span class="number">1</span>)</span><br><span class="line">    <span class="comment"># 这里少了一句话</span></span><br></pre></td></tr></table></figure>
+<p>出题人用这个函数来对两张图片 flag.jpg 和 key.png 的像素点进行异或得到了 enc.jpg</p>
+<p>但是这个函数我不知道是什么。。。。</p>
+<p>over !</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/tags/">标签</a></li>
+        
+          <li><a href="/categories/">分类</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3"><span class="toc-number">2.</span> <span class="toc-text">解</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/03/10/wp-2024hscctf-crypto-star-chasing-diary/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/03/10/wp-2024hscctf-crypto-star-chasing-diary/&text=WP_2024HSCCTF_CRYPTO_STAR_CHASING_DIARY"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/03/10/wp-2024hscctf-crypto-star-chasing-diary/&title=WP_2024HSCCTF_CRYPTO_STAR_CHASING_DIARY"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/03/10/wp-2024hscctf-crypto-star-chasing-diary/&is_video=false&description=WP_2024HSCCTF_CRYPTO_STAR_CHASING_DIARY"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=WP_2024HSCCTF_CRYPTO_STAR_CHASING_DIARY&body=Check out this article: http://jrhu0048.github.io/2024/03/10/wp-2024hscctf-crypto-star-chasing-diary/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/03/10/wp-2024hscctf-crypto-star-chasing-diary/&title=WP_2024HSCCTF_CRYPTO_STAR_CHASING_DIARY"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/03/10/wp-2024hscctf-crypto-star-chasing-diary/&title=WP_2024HSCCTF_CRYPTO_STAR_CHASING_DIARY"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/03/10/wp-2024hscctf-crypto-star-chasing-diary/&title=WP_2024HSCCTF_CRYPTO_STAR_CHASING_DIARY"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/03/10/wp-2024hscctf-crypto-star-chasing-diary/&title=WP_2024HSCCTF_CRYPTO_STAR_CHASING_DIARY"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/03/10/wp-2024hscctf-crypto-star-chasing-diary/&name=WP_2024HSCCTF_CRYPTO_STAR_CHASING_DIARY&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/03/10/wp-2024hscctf-crypto-star-chasing-diary/&t=WP_2024HSCCTF_CRYPTO_STAR_CHASING_DIARY"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022-2024
+    jr.hu
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
