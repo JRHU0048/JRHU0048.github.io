@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="a personal blog">
+    <meta name="description" content="题目123456789101112131415161718192021import osfrom secrets import flagfrom Crypto.Util.number import *from Crypto.Cipher import AESm &#x3D; 8800751370242424370206649084959681730482783954700764152643359778880">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2024_VCTF_crypto_狂飙">
 <meta property="og:url" content="http://jrhu0048.github.io/2024/03/18/2024-vctf-crypto-kuang-biao/index.html">
 <meta property="og:site_name" content="welcome">
-<meta property="og:description" content="a personal blog">
+<meta property="og:description" content="题目123456789101112131415161718192021import osfrom secrets import flagfrom Crypto.Util.number import *from Crypto.Cipher import AESm &#x3D; 8800751370242424370206649084959681730482783954700764152643359778880">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-18T00:36:21.000Z">
-<meta property="article:modified_time" content="2024-03-18T00:36:21.191Z">
+<meta property="article:modified_time" content="2024-03-18T00:45:02.306Z">
 <meta property="article:author" content="jr.hu">
 <meta name="twitter:card" content="summary">
     
@@ -123,6 +123,10 @@
     </div>
     
     
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.</span> <span class="toc-text">题目</span></a></li></ol>
+      </div>
+    
   </span>
 </div>
 
@@ -152,6 +156,11 @@
 
 
       
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/VCTF/">VCTF</a>
+    </div>
+
 
       
 
@@ -160,7 +169,14 @@
   
 
   <div class="content e-content" itemprop="articleBody">
-    
+    <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> secrets <span class="keyword">import</span> flag</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> AES</span><br><span class="line">m = <span class="number">88007513702424243702066490849596817304827839547007641526433597788800212065249</span></span><br><span class="line">key = os.urandom(<span class="number">24</span>)</span><br><span class="line">key = bytes_to_long(key)</span><br><span class="line">n=m % key</span><br><span class="line">flag += (<span class="number">16</span> - <span class="built_in">len</span>(flag) % <span class="number">16</span>) * <span class="string">b&#x27;\x00&#x27;</span></span><br><span class="line">iv = os.urandom(<span class="number">16</span>)</span><br><span class="line">aes = AES.new(key,AES.MODE_CBC,iv)</span><br><span class="line">enc_flag = aes.encrypt(flag)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(n)</span><br><span class="line"><span class="built_in">print</span>(enc_flag)</span><br><span class="line"><span class="built_in">print</span>(iv)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#103560843006078708944833658339172896192389513625588</span></span><br><span class="line"><span class="comment">#b&#x27;\xfc\x87\xcb\x8e\x9d\x1a\x17\x86\xd9~\x16)\xbfU\x98D\xfe\x8f\xde\x9c\xb0\xd1\x9e\xe7\xa7\xefiY\x95C\x14\x13C@j1\x9d\x08\xd9\xe7W&gt;F2\x96cm\xeb&#x27;</span></span><br><span class="line"><span class="comment">#b&#x27;UN\x1d\xe2r&lt;\x1db\x00\xdb\x9a\x84\x1e\x82\xf0\x86&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>由已知我们可以得到</p>
+<p>m-s*key&#x3D;n</p>
+<p>将m-n分解即可得到s*key的组合</p>
+<p>根据一个字节8位，得到key为192位</p>
+<p>然后可以利用sage进行爆破即可</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#sage</span></span><br><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> AES</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line">n=<span class="number">103560843006078708944833658339172896192389513625588</span></span><br><span class="line">m=<span class="number">88007513702424243702066490849596817304827839547007641526433597788800212065249</span></span><br><span class="line">key=m-n</span><br><span class="line"><span class="comment">#88007513702424243702066490746035974298749130602173983187260701596410698439661</span></span><br><span class="line">enc=<span class="string">b&#x27;\xfc\x87\xcb\x8e\x9d\x1a\x17\x86\xd9~\x16)\xbfU\x98D\xfe\x8f\xde\x9c\xb0\xd1\x9e\xe7\xa7\xefiY\x95C\x14\x13C@j1\x9d\x08\xd9\xe7W&gt;F2\x96cm\xeb&#x27;</span></span><br><span class="line">iv=<span class="string">b&#x27;UN\x1d\xe2r&lt;\x1db\x00\xdb\x9a\x84\x1e\x82\xf0\x86&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> key.divisors():</span><br><span class="line">    i=long_to_bytes(i,<span class="number">24</span>)</span><br><span class="line">    aes=AES.new(i,AES.MODE_CBC,iv)</span><br><span class="line">    flag=aes.decrypt(enc)</span><br><span class="line">    <span class="keyword">if</span> <span class="string">b&#x27;flag&#123;&#x27;</span> <span class="keyword">in</span> flag:</span><br><span class="line">        <span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure>
   </div>
 </article>
 
@@ -188,6 +204,10 @@
 
     
     
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.</span> <span class="toc-text">题目</span></a></li></ol>
+      </div>
+    
 
     <div id="share-footer" style="display: none">
       <ul>
@@ -208,6 +228,8 @@
 
     <div id="actions-footer">
         <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
         
         <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
         <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
