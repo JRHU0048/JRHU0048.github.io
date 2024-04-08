@@ -6,17 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="一、介绍K均值聚类算法是先随机选取K个对象作为初始的聚类中心。然后计算每个对象与各个种子聚类中心之间的距离，把每个对象分配给距离它最近的聚类中心。聚类中心以及分配给它们的对象就代表一个聚类。每分配一个样本，聚类的聚类中心会根据聚类中现有的对象被重新计算。这个过程将不断重复直到满足某个终止条件。终止条件可以是没有（或最小数目）对象被重新分配给不同的聚类，没有（或最小数目）聚类中心再发生变化，误差平方">
+    <meta name="description" content="一、介绍K-means聚类算法是先随机选取K个对象作为初始的聚类中心。然后计算每个对象与各个种子聚类中心之间的距离，把每个对象分配给距离它最近的聚类中心。聚类中心以及分配给它们的对象就代表一个聚类。每分配一个样本，聚类的聚类中心会根据聚类中现有的对象被重新计算。这个过程将不断重复直到满足某个终止条件。终止条件可以是没有（或最小数目）对象被重新分配给不同的聚类，没有（或最小数目）聚类中心再发生变化，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="k均值聚类算法">
+<meta property="og:title" content="k-means聚类算法">
 <meta property="og:url" content="http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/index.html">
 <meta property="og:site_name" content="welcome">
-<meta property="og:description" content="一、介绍K均值聚类算法是先随机选取K个对象作为初始的聚类中心。然后计算每个对象与各个种子聚类中心之间的距离，把每个对象分配给距离它最近的聚类中心。聚类中心以及分配给它们的对象就代表一个聚类。每分配一个样本，聚类的聚类中心会根据聚类中现有的对象被重新计算。这个过程将不断重复直到满足某个终止条件。终止条件可以是没有（或最小数目）对象被重新分配给不同的聚类，没有（或最小数目）聚类中心再发生变化，误差平方">
+<meta property="og:description" content="一、介绍K-means聚类算法是先随机选取K个对象作为初始的聚类中心。然后计算每个对象与各个种子聚类中心之间的距离，把每个对象分配给距离它最近的聚类中心。聚类中心以及分配给它们的对象就代表一个聚类。每分配一个样本，聚类的聚类中心会根据聚类中现有的对象被重新计算。这个过程将不断重复直到满足某个终止条件。终止条件可以是没有（或最小数目）对象被重新分配给不同的聚类，没有（或最小数目）聚类中心再发生变化，">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-24T15:29:53.000Z">
-<meta property="article:modified_time" content="2024-03-07T14:43:52.781Z">
+<meta property="article:modified_time" content="2024-04-08T01:01:30.206Z">
 <meta property="article:author" content="jr.hu">
-<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
     
     
@@ -37,7 +36,7 @@
       
     
     <!-- title -->
-    <title>k均值聚类算法</title>
+    <title>k-means聚类算法</title>
     <!-- async scripts -->
     <!-- Google Analytics -->
 
@@ -111,16 +110,16 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&text=k均值聚类算法"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&title=k均值聚类算法"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&is_video=false&description=k均值聚类算法"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=k均值聚类算法&body=Check out this article: http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&title=k均值聚类算法"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&title=k均值聚类算法"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&title=k均值聚类算法"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&title=k均值聚类算法"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&name=k均值聚类算法&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&t=k均值聚类算法"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&text=k-means聚类算法"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&title=k-means聚类算法"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&is_video=false&description=k-means聚类算法"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=k-means聚类算法&body=Check out this article: http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&title=k-means聚类算法"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&title=k-means聚类算法"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&title=k-means聚类算法"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&title=k-means聚类算法"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&name=k-means聚类算法&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&t=k-means聚类算法"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -140,7 +139,7 @@
   <header>
     
     <h1 class="posttitle p-name" itemprop="name headline">
-        k均值聚类算法
+        k-means聚类算法
     </h1>
 
 
@@ -166,18 +165,13 @@
 
 
       
-    <div class="article-tag">
-        <i class="fa-solid fa-tag"></i>
-        <a class="p-category" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a>
-    </div>
-
 
     </div>
   </header>
   
 
   <div class="content e-content" itemprop="articleBody">
-    <h2 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h2><p>K均值聚类算法是先随机选取K个对象作为初始的聚类中心。然后计算每个对象与各个种子聚类中心之间的距离，把每个对象分配给距离它最近的聚类中心。聚类中心以及分配给它们的对象就代表一个聚类。每分配一个样本，聚类的聚类中心会根据聚类中现有的对象被重新计算。这个过程将不断重复直到满足某个终止条件。终止条件可以是没有（或最小数目）对象被重新分配给不同的聚类，没有（或最小数目）聚类中心再发生变化，误差平方和局部最小。</p>
+    <h2 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h2><p>K-means聚类算法是先随机选取K个对象作为初始的聚类中心。然后计算每个对象与各个种子聚类中心之间的距离，把每个对象分配给距离它最近的聚类中心。聚类中心以及分配给它们的对象就代表一个聚类。每分配一个样本，聚类的聚类中心会根据聚类中现有的对象被重新计算。这个过程将不断重复直到满足某个终止条件。终止条件可以是没有（或最小数目）对象被重新分配给不同的聚类，没有（或最小数目）聚类中心再发生变化，误差平方和局部最小。</p>
 <h2 id="二、简化实例"><a href="#二、简化实例" class="headerlink" title="二、简化实例"></a>二、简化实例</h2><p>1.便于理解，首先创建一个明显分为2类20*2的例子（每一列为一个变量共2个变量，每一行为一个样本共20个样本）：</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">c1x=np.random.uniform(<span class="number">0.5</span>,<span class="number">1.5</span>,(<span class="number">1</span>,<span class="number">10</span>))</span><br><span class="line">c1y=np.random.uniform(<span class="number">0.5</span>,<span class="number">1.5</span>,(<span class="number">1</span>,<span class="number">10</span>))</span><br><span class="line">c2x=np.random.uniform(<span class="number">3.5</span>,<span class="number">4.5</span>,(<span class="number">1</span>,<span class="number">10</span>))</span><br><span class="line">c2y=np.random.uniform(<span class="number">3.5</span>,<span class="number">4.5</span>,(<span class="number">1</span>,<span class="number">10</span>))</span><br><span class="line">x=np.hstack((c1x,c2x))</span><br><span class="line">y=np.hstack((c2y,c2y))</span><br><span class="line">X=np.vstack((x,y)).T</span><br><span class="line">print(X)</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
 <p>结果如下：</p>
@@ -226,16 +220,16 @@
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&text=k均值聚类算法"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&title=k均值聚类算法"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&is_video=false&description=k均值聚类算法"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=k均值聚类算法&body=Check out this article: http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&title=k均值聚类算法"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&title=k均值聚类算法"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&title=k均值聚类算法"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&title=k均值聚类算法"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&name=k均值聚类算法&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&t=k均值聚类算法"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&text=k-means聚类算法"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&title=k-means聚类算法"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&is_video=false&description=k-means聚类算法"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=k-means聚类算法&body=Check out this article: http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&title=k-means聚类算法"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&title=k-means聚类算法"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&title=k-means聚类算法"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&title=k-means聚类算法"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&name=k-means聚类算法&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2023/08/24/k-jun-zhi-ju-lei-suan-fa/&t=k-means聚类算法"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
