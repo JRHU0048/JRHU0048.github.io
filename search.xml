@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>标准化、归一化、去中心化辨析</title>
+      <link href="/2024/04/08/biao-zhun-hua-gui-yi-hua-qu-zhong-xin-hua-bian-xi/"/>
+      <url>/2024/04/08/biao-zhun-hua-gui-yi-hua-qu-zhong-xin-hua-bian-xi/</url>
+      
+        <content type="html"><![CDATA[<p>标准化（Standardization）、归一化（Normalization）和去中心化（Centering）是数据预处理中常用的三种不同的缩放技术，它们都旨在调整数据的尺度，以便于进行后续的分析和机器学习任务。虽然这些术语有时被交替使用，但它们在数学上有着不同的含义和应用场景。</p><h3 id="标准化（Standardization）"><a href="#标准化（Standardization）" class="headerlink" title="标准化（Standardization）"></a>标准化（Standardization）</h3><p>标准化是将数据转换为具有特定均值和标准差的过程。通常，标准化会使得数据的均值变为0，标准差变为1。这是通过以下公式完成的（Z-score规范化）：</p><p>$$ z &#x3D; \frac{(x - \mu)}{\sigma} $$</p><p>其中，$\ x $ 是原始数据点，$ \mu $ 是数据集的均值，$ \sigma $ 是数据集的标准差，$ z $ 是标准化后的值。</p><p>标准化的主要目的是消除不同量纲和尺度的影响，使得数据在进行计算和比较时更加公平。它在许多机器学习算法中非常有用，尤其是那些基于距离的算法，如K-近邻（KNN）和主成分分析（PCA）。</p><h3 id="归一化（Normalization）"><a href="#归一化（Normalization）" class="headerlink" title="归一化（Normalization）"></a>归一化（Normalization）</h3><p>归一化通常指的是将数据缩放到一个固定的范围，最常见的是[0, 1]。归一化的公式如下：</p><p>$$ x_{\text{norm}} &#x3D; \frac{x - \text{min}(x)}{\text{max}(x) - \text{min}(x)} $$</p><p>其中，$\ x $ 是原始数据点，<code>min(x)</code>和<code>max(x)</code>分别是数据集中的最小值和最大值，$ x_{\text{norm}} $ 是归一化后的值。</p><p>归一化对于需要数据在固定范围内进行计算的算法非常有用，如梯度下降和神经网络。它也常用于数据可视化，使得不同的数据点可以在同一尺度下比较。</p><h3 id="去中心化（Centering）"><a href="#去中心化（Centering）" class="headerlink" title="去中心化（Centering）"></a>去中心化（Centering）</h3><p>中心化是将数据的均值变为0的过程，但不改变数据的标准差。这可以通过以下公式完成：</p><p>$$ x_{\text{centered}} &#x3D; x - \mu $$</p><p>其中，$\ x$ 是原始数据点 ，$ \mu$ 是数据集的均值，$ x_{\text{centered}} $ 是去中心化后的值。</p><p>去中心化有助于突出数据中的异常值和波动，因为它保留了原始数据的方差。它在某些统计分析和时间序列分析中非常有用，尤其是在计算偏差或平均偏差时。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul><li><strong>标准化</strong>：调整数据的均值和标准差，使其具有均值为0和标准差为1的特性。</li><li><strong>归一化</strong>：将数据缩放到一个固定范围，通常是[0, 1]。</li><li><strong>去中心化</strong>：仅将数据的均值调整为0，不改变其标准差。</li></ul><p>在实际应用中，选择哪种方法取决于数据的特性和后续分析的需求。有时，这些方法可以组合使用，以达到最佳的预处理效果。例如，可以先进行去中心化，然后进行标准化或归一化。</p><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="http://t.csdnimg.cn/uvG6k">http://t.csdnimg.cn/uvG6k</a></p><p><a href="http://t.csdnimg.cn/80z2S">http://t.csdnimg.cn/80z2S</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数模 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数据标准化处理疑问</title>
       <link href="/2024/04/08/shu-ju-biao-zhun-hua-chu-li-yi-wen/"/>
       <url>/2024/04/08/shu-ju-biao-zhun-hua-chu-li-yi-wen/</url>
