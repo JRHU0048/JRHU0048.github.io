@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="pyecharts库通过测试发现，安装0.1.9.4版本最为稳定 1pip install pyecharts&#x3D;&#x3D;0.1.9.4  安装完成后，下面是一个简单的测试案例 12345678910111213141516171819202122232425262728293031323334353637383940414243444546from pyecharts import Mapprovinc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pyecharts绘制中国地图">
+<meta property="og:url" content="http://jrhu0048.github.io/2024/04/10/pyecharts-hui-zhi-zhong-guo-di-tu/index.html">
+<meta property="og:site_name" content="welcome">
+<meta property="og:description" content="pyecharts库通过测试发现，安装0.1.9.4版本最为稳定 1pip install pyecharts&#x3D;&#x3D;0.1.9.4  安装完成后，下面是一个简单的测试案例 12345678910111213141516171819202122232425262728293031323334353637383940414243444546from pyecharts import Mapprovinc">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6616ab5468eb9357130f74dd.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6616ac1f68eb935713101e1f.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6616ad3f68eb935713117bef.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/66169f6568eb935713011b92.png">
+<meta property="article:published_time" content="2024-04-10T15:02:55.000Z">
+<meta property="article:modified_time" content="2024-04-10T15:17:47.881Z">
+<meta property="article:author" content="jr.hu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/6616ab5468eb9357130f74dd.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>pyecharts绘制中国地图</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2024/04/08/biao-zhun-hua-gui-yi-hua-qu-zhong-xin-hua-bian-xi/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/04/10/pyecharts-hui-zhi-zhong-guo-di-tu/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/04/10/pyecharts-hui-zhi-zhong-guo-di-tu/&text=pyecharts绘制中国地图"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/04/10/pyecharts-hui-zhi-zhong-guo-di-tu/&title=pyecharts绘制中国地图"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/04/10/pyecharts-hui-zhi-zhong-guo-di-tu/&is_video=false&description=pyecharts绘制中国地图"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=pyecharts绘制中国地图&body=Check out this article: http://jrhu0048.github.io/2024/04/10/pyecharts-hui-zhi-zhong-guo-di-tu/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/04/10/pyecharts-hui-zhi-zhong-guo-di-tu/&title=pyecharts绘制中国地图"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/04/10/pyecharts-hui-zhi-zhong-guo-di-tu/&title=pyecharts绘制中国地图"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/04/10/pyecharts-hui-zhi-zhong-guo-di-tu/&title=pyecharts绘制中国地图"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/04/10/pyecharts-hui-zhi-zhong-guo-di-tu/&title=pyecharts绘制中国地图"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/04/10/pyecharts-hui-zhi-zhong-guo-di-tu/&name=pyecharts绘制中国地图&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/04/10/pyecharts-hui-zhi-zhong-guo-di-tu/&t=pyecharts绘制中国地图"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#pyecharts%E5%BA%93"><span class="toc-number">1.</span> <span class="toc-text">pyecharts库</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        pyecharts绘制中国地图
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">jr.hu</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-04-10T15:02:55.000Z" class="dt-published" itemprop="datePublished">2024-04-10</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="pyecharts库"><a href="#pyecharts库" class="headerlink" title="pyecharts库"></a>pyecharts库</h2><p>通过测试发现，安装0.1.9.4版本最为稳定</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pyecharts==<span class="number">0.1</span><span class="number">.9</span><span class="number">.4</span></span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，下面是一个简单的测试案例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyecharts <span class="keyword">import</span> Map</span><br><span class="line"></span><br><span class="line">province_distribution  = &#123;</span><br><span class="line">    <span class="string">&quot;北京&quot;</span>: <span class="number">3.923916945</span>,</span><br><span class="line">    <span class="string">&quot;天津&quot;</span>: <span class="number">1.974557674</span>,</span><br><span class="line">    <span class="string">&quot;河北&quot;</span>: <span class="number">0.031448024</span>,</span><br><span class="line">    <span class="string">&quot;山西&quot;</span>: -<span class="number">0.243928321</span>,</span><br><span class="line">    <span class="string">&quot;内蒙古&quot;</span>: <span class="number">0.285642805</span>,</span><br><span class="line">    <span class="string">&quot;辽宁&quot;</span>: -<span class="number">0.012222464</span>,</span><br><span class="line">    <span class="string">&quot;吉林&quot;</span>: <span class="number">0.037753234</span>,</span><br><span class="line">    <span class="string">&quot;黑龙江&quot;</span>: -<span class="number">0.098705912</span>,</span><br><span class="line">    <span class="string">&quot;上海&quot;</span>: <span class="number">2.498539306</span>,</span><br><span class="line">    <span class="string">&quot;江苏&quot;</span>: <span class="number">0.367988799</span>,</span><br><span class="line">    <span class="string">&quot;浙江&quot;</span>: <span class="number">0.889074231</span>,</span><br><span class="line">    <span class="string">&quot;安徽&quot;</span>: -<span class="number">0.6519182</span>,</span><br><span class="line">    <span class="string">&quot;福建&quot;</span>: -<span class="number">0.202640638</span>,</span><br><span class="line">    <span class="string">&quot;江西&quot;</span>: -<span class="number">0.968214234</span>,</span><br><span class="line">    <span class="string">&quot;山东&quot;</span>: <span class="number">0.355384584</span>,</span><br><span class="line">    <span class="string">&quot;河南&quot;</span>: -<span class="number">0.99580695</span>,</span><br><span class="line">    <span class="string">&quot;湖北&quot;</span>: -<span class="number">0.264681358</span>,</span><br><span class="line">    <span class="string">&quot;湖南&quot;</span>: -<span class="number">1.012688352</span>,</span><br><span class="line">    <span class="string">&quot;广东&quot;</span>: <span class="number">0.574760013</span>,</span><br><span class="line">    <span class="string">&quot;广西&quot;</span>: -<span class="number">0.830955316</span>,</span><br><span class="line">    <span class="string">&quot;海南&quot;</span>: <span class="number">0.149846753</span>,</span><br><span class="line">    <span class="string">&quot;重庆&quot;</span>: -<span class="number">0.431589086</span>,</span><br><span class="line">    <span class="string">&quot;四川&quot;</span>: -<span class="number">0.717277576</span>,</span><br><span class="line">    <span class="string">&quot;贵州&quot;</span>: -<span class="number">1.400394406</span>,</span><br><span class="line">    <span class="string">&quot;云南&quot;</span>: -<span class="number">1.016323672</span>,</span><br><span class="line">    <span class="string">&quot;西藏&quot;</span>: -<span class="number">0.146483877</span>,</span><br><span class="line">    <span class="string">&quot;陕西&quot;</span>: -<span class="number">0.202472393</span>,</span><br><span class="line">    <span class="string">&quot;甘肃&quot;</span>: -<span class="number">0.976863652</span>,</span><br><span class="line">    <span class="string">&quot;青海&quot;</span>: -<span class="number">0.352463859</span>,</span><br><span class="line">    <span class="string">&quot;宁夏&quot;</span>: -<span class="number">0.001899423</span>,</span><br><span class="line">    <span class="string">&quot;新疆&quot;</span>: -<span class="number">0.561382676</span></span><br><span class="line">&#125;</span><br><span class="line">provice = <span class="built_in">list</span>(province_distribution.keys())</span><br><span class="line">num = <span class="built_in">list</span>(province_distribution.values())</span><br><span class="line"></span><br><span class="line">chinaMap = Map(width=<span class="number">1200</span>, height=<span class="number">600</span>)</span><br><span class="line">chinaMap.add(name=<span class="string">&quot;医疗水平综合得分&quot;</span>,</span><br><span class="line">             attr=provice,</span><br><span class="line">             value=num,</span><br><span class="line">             visual_range=[-<span class="number">1.1</span>, <span class="number">1.5</span>],</span><br><span class="line">             maptype=<span class="string">&#x27;china&#x27;</span>,</span><br><span class="line">             is_visualmap=<span class="literal">True</span>)</span><br><span class="line">chinaMap.render(path=<span class="string">&quot;中国地图.html&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>运行，会在同一目录下得到一个’中国地图.html’的文件，通过浏览器打开，可以得到如下的交互式地图</p>
+<p><img src="https://pic.imgdb.cn/item/6616ab5468eb9357130f74dd.png" alt="alt text"></p>
+<p>但是发现得到的地图无法自动显示各个省份的名称，因此可以使用<code>notepad++</code>打开’中国地图.html’，在一千九百多行的位置找到</p>
+<p><img src="https://pic.imgdb.cn/item/6616ac1f68eb935713101e1f.png" alt="alt text"></p>
+<p>添加如下内容并保存</p>
+<p><img src="https://pic.imgdb.cn/item/6616ad3f68eb935713117bef.png" alt="alt text"></p>
+<p>最终就可以得到带有省份名称的中国地图，可以下载保存</p>
+<p><img src="https://pic.imgdb.cn/item/66169f6568eb935713011b92.png" alt="alt text"></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/tags/">标签</a></li>
+        
+          <li><a href="/categories/">分类</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#pyecharts%E5%BA%93"><span class="toc-number">1.</span> <span class="toc-text">pyecharts库</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/04/10/pyecharts-hui-zhi-zhong-guo-di-tu/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/04/10/pyecharts-hui-zhi-zhong-guo-di-tu/&text=pyecharts绘制中国地图"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/04/10/pyecharts-hui-zhi-zhong-guo-di-tu/&title=pyecharts绘制中国地图"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/04/10/pyecharts-hui-zhi-zhong-guo-di-tu/&is_video=false&description=pyecharts绘制中国地图"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=pyecharts绘制中国地图&body=Check out this article: http://jrhu0048.github.io/2024/04/10/pyecharts-hui-zhi-zhong-guo-di-tu/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/04/10/pyecharts-hui-zhi-zhong-guo-di-tu/&title=pyecharts绘制中国地图"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/04/10/pyecharts-hui-zhi-zhong-guo-di-tu/&title=pyecharts绘制中国地图"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/04/10/pyecharts-hui-zhi-zhong-guo-di-tu/&title=pyecharts绘制中国地图"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/04/10/pyecharts-hui-zhi-zhong-guo-di-tu/&title=pyecharts绘制中国地图"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/04/10/pyecharts-hui-zhi-zhong-guo-di-tu/&name=pyecharts绘制中国地图&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/04/10/pyecharts-hui-zhi-zhong-guo-di-tu/&t=pyecharts绘制中国地图"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022-2024
+    jr.hu
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
