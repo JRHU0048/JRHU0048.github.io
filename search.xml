@@ -231,6 +231,19 @@
     
     
     <entry>
+      <title>leetcode note</title>
+      <link href="/2024/03/10/leetcode-note/"/>
+      <url>/2024/03/10/leetcode-note/</url>
+      
+        <content type="html"><![CDATA[<h2 id="3-无重复字符的最长子串"><a href="#3-无重复字符的最长子串" class="headerlink" title="3. 无重复字符的最长子串"></a>3. 无重复字符的最长子串</h2><p>给定一个字符串s，请你找出其中不含有重复字符的最长子串的长度。</p><p>希哈表+快慢指针</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">lengthOfLongestSubstring</span><span class="params">(<span class="type">char</span>* s)</span> &#123;</span><br><span class="line"><span class="type">int</span> result = <span class="number">0</span>, i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> length = <span class="built_in">strlen</span>(s);</span><br><span class="line"><span class="type">int</span> cnt[<span class="number">128</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line"><span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; length; j++) &#123;</span><br><span class="line">cnt[s[j]]++;</span><br><span class="line"><span class="keyword">if</span> (cnt[s[j]] &gt; <span class="number">1</span>) &#123;<span class="comment">//遇到重复的字母</span></span><br><span class="line">result = result &lt; j - i ? j - i : result;<span class="comment">//计算快慢指针间子串的长度并更新</span></span><br><span class="line">      <span class="comment">//查找第一个重复字母并清零计数</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> k = i; k &lt; j; k++) &#123;</span><br><span class="line">        cnt[s[k]]--;<span class="comment">//清零第一个重复字母（含）前的计数</span></span><br><span class="line"><span class="keyword">if</span> (s[k] == s[j]) &#123;<span class="comment">//找到第一个重复字母，退出查找循环</span></span><br><span class="line">i = k;</span><br><span class="line"><span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">i++;<span class="comment">//慢指针指向第一个重复字母后的字母</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">result = result &lt; j - i ? j - i : result;</span><br><span class="line"><span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>WP_2024PearlCTF_CRYPTO_3spies</title>
       <link href="/2024/03/09/wp-2024pearlctf-crypto-3spies/"/>
       <url>/2024/03/09/wp-2024pearlctf-crypto-3spies/</url>
