@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="常见的MATLAB制图代码集合area函数是Y轴数值对 x 坐标轴围成的面积图，该函数根据Y的形状填充曲线之间的区域。fill函数是创建二维填充补片（patch），即填充多边形区域绘制为补片，其顶点位于由X和Y指定的(x,y)坐标位置，主要用于平面中多个区域的颜色填充。patch函数是创建彩色多边形的补片，即按X和Y指定为每个顶点的坐标创建一个或多个彩色多边形补片，主要用于平面中多边形的颜色填充。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MATLAB制图">
+<meta property="og:url" content="http://jrhu0048.github.io/2024/04/25/matlab-zhi-tu/index.html">
+<meta property="og:site_name" content="charmmy">
+<meta property="og:description" content="常见的MATLAB制图代码集合area函数是Y轴数值对 x 坐标轴围成的面积图，该函数根据Y的形状填充曲线之间的区域。fill函数是创建二维填充补片（patch），即填充多边形区域绘制为补片，其顶点位于由X和Y指定的(x,y)坐标位置，主要用于平面中多个区域的颜色填充。patch函数是创建彩色多边形的补片，即按X和Y指定为每个顶点的坐标创建一个或多个彩色多边形补片，主要用于平面中多边形的颜色填充。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/662a276d0ea9cb1403757781.jpg">
+<meta property="og:image" content="https://pic.imgdb.cn/item/662a2c000ea9cb140382bfbc.jpg">
+<meta property="article:published_time" content="2024-04-25T09:37:04.000Z">
+<meta property="article:modified_time" content="2024-04-25T10:18:01.267Z">
+<meta property="article:author" content="jr.hu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/662a276d0ea9cb1403757781.jpg">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>MATLAB制图</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2024/04/12/2024xctf4-1-5-1/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/04/25/matlab-zhi-tu/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/04/25/matlab-zhi-tu/&text=MATLAB制图"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/04/25/matlab-zhi-tu/&title=MATLAB制图"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/04/25/matlab-zhi-tu/&is_video=false&description=MATLAB制图"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=MATLAB制图&body=Check out this article: http://jrhu0048.github.io/2024/04/25/matlab-zhi-tu/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/04/25/matlab-zhi-tu/&title=MATLAB制图"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/04/25/matlab-zhi-tu/&title=MATLAB制图"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/04/25/matlab-zhi-tu/&title=MATLAB制图"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/04/25/matlab-zhi-tu/&title=MATLAB制图"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/04/25/matlab-zhi-tu/&name=MATLAB制图&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/04/25/matlab-zhi-tu/&t=MATLAB制图"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84MATLAB%E5%88%B6%E5%9B%BE%E4%BB%A3%E7%A0%81%E9%9B%86%E5%90%88"><span class="toc-number">1.</span> <span class="toc-text">常见的MATLAB制图代码集合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#area%E5%87%BD%E6%95%B0%E6%98%AFY%E8%BD%B4%E6%95%B0%E5%80%BC%E5%AF%B9-x-%E5%9D%90%E6%A0%87%E8%BD%B4%E5%9B%B4%E6%88%90%E7%9A%84%E9%9D%A2%E7%A7%AF%E5%9B%BE%EF%BC%8C%E8%AF%A5%E5%87%BD%E6%95%B0%E6%A0%B9%E6%8D%AEY%E7%9A%84%E5%BD%A2%E7%8A%B6%E5%A1%AB%E5%85%85%E6%9B%B2%E7%BA%BF%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%9F%9F%E3%80%82"><span class="toc-number">1.1.</span> <span class="toc-text">area函数是Y轴数值对 x 坐标轴围成的面积图，该函数根据Y的形状填充曲线之间的区域。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fill%E5%87%BD%E6%95%B0%E6%98%AF%E5%88%9B%E5%BB%BA%E4%BA%8C%E7%BB%B4%E5%A1%AB%E5%85%85%E8%A1%A5%E7%89%87%EF%BC%88patch%EF%BC%89%EF%BC%8C%E5%8D%B3%E5%A1%AB%E5%85%85%E5%A4%9A%E8%BE%B9%E5%BD%A2%E5%8C%BA%E5%9F%9F%E7%BB%98%E5%88%B6%E4%B8%BA%E8%A1%A5%E7%89%87%EF%BC%8C%E5%85%B6%E9%A1%B6%E7%82%B9%E4%BD%8D%E4%BA%8E%E7%94%B1X%E5%92%8CY%E6%8C%87%E5%AE%9A%E7%9A%84-x-y-%E5%9D%90%E6%A0%87%E4%BD%8D%E7%BD%AE%EF%BC%8C%E4%B8%BB%E8%A6%81%E7%94%A8%E4%BA%8E%E5%B9%B3%E9%9D%A2%E4%B8%AD%E5%A4%9A%E4%B8%AA%E5%8C%BA%E5%9F%9F%E7%9A%84%E9%A2%9C%E8%89%B2%E5%A1%AB%E5%85%85%E3%80%82"><span class="toc-number">1.2.</span> <span class="toc-text">fill函数是创建二维填充补片（patch），即填充多边形区域绘制为补片，其顶点位于由X和Y指定的(x,y)坐标位置，主要用于平面中多个区域的颜色填充。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#patch%E5%87%BD%E6%95%B0%E6%98%AF%E5%88%9B%E5%BB%BA%E5%BD%A9%E8%89%B2%E5%A4%9A%E8%BE%B9%E5%BD%A2%E7%9A%84%E8%A1%A5%E7%89%87%EF%BC%8C%E5%8D%B3%E6%8C%89X%E5%92%8CY%E6%8C%87%E5%AE%9A%E4%B8%BA%E6%AF%8F%E4%B8%AA%E9%A1%B6%E7%82%B9%E7%9A%84%E5%9D%90%E6%A0%87%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%88%96%E5%A4%9A%E4%B8%AA%E5%BD%A9%E8%89%B2%E5%A4%9A%E8%BE%B9%E5%BD%A2%E8%A1%A5%E7%89%87%EF%BC%8C%E4%B8%BB%E8%A6%81%E7%94%A8%E4%BA%8E%E5%B9%B3%E9%9D%A2%E4%B8%AD%E5%A4%9A%E8%BE%B9%E5%BD%A2%E7%9A%84%E9%A2%9C%E8%89%B2%E5%A1%AB%E5%85%85%E3%80%82"><span class="toc-number">1.3.</span> <span class="toc-text">patch函数是创建彩色多边形的补片，即按X和Y指定为每个顶点的坐标创建一个或多个彩色多边形补片，主要用于平面中多边形的颜色填充。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#patch%E4%B8%8Efill%E5%87%BD%E6%95%B0%E5%8A%9F%E8%83%BD%E5%92%8C%E7%94%A8%E6%B3%95%E7%B1%BB%E4%BC%BC%E3%80%82area%E5%87%BD%E6%95%B0%E4%B8%BB%E8%A6%81%E9%92%88%E5%AF%B9%E4%B8%8E%E5%9D%90%E6%A0%87%E8%BD%B4%E5%9B%B4%E6%88%90%E7%9A%84%E5%8C%BA%E5%9F%9F%E7%9A%84%E5%A1%AB%E5%85%85%EF%BC%8C%E5%A6%82%E6%9E%9C%E9%9C%80%E8%A6%81%E5%AF%B9%E5%9B%BE%E5%BD%A2%E7%AA%97%E5%8F%A3%E5%86%85%E4%BB%BB%E6%84%8F%E9%97%AD%E5%90%88%E5%8C%BA%E5%9F%9F%E6%88%96%E5%A4%9A%E8%BE%B9%E5%BD%A2%E5%8C%BA%E5%9F%9F%E5%8F%8A%E8%BF%9B%E8%A1%8C%E5%A1%AB%E5%85%85%EF%BC%8C%E5%88%99%E9%9C%80%E8%A6%81%E7%94%A8%E5%88%B0fill%E5%92%8Cpatch%E5%87%BD%E6%95%B0%E3%80%82"><span class="toc-number">1.4.</span> <span class="toc-text">patch与fill函数功能和用法类似。area函数主要针对与坐标轴围成的区域的填充，如果需要对图形窗口内任意闭合区域或多边形区域及进行填充，则需要用到fill和patch函数。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">2.</span> <span class="toc-text">参考</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        MATLAB制图
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">jr.hu</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-04-25T09:37:04.000Z" class="dt-published" itemprop="datePublished">2024-04-25</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="常见的MATLAB制图代码集合"><a href="#常见的MATLAB制图代码集合" class="headerlink" title="常见的MATLAB制图代码集合"></a>常见的MATLAB制图代码集合</h2><h3 id="area函数是Y轴数值对-x-坐标轴围成的面积图，该函数根据Y的形状填充曲线之间的区域。"><a href="#area函数是Y轴数值对-x-坐标轴围成的面积图，该函数根据Y的形状填充曲线之间的区域。" class="headerlink" title="area函数是Y轴数值对 x 坐标轴围成的面积图，该函数根据Y的形状填充曲线之间的区域。"></a>area函数是Y轴数值对 x 坐标轴围成的面积图，该函数根据Y的形状填充曲线之间的区域。</h3><h3 id="fill函数是创建二维填充补片（patch），即填充多边形区域绘制为补片，其顶点位于由X和Y指定的-x-y-坐标位置，主要用于平面中多个区域的颜色填充。"><a href="#fill函数是创建二维填充补片（patch），即填充多边形区域绘制为补片，其顶点位于由X和Y指定的-x-y-坐标位置，主要用于平面中多个区域的颜色填充。" class="headerlink" title="fill函数是创建二维填充补片（patch），即填充多边形区域绘制为补片，其顶点位于由X和Y指定的(x,y)坐标位置，主要用于平面中多个区域的颜色填充。"></a>fill函数是创建二维填充补片（patch），即填充多边形区域绘制为补片，其顶点位于由X和Y指定的(x,y)坐标位置，主要用于平面中多个区域的颜色填充。</h3><h3 id="patch函数是创建彩色多边形的补片，即按X和Y指定为每个顶点的坐标创建一个或多个彩色多边形补片，主要用于平面中多边形的颜色填充。"><a href="#patch函数是创建彩色多边形的补片，即按X和Y指定为每个顶点的坐标创建一个或多个彩色多边形补片，主要用于平面中多边形的颜色填充。" class="headerlink" title="patch函数是创建彩色多边形的补片，即按X和Y指定为每个顶点的坐标创建一个或多个彩色多边形补片，主要用于平面中多边形的颜色填充。"></a>patch函数是创建彩色多边形的补片，即按X和Y指定为每个顶点的坐标创建一个或多个彩色多边形补片，主要用于平面中多边形的颜色填充。</h3><h3 id="patch与fill函数功能和用法类似。area函数主要针对与坐标轴围成的区域的填充，如果需要对图形窗口内任意闭合区域或多边形区域及进行填充，则需要用到fill和patch函数。"><a href="#patch与fill函数功能和用法类似。area函数主要针对与坐标轴围成的区域的填充，如果需要对图形窗口内任意闭合区域或多边形区域及进行填充，则需要用到fill和patch函数。" class="headerlink" title="patch与fill函数功能和用法类似。area函数主要针对与坐标轴围成的区域的填充，如果需要对图形窗口内任意闭合区域或多边形区域及进行填充，则需要用到fill和patch函数。"></a>patch与fill函数功能和用法类似。area函数主要针对与坐标轴围成的区域的填充，如果需要对图形窗口内任意闭合区域或多边形区域及进行填充，则需要用到fill和patch函数。</h3><p><img src="https://pic.imgdb.cn/item/662a276d0ea9cb1403757781.jpg" alt="alt text"></p>
+<figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">clc; clear; close <span class="built_in">all</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">% 数据</span></span><br><span class="line">x <span class="built_in">=</span> linspace(-<span class="number">8</span>,<span class="number">12</span>,<span class="number">100</span>);</span><br><span class="line">y1 <span class="built_in">=</span> normpdf(x,<span class="number">4</span>,<span class="number">6</span>);<span class="comment">% Normal probability density function</span></span><br><span class="line">y2 <span class="built_in">=</span> normpdf(x,<span class="number">0</span>,<span class="number">1</span>).*<span class="number">0.5</span>+normpdf(x,<span class="number">4</span>,<span class="number">2</span>).*<span class="number">0.5</span>;</span><br><span class="line">y3 <span class="built_in">=</span> normpdf(x,-<span class="number">3</span>,<span class="number">2</span>);</span><br><span class="line">y <span class="built_in">=</span> [y1;y2;y3];</span><br><span class="line"></span><br><span class="line"><span class="comment">% 颜色</span></span><br><span class="line">c <span class="built_in">=</span> [<span class="number">184</span> <span class="number">194</span> <span class="number">140</span>; <span class="number">201</span> <span class="number">226</span> <span class="number">240</span>; <span class="number">250</span> <span class="number">181</span> <span class="number">157</span>]./<span class="number">255</span>; <span class="comment">% Three colors</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 绘图</span></span><br><span class="line">for i <span class="built_in">=</span> <span class="number">1</span>:size(y,<span class="number">1</span>)</span><br><span class="line">area(x,y(i,:),<span class="string">&#x27;FaceColor&#x27;</span>,c(i,:),<span class="string">&#x27;EdgeColor&#x27;</span>,<span class="string">&#x27;none&#x27;</span>,<span class="string">&#x27;FaceAlpha&#x27;</span>,<span class="number">0.5</span>); hold on</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line"><span class="comment">% 坐标轴</span></span><br><span class="line">xlabel(<span class="string">&#x27;x/Samples&#x27;</span>),ylabel(<span class="string">&#x27;y/Value&#x27;</span>)</span><br><span class="line">legend(&#123;<span class="string">&#x27;- Area No.1&#x27;</span>,<span class="string">&#x27;- Area No.2&#x27;</span>,<span class="string">&#x27;- Area No.3&#x27;</span>&#125;)</span><br><span class="line">set(gca,<span class="string">&#x27;XLim&#x27;</span>,[-<span class="number">8</span> <span class="number">12</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">% 修饰</span></span><br><span class="line">defaultAxes</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>数据生成</strong></p>
+<ol>
+<li><code>x = linspace(-8,12,100);</code><ul>
+<li>生成向量 <code>x</code>，包含从-8到12之间均匀分布的100个点，这些点将用于绘制函数曲线。</li>
+</ul>
+</li>
+</ol>
+<p><strong>计算概率密度函数</strong></p>
+<ol start="2">
+<li><code>y1 = normpdf(x,4,6);</code><ul>
+<li>计算正态分布PDF，其中均值为4，标准差为6。结果存储在 <code>y1</code> 中。</li>
+</ul>
+</li>
+<li><code>y2 = normpdf(x,0,1).*0.5+normpdf(x,4,2).*0.5;</code><ul>
+<li>计算两个正态分布PDF的线性组合，其中一个均值为0，标准差为1，权重为0.5；另一个均值为4，标准差为2，权重也为0.5。结果合并后存入 <code>y2</code>。</li>
+</ul>
+</li>
+<li><code>y3 = normpdf(x,-3,2);</code><ul>
+<li>计算均值为-3，标准差为2的正态分布PDF，并将其结果保存在 <code>y3</code> 中。</li>
+</ul>
+</li>
+</ol>
+<p><strong>定义颜色</strong></p>
+<ol start="5">
+<li><code>c = [184 194 140; 201 226 240; 250 181 157]./255;</code><ul>
+<li>定义一个3×3矩阵，包含三组RGB颜色值，分别对应三个分布的填充颜色。这些数值经过除以255的操作，将它们归一化到0到1之间，以便MATLAB能够正确理解。</li>
+</ul>
+</li>
+</ol>
+<p><strong>绘制图形</strong></p>
+<ol start="6">
+<li><code>for i = 1:size(y,1)</code><ul>
+<li>使用循环结构，遍历 <code>y</code> 的每一行（即每一个分布）。</li>
+</ul>
+</li>
+<li><code>area(x,y(i,:), ...)</code> <ul>
+<li>对于每个分布，调用 <code>area</code> 函数绘制面积图。输入参数为 <code>x</code> 轴坐标向量和对应的 <code>y</code> 值向量。</li>
+</ul>
+</li>
+<li><code>&#39;FaceColor&#39;, c(i,:), &#39;EdgeColor&#39;, &#39;none&#39;, &#39;FaceAlpha&#39;, 0.5</code><ul>
+<li>设置面积图的填充颜色为当前循环索引对应的色彩，边缘颜色为无（即不显示边缘线），并设置填充透明度为0.5，使得底层分布能部分透过上层分布显现。</li>
+</ul>
+</li>
+<li><code>hold on</code><ul>
+<li>在同一张图上保持绘制状态，允许后续循环中的面积图叠加在同一坐标系中。</li>
+</ul>
+</li>
+<li><code>end</code><ul>
+<li>结束循环。</li>
+</ul>
+</li>
+</ol>
+<p><strong>坐标轴与图例</strong></p>
+<ol start="11">
+<li><code>xlabel(&#39;x/Samples&#39;), ylabel(&#39;y/Value&#39;)</code><ul>
+<li>设置横纵坐标的标签，分别为“x&#x2F;Samples”和“y&#x2F;Value”。</li>
+</ul>
+</li>
+<li><code>legend(&#123;&#39;- Area No.1&#39;, &#39;- Area No.2&#39;, &#39;- Area No.3&#39;&#125;)</code><ul>
+<li>添加图例，标识三个面积区域分别为“Area No.1”、“Area No.2”和“Area No.3”。</li>
+</ul>
+</li>
+</ol>
+<p><strong>坐标轴范围设定</strong></p>
+<ol start="13">
+<li><code>set(gca, &#39;XLim&#39;, [-8 12])</code><ul>
+<li>设置当前坐标轴（gca）的x轴范围为-8到12，确保图形覆盖指定的x轴区间。</li>
+</ul>
+</li>
+</ol>
+<p><strong>图形修饰</strong></p>
+<ol start="14">
+<li><code>defaultAxes</code><ul>
+<li>调用 <code>defaultAxes</code> 函数（假设这是一个用户自定义函数或MATLAB内置函数），对当前坐标轴进行默认的修饰或调整，如字体大小、线条粗细等。</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/662a2c000ea9cb140382bfbc.jpg" alt="alt text"></p>
+<figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 设置参数</span></span><br><span class="line">num_values <span class="built_in">=</span> <span class="number">100</span>;     <span class="comment">% 随机数数量</span></span><br><span class="line">min_value <span class="built_in">=</span> -<span class="number">100</span>;    <span class="comment">% 最小值（包括）</span></span><br><span class="line">max_value <span class="built_in">=</span> <span class="number">100</span>;     <span class="comment">% 最大值（包括）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 生成随机数列表</span></span><br><span class="line">y <span class="built_in">=</span> min_value + (max_value - min_value) * rand(num_values, <span class="number">1</span>);</span><br><span class="line">x <span class="built_in">=</span> linspace(<span class="number">0</span>,<span class="number">100</span>,length(y));</span><br><span class="line">y1 <span class="built_in">=</span> y; y1(y1&lt;<span class="number">0</span>)<span class="built_in">=</span><span class="number">0</span>;      <span class="comment">% 负数</span></span><br><span class="line">y2 <span class="built_in">=</span> y; y2(y2&gt;<span class="number">0</span>)<span class="built_in">=</span><span class="number">0</span>;      <span class="comment">% 正数</span></span><br><span class="line">figure,</span><br><span class="line">area(x,y1,<span class="string">&#x27;FaceColor&#x27;</span>,<span class="string">&#x27;r&#x27;</span>,<span class="string">&#x27;EdgeColor&#x27;</span>,<span class="string">&#x27;r&#x27;</span>,<span class="string">&#x27;FaceAlpha&#x27;</span>,<span class="number">0.6</span>); hold on</span><br><span class="line">area(x,y2,<span class="string">&#x27;FaceColor&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;EdgeColor&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;FaceAlpha&#x27;</span>,<span class="number">0.6</span>);</span><br><span class="line">xlabel(<span class="string">&#x27;x-axis/Samples&#x27;</span>),ylabel(<span class="string">&#x27;y-axis/Intensity value&#x27;</span>)</span><br><span class="line">set(gca,<span class="string">&#x27;FontName&#x27;</span>,<span class="string">&#x27;Times New Roman&#x27;</span>,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">12</span>)</span><br><span class="line">legend(&#123;<span class="string">&#x27;- Positive value area&#x27;</span>,<span class="string">&#x27;- Negative value area&#x27;</span>&#125;)</span><br><span class="line">set(gcf,<span class="string">&#x27;Color&#x27;</span>,<span class="string">&#x27;White&#x27;</span>);  <span class="comment">%设置背景颜色</span></span><br><span class="line"><span class="comment">% 修饰</span></span><br><span class="line">defaultAxes</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 生成随机数列表</span></span><br><span class="line">y <span class="built_in">=</span> min_value + (max_value - min_value) * rand(num_values, <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<p>这一行利用Matlab内置函数<code>rand()</code>生成一个<code>num_values</code>行、1列的矩阵，其中元素值为在[0,1]之间均匀分布的随机数。然后将这些随机数乘以<code>(max_value - min_value)</code>得到一个缩放后的范围，并加上<code>min_value</code>，确保最终生成的随机数在<code>[-100, 100]</code>范围内。结果存储在变量<code>y</code>中。</p>
+<figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x <span class="built_in">=</span> linspace(<span class="number">0</span>,<span class="number">100</span>,length(y));</span><br></pre></td></tr></table></figure>
+<p>这里使用<code>linspace()</code>函数创建一个等差数列<code>x</code>，起点为0，终点为100，包含的点数与<code>y</code>的长度相同。这意味着<code>x</code>将作为面积图的x轴坐标，与<code>y</code>中的随机数值一一对应。</p>
+<figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y1 <span class="built_in">=</span> y; y1(y1&lt;<span class="number">0</span>)<span class="built_in">=</span><span class="number">0</span>;      <span class="comment">% 负数</span></span><br><span class="line">y2 <span class="built_in">=</span> y; y2(y2&gt;<span class="number">0</span>)<span class="built_in">=</span><span class="number">0</span>;      <span class="comment">% 正数</span></span><br></pre></td></tr></table></figure>
+<p>为了分别绘制正负值部分的面积图，创建两个新变量<code>y1</code>和<code>y2</code>。它们最初都复制自<code>y</code>，然后通过逻辑索引将：</p>
+<ul>
+<li><code>y1</code>中所有小于0的值置为0，保留所有负数部分；</li>
+<li><code>y2</code>中所有大于0的值置为0，保留所有正数部分。</li>
+</ul>
+<figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">figure,</span><br><span class="line">area(x,y1,<span class="string">&#x27;FaceColor&#x27;</span>,<span class="string">&#x27;r&#x27;</span>,<span class="string">&#x27;EdgeColor&#x27;</span>,<span class="string">&#x27;r&#x27;</span>,<span class="string">&#x27;FaceAlpha&#x27;</span>,<span class="number">0.6</span>); hold on</span><br><span class="line">area(x,y2,<span class="string">&#x27;FaceColor&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;EdgeColor&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;FaceAlpha&#x27;</span>,<span class="number">0.6</span>);</span><br></pre></td></tr></table></figure>
+<p>首先打开一个新的图形窗口(<code>figure</code>)，然后使用<code>area()</code>函数绘制面积图：</p>
+<ul>
+<li>第一个面积图基于<code>x</code>和<code>y1</code>，表示负值部分，其填充颜色(<code>FaceColor</code>)和边缘颜色(<code>EdgeColor</code>)均为红色(<code>&#39;r&#39;</code>)，透明度(<code>FaceAlpha</code>)设为0.6；</li>
+<li>第二个面积图基于<code>x</code>和<code>y2</code>，表示正值部分，颜色属性与第一个面积图相同，只是颜色为蓝色(<code>&#39;b&#39;</code>)。</li>
+</ul>
+<p><code>hold on</code>命令确保在同一张图上绘制这两个面积图，不会被自动清空。</p>
+<figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">xlabel(<span class="string">&#x27;x-axis/Samples&#x27;</span>),ylabel(<span class="string">&#x27;y-axis/Intensity value&#x27;</span>)</span><br><span class="line">set(gca,<span class="string">&#x27;FontName&#x27;</span>,<span class="string">&#x27;Times New Roman&#x27;</span>,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">12</span>)</span><br><span class="line">legend(&#123;<span class="string">&#x27;- Positive value area&#x27;</span>,<span class="string">&#x27;- Negative value area&#x27;</span>&#125;)</span><br><span class="line">set(gcf,<span class="string">&#x27;Color&#x27;</span>,<span class="string">&#x27;White&#x27;</span>);  <span class="comment">%设置背景颜色</span></span><br></pre></td></tr></table></figure>
+<p>接下来对图形进行标注和样式调整：</p>
+<ul>
+<li>设置x轴标签为“x-axis&#x2F;Samples”，y轴标签为“y-axis&#x2F;Intensity value”；</li>
+<li>使用<code>set(gca,...)</code>修改当前坐标轴属性，将字体设为“Times New Roman”，字号设为12；</li>
+<li>添加图例，说明两个面积图分别代表“- Positive value area”（正值区域）和“- Negative value area”（负值区域）；</li>
+<li>使用<code>set(gcf,...)</code>设置当前图形窗口的背景颜色为白色。</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/PJoY5QrlgRGecBStkFiTEQ">https://mp.weixin.qq.com/s/PJoY5QrlgRGecBStkFiTEQ</a></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/tags/">标签</a></li>
+        
+          <li><a href="/categories/">分类</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84MATLAB%E5%88%B6%E5%9B%BE%E4%BB%A3%E7%A0%81%E9%9B%86%E5%90%88"><span class="toc-number">1.</span> <span class="toc-text">常见的MATLAB制图代码集合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#area%E5%87%BD%E6%95%B0%E6%98%AFY%E8%BD%B4%E6%95%B0%E5%80%BC%E5%AF%B9-x-%E5%9D%90%E6%A0%87%E8%BD%B4%E5%9B%B4%E6%88%90%E7%9A%84%E9%9D%A2%E7%A7%AF%E5%9B%BE%EF%BC%8C%E8%AF%A5%E5%87%BD%E6%95%B0%E6%A0%B9%E6%8D%AEY%E7%9A%84%E5%BD%A2%E7%8A%B6%E5%A1%AB%E5%85%85%E6%9B%B2%E7%BA%BF%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%9F%9F%E3%80%82"><span class="toc-number">1.1.</span> <span class="toc-text">area函数是Y轴数值对 x 坐标轴围成的面积图，该函数根据Y的形状填充曲线之间的区域。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fill%E5%87%BD%E6%95%B0%E6%98%AF%E5%88%9B%E5%BB%BA%E4%BA%8C%E7%BB%B4%E5%A1%AB%E5%85%85%E8%A1%A5%E7%89%87%EF%BC%88patch%EF%BC%89%EF%BC%8C%E5%8D%B3%E5%A1%AB%E5%85%85%E5%A4%9A%E8%BE%B9%E5%BD%A2%E5%8C%BA%E5%9F%9F%E7%BB%98%E5%88%B6%E4%B8%BA%E8%A1%A5%E7%89%87%EF%BC%8C%E5%85%B6%E9%A1%B6%E7%82%B9%E4%BD%8D%E4%BA%8E%E7%94%B1X%E5%92%8CY%E6%8C%87%E5%AE%9A%E7%9A%84-x-y-%E5%9D%90%E6%A0%87%E4%BD%8D%E7%BD%AE%EF%BC%8C%E4%B8%BB%E8%A6%81%E7%94%A8%E4%BA%8E%E5%B9%B3%E9%9D%A2%E4%B8%AD%E5%A4%9A%E4%B8%AA%E5%8C%BA%E5%9F%9F%E7%9A%84%E9%A2%9C%E8%89%B2%E5%A1%AB%E5%85%85%E3%80%82"><span class="toc-number">1.2.</span> <span class="toc-text">fill函数是创建二维填充补片（patch），即填充多边形区域绘制为补片，其顶点位于由X和Y指定的(x,y)坐标位置，主要用于平面中多个区域的颜色填充。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#patch%E5%87%BD%E6%95%B0%E6%98%AF%E5%88%9B%E5%BB%BA%E5%BD%A9%E8%89%B2%E5%A4%9A%E8%BE%B9%E5%BD%A2%E7%9A%84%E8%A1%A5%E7%89%87%EF%BC%8C%E5%8D%B3%E6%8C%89X%E5%92%8CY%E6%8C%87%E5%AE%9A%E4%B8%BA%E6%AF%8F%E4%B8%AA%E9%A1%B6%E7%82%B9%E7%9A%84%E5%9D%90%E6%A0%87%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%88%96%E5%A4%9A%E4%B8%AA%E5%BD%A9%E8%89%B2%E5%A4%9A%E8%BE%B9%E5%BD%A2%E8%A1%A5%E7%89%87%EF%BC%8C%E4%B8%BB%E8%A6%81%E7%94%A8%E4%BA%8E%E5%B9%B3%E9%9D%A2%E4%B8%AD%E5%A4%9A%E8%BE%B9%E5%BD%A2%E7%9A%84%E9%A2%9C%E8%89%B2%E5%A1%AB%E5%85%85%E3%80%82"><span class="toc-number">1.3.</span> <span class="toc-text">patch函数是创建彩色多边形的补片，即按X和Y指定为每个顶点的坐标创建一个或多个彩色多边形补片，主要用于平面中多边形的颜色填充。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#patch%E4%B8%8Efill%E5%87%BD%E6%95%B0%E5%8A%9F%E8%83%BD%E5%92%8C%E7%94%A8%E6%B3%95%E7%B1%BB%E4%BC%BC%E3%80%82area%E5%87%BD%E6%95%B0%E4%B8%BB%E8%A6%81%E9%92%88%E5%AF%B9%E4%B8%8E%E5%9D%90%E6%A0%87%E8%BD%B4%E5%9B%B4%E6%88%90%E7%9A%84%E5%8C%BA%E5%9F%9F%E7%9A%84%E5%A1%AB%E5%85%85%EF%BC%8C%E5%A6%82%E6%9E%9C%E9%9C%80%E8%A6%81%E5%AF%B9%E5%9B%BE%E5%BD%A2%E7%AA%97%E5%8F%A3%E5%86%85%E4%BB%BB%E6%84%8F%E9%97%AD%E5%90%88%E5%8C%BA%E5%9F%9F%E6%88%96%E5%A4%9A%E8%BE%B9%E5%BD%A2%E5%8C%BA%E5%9F%9F%E5%8F%8A%E8%BF%9B%E8%A1%8C%E5%A1%AB%E5%85%85%EF%BC%8C%E5%88%99%E9%9C%80%E8%A6%81%E7%94%A8%E5%88%B0fill%E5%92%8Cpatch%E5%87%BD%E6%95%B0%E3%80%82"><span class="toc-number">1.4.</span> <span class="toc-text">patch与fill函数功能和用法类似。area函数主要针对与坐标轴围成的区域的填充，如果需要对图形窗口内任意闭合区域或多边形区域及进行填充，则需要用到fill和patch函数。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">2.</span> <span class="toc-text">参考</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/04/25/matlab-zhi-tu/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/04/25/matlab-zhi-tu/&text=MATLAB制图"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/04/25/matlab-zhi-tu/&title=MATLAB制图"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/04/25/matlab-zhi-tu/&is_video=false&description=MATLAB制图"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=MATLAB制图&body=Check out this article: http://jrhu0048.github.io/2024/04/25/matlab-zhi-tu/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/04/25/matlab-zhi-tu/&title=MATLAB制图"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/04/25/matlab-zhi-tu/&title=MATLAB制图"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/04/25/matlab-zhi-tu/&title=MATLAB制图"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/04/25/matlab-zhi-tu/&title=MATLAB制图"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/04/25/matlab-zhi-tu/&name=MATLAB制图&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/04/25/matlab-zhi-tu/&t=MATLAB制图"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022-2024
+    jr.hu
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
