@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="论文参考Karol Cymerys, Mariusz Oszust,Attraction–Repulsion Optimization Algorithm for Global Optimization Problems,Swarm and Evolutionary Computation,Volume 84, 2024, 101459, https:&#x2F;&#x2F;doi.org&#x2F;10.1016&#x2F;j.swe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="吸引-排斥优化算法">
+<meta property="og:url" content="http://jrhu0048.github.io/2024/04/26/xi-yin-pai-chi-you-hua-suan-fa/index.html">
+<meta property="og:site_name" content="charmmy">
+<meta property="og:description" content="论文参考Karol Cymerys, Mariusz Oszust,Attraction–Repulsion Optimization Algorithm for Global Optimization Problems,Swarm and Evolutionary Computation,Volume 84, 2024, 101459, https:&#x2F;&#x2F;doi.org&#x2F;10.1016&#x2F;j.swe">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/662bded90ea9cb1403fa9b7c.png">
+<meta property="og:image" content="http://jrhu0048.github.io/">
+<meta property="og:image" content="https://pic.imgdb.cn/item/662be6fc0ea9cb1403109c81.jpg">
+<meta property="og:image" content="https://pic.imgdb.cn/item/662be6fc0ea9cb1403109d04.jpg">
+<meta property="og:image" content="https://pic.imgdb.cn/item/662be6fc0ea9cb1403109d2b.jpg">
+<meta property="og:image" content="https://pic.imgdb.cn/item/662be6fc0ea9cb1403109c57.jpg">
+<meta property="og:image" content="https://pic.imgdb.cn/item/662be6fc0ea9cb1403109c0b.jpg">
+<meta property="article:published_time" content="2024-04-26T15:52:56.000Z">
+<meta property="article:modified_time" content="2024-04-26T17:40:45.641Z">
+<meta property="article:author" content="jr.hu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/662bded90ea9cb1403fa9b7c.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>吸引-排斥优化算法</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2024/04/26/ji-jie-you-hua-suan-fa/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/04/26/xi-yin-pai-chi-you-hua-suan-fa/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/04/26/xi-yin-pai-chi-you-hua-suan-fa/&text=吸引-排斥优化算法"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/04/26/xi-yin-pai-chi-you-hua-suan-fa/&title=吸引-排斥优化算法"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/04/26/xi-yin-pai-chi-you-hua-suan-fa/&is_video=false&description=吸引-排斥优化算法"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=吸引-排斥优化算法&body=Check out this article: http://jrhu0048.github.io/2024/04/26/xi-yin-pai-chi-you-hua-suan-fa/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/04/26/xi-yin-pai-chi-you-hua-suan-fa/&title=吸引-排斥优化算法"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/04/26/xi-yin-pai-chi-you-hua-suan-fa/&title=吸引-排斥优化算法"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/04/26/xi-yin-pai-chi-you-hua-suan-fa/&title=吸引-排斥优化算法"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/04/26/xi-yin-pai-chi-you-hua-suan-fa/&title=吸引-排斥优化算法"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/04/26/xi-yin-pai-chi-you-hua-suan-fa/&name=吸引-排斥优化算法&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/04/26/xi-yin-pai-chi-you-hua-suan-fa/&t=吸引-排斥优化算法"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BA%E6%96%87%E5%8F%82%E8%80%83"><span class="toc-number">1.</span> <span class="toc-text">论文参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#demoGlobalOptimization-m"><span class="toc-number">2.</span> <span class="toc-text">demoGlobalOptimization.m</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#F22-m"><span class="toc-number">3.</span> <span class="toc-text">F22.m</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AROA-m"><span class="toc-number">4.</span> <span class="toc-text">AROA.m</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Rastrigin"><span class="toc-number">5.</span> <span class="toc-text">Rastrigin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Schwefel%E2%80%99s-Problem-1-2"><span class="toc-number">6.</span> <span class="toc-text">Schwefel’s Problem 1.2</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        吸引-排斥优化算法
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">jr.hu</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-04-26T15:52:56.000Z" class="dt-published" itemprop="datePublished">2024-04-26</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%BC%98%E5%8C%96/">算法优化</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="论文参考"><a href="#论文参考" class="headerlink" title="论文参考"></a>论文参考</h2><p>Karol Cymerys, Mariusz Oszust,Attraction–Repulsion Optimization Algorithm for Global Optimization Problems,Swarm and Evolutionary Computation,Volume 84, 2024, 101459, <a target="_blank" rel="noopener" href="https://doi.org/10.1016/j.swevo.2023.101459">https://doi.org/10.1016/j.swevo.2023.101459</a>.</p>
+<h2 id="demoGlobalOptimization-m"><a href="#demoGlobalOptimization-m" class="headerlink" title="demoGlobalOptimization.m"></a>demoGlobalOptimization.m</h2><figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% Attraction - Repulsion Optimization Algorithm (AROA) for Global Optimization Problems</span></span><br><span class="line"><span class="comment">% K. Cymerys, M. Oszust </span></span><br><span class="line"></span><br><span class="line">clear <span class="built_in">all</span></span><br><span class="line">clc</span><br><span class="line"></span><br><span class="line">SearchAgents_no <span class="built_in">=</span> <span class="number">40</span>;    <span class="comment">%   Number of search agents  </span></span><br><span class="line">Max_FES <span class="built_in">=</span> <span class="number">3000</span>;          <span class="comment">% Maximum number of fitness function evaluations</span></span><br><span class="line">NoRepeats <span class="built_in">=</span> <span class="number">3</span>;           <span class="comment">% </span></span><br><span class="line">  </span><br><span class="line">fobj <span class="built_in">=</span> @(x)F22(x);       <span class="comment">%just a function</span></span><br><span class="line"></span><br><span class="line">dim <span class="built_in">=</span> <span class="number">100</span>;</span><br><span class="line">lb <span class="built_in">=</span> -<span class="number">5.12</span> * ones(<span class="number">1</span>,dim);</span><br><span class="line">ub <span class="built_in">=</span> <span class="number">5.12</span> * ones(<span class="number">1</span>,dim);</span><br><span class="line"><span class="comment">%%fmin = 0; </span></span><br><span class="line"></span><br><span class="line">outputF<span class="built_in">=</span>[];</span><br><span class="line">outputX<span class="built_in">=</span>[];</span><br><span class="line">    for k <span class="built_in">=</span> <span class="number">1</span>:NoRepeats</span><br><span class="line"></span><br><span class="line">        tic;</span><br><span class="line"></span><br><span class="line">            [Best_score, Best_pos, cg_curve] <span class="built_in">=</span> AROA(SearchAgents_no,dim,lb,ub, fobj,Max_FES);</span><br><span class="line"></span><br><span class="line">        toc </span><br><span class="line"></span><br><span class="line">       Best_score            </span><br><span class="line">       outputF <span class="built_in">=</span> [outputF;Best_score];</span><br><span class="line">       outputX <span class="built_in">=</span> [outputX;Best_pos];</span><br><span class="line"></span><br><span class="line">    end</span><br><span class="line">[Y,I] <span class="built_in">=</span> min(outputF) ;</span><br><span class="line">Y</span><br><span class="line">meanV <span class="built_in">=</span> mean(outputF)</span><br><span class="line">stdV <span class="built_in">=</span> std(outputF)</span><br></pre></td></tr></table></figure>
+
+<p>定义参数与设置：</p>
+<p><code>SearchAgents_no = 40</code>：设定搜索代理（即种群个体）的数量为40。</p>
+<p><code>Max_FES = 3000</code>：设置最大适应度函数评估次数为3000，作为算法的迭代终止条件。</p>
+<p><code>NoRepeats = 3</code>：设置算法重复运行次数为3次，以获取多次运行结果的统计信息。</p>
+<p>定义目标函数与问题维度：</p>
+<p><code>fobj = @(x)F22(x)</code>：将目标函数F22封装为匿名函数fobj，用于计算给定解x的目标函数值。</p>
+<p><code>dim = 100</code>：设定问题的维度为100，即目标函数的自变量为100维向量。</p>
+<p><code>lb = -5.12 * ones(1,dim)</code>：设定搜索空间下界为-5.12的100维全1向量，即每个自变量的最小值均为-5.12。</p>
+<p><code>ub = 5.12 * ones(1,dim)</code>：设定搜索空间上界为5.12的100维全1向量，即每个自变量的最大值均为5.12。</p>
+<p><code>%%fmin = 0;</code>：注释行，未启用（可能原本打算设置目标函数最小值为0，但被注释掉了）。</p>
+<p>初始化结果存储数组：</p>
+<p><code>outputF=[]</code>：创建空矩阵outputF，用于存储每次运行得到的最佳目标函数值。</p>
+<p><code>outputX=[]</code>：创建空矩阵outputX，用于存储每次运行得到的最佳解（即最优自变量值）。</p>
+<p>主循环：重复运行AROA算法并记录结果</p>
+<p><code>for k = 1:NoRepeats</code>：对于设定的重复次数（3次），执行以下操作。</p>
+<ol>
+<li><code>tic</code>：开始计时，记录本次AROA算法运行时间。</li>
+<li><code>[Best_score, Best_pos, cg_curve] = AROA(SearchAgents_no,dim,lb,ub, fobj,Max_FES);</code>：调用AROA函数，输入参数包括搜索代理数量、问题维度、搜索空间上下界、目标函数以及最大适应度函数评估次数。函数返回本次运行的最佳目标函数值（Best_score）、最佳解（Best_pos）以及收敛曲线数据（cg_curve）。</li>
+<li><code>toc</code>：结束计时，输出本次AROA算法运行时间。</li>
+<li><code>Best_score</code>：显示本次运行的最佳目标函数值。</li>
+<li><code>outputF = [outputF;Best_score];</code>：将本次最佳目标函数值添加到outputF矩阵中。</li>
+<li><code>outputX = [outputX;Best_pos];</code>：将本次最佳解添加到outputX矩阵中。</li>
+</ol>
+<p>统计分析多次运行结果：</p>
+<p><code>[Y,I] = min(outputF)</code>：从outputF矩阵中找出最小目标函数值（Y）及其对应的索引（I）。</p>
+<p><code>Y</code>：显示最小目标函数值。</p>
+<p><code>meanV = mean(outputF)</code>：计算outputF矩阵中所有最佳目标函数值的平均值（meanV）。</p>
+<p><code>stdV = std(outputF)</code>：计算outputF矩阵中所有最佳目标函数值的标准差（stdV）。</p>
+<p>综上所述，该代码使用AROA算法对具有100维搜索空间的问题进行全局优化，重复运行3次，并记录每次运行的最佳解和目标函数值。最后，对多次运行结果进行统计分析，输出最小目标函数值、平均值及标准差。</p>
+<h2 id="F22-m"><a href="#F22-m" class="headerlink" title="F22.m"></a>F22.m</h2><figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function  y  <span class="built_in">=</span> F22(x)</span><br><span class="line"> </span><br><span class="line">sum <span class="built_in">=</span> <span class="number">0</span>;</span><br><span class="line">for ii <span class="built_in">=</span> <span class="number">1</span>:length(x)	 </span><br><span class="line">	sum <span class="built_in">=</span> sum + x(ii)^<span class="number">2</span>;</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">y <span class="built_in">=</span> sum;</span><br></pre></td></tr></table></figure>
+
+<h2 id="AROA-m"><a href="#AROA-m" class="headerlink" title="AROA.m"></a>AROA.m</h2><figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br></pre></td><td class="code"><pre><span class="line">function [fbest, xbest, Convergence_curve] <span class="built_in">=</span> AROA(N, dim, lb, ub, fobj, maxEvals)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">% Algorithm parameters definition</span></span><br><span class="line">    c <span class="built_in">=</span> <span class="number">0.95</span>;</span><br><span class="line">    fr1 <span class="built_in">=</span> <span class="number">0.15</span>;</span><br><span class="line">    fr2 <span class="built_in">=</span> <span class="number">0.6</span>;</span><br><span class="line">    p1 <span class="built_in">=</span> <span class="number">0.2</span>;  </span><br><span class="line">    p2 <span class="built_in">=</span> <span class="number">0.8</span>; </span><br><span class="line">    Ef <span class="built_in">=</span> <span class="number">0.4</span>;</span><br><span class="line">    tr1 <span class="built_in">=</span> <span class="number">0.9</span>;</span><br><span class="line">    tr2 <span class="built_in">=</span> <span class="number">0.85</span>; </span><br><span class="line">    tr3 <span class="built_in">=</span> <span class="number">0.9</span>;</span><br><span class="line">    <span class="comment">% Algorithm parameters definition</span></span><br><span class="line">    </span><br><span class="line">    tmax <span class="built_in">=</span> ceil((maxEvals - N)/(<span class="number">2</span>*N));</span><br><span class="line">    evalCounter <span class="built_in">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    Convergence_curve <span class="built_in">=</span> zeros(<span class="number">1</span>,tmax);</span><br><span class="line">    Xmin <span class="built_in">=</span> repmat(ones(<span class="number">1</span>,dim).*lb,N,<span class="number">1</span>);</span><br><span class="line">    Xmax <span class="built_in">=</span> repmat(ones(<span class="number">1</span>,dim).*ub,N,<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">% random initialization - Eq (3)</span></span><br><span class="line">    X <span class="built_in">=</span> rand(N,dim).*(ub-lb) + lb;</span><br><span class="line">    [X, F, evalCounter] <span class="built_in">=</span> evaluate_population(X, fobj, ub, lb, evalCounter, maxEvals);</span><br><span class="line">    [fbest, ibest] <span class="built_in">=</span> min(F);</span><br><span class="line">    xbest <span class="built_in">=</span> X(ibest,:);</span><br><span class="line">    <span class="comment">% random initialization - Eq (3)</span></span><br><span class="line"></span><br><span class="line">    X_memory <span class="built_in">=</span> X;</span><br><span class="line">    F_memory <span class="built_in">=</span> F;</span><br><span class="line"></span><br><span class="line">    <span class="comment">% Main loop</span></span><br><span class="line">    for t<span class="built_in">=</span><span class="number">1</span>:tmax	</span><br><span class="line">        D <span class="built_in">=</span> squareform(pdist(X, <span class="string">&#x27;squaredeuclidean&#x27;</span>));  <span class="comment">% Eq (4) </span></span><br><span class="line">        m <span class="built_in">=</span> tanh(t, tmax, [-<span class="number">2</span>, <span class="number">7</span>]);   <span class="comment">% Eq (11)    </span></span><br><span class="line"></span><br><span class="line">        for i<span class="built_in">=</span><span class="number">1</span>:N</span><br><span class="line">           Dimax <span class="built_in">=</span> max(D(i,:));</span><br><span class="line">           k <span class="built_in">=</span> floor((<span class="number">1</span>-t/tmax)*N)+<span class="number">1</span>;  <span class="comment">% Eq (9)</span></span><br><span class="line">           [~, neighbors] <span class="built_in">=</span> sort(D(i,:));</span><br><span class="line">           </span><br><span class="line">           <span class="comment">% Attraction-Repulsion operator % Eq (6)</span></span><br><span class="line">           delta_ni <span class="built_in">=</span> zeros(<span class="number">1</span>,dim);</span><br><span class="line">           for j<span class="built_in">=</span>neighbors(<span class="number">1</span>:k)</span><br><span class="line">                I <span class="built_in">=</span> <span class="number">1</span> - (D(i,j)/Dimax);  <span class="comment">% Eq (7)</span></span><br><span class="line">                s <span class="built_in">=</span> sign(F(j)-F(i));  <span class="comment">% Eq (8)</span></span><br><span class="line">                delta_ni <span class="built_in">=</span> delta_ni + c*(X_memory(i,:)-X_memory(j,:))*I*s;</span><br><span class="line">           end</span><br><span class="line">           ni <span class="built_in">=</span> delta_ni/N;</span><br><span class="line">           <span class="comment">% Attraction-Repulsion operator % Eq (6)</span></span><br><span class="line"></span><br><span class="line">           <span class="comment">% Attraction to best solusion Eq (10)</span></span><br><span class="line">           <span class="built_in">if</span> rand &lt; p1</span><br><span class="line">               bi <span class="built_in">=</span> m*c.*(rand(<span class="number">1</span>,dim).*xbest - X_memory(i,:));</span><br><span class="line">           <span class="built_in">else</span></span><br><span class="line">               bi <span class="built_in">=</span> m*c.*(xbest - X_memory(i,:));</span><br><span class="line">           end</span><br><span class="line">           <span class="comment">% Attraction to best solusion Eq (10)</span></span><br><span class="line"></span><br><span class="line">           <span class="comment">% Local search operators Eq (15)</span></span><br><span class="line">           <span class="built_in">if</span> rand &lt; p2</span><br><span class="line">               <span class="built_in">if</span> rand &gt; <span class="number">0.5</span>*t/tmax + <span class="number">0.25</span></span><br><span class="line">                   u1 <span class="built_in">=</span> rand(<span class="number">1</span>, dim) &gt; tr1;</span><br><span class="line">                   ri <span class="built_in">=</span> u1.*random(<span class="string">&#x27;Normal&#x27;</span>, zeros(<span class="number">1</span>,dim), fr1*(<span class="number">1</span>-t/tmax)*(ub-lb));  <span class="comment">% Eq (12)</span></span><br><span class="line">               <span class="built_in">else</span></span><br><span class="line">                   <span class="comment">% Eq (13)</span></span><br><span class="line">                   u2 <span class="built_in">=</span> rand(<span class="number">1</span>,dim) &gt; tr2;</span><br><span class="line">                   w <span class="built_in">=</span> index_roulette_wheel_selection(F, k);</span><br><span class="line">                   Xw <span class="built_in">=</span> X_memory(w,:);</span><br><span class="line">                   <span class="built_in">if</span> rand &lt; <span class="number">0.5</span></span><br><span class="line">                       ri <span class="built_in">=</span> fr2*u2.*(<span class="number">1</span>-t/tmax).*sin(<span class="number">2</span>*pi*rand(<span class="number">1</span>,dim)).*abs(rand(<span class="number">1</span>,dim).*Xw-X_memory(i,:));</span><br><span class="line">                   <span class="built_in">else</span></span><br><span class="line">                       ri <span class="built_in">=</span> fr2*u2.*(<span class="number">1</span>-t/tmax).*cos(<span class="number">2</span>*pi*rand(<span class="number">1</span>,dim)).*abs(rand(<span class="number">1</span>,dim).*Xw-X_memory(i,:));</span><br><span class="line">                   end</span><br><span class="line">                   <span class="comment">% Eq (13)</span></span><br><span class="line">               end</span><br><span class="line">           <span class="built_in">else</span></span><br><span class="line">               u3 <span class="built_in">=</span> rand(<span class="number">1</span>,dim) &gt; tr3;</span><br><span class="line">               ri <span class="built_in">=</span> u3.*(<span class="number">2</span>*rand(<span class="number">1</span>,dim)-ones(<span class="number">1</span>,dim)) .* (ub-lb);  <span class="comment">% Eq (14)</span></span><br><span class="line">           end</span><br><span class="line">           <span class="comment">% Local search operators Eq (15)</span></span><br><span class="line"></span><br><span class="line">           X(i,:) <span class="built_in">=</span> X(i,:) + ni + bi + ri;  <span class="comment">% Eq(16)</span></span><br><span class="line">        end</span><br><span class="line">        </span><br><span class="line">        [X, F, evalCounter] <span class="built_in">=</span> evaluate_population(X, fobj, ub, lb, evalCounter, maxEvals);</span><br><span class="line">        [fbest_candidate, ibest_candidate] <span class="built_in">=</span> min(F);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">if</span> fbest_candidate &lt; fbest</span><br><span class="line">            fbest <span class="built_in">=</span> fbest_candidate;</span><br><span class="line">            xbest <span class="built_in">=</span> X(ibest_candidate, :);</span><br><span class="line">        end</span><br><span class="line"></span><br><span class="line">	    [X, F] <span class="built_in">=</span> memory_operator(X, F, X_memory, F_memory);  <span class="comment">% Eq (18)</span></span><br><span class="line">        X_memory <span class="built_in">=</span> X;</span><br><span class="line">        F_memory <span class="built_in">=</span> F; </span><br><span class="line">			</span><br><span class="line">        <span class="comment">% Eq (17)			 </span></span><br><span class="line">        CF<span class="built_in">=</span>(<span class="number">1</span>-t/tmax)^<span class="number">3</span> ;			 </span><br><span class="line">        <span class="built_in">if</span> rand &lt; Ef</span><br><span class="line">            u4 <span class="built_in">=</span> rand(N,dim) &lt; Ef;                                                                                              </span><br><span class="line">            X <span class="built_in">=</span> X + CF*(u4.*(rand(N,dim).*(Xmax-Xmin) + Xmin));</span><br><span class="line">        <span class="built_in">else</span></span><br><span class="line">            r7 <span class="built_in">=</span> rand();		</span><br><span class="line">            X <span class="built_in">=</span> X + (CF*(<span class="number">1</span>-r7) + r7)*(X(randperm(N),:) - X(randperm(N),:));</span><br><span class="line">        end</span><br><span class="line">		<span class="comment">% Eq (17)</span></span><br><span class="line"></span><br><span class="line">        [X, F, evalCounter] <span class="built_in">=</span> evaluate_population(X, fobj, ub, lb, evalCounter, maxEvals);</span><br><span class="line">        [fbest_candidate, ibest_candidate] <span class="built_in">=</span> min(F);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">if</span> fbest_candidate &lt; fbest</span><br><span class="line">            fbest <span class="built_in">=</span> fbest_candidate;</span><br><span class="line">            xbest <span class="built_in">=</span> X(ibest_candidate, :);</span><br><span class="line">        end</span><br><span class="line">	 </span><br><span class="line">        [X, F] <span class="built_in">=</span> memory_operator(X, F, X_memory, F_memory);  <span class="comment">% Eq (18)</span></span><br><span class="line">        X_memory <span class="built_in">=</span> X;</span><br><span class="line">        F_memory <span class="built_in">=</span> F; </span><br><span class="line"></span><br><span class="line">  	    Convergence_curve(t) <span class="built_in">=</span> fbest;</span><br><span class="line">    end		</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">function [X, F, evalCounter] <span class="built_in">=</span> evaluate_population(X, fobj, ub, lb, evalCounter, maxEvals)</span><br><span class="line">    N <span class="built_in">=</span> size(X,<span class="number">1</span>);</span><br><span class="line">    F <span class="built_in">=</span> Inf(N,<span class="number">1</span>);</span><br><span class="line">    X <span class="built_in">=</span> max(lb, min(ub, X)); <span class="comment">% Check space bounds</span></span><br><span class="line">    </span><br><span class="line">    for i<span class="built_in">=</span><span class="number">1</span>:N</span><br><span class="line">        <span class="built_in">if</span> evalCounter &gt;<span class="built_in">=</span> maxEvals</span><br><span class="line">            break</span><br><span class="line">        end</span><br><span class="line">        F(i) <span class="built_in">=</span> fobj(X(i,:));</span><br><span class="line">        evalCounter <span class="built_in">=</span> evalCounter + <span class="number">1</span>;</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">function [X, F] <span class="built_in">=</span> memory_operator(X, F, X_memory, F_memory)</span><br><span class="line">    dim <span class="built_in">=</span> size(X, <span class="number">2</span>);</span><br><span class="line">    Inx <span class="built_in">=</span> F_memory &lt; F;</span><br><span class="line">    Indx <span class="built_in">=</span> repmat(Inx,<span class="number">1</span>,dim);</span><br><span class="line">    X <span class="built_in">=</span> Indx.*X_memory + ~Indx.*X;</span><br><span class="line">    F <span class="built_in">=</span> Inx.*F_memory + ~Inx.*F;</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">function [y] <span class="built_in">=</span> tanh(t, tmax, range)</span><br><span class="line">    z <span class="built_in">=</span> <span class="number">2</span>*(t/tmax*(range(<span class="number">2</span>)-range(<span class="number">1</span>)) + range(<span class="number">1</span>));</span><br><span class="line">    y <span class="built_in">=</span> <span class="number">0.5</span>*((exp(z)-<span class="number">1</span>)/(exp(z)+<span class="number">1</span>) + <span class="number">1</span>);</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">function [selected_index] <span class="built_in">=</span> index_roulette_wheel_selection(F, k)</span><br><span class="line">    fitness <span class="built_in">=</span> F(<span class="number">1</span>:k);</span><br><span class="line">    weights <span class="built_in">=</span> max(fitness) - fitness;</span><br><span class="line">    weights <span class="built_in">=</span> cumsum(weights/sum(weights));</span><br><span class="line">    </span><br><span class="line">    selected_index <span class="built_in">=</span> roulette_wheel_selection(weights);</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">function [selected_index] <span class="built_in">=</span> roulette_wheel_selection(weights)</span><br><span class="line">    r <span class="built_in">=</span> rand();</span><br><span class="line">    selected_index <span class="built_in">=</span> <span class="number">1</span>;</span><br><span class="line">    for index<span class="built_in">=</span>size(weights,<span class="number">1</span>)</span><br><span class="line">        <span class="built_in">if</span> r <span class="built_in">&lt;=</span> weights(index)</span><br><span class="line">            selected_index <span class="built_in">=</span> index;</span><br><span class="line">            break;</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<p><strong>解释：</strong></p>
+<ul>
+<li><code>N</code>: 搜索代理（种群个体）数量</li>
+<li><code>dim</code>: 问题维度</li>
+<li><code>lb</code>: 搜索空间下界向量</li>
+<li><code>ub</code>: 搜索空间上界向量</li>
+<li><code>fobj</code>: 目标函数（匿名函数）</li>
+<li><code>maxEvals</code>: 最大适应度函数评估次数</li>
+</ul>
+<p><strong>函数返回以下输出结果：</strong></p>
+<ul>
+<li><code>fbest</code>: 找到的最小目标函数值</li>
+<li><code>xbest</code>: 对应最小目标函数值的最优解</li>
+<li><code>Convergence_curve</code>: 收敛曲线数据</li>
+</ul>
+<p><strong>算法参数定义</strong></p>
+<ul>
+<li>定义了AROA算法中涉及的多个常数参数，如c、fr1、fr2等，这些参数用于控制算法中不同操作的比例、强度等。</li>
+</ul>
+<p><strong>初始化</strong></p>
+<ul>
+<li>计算最大迭代次数<code>tmax</code>，初始化评价计数器<code>evalCounter</code>。</li>
+<li>初始化用于记录全局最优解的<code>fbest</code>、<code>xbest</code>，以及用于记录收敛曲线的<code>Convergence_curve</code>。</li>
+<li>初始化搜索空间边界向量<code>Xmin</code>、<code>Xmax</code>。</li>
+<li>随机生成初始种群<code>X</code>，并对其进行适应度评估（通过<code>evaluate_population</code>函数），得到目标函数值<code>F</code>。根据<code>F</code>找到当前全局最优解<code>fbest</code>、<code>xbest</code>，以及保存当前种群状态的<code>X_memory</code>和<code>F_memory</code>。</li>
+</ul>
+<p><strong>主循环（tmax次迭代）</strong></p>
+<ul>
+<li>计算种群间距离矩阵<code>D</code>（欧氏距离）。</li>
+<li>根据当前迭代次数<code>t</code>计算参数<code>m</code>。</li>
+<li>对每个搜索代理（<code>i</code>）执行以下操作：<ul>
+<li>计算吸引力-排斥力操作：<ul>
+<li>计算当前搜索代理与其他邻居间的吸引力-排斥力向量<code>delta_ni</code>。</li>
+<li>合并所有邻居的贡献得到<code>ni</code>。</li>
+</ul>
+</li>
+<li>吸引至全局最优解操作：<ul>
+<li>根据概率<code>p1</code>决定是否使用随机缩放的全局最优解。</li>
+<li>计算吸引至全局最优解的向量<code>bi</code>。</li>
+</ul>
+</li>
+<li>局部搜索操作：<ul>
+<li>根据概率<code>p2</code>决定采用哪种局部搜索策略（高斯扰动、邻域扰动或均匀扰动）。</li>
+<li>根据所选策略计算局部搜索向量<code>ri</code>。</li>
+</ul>
+</li>
+<li>更新搜索代理位置：<code>X(i,:) = X(i,:) + ni + bi + ri</code>。</li>
+</ul>
+</li>
+<li>对更新后的种群<code>X</code>进行适应度评估（通过<code>evaluate_population</code>函数），并检查是否找到新的全局最优解。</li>
+<li>执行记忆操作（通过<code>memory_operator</code>函数），更新种群<code>X</code>和目标函数值<code>F</code>，同时更新记忆中的种群状态<code>X_memory</code>和<code>F_memory</code>。</li>
+<li>执行混沌扰动操作，对种群进行混沌移动，再次进行适应度评估并检查全局最优解。</li>
+<li>再次执行记忆操作，更新相关变量。</li>
+<li>记录当前迭代的全局最优解<code>fbest</code>至收敛曲线<code>Convergence_curve</code>。</li>
+</ul>
+<p><strong>辅助函数</strong></p>
+<ul>
+<li><code>evaluate_population(X, fobj, ub, lb, evalCounter, maxEvals)</code>: 评估种群<code>X</code>在目标函数<code>fobj</code>下的适应度，确保解位于搜索空间内，并更新评价计数器。</li>
+<li><code>memory_operator(X, F, X_memory, F_memory)</code>: 根据记忆中的最优解和当前种群的最优解，选择保留更好的解。</li>
+<li><code>tanh(t, tmax, range)</code>: 计算双曲正切函数（tanh）的值，用于调整算法参数。</li>
+<li><code>index_roulette_wheel_selection(F, k)</code>: 使用轮盘赌选择法在前<code>k</code>个个体中按适应度比例选取一个个体的索引。</li>
+<li><code>roulette_wheel_selection(weights)</code>: 实现基本的轮盘赌选择算法，根据权重向量<code>weights</code>随机选择一个索引。</li>
+</ul>
+<p>选一个函数做测试（2维0-10范围的最小值为:-18.5547）</p>
+<figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function z <span class="built_in">=</span> F22(x)</span><br><span class="line">    X <span class="built_in">=</span> x(:, <span class="number">1</span>);</span><br><span class="line">    Y <span class="built_in">=</span> x(:, <span class="number">2</span>);    </span><br><span class="line">    <span class="comment">%z = X.^2 + Y.^2 + (25 * (sin(X).^2 + sin(Y).^2));</span></span><br><span class="line">    z<span class="built_in">=</span>X.*sin(<span class="number">4</span>.*X)+ <span class="number">1.1</span>.*Y.*sin(<span class="number">2</span>.*Y);</span><br><span class="line">    y <span class="built_in">=</span> z;</span><br><span class="line">end </span><br></pre></td></tr></table></figure>
+<figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">Y <span class="built_in">=</span></span><br><span class="line"></span><br><span class="line">  -<span class="number">18.5547</span></span><br><span class="line"></span><br><span class="line">meanV <span class="built_in">=</span></span><br><span class="line"></span><br><span class="line">  -<span class="number">18.5547</span></span><br><span class="line"></span><br><span class="line">stdV <span class="built_in">=</span></span><br><span class="line"></span><br><span class="line">   <span class="number">1.4862</span>e-<span class="number">14</span></span><br><span class="line">&gt;&gt; </span><br></pre></td></tr></table></figure>
+
+<p>测试函数：</p>
+<h2 id="Rastrigin"><a href="#Rastrigin" class="headerlink" title="Rastrigin"></a>Rastrigin</h2><figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function z <span class="built_in">=</span> F22(x)</span><br><span class="line"><span class="comment">% F22- Rastrigin  lower=[-5.12], upper=[5.12] gminimum=[0], dim=30</span></span><br><span class="line">n <span class="built_in">=</span> size(x, <span class="number">2</span>);</span><br><span class="line">A <span class="built_in">=</span> <span class="number">10</span>;</span><br><span class="line">z <span class="built_in">=</span> (A * n) + (sum(x .^<span class="number">2</span> - A * cos(<span class="number">2</span> * pi .* x), <span class="number">2</span>));</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Y <span class="built_in">=</span></span><br><span class="line"></span><br><span class="line">   <span class="number">1.0630</span>e-<span class="number">11</span></span><br><span class="line"></span><br><span class="line">meanV <span class="built_in">=</span></span><br><span class="line"></span><br><span class="line">   <span class="number">24.0180</span></span><br><span class="line"></span><br><span class="line">stdV <span class="built_in">=</span></span><br><span class="line"></span><br><span class="line">   <span class="number">23.2159</span></span><br></pre></td></tr></table></figure>
+<p>Rastrigin函数是一个典型的非线性多峰函数，在搜索区域内存在许多极大值和极小值，导致寻找全局最小值比较困难，常用来测试寻优算法的性能。Rastrigin函数表达式和函数图像如下：<br><img src="https://pic.imgdb.cn/item/662bded90ea9cb1403fa9b7c.png" alt="alt text"><br><img src="/" alt="alt text"></p>
+<figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">clc</span><br><span class="line">clear</span><br><span class="line">close <span class="built_in">all</span></span><br><span class="line">[x,y]<span class="built_in">=</span> meshgrid(-<span class="number">5</span>:<span class="number">0.1</span>:<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">z <span class="built_in">=</span> x.^<span class="number">2</span>+y.^<span class="number">2</span>+(<span class="number">0.5</span>.*i.*x).^<span class="number">2</span>+(<span class="number">0.5</span>.*i*y).^<span class="number">2</span>+(<span class="number">0.5</span>.*i.*x).^<span class="number">4</span>+(<span class="number">0.5</span>.*i.*y).^<span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">xx<span class="built_in">=</span><span class="number">15</span>*rand(<span class="number">30</span>,<span class="number">1</span>)-<span class="number">5</span>;</span><br><span class="line">yy<span class="built_in">=</span><span class="number">15</span>*rand(<span class="number">30</span>,<span class="number">1</span>)-<span class="number">5</span>;</span><br><span class="line">zz <span class="built_in">=</span> xx.^<span class="number">2</span>+yy.^<span class="number">2</span>+(<span class="number">0.5</span>.*i.*xx).^<span class="number">2</span>+(<span class="number">0.5</span>.*i*yy).^<span class="number">2</span>+(<span class="number">0.5</span>.*i.*xx).^<span class="number">4</span>+(<span class="number">0.5</span>.*i.*yy).^<span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">[nx,ny] <span class="built_in">=</span> min(z);</span><br><span class="line">[mx,my] <span class="built_in">=</span> min(nx);</span><br><span class="line">figure</span><br><span class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>)</span><br><span class="line">surf(x,y,z)</span><br><span class="line">hold on</span><br><span class="line">plot3(xx,yy,zz,<span class="string">&#x27;k*&#x27;</span>)<span class="comment">%,&#x27;MarkerFaceColor&#x27;,&#x27;r&#x27;</span></span><br><span class="line">shading interp</span><br><span class="line">xlabel(<span class="string">&#x27;x&#x27;</span>)</span><br><span class="line">ylabel(<span class="string">&#x27;y&#x27;</span>)</span><br><span class="line">zlabel(<span class="string">&#x27;f&#x27;</span>)</span><br><span class="line">colormap(jet)</span><br><span class="line">view([-<span class="number">107</span> <span class="number">49</span>])</span><br><span class="line">set(gca,<span class="string">&#x27;fontsize&#x27;</span>,<span class="number">12</span>)</span><br><span class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>)</span><br><span class="line">surf(x,y,z)</span><br><span class="line">hold on</span><br><span class="line">plot3(x(ny(<span class="number">1</span>),my),y(ny(<span class="number">1</span>),my),mx,<span class="string">&#x27;ro&#x27;</span>,<span class="string">&#x27;MarkerFaceColor&#x27;</span>,<span class="string">&#x27;r&#x27;</span>,<span class="string">&#x27;MarkerSize&#x27;</span>,<span class="number">10</span>)<span class="comment">%,&#x27;MarkerFaceColor&#x27;,&#x27;r&#x27;</span></span><br><span class="line">shading interp</span><br><span class="line">xlabel(<span class="string">&#x27;x&#x27;</span>)</span><br><span class="line">ylabel(<span class="string">&#x27;y&#x27;</span>)</span><br><span class="line">zlabel(<span class="string">&#x27;f&#x27;</span>)</span><br><span class="line">view([-<span class="number">107</span> <span class="number">49</span>])</span><br><span class="line">colormap(jet)</span><br><span class="line">set(gca,<span class="string">&#x27;fontsize&#x27;</span>,<span class="number">12</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Schwefel’s-Problem-1-2"><a href="#Schwefel’s-Problem-1-2" class="headerlink" title="Schwefel’s Problem 1.2"></a>Schwefel’s Problem 1.2</h2><p>Schwefel’s Problem 1.2</p>
+<p><a target="_blank" rel="noopener" href="https://al-roomi.org/component/content/article?id=188:schwefel-s-function-no-1-2-double-sum-or-rotated-hyper-ellipsoid-function">https://al-roomi.org/component/content/article?id=188:schwefel-s-function-no-1-2-double-sum-or-rotated-hyper-ellipsoid-function</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.oreilly.com/library/view/evolutionary-computation-with/9781848218079/16_appendix01.xhtml">https://www.oreilly.com/library/view/evolutionary-computation-with/9781848218079/16_appendix01.xhtml</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/abc991835105/article/details/127936204">https://blog.csdn.net/abc991835105/article/details/127936204</a></p>
+<figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function z <span class="built_in">=</span> F2(x)</span><br><span class="line"><span class="comment">% F22- Schwefel 1.2 lower=[-100], upper=[100], gminimum=[0], dim=30</span></span><br><span class="line">z <span class="built_in">=</span> <span class="number">0</span>;</span><br><span class="line">v1 <span class="built_in">=</span> <span class="number">0</span>;</span><br><span class="line">dim<span class="built_in">=</span>size(x,<span class="number">2</span>);</span><br><span class="line">for i <span class="built_in">=</span> <span class="number">1</span>:dim</span><br><span class="line">    v1<span class="built_in">=</span><span class="number">0</span>;</span><br><span class="line">    for j <span class="built_in">=</span> <span class="number">1</span>: i</span><br><span class="line">        v1 <span class="built_in">=</span> v1 + x(:,j);</span><br><span class="line">    end</span><br><span class="line">    z <span class="built_in">=</span> z + v1.^<span class="number">2</span>;</span><br><span class="line">end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/662be6fc0ea9cb1403109c81.jpg" alt="alt text"><br><img src="https://pic.imgdb.cn/item/662be6fc0ea9cb1403109d04.jpg" alt="alt text"><br><img src="https://pic.imgdb.cn/item/662be6fc0ea9cb1403109d2b.jpg" alt="alt text"><br><img src="https://pic.imgdb.cn/item/662be6fc0ea9cb1403109c57.jpg" alt="alt text"><br><img src="https://pic.imgdb.cn/item/662be6fc0ea9cb1403109c0b.jpg" alt="alt text"></p>
+<figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% Schwefel&#x27;s Problem # 1.2 (Double-Sum or Rotated Hyper-Ellipsoid Function)</span></span><br><span class="line"><span class="comment">% Range of initial points: -100 &lt;= xj &lt;= 100 , j=1,2,...,n</span></span><br><span class="line"><span class="comment">% Global maxima: (x1,x2,...,xn)=0</span></span><br><span class="line"><span class="comment">% f(X)=0</span></span><br><span class="line"><span class="comment">% Coded by: Ali R. Alroomi | Last Update: 07 June 2015 | www.al-roomi.org</span></span><br><span class="line">    </span><br><span class="line">clear</span><br><span class="line">clc</span><br><span class="line">warning off</span><br><span class="line">    </span><br><span class="line">x1min<span class="built_in">=</span>-<span class="number">100</span>;</span><br><span class="line">x1max<span class="built_in">=</span><span class="number">100</span>;</span><br><span class="line">x2min<span class="built_in">=</span>-<span class="number">100</span>;</span><br><span class="line">x2max<span class="built_in">=</span><span class="number">100</span>;</span><br><span class="line">R<span class="built_in">=</span><span class="number">1500</span>; <span class="comment">% steps resolution</span></span><br><span class="line">x1<span class="built_in">=</span>x1min:(x1max-x1min)/R:x1max;</span><br><span class="line">x2<span class="built_in">=</span>x2min:(x2max-x2min)/R:x2max;</span><br><span class="line"> </span><br><span class="line">for j<span class="built_in">=</span><span class="number">1</span>:length(x1)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">% For 1-dimensional plotting</span></span><br><span class="line">    f1(j)<span class="built_in">=</span>x1(j)^<span class="number">2</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">% For 2-dimensional plotting</span></span><br><span class="line">    for i<span class="built_in">=</span><span class="number">1</span>:length(x2)</span><br><span class="line">        fn(i)<span class="built_in">=</span>x1(j)^<span class="number">2</span>+(x1(j)+x2(i))^<span class="number">2</span>;</span><br><span class="line">    end</span><br><span class="line">    </span><br><span class="line">    fn_tot(j,:)<span class="built_in">=</span>fn;</span><br><span class="line"> </span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">figure(<span class="number">1</span>)</span><br><span class="line">plot(x1,f1);set(gca,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">12</span>);</span><br><span class="line">xlabel(<span class="string">&#x27;x&#x27;</span>,<span class="string">&#x27;FontName&#x27;</span>,<span class="string">&#x27;Times&#x27;</span>,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">20</span>,<span class="string">&#x27;FontAngle&#x27;</span>,<span class="string">&#x27;italic&#x27;</span>);</span><br><span class="line">ylabel(<span class="string">&#x27;f(x)&#x27;</span>,<span class="string">&#x27;FontName&#x27;</span>,<span class="string">&#x27;Times&#x27;</span>,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">20</span>,<span class="string">&#x27;FontAngle&#x27;</span>,<span class="string">&#x27;italic&#x27;</span>);</span><br><span class="line">title(<span class="string">&#x27;2D View&#x27;</span>,<span class="string">&#x27;FontName&#x27;</span>,<span class="string">&#x27;Times&#x27;</span>,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">24</span>,<span class="string">&#x27;FontWeight&#x27;</span>,<span class="string">&#x27;bold&#x27;</span>);</span><br><span class="line"> </span><br><span class="line">figure(<span class="number">2</span>)</span><br><span class="line">meshc(x1,x2,fn_tot);colorbar;set(gca,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">12</span>);</span><br><span class="line">xlabel(<span class="string">&#x27;x_2&#x27;</span>,<span class="string">&#x27;FontName&#x27;</span>,<span class="string">&#x27;Times&#x27;</span>,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">20</span>,<span class="string">&#x27;FontAngle&#x27;</span>,<span class="string">&#x27;italic&#x27;</span>);</span><br><span class="line">set(get(gca,<span class="string">&#x27;xlabel&#x27;</span>),<span class="string">&#x27;rotation&#x27;</span>,<span class="number">25</span>,<span class="string">&#x27;VerticalAlignment&#x27;</span>,<span class="string">&#x27;bottom&#x27;</span>);</span><br><span class="line">ylabel(<span class="string">&#x27;x_1&#x27;</span>,<span class="string">&#x27;FontName&#x27;</span>,<span class="string">&#x27;Times&#x27;</span>,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">20</span>,<span class="string">&#x27;FontAngle&#x27;</span>,<span class="string">&#x27;italic&#x27;</span>);</span><br><span class="line">set(get(gca,<span class="string">&#x27;ylabel&#x27;</span>),<span class="string">&#x27;rotation&#x27;</span>,-<span class="number">25</span>,<span class="string">&#x27;VerticalAlignment&#x27;</span>,<span class="string">&#x27;bottom&#x27;</span>);</span><br><span class="line">zlabel(<span class="string">&#x27;f(X)&#x27;</span>,<span class="string">&#x27;FontName&#x27;</span>,<span class="string">&#x27;Times&#x27;</span>,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">20</span>,<span class="string">&#x27;FontAngle&#x27;</span>,<span class="string">&#x27;italic&#x27;</span>);</span><br><span class="line">title(<span class="string">&#x27;3D View&#x27;</span>,<span class="string">&#x27;FontName&#x27;</span>,<span class="string">&#x27;Times&#x27;</span>,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">24</span>,<span class="string">&#x27;FontWeight&#x27;</span>,<span class="string">&#x27;bold&#x27;</span>);</span><br><span class="line"> </span><br><span class="line">figure(<span class="number">3</span>)</span><br><span class="line">mesh(x1,x2,fn_tot);view(<span class="number">0</span>,<span class="number">90</span>);colorbar;set(gca,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">12</span>);</span><br><span class="line">xlabel(<span class="string">&#x27;x_2&#x27;</span>,<span class="string">&#x27;FontName&#x27;</span>,<span class="string">&#x27;Times&#x27;</span>,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">20</span>,<span class="string">&#x27;FontAngle&#x27;</span>,<span class="string">&#x27;italic&#x27;</span>);</span><br><span class="line">ylabel(<span class="string">&#x27;x_1&#x27;</span>,<span class="string">&#x27;FontName&#x27;</span>,<span class="string">&#x27;Times&#x27;</span>,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">20</span>,<span class="string">&#x27;FontAngle&#x27;</span>,<span class="string">&#x27;italic&#x27;</span>);</span><br><span class="line">zlabel(<span class="string">&#x27;f(X)&#x27;</span>,<span class="string">&#x27;FontName&#x27;</span>,<span class="string">&#x27;Times&#x27;</span>,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">20</span>,<span class="string">&#x27;FontAngle&#x27;</span>,<span class="string">&#x27;italic&#x27;</span>);</span><br><span class="line">title(<span class="string">&#x27;X-Y Plane View&#x27;</span>,<span class="string">&#x27;FontName&#x27;</span>,<span class="string">&#x27;Times&#x27;</span>,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">24</span>,<span class="string">&#x27;FontWeight&#x27;</span>,<span class="string">&#x27;bold&#x27;</span>);</span><br><span class="line"> </span><br><span class="line">figure(<span class="number">4</span>)</span><br><span class="line">mesh(x1,x2,fn_tot);view(<span class="number">90</span>,<span class="number">0</span>);colorbar;set(gca,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">12</span>);</span><br><span class="line">xlabel(<span class="string">&#x27;x_2&#x27;</span>,<span class="string">&#x27;FontName&#x27;</span>,<span class="string">&#x27;Times&#x27;</span>,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">20</span>,<span class="string">&#x27;FontAngle&#x27;</span>,<span class="string">&#x27;italic&#x27;</span>);</span><br><span class="line">ylabel(<span class="string">&#x27;x_1&#x27;</span>,<span class="string">&#x27;FontName&#x27;</span>,<span class="string">&#x27;Times&#x27;</span>,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">20</span>,<span class="string">&#x27;FontAngle&#x27;</span>,<span class="string">&#x27;italic&#x27;</span>);</span><br><span class="line">zlabel(<span class="string">&#x27;f(X)&#x27;</span>,<span class="string">&#x27;FontName&#x27;</span>,<span class="string">&#x27;Times&#x27;</span>,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">20</span>,<span class="string">&#x27;FontAngle&#x27;</span>,<span class="string">&#x27;italic&#x27;</span>);</span><br><span class="line">title(<span class="string">&#x27;X-Z Plane View&#x27;</span>,<span class="string">&#x27;FontName&#x27;</span>,<span class="string">&#x27;Times&#x27;</span>,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">24</span>,<span class="string">&#x27;FontWeight&#x27;</span>,<span class="string">&#x27;bold&#x27;</span>);</span><br><span class="line"> </span><br><span class="line">figure(<span class="number">5</span>)</span><br><span class="line">mesh(x1,x2,fn_tot);view(<span class="number">0</span>,<span class="number">0</span>);colorbar;set(gca,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">12</span>);</span><br><span class="line">xlabel(<span class="string">&#x27;x_2&#x27;</span>,<span class="string">&#x27;FontName&#x27;</span>,<span class="string">&#x27;Times&#x27;</span>,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">20</span>,<span class="string">&#x27;FontAngle&#x27;</span>,<span class="string">&#x27;italic&#x27;</span>);</span><br><span class="line">ylabel(<span class="string">&#x27;x_1&#x27;</span>,<span class="string">&#x27;FontName&#x27;</span>,<span class="string">&#x27;Times&#x27;</span>,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">20</span>,<span class="string">&#x27;FontAngle&#x27;</span>,<span class="string">&#x27;italic&#x27;</span>);</span><br><span class="line">zlabel(<span class="string">&#x27;f(X)&#x27;</span>,<span class="string">&#x27;FontName&#x27;</span>,<span class="string">&#x27;Times&#x27;</span>,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">20</span>,<span class="string">&#x27;FontAngle&#x27;</span>,<span class="string">&#x27;italic&#x27;</span>);</span><br><span class="line">title(<span class="string">&#x27;Y-Z Plane View&#x27;</span>,<span class="string">&#x27;FontName&#x27;</span>,<span class="string">&#x27;Times&#x27;</span>,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">24</span>,<span class="string">&#x27;FontWeight&#x27;</span>,<span class="string">&#x27;bold&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/tags/">标签</a></li>
+        
+          <li><a href="/categories/">分类</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BA%E6%96%87%E5%8F%82%E8%80%83"><span class="toc-number">1.</span> <span class="toc-text">论文参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#demoGlobalOptimization-m"><span class="toc-number">2.</span> <span class="toc-text">demoGlobalOptimization.m</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#F22-m"><span class="toc-number">3.</span> <span class="toc-text">F22.m</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AROA-m"><span class="toc-number">4.</span> <span class="toc-text">AROA.m</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Rastrigin"><span class="toc-number">5.</span> <span class="toc-text">Rastrigin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Schwefel%E2%80%99s-Problem-1-2"><span class="toc-number">6.</span> <span class="toc-text">Schwefel’s Problem 1.2</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/04/26/xi-yin-pai-chi-you-hua-suan-fa/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/04/26/xi-yin-pai-chi-you-hua-suan-fa/&text=吸引-排斥优化算法"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/04/26/xi-yin-pai-chi-you-hua-suan-fa/&title=吸引-排斥优化算法"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/04/26/xi-yin-pai-chi-you-hua-suan-fa/&is_video=false&description=吸引-排斥优化算法"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=吸引-排斥优化算法&body=Check out this article: http://jrhu0048.github.io/2024/04/26/xi-yin-pai-chi-you-hua-suan-fa/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/04/26/xi-yin-pai-chi-you-hua-suan-fa/&title=吸引-排斥优化算法"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/04/26/xi-yin-pai-chi-you-hua-suan-fa/&title=吸引-排斥优化算法"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/04/26/xi-yin-pai-chi-you-hua-suan-fa/&title=吸引-排斥优化算法"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/04/26/xi-yin-pai-chi-you-hua-suan-fa/&title=吸引-排斥优化算法"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/04/26/xi-yin-pai-chi-you-hua-suan-fa/&name=吸引-排斥优化算法&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/04/26/xi-yin-pai-chi-you-hua-suan-fa/&t=吸引-排斥优化算法"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022-2024
+    jr.hu
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
