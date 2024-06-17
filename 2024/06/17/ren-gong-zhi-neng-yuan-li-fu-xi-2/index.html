@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="ai.berkeley.edu（课件资料来源）Search ProblemsUninformed Search Methods  Depth-First SearchBreadth-First SearchUniform-Cost SearchUnified formalism leading to A* search (search guided by heuristic)  Uninforme">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人工智能原理复习2">
+<meta property="og:url" content="http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi-2/index.html">
+<meta property="og:site_name" content="CHARMMY">
+<meta property="og:description" content="ai.berkeley.edu（课件资料来源）Search ProblemsUninformed Search Methods  Depth-First SearchBreadth-First SearchUniform-Cost SearchUnified formalism leading to A* search (search guided by heuristic)  Uninforme">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/66703dd5d9c307b7e9ab57aa.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/66704092d9c307b7e9b14407.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/66704d80d9c307b7e9cb84d9.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/66704dd7d9c307b7e9cc30e2.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/66705004d9c307b7e9d0d767.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/66705264d9c307b7e9d5c6b8.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/667052a8d9c307b7e9d68cf5.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/66705ebbd9c307b7e9ef8ec1.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6670611ed9c307b7e9f41774.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/667067c7d9c307b7e9fff91f.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6670685dd9c307b7e900efb4.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/66706d21d9c307b7e90908b4.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/66706e24d9c307b7e90aad39.png">
+<meta property="article:published_time" content="2024-06-17T13:25:21.000Z">
+<meta property="article:modified_time" content="2024-06-17T17:12:57.251Z">
+<meta property="article:author" content="JR.HU">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/66703dd5d9c307b7e9ab57aa.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>人工智能原理复习2</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi-1/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi-2/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi-2/&text=人工智能原理复习2"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi-2/&title=人工智能原理复习2"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi-2/&is_video=false&description=人工智能原理复习2"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=人工智能原理复习2&body=Check out this article: http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi-2/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi-2/&title=人工智能原理复习2"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi-2/&title=人工智能原理复习2"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi-2/&title=人工智能原理复习2"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi-2/&title=人工智能原理复习2"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi-2/&name=人工智能原理复习2&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi-2/&t=人工智能原理复习2"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ai-berkeley-edu%EF%BC%88%E8%AF%BE%E4%BB%B6%E8%B5%84%E6%96%99%E6%9D%A5%E6%BA%90%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">ai.berkeley.edu（课件资料来源）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Search-Problems"><span class="toc-number">2.</span> <span class="toc-text">Search Problems</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reflex-Agents"><span class="toc-number">3.</span> <span class="toc-text">Reflex Agents</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Planning-Agents"><span class="toc-number">4.</span> <span class="toc-text">Planning Agents</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Search-Problems-1"><span class="toc-number">5.</span> <span class="toc-text">Search Problems*****</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What%E2%80%99s-in-a-State-Space"><span class="toc-number">6.</span> <span class="toc-text">What’s in a State Space?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#State-Space-Sizes"><span class="toc-number">7.</span> <span class="toc-text">State Space Sizes?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#State-Space-Graphs-and-Search-Trees"><span class="toc-number">8.</span> <span class="toc-text">State Space Graphs and Search Trees</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tree-Search"><span class="toc-number">9.</span> <span class="toc-text">Tree Search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Depth-First-Search"><span class="toc-number">10.</span> <span class="toc-text">Depth-First Search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Breadth-First-Search"><span class="toc-number">11.</span> <span class="toc-text">Breadth-First Search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DFS-vs-BFS"><span class="toc-number">12.</span> <span class="toc-text">DFS vs BFS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Iterative-Deepening-%E8%BF%AD%E4%BB%A3%E5%8A%A0%E6%B7%B1"><span class="toc-number">13.</span> <span class="toc-text">Iterative Deepening(迭代加深)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Uniform-Cost-Search%EF%BC%88%E4%BB%A3%E4%BB%B7%E4%BC%98%E5%85%88%EF%BC%89"><span class="toc-number">14.</span> <span class="toc-text">Uniform Cost Search（代价优先）</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        人工智能原理复习2
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">JR.HU</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-06-17T13:25:21.000Z" class="dt-published" itemprop="datePublished">2024-06-17</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="ai-berkeley-edu（课件资料来源）"><a href="#ai-berkeley-edu（课件资料来源）" class="headerlink" title="ai.berkeley.edu（课件资料来源）"></a>ai.berkeley.edu（课件资料来源）</h2><h2 id="Search-Problems"><a href="#Search-Problems" class="headerlink" title="Search Problems"></a>Search Problems</h2><p><strong>Uninformed Search Methods</strong></p>
+<blockquote>
+<p>Depth-First Search<br>Breadth-First Search<br>Uniform-Cost Search<br>Unified formalism leading to A* search (search guided by heuristic)</p>
+</blockquote>
+<p>Uninformed Search Methods（无信息搜索方法）是一组在没有关于目标位置的额外信息的情况下，用于在图或树结构中搜索目标的方法。这些搜索算法不依赖于任何关于目标位置的启发式信息，它们通常用于解决一些简单的搜索问题，如迷宫探索或路径查找。以下是一些常见的无信息搜索方法：</p>
+<ol>
+<li><p><strong>广度优先搜索（Breadth-First Search, BFS）</strong>：</p>
+<ul>
+<li>BFS是一种从根节点开始，逐层扩展节点的搜索方法。</li>
+<li>它使用队列作为其主要的数据结构，以确保按照层次顺序访问节点。</li>
+<li>BFS保证找到的是从起点到目标的最短路径。</li>
+</ul>
+</li>
+<li><p><strong>深度优先搜索（Depth-First Search, DFS）</strong>：</p>
+<ul>
+<li>DFS通过递归或显式栈的方式尽可能深地搜索树的分支。</li>
+<li>它使用栈（可以是递归调用堆栈或显式的栈数据结构）来存储待访问的节点。</li>
+<li>DFS不保证找到最短路径，但通常用于探索所有可能的路径。</li>
+</ul>
+</li>
+<li><p><strong>迭代加深深度优先搜索（Iterative Deepening Depth-First Search, IDDFS）</strong>：</p>
+<ul>
+<li>IDDFS是DFS的改进版本，它通过逐层增加搜索深度来避免DFS的递归深度限制问题。</li>
+<li>它结合了BFS和DFS的优点，可以在不使用大量内存的情况下找到最短路径。</li>
+</ul>
+</li>
+<li><p><strong>Uniform-Cost Search（均匀成本搜索）（代价优先）</strong>：</p>
+<ul>
+<li>这种搜索方法总是扩展具有最低路径成本的节点。</li>
+<li>它适用于所有边的权重都是非负的情况，并保证找到最短路径。</li>
+</ul>
+</li>
+<li><p><strong>双向搜索（Bidirectional Search）</strong>：</p>
+<ul>
+<li>双向搜索从起点和终点同时进行，向中间点扩展。</li>
+<li>这种方法可以加快搜索速度，尤其是在起点和终点之间的距离较短时。</li>
+</ul>
+</li>
+</ol>
+<p>无信息搜索方法的优点是它们简单易实现，不需要关于问题领域的额外信息。然而，它们的缺点是在某些情况下效率不高，特别是当搜索空间很大或目标很远时。这些方法通常作为更复杂搜索算法的基础，或者在问题规模较小或结构简单时使用。</p>
+<p>1、2、4需要理解掌握</p>
+<p>Unified formalism leading to A* search (search guided by heuristic)</p>
+<h2 id="Reflex-Agents"><a href="#Reflex-Agents" class="headerlink" title="Reflex Agents"></a>Reflex Agents</h2><p><strong>在人工智能领域，反射式智能体是一种基于简单条件反射规则做出决策的智能体。它们通常对环境的感知非常直接，并且立即做出反应，而不需要复杂的内部状态或长期规划。反射式智能体的决策过程类似于人类的本能反应，例如，当手碰到热的物体时立即缩回。</strong></p>
+<p>Reflex agents:</p>
+<p><strong>Choose action based on current percept (and maybe memory)<br>May have memory or a model of the world’s current state<br>Do not consider the future consequences of their actions<br>Consider how the world IS<br>反射代理:根据当前感知(也可能是记忆)选择行动<br>,可能对世界当前状态有记忆或模型不考虑其行动的未来后果考虑世界是怎样的</strong></p>
+<p>Can a reflex agent be rational?</p>
+<p><img src="https://pic.imgdb.cn/item/66703dd5d9c307b7e9ab57aa.png" alt="alt text"></p>
+<p>Reflex Optimal</p>
+<p>Optimality is not defined by algorithm, but by rational behavior.</p>
+<h2 id="Planning-Agents"><a href="#Planning-Agents" class="headerlink" title="Planning Agents"></a>Planning Agents</h2><p>Planning agents:</p>
+<blockquote>
+<p>Ask “what if”<br>Decisions based on (hypothesized) consequences of actions<br>Must have a model of how the world evolves in response to actions<br>Must formulate a goal (test)<br>Consider how the world WOULD BE</p>
+</blockquote>
+<p>Optimal vs. complete planning<br>最优规划vs.完全规划</p>
+<p>Planning vs. replanning<br>规划vs.重新规划</p>
+<p>You could figure out the consequences by doing it. But instead, planning considers what the world would be without actually doing it.<br>Simulate many games, execute one. Doesn’t do it in the world, does it in the model.<br>Consequences of action.</p>
+<blockquote>
+<p>Complete – a solution; optimal – best</p>
+</blockquote>
+<h2 id="Search-Problems-1"><a href="#Search-Problems-1" class="headerlink" title="Search Problems*****"></a>Search Problems*****</h2><p>How do we formalize a search problem?</p>
+<p><img src="https://pic.imgdb.cn/item/66704092d9c307b7e9b14407.png" alt="alt text"></p>
+<p>(1) State Space（状态空间）状态空间是所有可能状态的集合，其中每个状态代表了问题的一个特定配置或位置。</p>
+<p>(2) Successor function（后继函数）定义了从给定状态出发，通过执行某个动作所能到达的所有可能的后继状态。换句话说，后继函数是从一个状态到其可能的下一个状态的映射。</p>
+<p>(3) start state（初始状态） 初始状态是搜索过程开始时的状态。在很多搜索问题中，它通常是已知的，并且只有一个。初始状态定义了搜索的起点，所有搜索算法都从这个状态开始进行探索。</p>
+<p>(4) goal test （目标测试）是搜索算法中用来确定一个状态是否为目标状态的检查过程。在搜索问题中，目标测试是至关重要的，因为它决定了搜索何时结束。</p>
+<blockquote>
+<p>解决方案是将开始状态转换为目标状态的一系列行动(计划)</p>
+</blockquote>
+<p><strong>Goal test – sometimes more than one state that satisfies having achieved the goal, for example, “eat all the dots”<br>目标测试——有时不止一种状态满足实现目标，例如，“吃掉所有的圆豆”</strong></p>
+<p><img src="https://pic.imgdb.cn/item/66704d80d9c307b7e9cb84d9.png" alt="alt text"></p>
+<p>Models aren’t perfect.<br>Too detailed, you can’t solve.<br>Not detailed enough, doesn’t solve.        </p>
+<p><img src="https://pic.imgdb.cn/item/66704dd7d9c307b7e9cc30e2.png" alt="alt text"></p>
+<p>State space:</p>
+<blockquote>
+<p>Cities</p>
+</blockquote>
+<p>Successor function:</p>
+<blockquote>
+<p>Roads: Go to adjacent city with cost &#x3D; distance</p>
+</blockquote>
+<p>Start state:</p>
+<blockquote>
+<p>Arad</p>
+</blockquote>
+<p>Goal test:</p>
+<blockquote>
+<p>Is state &#x3D;&#x3D; Bucharest?</p>
+</blockquote>
+<p>Solution?</p>
+<h2 id="What’s-in-a-State-Space"><a href="#What’s-in-a-State-Space" class="headerlink" title="What’s in a State Space?"></a>What’s in a State Space?</h2><p>The world state includes every last detail of the environment</p>
+<p>A search state keeps only the details needed for planning (abstraction)</p>
+<p>Problem: Pathing<br>States: (x,y) location<br>Actions: NSEW<br>Successor: update location only<br>Goal test: is (x,y)&#x3D;END         </p>
+<p>Problem: Eat-All-Dots<br>States: {(x,y), dot booleans}   (点布尔值)<br>Actions: NSEW<br>Successor: update location and possibly a dot boolean<br>Goal test: dots all false</p>
+<h2 id="State-Space-Sizes"><a href="#State-Space-Sizes" class="headerlink" title="State Space Sizes?"></a>State Space Sizes?</h2><p><img src="https://pic.imgdb.cn/item/66705004d9c307b7e9d0d767.png" alt="alt text"></p>
+<h2 id="State-Space-Graphs-and-Search-Trees"><a href="#State-Space-Graphs-and-Search-Trees" class="headerlink" title="State Space Graphs and Search Trees"></a>State Space Graphs and Search Trees</h2><p><img src="https://pic.imgdb.cn/item/66705264d9c307b7e9d5c6b8.png" alt="alt text"></p>
+<p><strong>State Space Graphs</strong></p>
+<p><img src="https://pic.imgdb.cn/item/667052a8d9c307b7e9d68cf5.png" alt="alt text"></p>
+<p>State space graph: A mathematical representation of a search problem</p>
+<p>Nodes are (abstracted) world configurations<br>Arcs represent successors (action results)<br>The goal test is a set of goal nodes (maybe only one)</p>
+<p>In a state space graph, each state occurs only once!</p>
+<p>We can rarely build this full graph in memory (it’s too big), but it’s a useful idea</p>
+<p><strong>Search Trees</strong></p>
+<p>A search tree:<br>A “what if” tree of plans and their outcomes<br>The start state is the root node<br>Children correspond to successors<br>Nodes show states, but correspond to PLANS that achieve those states<br>For most problems, we can never actually build the whole tree  </p>
+<p>Different plans that achieve the same state, will be different nodes in the tree.<br>Every plan in the tree.<br>Search ignores most of the tree.  </p>
+<h2 id="Tree-Search"><a href="#Tree-Search" class="headerlink" title="Tree Search"></a>Tree Search</h2><p>Important ideas:</p>
+<p>Fringe<br>Expansion<br>Exploration strategy  </p>
+<p>Main question: which fringe nodes to explore?</p>
+<h2 id="Depth-First-Search"><a href="#Depth-First-Search" class="headerlink" title="Depth-First Search"></a>Depth-First Search</h2><p>Strategy: expand a deepest node first<br>Implementation: Fringe is a LIFO stack</p>
+<p><img src="https://pic.imgdb.cn/item/66705ebbd9c307b7e9ef8ec1.png" alt="alt text"></p>
+<p><img src="https://pic.imgdb.cn/item/6670611ed9c307b7e9f41774.png" alt="alt text"></p>
+<p>DFS扩展了哪些节点?<br>树的一些左前缀。<br>可以处理整棵树!<br>如果m是有限的，耗时O(b^m)</p>
+<p>How much space does the fringe take?<br>Only has siblings on path to root, so O(bm)</p>
+<p>Is it complete?<br>m could be infinite, so only if we prevent cycles (more later)</p>
+<p>Is it optimal?<br>No, it finds the “leftmost” solution, regardless of depth or cost</p>
+<p>Process whole tree if goal is lower right.<br>Space: At each level, children of one node at most on fringe, so b. Times number of layers m. (Small!)</p>
+<h2 id="Breadth-First-Search"><a href="#Breadth-First-Search" class="headerlink" title="Breadth-First Search"></a>Breadth-First Search</h2><p><img src="https://pic.imgdb.cn/item/667067c7d9c307b7e9fff91f.png" alt="alt text"></p>
+<p>Strategy: expand a shallowest node first<br>Implementation: Fringe is a FIFO queue</p>
+<p><img src="https://pic.imgdb.cn/item/6670685dd9c307b7e900efb4.png" alt="alt text"></p>
+<p><strong>What nodes does BFS expand?</strong><br>Processes all nodes above shallowest solution<br>Let depth of shallowest solution be s<br>Search takes time O(b^s)  </p>
+<p>How much space does the fringe take?<br>Has roughly the last tier, so O(b^s)  </p>
+<p>Is it complete?<br>s must be finite if a solution exists  </p>
+<p>Is it optimal?<br>Only if costs are all 1 (more on costs later)  </p>
+<p>Tier of best solution. If on right, b^s. Exponential Big.<br>最佳解决方案层。如果在右边，b^s。指数大。</p>
+<h2 id="DFS-vs-BFS"><a href="#DFS-vs-BFS" class="headerlink" title="DFS vs BFS"></a>DFS vs BFS</h2><p>When will BFS outperform DFS?</p>
+<p>When will DFS outperform BFS?</p>
+<p>BFS:解决方案不太靠下。DFS:需要查到底。内存限制。</p>
+<h2 id="Iterative-Deepening-迭代加深"><a href="#Iterative-Deepening-迭代加深" class="headerlink" title="Iterative Deepening(迭代加深)"></a>Iterative Deepening(迭代加深)</h2><p><img src="https://pic.imgdb.cn/item/66706d21d9c307b7e90908b4.png" alt="alt text"></p>
+<p>Idea: get DFS’s space advantage with BFS’s time &#x2F; shallow-solution advantages<br>Run a DFS with depth limit 1.  If no solution…<br>运行深度限制为1的DFS。如果没有解决方案……<br>Run a DFS with depth limit 2.  If no solution…<br>Run a DFS with depth limit 3.  …..  </p>
+<p>Isn’t that wastefully redundant?<br>Generally most work happens in the lowest level searched, so not so bad!</p>
+<p>Another strategy. Combine best of both.<br>DFS – successor says if deeper than one, stop.<br>Really common.  </p>
+<p><img src="https://pic.imgdb.cn/item/66706e24d9c307b7e90aad39.png" alt="alt text"></p>
+<p>BFS finds the shortest path in terms of number of actions.<br>It does not find the least-cost path.  We will now cover<br>a similar algorithm which does find the least-cost path.    </p>
+<h2 id="Uniform-Cost-Search（代价优先）"><a href="#Uniform-Cost-Search（代价优先）" class="headerlink" title="Uniform Cost Search（代价优先）"></a>Uniform Cost Search（代价优先）</h2>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/tags/">标签</a></li>
+        
+          <li><a href="/categories/">分类</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ai-berkeley-edu%EF%BC%88%E8%AF%BE%E4%BB%B6%E8%B5%84%E6%96%99%E6%9D%A5%E6%BA%90%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">ai.berkeley.edu（课件资料来源）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Search-Problems"><span class="toc-number">2.</span> <span class="toc-text">Search Problems</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reflex-Agents"><span class="toc-number">3.</span> <span class="toc-text">Reflex Agents</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Planning-Agents"><span class="toc-number">4.</span> <span class="toc-text">Planning Agents</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Search-Problems-1"><span class="toc-number">5.</span> <span class="toc-text">Search Problems*****</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What%E2%80%99s-in-a-State-Space"><span class="toc-number">6.</span> <span class="toc-text">What’s in a State Space?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#State-Space-Sizes"><span class="toc-number">7.</span> <span class="toc-text">State Space Sizes?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#State-Space-Graphs-and-Search-Trees"><span class="toc-number">8.</span> <span class="toc-text">State Space Graphs and Search Trees</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tree-Search"><span class="toc-number">9.</span> <span class="toc-text">Tree Search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Depth-First-Search"><span class="toc-number">10.</span> <span class="toc-text">Depth-First Search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Breadth-First-Search"><span class="toc-number">11.</span> <span class="toc-text">Breadth-First Search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DFS-vs-BFS"><span class="toc-number">12.</span> <span class="toc-text">DFS vs BFS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Iterative-Deepening-%E8%BF%AD%E4%BB%A3%E5%8A%A0%E6%B7%B1"><span class="toc-number">13.</span> <span class="toc-text">Iterative Deepening(迭代加深)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Uniform-Cost-Search%EF%BC%88%E4%BB%A3%E4%BB%B7%E4%BC%98%E5%85%88%EF%BC%89"><span class="toc-number">14.</span> <span class="toc-text">Uniform Cost Search（代价优先）</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi-2/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi-2/&text=人工智能原理复习2"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi-2/&title=人工智能原理复习2"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi-2/&is_video=false&description=人工智能原理复习2"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=人工智能原理复习2&body=Check out this article: http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi-2/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi-2/&title=人工智能原理复习2"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi-2/&title=人工智能原理复习2"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi-2/&title=人工智能原理复习2"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi-2/&title=人工智能原理复习2"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi-2/&name=人工智能原理复习2&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi-2/&t=人工智能原理复习2"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022-2024
+    JR.HU
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
