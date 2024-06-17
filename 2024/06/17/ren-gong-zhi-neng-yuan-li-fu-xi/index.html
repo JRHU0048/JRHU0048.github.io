@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="What is artificial intelligence?A (Short) History of AI 1940-1950: Early days1943: McCulloch &amp; Pitts: Boolean circuit model of brain1950: Turing’s “Computing Machinery and Intelligence” 1950—70: T">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人工智能原理复习1">
+<meta property="og:url" content="http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi/index.html">
+<meta property="og:site_name" content="CHARMMY">
+<meta property="og:description" content="What is artificial intelligence?A (Short) History of AI 1940-1950: Early days1943: McCulloch &amp; Pitts: Boolean circuit model of brain1950: Turing’s “Computing Machinery and Intelligence” 1950—70: T">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/66702fefd9c307b7e98cfea1.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/66703073d9c307b7e98de996.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/667032fad9c307b7e99320cd.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/66703439d9c307b7e9969095.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/667035d2d9c307b7e999dcd4.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/66703698d9c307b7e99b967f.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/667036ffd9c307b7e99c675b.png">
+<meta property="article:published_time" content="2024-06-17T12:07:25.000Z">
+<meta property="article:modified_time" content="2024-06-17T13:16:42.597Z">
+<meta property="article:author" content="JR.HU">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/66702fefd9c307b7e98cfea1.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>人工智能原理复习1</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2024/05/02/lun-wen-fu-xian-0/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi/&text=人工智能原理复习1"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi/&title=人工智能原理复习1"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi/&is_video=false&description=人工智能原理复习1"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=人工智能原理复习1&body=Check out this article: http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi/&title=人工智能原理复习1"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi/&title=人工智能原理复习1"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi/&title=人工智能原理复习1"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi/&title=人工智能原理复习1"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi/&name=人工智能原理复习1&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi/&t=人工智能原理复习1"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#What-is-artificial-intelligence"><span class="toc-number">1.</span> <span class="toc-text">What is artificial intelligence?</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        人工智能原理复习1
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">JR.HU</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-06-17T12:07:25.000Z" class="dt-published" itemprop="datePublished">2024-06-17</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h3 id="What-is-artificial-intelligence"><a href="#What-is-artificial-intelligence" class="headerlink" title="What is artificial intelligence?"></a>What is artificial intelligence?</h3><p><strong>A (Short) History of AI</strong></p>
+<p>1940-1950: Early days<br>1943: McCulloch &amp; Pitts: Boolean circuit model of brain<br>1950: Turing’s “Computing Machinery and Intelligence”</p>
+<p>1950—70: The golden years!<br>1950s: Early AI programs, including Samuel’s checkers program, Newell &amp; Simon’s Logic Theorist, Gelernter’s Geometry Engine<br>1956: Dartmouth meeting: “Artificial Intelligence” adopted<br>1965: Robinson’s complete algorithm for logical reasoning</p>
+<p>1970—90: Knowledge-based approaches<br>1969—79: Early development of knowledge-based systems<br>1980—88: Expert systems industry booms<br>1988—93: Expert systems industry busts: “AI Winter”</p>
+<p>1990—: Statistical approaches<br>Resurgence of probability, focus on uncertainty<br>General increase in technical depth<br>Agents and learning systems… “AI Spring”?</p>
+<p>2000—: Where are we now?     </p>
+<p>上面需要注意的点是：</p>
+<p>1950: Turing’s “Computing Machinery and Intelligence”</p>
+<p>1956: Dartmouth meeting: “Artificial Intelligence” adopted</p>
+<p><strong>Game Agents（一个智能体是一个具有感知及行动的实体）</strong></p>
+<p>Classic Moment: May, ‘97: Deep Blue vs. Kasparov<br>First match won against world champion<br>“Intelligent creative” play 200 million board positions per second<br>Humans understood 99.9 of Deep Blue’s moves<br>Can do about the same now with a PC cluster</p>
+<p>1996: Kasparov Beats Deep Blue<br>    “I could feel — I could smell — a new kind of intelligence across the table.”</p>
+<p>1997: Deep Blue Beats Kasparov<br>    “Deep Blue hasn’t proven anything.”</p>
+<p><strong>Reinforcement learning</strong></p>
+<p>注：DeepMind 是一个专注于人工智能研究的公司，而 OpenSpiel 是 DeepMind 开发的一个开源库，用于研究和实现各种游戏和强化学习算法。</p>
+<p><strong>What is Artifical Intelligence?—Definition of textbook</strong></p>
+<blockquote>
+<p>Think like people</p>
+</blockquote>
+<blockquote>
+<p>Act like people</p>
+</blockquote>
+<blockquote>
+<p>Think rationally</p>
+</blockquote>
+<blockquote>
+<p>Act rationally</p>
+</blockquote>
+<p><strong>Human Intelligence</strong></p>
+<p>Brains (human minds) are very good at making rational decisions, but not perfect</p>
+<p>Language -&gt; Concept -&gt; Rule</p>
+<p><img src="https://pic.imgdb.cn/item/66702fefd9c307b7e98cfea1.png" alt="alt text"></p>
+<p>Stopped making wings that flap (蝴蝶效应嘛这句话啥意思哈哈哈哈哈看不懂)</p>
+<ol>
+<li>人类大约20万年前就形成了现在的解刨结构；</li>
+<li>在接下来的15万年中，人类并没有发生较大的变化；</li>
+<li>在大约5万年前，一小撮人类发明出人类区别于其他物种的能力，（虽然只有极少数的个体，就像是跑程序，只有极少数个体能够寻找到更优的位置，他们就能带领整个群体走向更好的区域），也就是使用语言（举例，袋鼠摇，管晨辰）（语言-&gt;概念-&gt;规则）</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/66703073d9c307b7e98de996.png" alt="alt text"></p>
+<blockquote>
+<p>思考，感知，行动</p>
+</blockquote>
+<blockquote>
+<p>智能是关于什么的智能？thinking , perception,  action （什么是thinking，伽利略比萨斜塔，大球、小球、大球+小球，得到矛盾）</p>
+</blockquote>
+<blockquote>
+<p>The model of that （1000瓶水，10只小白鼠，一次实验）（概率论模型，均匀分布，星座，1&#x2F;12）</p>
+</blockquote>
+<blockquote>
+<p>The representation<br>表示</p>
+</blockquote>
+<blockquote>
+<p>The constraints<br>约束</p>
+</blockquote>
+<blockquote>
+<p>The algorithm<br>算法</p>
+</blockquote>
+<p><img src="https://pic.imgdb.cn/item/667032fad9c307b7e99320cd.png" alt="alt text"></p>
+<p>Desiging a rational agent that selects actions that maximize its (expected) utility.  </p>
+<p><strong>This course is about:</strong></p>
+<p>Learning to recognize when and how a new problem can be solved with an existing technique</p>
+<p>Learning the mechanism of numerious algorithms</p>
+<p><img src="https://pic.imgdb.cn/item/66703439d9c307b7e9969095.png" alt="alt text"></p>
+<p><strong>Rational Decisions</strong></p>
+<p>We’ll use the term rational in a very specific, technical way:</p>
+<blockquote>
+<p>Rational: maximally achieving pre-defined goals<br> Rationality only concerns what decisions are made<br>   (not the thought process behind them)<br> Goals are expressed in terms of the utility of outcomes<br> Being rational means maximizing your expected utility</p>
+</blockquote>
+<blockquote>
+<p>我们将以一种非常特定、技术性的方式使用“理性”这个词：<br>理性：最大限度地实现预定义的目标，理性只关注所做出的决策（而不是决策背后的思考过程），目标以结果效用的形式表达，理性意味着最大化你的预期效用</p>
+</blockquote>
+<p>Computational Rationality ！！！</p>
+<p><strong>Maximize Your Expected Utility</strong></p>
+<p>What is a utility</p>
+<p><img src="https://pic.imgdb.cn/item/667035d2d9c307b7e999dcd4.png" alt="alt text"></p>
+<p><img src="https://pic.imgdb.cn/item/66703698d9c307b7e99b967f.png" alt="alt text"></p>
+<p><img src="https://pic.imgdb.cn/item/667036ffd9c307b7e99c675b.png" alt="alt text"></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/tags/">标签</a></li>
+        
+          <li><a href="/categories/">分类</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#What-is-artificial-intelligence"><span class="toc-number">1.</span> <span class="toc-text">What is artificial intelligence?</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi/&text=人工智能原理复习1"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi/&title=人工智能原理复习1"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi/&is_video=false&description=人工智能原理复习1"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=人工智能原理复习1&body=Check out this article: http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi/&title=人工智能原理复习1"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi/&title=人工智能原理复习1"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi/&title=人工智能原理复习1"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi/&title=人工智能原理复习1"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi/&name=人工智能原理复习1&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/06/17/ren-gong-zhi-neng-yuan-li-fu-xi/&t=人工智能原理复习1"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022-2024
+    JR.HU
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
