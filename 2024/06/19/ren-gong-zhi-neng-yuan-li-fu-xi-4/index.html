@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Constraint Satisfaction ProblemsWhat is a csp? guesscoloring problem; why does this make sense as problem? silly but good representation for real world problems, e.g. scheduling tasks that need resour">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人工智能原理复习4">
+<meta property="og:url" content="http://jrhu0048.github.io/2024/06/19/ren-gong-zhi-neng-yuan-li-fu-xi-4/index.html">
+<meta property="og:site_name" content="CHARMMY">
+<meta property="og:description" content="Constraint Satisfaction ProblemsWhat is a csp? guesscoloring problem; why does this make sense as problem? silly but good representation for real world problems, e.g. scheduling tasks that need resour">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6671b857d9c307b7e927ea35.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6671b8b5d9c307b7e928b9ab.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6671b8fad9c307b7e9295764.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6671b915d9c307b7e9299415.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6671b948d9c307b7e92a0c64.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6671b962d9c307b7e92a4aa5.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6671b980d9c307b7e92a9c0c.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6671b99dd9c307b7e92ae97e.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6671b9afd9c307b7e92b2171.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6671b9d0d9c307b7e92b84f6.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6671ba4dd9c307b7e92cb492.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6671bd14d9c307b7e932a47d.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6671bd28d9c307b7e932e088.png">
+<meta property="article:published_time" content="2024-06-18T16:36:07.000Z">
+<meta property="article:modified_time" content="2024-06-18T17:10:07.024Z">
+<meta property="article:author" content="JR.HU">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/6671b857d9c307b7e927ea35.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>人工智能原理复习4</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2024/06/18/suan-fa-fen-xi-yu-she-ji-qi-mo-fu-xi/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/06/19/ren-gong-zhi-neng-yuan-li-fu-xi-4/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/06/19/ren-gong-zhi-neng-yuan-li-fu-xi-4/&text=人工智能原理复习4"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/06/19/ren-gong-zhi-neng-yuan-li-fu-xi-4/&title=人工智能原理复习4"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/06/19/ren-gong-zhi-neng-yuan-li-fu-xi-4/&is_video=false&description=人工智能原理复习4"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=人工智能原理复习4&body=Check out this article: http://jrhu0048.github.io/2024/06/19/ren-gong-zhi-neng-yuan-li-fu-xi-4/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/06/19/ren-gong-zhi-neng-yuan-li-fu-xi-4/&title=人工智能原理复习4"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/06/19/ren-gong-zhi-neng-yuan-li-fu-xi-4/&title=人工智能原理复习4"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/06/19/ren-gong-zhi-neng-yuan-li-fu-xi-4/&title=人工智能原理复习4"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/06/19/ren-gong-zhi-neng-yuan-li-fu-xi-4/&title=人工智能原理复习4"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/06/19/ren-gong-zhi-neng-yuan-li-fu-xi-4/&name=人工智能原理复习4&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/06/19/ren-gong-zhi-neng-yuan-li-fu-xi-4/&t=人工智能原理复习4"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Constraint-Satisfaction-Problems"><span class="toc-number">1.</span> <span class="toc-text">Constraint Satisfaction Problems</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#What-is-Search-For"><span class="toc-number">1.1.</span> <span class="toc-text">What is Search For?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Constraint-Satisfaction-Problems-1"><span class="toc-number">1.2.</span> <span class="toc-text">Constraint Satisfaction Problems</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSP-Examples"><span class="toc-number">1.3.</span> <span class="toc-text">CSP Examples</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Varieties-of-CSPs-and-Constraints"><span class="toc-number">1.4.</span> <span class="toc-text">Varieties of CSPs and Constraints</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Real-World-CSPs"><span class="toc-number">1.5.</span> <span class="toc-text">Real-World CSPs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Origin-The-Waltz-Algorithm"><span class="toc-number">1.6.</span> <span class="toc-text">Origin: The Waltz Algorithm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Guzman-Find-the-Problem"><span class="toc-number">1.7.</span> <span class="toc-text">Guzman: Find the Problem</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        人工智能原理复习4
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">JR.HU</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-06-18T16:36:07.000Z" class="dt-published" itemprop="datePublished">2024-06-19</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="Constraint-Satisfaction-Problems"><a href="#Constraint-Satisfaction-Problems" class="headerlink" title="Constraint Satisfaction Problems"></a>Constraint Satisfaction Problems</h2><p>What is a csp? guess<br>coloring problem; why does this make sense as problem? silly but good representation for real world problems, e.g. scheduling tasks that need resources – can’t run 2 tasks at the same time if they need the same resource<br>CSPs as a search problem?</p>
+<h3 id="What-is-Search-For"><a href="#What-is-Search-For" class="headerlink" title="What is Search For?"></a>What is Search For?</h3><p>Assumptions about the world: a single agent, deterministic actions, fully observed state, discrete state space</p>
+<p>Planning: sequences of actions<br>The path to the goal is the important thing<br>Paths have various costs, depths<br>Heuristics give problem-specific guidance</p>
+<p>Identification: assignments to variables<br>The goal itself is important, not the path<br>All paths at the same depth (for some formulations)<br>CSPs are specialized for identification problems</p>
+<p>Step back – these are search problems, so we can now take a look at different problems we can use search for<br>Before we had planning;<br>Ninja robot knows where the gem is, but not how to get there<br>Identification; detective robot wants to know where the gem is – the goal is important, not the path; what is the depth?</p>
+<p><img src="https://pic.imgdb.cn/item/6671b857d9c307b7e927ea35.png" alt="![!\[\](https://pic.imgdb.cn/item/6671b857d9c307b7e927ea35.png)](https://pic.imgdb.cn/item/6671b857d9c307b7e927ea35.png)"></p>
+<h3 id="Constraint-Satisfaction-Problems-1"><a href="#Constraint-Satisfaction-Problems-1" class="headerlink" title="Constraint Satisfaction Problems"></a>Constraint Satisfaction Problems</h3><p>Standard search problems:<br>State is a “black box”: arbitrary data structure<br>Goal test can be any function over states<br>Successor function can also be anything</p>
+<p>Constraint satisfaction problems (CSPs):<br>A special subset of search problems<br>State is defined by variables Xi  with values from a domain D (sometimes D depends on i)<br>Goal test is a set of constraints specifying allowable combinations of values for subsets of variables</p>
+<p>Allows useful general-purpose algorithms with more power than standard search algorithms</p>
+<p>Before: states were nodes, no structure, just a set, they could be anything<br>Goal test – like a judge; just makes decisions; you don’t know how;<br>Now: Goal test has structure, it ‘s more like a manual describing a set of constraints that have to hold true</p>
+<p><img src="https://pic.imgdb.cn/item/6671b8b5d9c307b7e928b9ab.png" alt="alt text"></p>
+<h3 id="CSP-Examples"><a href="#CSP-Examples" class="headerlink" title="CSP Examples"></a>CSP Examples</h3><p>I want you to practice formalizing real problems as search&#x2F;csp problems</p>
+<p><img src="https://pic.imgdb.cn/item/6671b8fad9c307b7e9295764.png" alt="alt text"></p>
+<p><img src="https://pic.imgdb.cn/item/6671b915d9c307b7e9299415.png" alt="alt text"></p>
+<p>How do you specify constraints in code&#x2F;math? Implicit vs explicit. What might be explicit?</p>
+<p><img src="https://pic.imgdb.cn/item/6671b948d9c307b7e92a0c64.png" alt="alt text"></p>
+<p><img src="https://pic.imgdb.cn/item/6671b962d9c307b7e92a4aa5.png" alt="alt text"></p>
+<p>Binary CSP: each constraint relates (at most) two variables</p>
+<p>Binary constraint graph: nodes are variables, arcs show constraints</p>
+<p>General-purpose CSP algorithms use the graph structure to speed up search. E.g., Tasmania is an independent subproblem!</p>
+<p>Demo:</p>
+<p>Run constraint.jar or constraint.exe, load the 5 queens problem.<br>Demo is just showing the n-queens applet as illustration of constraint graph, but later in lecture we’ll interact with the applet.<br>aispace.org will have the latest version</p>
+<p><img src="https://pic.imgdb.cn/item/6671b980d9c307b7e92a9c0c.png" alt="alt text"></p>
+<p>Are these constraints enough? No, there should be N queens there.</p>
+<p><img src="https://pic.imgdb.cn/item/6671b99dd9c307b7e92ae97e.png" alt="alt text"></p>
+<p><img src="https://pic.imgdb.cn/item/6671b9afd9c307b7e92b2171.png" alt="alt text"></p>
+<p>0&#x3D;7, R&#x3D;4, W&#x3D;6, U&#x3D;2, T&#x3D;8, F&#x3D;1; 867 + 867 &#x3D; 1734</p>
+<p><img src="https://pic.imgdb.cn/item/6671b9d0d9c307b7e92b84f6.png" alt="alt text"></p>
+<h3 id="Varieties-of-CSPs-and-Constraints"><a href="#Varieties-of-CSPs-and-Constraints" class="headerlink" title="Varieties of CSPs and Constraints"></a>Varieties of CSPs and Constraints</h3><p>Varieties of CSPs</p>
+<p>Discrete Variables (today)<br>Finite domains<br>Size d means O(dn) complete assignments<br>E.g., Boolean CSPs, including Boolean satisfiability (NP-complete)<br>Infinite domains (integers, strings, etc.)<br>E.g., job scheduling, variables are start&#x2F;end times for each job<br>Linear constraints solvable, nonlinear undecidable  </p>
+<p>Continuous variables<br>E.g., start&#x2F;end times for Hubble Telescope observations<br>Linear constraints solvable in polynomial time by LP methods</p>
+<p><img src="https://pic.imgdb.cn/item/6671ba4dd9c307b7e92cb492.png" alt="alt text"></p>
+<p>Varieties of Constraints<br>Unary constraints involve a single variable (equivalent to reducing domains), e.g.:  </p>
+<p>Binary constraints involve pairs of variables, e.g.:  </p>
+<p>Higher-order constraints involve 3 or more variables:<br>       e.g., cryptarithmetic column constraints  </p>
+<p>Preferences (soft constraints):<br>E.g., red is better than green<br>Often representable by a cost for each variable assignment<br>Gives constrained optimization problems<br>(We’ll ignore these until we get to Bayes’ nets)  </p>
+<h3 id="Real-World-CSPs"><a href="#Real-World-CSPs" class="headerlink" title="Real-World CSPs"></a>Real-World CSPs</h3><p>Assignment problems: e.g., who teaches what class<br>Timetabling problems: e.g., which class is offered when and where?<br>Hardware configuration<br>Transportation scheduling<br>Factory scheduling<br>Circuit layout<br>Fault diagnosis<br>… lots more!  </p>
+<p>Many real-world problems involve real-valued variables…</p>
+<h3 id="Origin-The-Waltz-Algorithm"><a href="#Origin-The-Waltz-Algorithm" class="headerlink" title="Origin: The Waltz Algorithm"></a>Origin: The Waltz Algorithm</h3><p>The Waltz algorithm is for interpreting line drawings of solid polyhedra as 3D objects</p>
+<p>An early example of an AI computation posed as a CSP </p>
+<p>Approach:</p>
+<p>Each intersection is a variable<br>Adjacent intersections impose constraints on each other<br>Solutions are physically realizable 3D interpretations  </p>
+<h3 id="Guzman-Find-the-Problem"><a href="#Guzman-Find-the-Problem" class="headerlink" title="Guzman: Find the Problem"></a>Guzman: Find the Problem</h3><p>Question: how to detect the number of objects by machine？</p>
+<p><img src="https://pic.imgdb.cn/item/6671bd14d9c307b7e932a47d.png" alt="alt text"></p>
+<p><img src="https://pic.imgdb.cn/item/6671bd28d9c307b7e932e088.png" alt="alt text"></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/tags/">标签</a></li>
+        
+          <li><a href="/categories/">分类</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Constraint-Satisfaction-Problems"><span class="toc-number">1.</span> <span class="toc-text">Constraint Satisfaction Problems</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#What-is-Search-For"><span class="toc-number">1.1.</span> <span class="toc-text">What is Search For?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Constraint-Satisfaction-Problems-1"><span class="toc-number">1.2.</span> <span class="toc-text">Constraint Satisfaction Problems</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSP-Examples"><span class="toc-number">1.3.</span> <span class="toc-text">CSP Examples</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Varieties-of-CSPs-and-Constraints"><span class="toc-number">1.4.</span> <span class="toc-text">Varieties of CSPs and Constraints</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Real-World-CSPs"><span class="toc-number">1.5.</span> <span class="toc-text">Real-World CSPs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Origin-The-Waltz-Algorithm"><span class="toc-number">1.6.</span> <span class="toc-text">Origin: The Waltz Algorithm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Guzman-Find-the-Problem"><span class="toc-number">1.7.</span> <span class="toc-text">Guzman: Find the Problem</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/06/19/ren-gong-zhi-neng-yuan-li-fu-xi-4/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/06/19/ren-gong-zhi-neng-yuan-li-fu-xi-4/&text=人工智能原理复习4"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/06/19/ren-gong-zhi-neng-yuan-li-fu-xi-4/&title=人工智能原理复习4"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/06/19/ren-gong-zhi-neng-yuan-li-fu-xi-4/&is_video=false&description=人工智能原理复习4"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=人工智能原理复习4&body=Check out this article: http://jrhu0048.github.io/2024/06/19/ren-gong-zhi-neng-yuan-li-fu-xi-4/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/06/19/ren-gong-zhi-neng-yuan-li-fu-xi-4/&title=人工智能原理复习4"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/06/19/ren-gong-zhi-neng-yuan-li-fu-xi-4/&title=人工智能原理复习4"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/06/19/ren-gong-zhi-neng-yuan-li-fu-xi-4/&title=人工智能原理复习4"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/06/19/ren-gong-zhi-neng-yuan-li-fu-xi-4/&title=人工智能原理复习4"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/06/19/ren-gong-zhi-neng-yuan-li-fu-xi-4/&name=人工智能原理复习4&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/06/19/ren-gong-zhi-neng-yuan-li-fu-xi-4/&t=人工智能原理复习4"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022-2024
+    JR.HU
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
