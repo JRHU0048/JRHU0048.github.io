@@ -26,8 +26,10 @@
 <meta property="og:image" content="https://pic.imgdb.cn/item/6671ba4dd9c307b7e92cb492.png">
 <meta property="og:image" content="https://pic.imgdb.cn/item/6671bd14d9c307b7e932a47d.png">
 <meta property="og:image" content="https://pic.imgdb.cn/item/6671bd28d9c307b7e932e088.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/66754b03d9c307b7e9f974b4.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/66755064d9c307b7e9060e40.png">
 <meta property="article:published_time" content="2024-06-18T16:36:07.000Z">
-<meta property="article:modified_time" content="2024-06-18T17:10:07.024Z">
+<meta property="article:modified_time" content="2024-06-21T10:31:05.173Z">
 <meta property="article:author" content="JR.HU">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://pic.imgdb.cn/item/6671b857d9c307b7e927ea35.png">
@@ -140,7 +142,7 @@
     
     
       <div id="toc">
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Constraint-Satisfaction-Problems"><span class="toc-number">1.</span> <span class="toc-text">Constraint Satisfaction Problems</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#What-is-Search-For"><span class="toc-number">1.1.</span> <span class="toc-text">What is Search For?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Constraint-Satisfaction-Problems-1"><span class="toc-number">1.2.</span> <span class="toc-text">Constraint Satisfaction Problems</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSP-Examples"><span class="toc-number">1.3.</span> <span class="toc-text">CSP Examples</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Varieties-of-CSPs-and-Constraints"><span class="toc-number">1.4.</span> <span class="toc-text">Varieties of CSPs and Constraints</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Real-World-CSPs"><span class="toc-number">1.5.</span> <span class="toc-text">Real-World CSPs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Origin-The-Waltz-Algorithm"><span class="toc-number">1.6.</span> <span class="toc-text">Origin: The Waltz Algorithm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Guzman-Find-the-Problem"><span class="toc-number">1.7.</span> <span class="toc-text">Guzman: Find the Problem</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Constraint-Satisfaction-Problems"><span class="toc-number">1.</span> <span class="toc-text">Constraint Satisfaction Problems</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#What-is-Search-For"><span class="toc-number">1.1.</span> <span class="toc-text">What is Search For?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Constraint-Satisfaction-Problems-1"><span class="toc-number">1.2.</span> <span class="toc-text">Constraint Satisfaction Problems</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSP-Examples"><span class="toc-number">1.3.</span> <span class="toc-text">CSP Examples</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Varieties-of-CSPs-and-Constraints"><span class="toc-number">1.4.</span> <span class="toc-text">Varieties of CSPs and Constraints</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Real-World-CSPs"><span class="toc-number">1.5.</span> <span class="toc-text">Real-World CSPs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Origin-The-Waltz-Algorithm"><span class="toc-number">1.6.</span> <span class="toc-text">Origin: The Waltz Algorithm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Guzman-Find-the-Problem"><span class="toc-number">1.7.</span> <span class="toc-text">Guzman: Find the Problem</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9E%E6%BA%AF%E6%90%9C%E7%B4%A2"><span class="toc-number">1.8.</span> <span class="toc-text">回溯搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Improving-Backtracking"><span class="toc-number">1.9.</span> <span class="toc-text">Improving Backtracking</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Filtering"><span class="toc-number">1.10.</span> <span class="toc-text">Filtering</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Filtering-Forward-Checking"><span class="toc-number">1.10.1.</span> <span class="toc-text">Filtering: Forward Checking</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Constraint-Propagation"><span class="toc-number">1.11.</span> <span class="toc-text">Constraint Propagation</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E7%9B%B8%E5%AE%B9"><span class="toc-number">1.11.1.</span> <span class="toc-text">节点相容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%A7%E7%9B%B8%E5%AE%B9"><span class="toc-number">1.11.2.</span> <span class="toc-text">弧相容</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E6%95%88%E8%A7%A3%E5%86%B3CSP"><span class="toc-number">1.12.</span> <span class="toc-text">有效解决CSP</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E5%92%8C%E5%8F%96%E5%80%BC%E9%A1%BA%E5%BA%8F"><span class="toc-number">1.12.1.</span> <span class="toc-text">变量和取值顺序</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">变量：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%80%BC%EF%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">值：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E4%B8%8E%E6%8E%A8%E7%90%86%E4%BA%A4%E9%94%99%E8%BF%9B%E8%A1%8C"><span class="toc-number">4.</span> <span class="toc-text">搜索与推理交错进行</span></a></li></ol>
       </div>
     
   </span>
@@ -225,6 +227,46 @@
 <h3 id="Guzman-Find-the-Problem"><a href="#Guzman-Find-the-Problem" class="headerlink" title="Guzman: Find the Problem"></a>Guzman: Find the Problem</h3><p>Question: how to detect the number of objects by machine？</p>
 <p><img src="https://pic.imgdb.cn/item/6671bd14d9c307b7e932a47d.png" alt="alt text"></p>
 <p><img src="https://pic.imgdb.cn/item/6671bd28d9c307b7e932e088.png" alt="alt text"></p>
+<h3 id="回溯搜索"><a href="#回溯搜索" class="headerlink" title="回溯搜索"></a>回溯搜索</h3><p>在深度优先搜索的基础上增加如下改进：</p>
+<p>1、每次只考虑一个变量</p>
+<p>2、可以随时检查约束（增加测试函数）</p>
+<p><img src="https://pic.imgdb.cn/item/66754b03d9c307b7e9f974b4.png" alt="alt text"></p>
+<p>Backtracking &#x3D; DFS + variable-ordering + fail-on-violation</p>
+<h3 id="Improving-Backtracking"><a href="#Improving-Backtracking" class="headerlink" title="Improving Backtracking"></a>Improving Backtracking</h3><p>Ordering: </p>
+<p>o Which variable should be assigned next?</p>
+<p>o In what order should its values be tried?</p>
+<h3 id="Filtering"><a href="#Filtering" class="headerlink" title="Filtering"></a>Filtering</h3><p>Keep track of domains for unassigned variables and cross off bad options</p>
+<h4 id="Filtering-Forward-Checking"><a href="#Filtering-Forward-Checking" class="headerlink" title="Filtering: Forward Checking"></a>Filtering: Forward Checking</h4><p>o Filtering: Keep track of domains for unassigned variables and cross off bad options</p>
+<p>o Forward checking: Cross off values that violate a constraint when added to the existing assignment</p>
+<h3 id="Constraint-Propagation"><a href="#Constraint-Propagation" class="headerlink" title="Constraint Propagation"></a>Constraint Propagation</h3><p>约束传播</p>
+<p>核心思想：局部相容性</p>
+<p>一元约束：只限制单个变量的取值 </p>
+<p>二元约束：与两个变量有关</p>
+<p>变量个数任意的约束称为全局约束</p>
+<h4 id="节点相容"><a href="#节点相容" class="headerlink" title="节点相容"></a>节点相容</h4><p>单个变量（对应一个节点）值域中的所有取值满足它的一元约束，就是节点相容的。</p>
+<h4 id="弧相容"><a href="#弧相容" class="headerlink" title="弧相容"></a>弧相容</h4><p>如果CSP中某变量值域中所有取值满足该变量所有二元约束，则此变量弧相容</p>
+<p>弧相容算法AC-3</p>
+<p>弧相容可能缩小变量的值域，有时甚至还能找到解（每个变量值域大小都为1时），或者有时发现CSP无解（一些变量的值域大小&#x3D;0）</p>
+<p>路径相容（路径一致性，也就是下面k&#x3D;3的情况）：观察变量得到隐式约束，并以此来加强二元约束</p>
+<p><img src="https://pic.imgdb.cn/item/66755064d9c307b7e9060e40.png" alt="alt text"></p>
+<p>k-相容：如果对于任何k-1个变量的相容赋值，第k个变量总能被赋予一个和前k-1个变量相容的值，那么这个CSP就是k相容的。</p>
+<p>k越高，计算成本越高</p>
+<p>k一致性</p>
+<p>k&#x3D;2的情况：弧一致性（弧相容）</p>
+<p>部分赋值的回溯搜索算法： </p>
+<p>可以用标准的<strong>深度优先搜索</strong>，状态可能是部分赋值，行动是将var&#x3D;value加入到赋值中。<br>回溯搜索用于深度优先搜索中，每次为一个变量选一个赋值，没有合法的值的时候就回溯。</p>
+<h3 id="有效解决CSP"><a href="#有效解决CSP" class="headerlink" title="有效解决CSP"></a>有效解决CSP</h3><h4 id="变量和取值顺序"><a href="#变量和取值顺序" class="headerlink" title="变量和取值顺序"></a>变量和取值顺序</h4><h2 id="变量："><a href="#变量：" class="headerlink" title="变量："></a>变量：</h2><p>1）选择“合法”取值最少的变量——称为最少剩余值（MRV）启发式。（做一个强有力的引导，方便提早遇到失败，从而剪枝）</p>
+<p>2）度启发式：通过选择与其他未赋值变量约束最多的变量来试图降低未来的分支因子。（用来打破僵局，如选择第一个着色区域）</p>
+<p>“Fail-fast” ordering</p>
+<blockquote>
+<p>总结一下，对于变量的选择原则是：可选变量最少、约束冲突最多的变量先安排！</p>
+</blockquote>
+<h2 id="值："><a href="#值：" class="headerlink" title="值："></a>值：</h2><p>最少约束值：优先选择的赋值是给邻居变量留下更多的选择</p>
+<h2 id="搜索与推理交错进行"><a href="#搜索与推理交错进行" class="headerlink" title="搜索与推理交错进行"></a>搜索与推理交错进行</h2><p>前向检验：只要变量X被赋值，就对它进行弧相容检查，对每个通过约束与X相关的未赋值变量Y，从Y值域中删去与X不相容的值。</p>
+<p>智能回溯：向后看<br>主要概念：前向检验；冲突集；回跳</p>
+<p>【参考资料】</p>
+<p><a target="_blank" rel="noopener" href="http://t.csdnimg.cn/ck8s2">http://t.csdnimg.cn/ck8s2</a></p>
+<p><a target="_blank" rel="noopener" href="http://t.csdnimg.cn/keaAl">http://t.csdnimg.cn/keaAl</a></p>
 
   </div>
 </article>
@@ -254,7 +296,7 @@
     
     
       <div id="toc-footer" style="display: none">
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Constraint-Satisfaction-Problems"><span class="toc-number">1.</span> <span class="toc-text">Constraint Satisfaction Problems</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#What-is-Search-For"><span class="toc-number">1.1.</span> <span class="toc-text">What is Search For?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Constraint-Satisfaction-Problems-1"><span class="toc-number">1.2.</span> <span class="toc-text">Constraint Satisfaction Problems</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSP-Examples"><span class="toc-number">1.3.</span> <span class="toc-text">CSP Examples</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Varieties-of-CSPs-and-Constraints"><span class="toc-number">1.4.</span> <span class="toc-text">Varieties of CSPs and Constraints</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Real-World-CSPs"><span class="toc-number">1.5.</span> <span class="toc-text">Real-World CSPs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Origin-The-Waltz-Algorithm"><span class="toc-number">1.6.</span> <span class="toc-text">Origin: The Waltz Algorithm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Guzman-Find-the-Problem"><span class="toc-number">1.7.</span> <span class="toc-text">Guzman: Find the Problem</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Constraint-Satisfaction-Problems"><span class="toc-number">1.</span> <span class="toc-text">Constraint Satisfaction Problems</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#What-is-Search-For"><span class="toc-number">1.1.</span> <span class="toc-text">What is Search For?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Constraint-Satisfaction-Problems-1"><span class="toc-number">1.2.</span> <span class="toc-text">Constraint Satisfaction Problems</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSP-Examples"><span class="toc-number">1.3.</span> <span class="toc-text">CSP Examples</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Varieties-of-CSPs-and-Constraints"><span class="toc-number">1.4.</span> <span class="toc-text">Varieties of CSPs and Constraints</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Real-World-CSPs"><span class="toc-number">1.5.</span> <span class="toc-text">Real-World CSPs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Origin-The-Waltz-Algorithm"><span class="toc-number">1.6.</span> <span class="toc-text">Origin: The Waltz Algorithm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Guzman-Find-the-Problem"><span class="toc-number">1.7.</span> <span class="toc-text">Guzman: Find the Problem</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9E%E6%BA%AF%E6%90%9C%E7%B4%A2"><span class="toc-number">1.8.</span> <span class="toc-text">回溯搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Improving-Backtracking"><span class="toc-number">1.9.</span> <span class="toc-text">Improving Backtracking</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Filtering"><span class="toc-number">1.10.</span> <span class="toc-text">Filtering</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Filtering-Forward-Checking"><span class="toc-number">1.10.1.</span> <span class="toc-text">Filtering: Forward Checking</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Constraint-Propagation"><span class="toc-number">1.11.</span> <span class="toc-text">Constraint Propagation</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E7%9B%B8%E5%AE%B9"><span class="toc-number">1.11.1.</span> <span class="toc-text">节点相容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%A7%E7%9B%B8%E5%AE%B9"><span class="toc-number">1.11.2.</span> <span class="toc-text">弧相容</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E6%95%88%E8%A7%A3%E5%86%B3CSP"><span class="toc-number">1.12.</span> <span class="toc-text">有效解决CSP</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E5%92%8C%E5%8F%96%E5%80%BC%E9%A1%BA%E5%BA%8F"><span class="toc-number">1.12.1.</span> <span class="toc-text">变量和取值顺序</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">变量：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%80%BC%EF%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">值：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E4%B8%8E%E6%8E%A8%E7%90%86%E4%BA%A4%E9%94%99%E8%BF%9B%E8%A1%8C"><span class="toc-number">4.</span> <span class="toc-text">搜索与推理交错进行</span></a></li></ol>
       </div>
     
 
