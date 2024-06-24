@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="对抗搜索与博弈https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;667251930 游戏类型： 零和博弈 、一般游戏 零和博弈：人工智能领域中最常研究的博弈（例如国际象棋和围棋）是博弈论学者所称的确定性、双人、轮流、完美信息（perfect information）的零和博弈。“完美信息”是“完全可观测”的同义词，“零和”意味着对一方有利的东西将对另一方同等程度有害：不存在“双赢”结果。在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人工智能原理复习5">
+<meta property="og:url" content="http://jrhu0048.github.io/2024/06/24/ren-gong-zhi-neng-yuan-li-fu-xi-5/index.html">
+<meta property="og:site_name" content="CHARMMY">
+<meta property="og:description" content="对抗搜索与博弈https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;667251930 游戏类型： 零和博弈 、一般游戏 零和博弈：人工智能领域中最常研究的博弈（例如国际象棋和围棋）是博弈论学者所称的确定性、双人、轮流、完美信息（perfect information）的零和博弈。“完美信息”是“完全可观测”的同义词，“零和”意味着对一方有利的东西将对另一方同等程度有害：不存在“双赢”结果。在">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/667946d2d9c307b7e901ef9e.png">
+<meta property="article:published_time" content="2024-06-24T10:07:39.000Z">
+<meta property="article:modified_time" content="2024-06-24T10:17:04.669Z">
+<meta property="article:author" content="JR.HU">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/667946d2d9c307b7e901ef9e.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>人工智能原理复习5</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2024/06/22/cao-zuo-xi-tong-yuan-li-qi-mo-fu-xi/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/06/24/ren-gong-zhi-neng-yuan-li-fu-xi-5/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/06/24/ren-gong-zhi-neng-yuan-li-fu-xi-5/&text=人工智能原理复习5"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/06/24/ren-gong-zhi-neng-yuan-li-fu-xi-5/&title=人工智能原理复习5"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/06/24/ren-gong-zhi-neng-yuan-li-fu-xi-5/&is_video=false&description=人工智能原理复习5"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=人工智能原理复习5&body=Check out this article: http://jrhu0048.github.io/2024/06/24/ren-gong-zhi-neng-yuan-li-fu-xi-5/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/06/24/ren-gong-zhi-neng-yuan-li-fu-xi-5/&title=人工智能原理复习5"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/06/24/ren-gong-zhi-neng-yuan-li-fu-xi-5/&title=人工智能原理复习5"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/06/24/ren-gong-zhi-neng-yuan-li-fu-xi-5/&title=人工智能原理复习5"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/06/24/ren-gong-zhi-neng-yuan-li-fu-xi-5/&title=人工智能原理复习5"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/06/24/ren-gong-zhi-neng-yuan-li-fu-xi-5/&name=人工智能原理复习5&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/06/24/ren-gong-zhi-neng-yuan-li-fu-xi-5/&t=人工智能原理复习5"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E6%8A%97%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%8D%9A%E5%BC%88"><span class="toc-number">1.</span> <span class="toc-text">对抗搜索与博弈</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        人工智能原理复习5
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">JR.HU</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-06-24T10:07:39.000Z" class="dt-published" itemprop="datePublished">2024-06-24</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="对抗搜索与博弈"><a href="#对抗搜索与博弈" class="headerlink" title="对抗搜索与博弈"></a>对抗搜索与博弈</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/667251930">https://zhuanlan.zhihu.com/p/667251930</a></p>
+<p>游戏类型： 零和博弈 、一般游戏</p>
+<p>零和博弈：人工智能领域中最常研究的博弈（例如国际象棋和围棋）是博弈论学者所称的确定性、双人、轮流、完美信息（perfect information）的零和博弈。“完美信息”是“完全可观测”的同义词，“零和”意味着对一方有利的东西将对另一方同等程度有害：不存在“双赢”结果。在博弈论中，我们通常用移动（move）作为“动 作”（action）的同义词，用局面（position）作为“状态”（state）的同义词。</p>
+<blockquote>
+<p>【常见案例】：国际象棋、围棋</p>
+</blockquote>
+<p>对抗性搜索</p>
+<p>o 状态：S（从 s 开始）<br>o 玩家：P&#x3D;{1…N}（通常轮流）<br>o 操作：A（可能取决于玩家&#x2F;状态）<br>o 转换函数：SxA -&gt; S<br>o 终端测试：S -&gt; {t，f}<br>o 终端实用程序：SxP -&gt; R</p>
+<p>Solution for a player is a policy: S -&gt; A</p>
+<p>博弈中的优化决策</p>
+<p>MAX想要找到通往胜利的动作序列，但MIN不希望MAX获胜。这意味着MAX的策略必须是一个条件规划——一个随机应变策略，指定对MIN的每个可能移动的响应。对于具有多个结果分数的博弈,即极小化极大搜索。</p>
+<blockquote>
+<p>minimax</p>
+</blockquote>
+<p><img src="https://pic.imgdb.cn/item/667946d2d9c307b7e901ef9e.png" alt="alt text"></p>
+<p>极小化极大值 （minimax value）</p>
+<p>某一状态的极小化极大值是指，假设从该状态到博弈结束两个参与者都以最优策略行动，到达的终止状态对于MAX的效用值。</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/tags/">标签</a></li>
+        
+          <li><a href="/categories/">分类</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E6%8A%97%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%8D%9A%E5%BC%88"><span class="toc-number">1.</span> <span class="toc-text">对抗搜索与博弈</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/06/24/ren-gong-zhi-neng-yuan-li-fu-xi-5/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/06/24/ren-gong-zhi-neng-yuan-li-fu-xi-5/&text=人工智能原理复习5"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/06/24/ren-gong-zhi-neng-yuan-li-fu-xi-5/&title=人工智能原理复习5"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/06/24/ren-gong-zhi-neng-yuan-li-fu-xi-5/&is_video=false&description=人工智能原理复习5"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=人工智能原理复习5&body=Check out this article: http://jrhu0048.github.io/2024/06/24/ren-gong-zhi-neng-yuan-li-fu-xi-5/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/06/24/ren-gong-zhi-neng-yuan-li-fu-xi-5/&title=人工智能原理复习5"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/06/24/ren-gong-zhi-neng-yuan-li-fu-xi-5/&title=人工智能原理复习5"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/06/24/ren-gong-zhi-neng-yuan-li-fu-xi-5/&title=人工智能原理复习5"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/06/24/ren-gong-zhi-neng-yuan-li-fu-xi-5/&title=人工智能原理复习5"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/06/24/ren-gong-zhi-neng-yuan-li-fu-xi-5/&name=人工智能原理复习5&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/06/24/ren-gong-zhi-neng-yuan-li-fu-xi-5/&t=人工智能原理复习5"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022-2024
+    JR.HU
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

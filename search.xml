@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>人工智能原理复习5</title>
+      <link href="/2024/06/24/ren-gong-zhi-neng-yuan-li-fu-xi-5/"/>
+      <url>/2024/06/24/ren-gong-zhi-neng-yuan-li-fu-xi-5/</url>
+      
+        <content type="html"><![CDATA[<h2 id="对抗搜索与博弈"><a href="#对抗搜索与博弈" class="headerlink" title="对抗搜索与博弈"></a>对抗搜索与博弈</h2><p><a href="https://zhuanlan.zhihu.com/p/667251930">https://zhuanlan.zhihu.com/p/667251930</a></p><p>游戏类型： 零和博弈 、一般游戏</p><p>零和博弈：人工智能领域中最常研究的博弈（例如国际象棋和围棋）是博弈论学者所称的确定性、双人、轮流、完美信息（perfect information）的零和博弈。“完美信息”是“完全可观测”的同义词，“零和”意味着对一方有利的东西将对另一方同等程度有害：不存在“双赢”结果。在博弈论中，我们通常用移动（move）作为“动 作”（action）的同义词，用局面（position）作为“状态”（state）的同义词。</p><blockquote><p>【常见案例】：国际象棋、围棋</p></blockquote><p>对抗性搜索</p><p>o 状态：S（从 s 开始）<br>o 玩家：P&#x3D;{1…N}（通常轮流）<br>o 操作：A（可能取决于玩家&#x2F;状态）<br>o 转换函数：SxA -&gt; S<br>o 终端测试：S -&gt; {t，f}<br>o 终端实用程序：SxP -&gt; R</p><p>Solution for a player is a policy: S -&gt; A</p><p>博弈中的优化决策</p><p>MAX想要找到通往胜利的动作序列，但MIN不希望MAX获胜。这意味着MAX的策略必须是一个条件规划——一个随机应变策略，指定对MIN的每个可能移动的响应。对于具有多个结果分数的博弈,即极小化极大搜索。</p><blockquote><p>minimax</p></blockquote><p><img src="https://pic.imgdb.cn/item/667946d2d9c307b7e901ef9e.png" alt="alt text"></p><p>极小化极大值 （minimax value）</p><p>某一状态的极小化极大值是指，假设从该状态到博弈结束两个参与者都以最优策略行动，到达的终止状态对于MAX的效用值。</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>操作系统原理期末复习</title>
       <link href="/2024/06/22/cao-zuo-xi-tong-yuan-li-qi-mo-fu-xi/"/>
       <url>/2024/06/22/cao-zuo-xi-tong-yuan-li-qi-mo-fu-xi/</url>
