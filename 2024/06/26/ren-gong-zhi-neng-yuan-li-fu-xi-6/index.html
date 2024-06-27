@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Markov Decision ProcessesAn MDP is defined by: A set of states s ∈ S A set of actions a ∈ A A transition function T(s, a, s’) （1）Probability that a from s leads to s’, i.e., P(s’| s, a)（2）Also called">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人工智能原理复习6">
+<meta property="og:url" content="http://jrhu0048.github.io/2024/06/26/ren-gong-zhi-neng-yuan-li-fu-xi-6/index.html">
+<meta property="og:site_name" content="CHARMMY">
+<meta property="og:description" content="Markov Decision ProcessesAn MDP is defined by: A set of states s ∈ S A set of actions a ∈ A A transition function T(s, a, s’) （1）Probability that a from s leads to s’, i.e., P(s’| s, a)（2）Also called">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/667b8546d9c307b7e9d87a6c.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/667b8774d9c307b7e9dba286.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/667c101bd9c307b7e9c9a337.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/667c11f0d9c307b7e9ce7f4b.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/667c1336d9c307b7e9d15596.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/667c1647d9c307b7e9d7e009.png">
+<meta property="article:published_time" content="2024-06-26T02:27:35.000Z">
+<meta property="article:modified_time" content="2024-06-26T13:50:41.397Z">
+<meta property="article:author" content="JR.HU">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/667b8546d9c307b7e9d87a6c.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>人工智能原理复习6</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2024/06/24/ren-gong-zhi-neng-yuan-li-fu-xi-5/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/06/26/ren-gong-zhi-neng-yuan-li-fu-xi-6/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/06/26/ren-gong-zhi-neng-yuan-li-fu-xi-6/&text=人工智能原理复习6"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/06/26/ren-gong-zhi-neng-yuan-li-fu-xi-6/&title=人工智能原理复习6"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/06/26/ren-gong-zhi-neng-yuan-li-fu-xi-6/&is_video=false&description=人工智能原理复习6"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=人工智能原理复习6&body=Check out this article: http://jrhu0048.github.io/2024/06/26/ren-gong-zhi-neng-yuan-li-fu-xi-6/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/06/26/ren-gong-zhi-neng-yuan-li-fu-xi-6/&title=人工智能原理复习6"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/06/26/ren-gong-zhi-neng-yuan-li-fu-xi-6/&title=人工智能原理复习6"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/06/26/ren-gong-zhi-neng-yuan-li-fu-xi-6/&title=人工智能原理复习6"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/06/26/ren-gong-zhi-neng-yuan-li-fu-xi-6/&title=人工智能原理复习6"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/06/26/ren-gong-zhi-neng-yuan-li-fu-xi-6/&name=人工智能原理复习6&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/06/26/ren-gong-zhi-neng-yuan-li-fu-xi-6/&t=人工智能原理复习6"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Markov-Decision-Processes"><span class="toc-number">1.</span> <span class="toc-text">Markov Decision Processes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-Markov-about-MDPs"><span class="toc-number">2.</span> <span class="toc-text">What is Markov about MDPs?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Policies"><span class="toc-number">3.</span> <span class="toc-text">Policies</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MDP-Search-Trees"><span class="toc-number">4.</span> <span class="toc-text">MDP Search Trees</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Recursive-definition-of-value"><span class="toc-number">5.</span> <span class="toc-text">Recursive definition of value</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Value-Iteration"><span class="toc-number">6.</span> <span class="toc-text">Value Iteration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problems-with-Value-Iteration"><span class="toc-number">7.</span> <span class="toc-text">Problems with Value Iteration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Policy-Iteration-%E7%AD%96%E7%95%A5%E8%BF%AD%E4%BB%A3"><span class="toc-number">8.</span> <span class="toc-text">Policy Iteration 策略迭代</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Comparison"><span class="toc-number">9.</span> <span class="toc-text">Comparison</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Summary-MDP-Algorithms"><span class="toc-number">10.</span> <span class="toc-text">Summary: MDP Algorithms</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reinforcement-Learning"><span class="toc-number">11.</span> <span class="toc-text">Reinforcement Learning</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Important-ideas-in-reinforcement-learning-that-came-up"><span class="toc-number">12.</span> <span class="toc-text">Important ideas in reinforcement learning that came up</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Offline-MDPs-vs-Online-RL"><span class="toc-number">13.</span> <span class="toc-text">Offline (MDPs) vs. Online (RL)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Model-Based-Learning-%E6%A6%82%E7%8E%87%E6%A8%A1%E5%9E%8B"><span class="toc-number">13.1.</span> <span class="toc-text">Model-Based Learning(概率模型)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Model-Free-Learning"><span class="toc-number">13.2.</span> <span class="toc-text">Model-Free Learning</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        人工智能原理复习6
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">JR.HU</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-06-26T02:27:35.000Z" class="dt-published" itemprop="datePublished">2024-06-26</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="Markov-Decision-Processes"><a href="#Markov-Decision-Processes" class="headerlink" title="Markov Decision Processes"></a>Markov Decision Processes</h2><p>An MDP is defined by:</p>
+<p>A set of states s ∈ S</p>
+<p>A set of actions a ∈ A</p>
+<p>A transition function T(s, a, s’)</p>
+<p>（1）Probability that a from s leads to s’, i.e., P(s’| s, a)<br>（2）Also called the model or the dynamics</p>
+<p>A reward function R(s, a, s’)，Sometimes just R(s) or R(s’)</p>
+<p>A start state</p>
+<p>Maybe a terminal state</p>
+<h2 id="What-is-Markov-about-MDPs"><a href="#What-is-Markov-about-MDPs" class="headerlink" title="What is Markov about MDPs?"></a>What is Markov about MDPs?</h2><p>“马尔可夫”一般意味着在当前状态下，未来和过去是独立的</p>
+<p>对于马尔可夫决策过程，“马尔可夫”意味着行动结果仅取决于当前状态</p>
+<p>这就像搜索一样，后继函数只能依赖于当前状态（而不是历史）</p>
+<h2 id="Policies"><a href="#Policies" class="headerlink" title="Policies"></a>Policies</h2><p>对于 MDP，我们想要一个最优的政策 </p>
+<p><code>Π*：S → A</code></p>
+<p>策略：为每个状态给出一个动作 </p>
+<p>最优策略是如果遵循则能够最大化预期效用的策略</p>
+<h2 id="MDP-Search-Trees"><a href="#MDP-Search-Trees" class="headerlink" title="MDP Search Trees"></a>MDP Search Trees</h2><p><img src="https://pic.imgdb.cn/item/667b8546d9c307b7e9d87a6c.png" alt="alt text"></p>
+<p>The value (utility) of a state s:</p>
+<p>V*(s) &#x3D; expected utility starting in s and acting optimally<br>从 s 开始且表现最佳的预期效用</p>
+<p>The value (utility) of a q-state (s,a):</p>
+<p>Q*(s,a) &#x3D; expected utility starting out having taken action a from state s and (thereafter) acting optimally<br>从状态 s 采取行动 a 开始并且（此后）采取最佳行动的预期效用</p>
+<p>The optimal policy:</p>
+<p>Π*(s) &#x3D; optimal action from state s<br>从状态s开始的最佳行动</p>
+<h2 id="Recursive-definition-of-value"><a href="#Recursive-definition-of-value" class="headerlink" title="Recursive definition of value"></a>Recursive definition of value</h2><p><img src="https://pic.imgdb.cn/item/667b8774d9c307b7e9dba286.png" alt="https://pic.imgdb.cn/item/667b8774d9c307b7e9dba286.png"></p>
+<p>这个公式一定要会！</p>
+<h2 id="Value-Iteration"><a href="#Value-Iteration" class="headerlink" title="Value Iteration"></a>Value Iteration</h2><p><a target="_blank" rel="noopener" href="https://pic.imgdb.cn/item/667b8afdd9c307b7e9e0f811.png">https://pic.imgdb.cn/item/667b8afdd9c307b7e9e0f811.png</a></p>
+<h2 id="Problems-with-Value-Iteration"><a href="#Problems-with-Value-Iteration" class="headerlink" title="Problems with Value Iteration"></a>Problems with Value Iteration</h2><p>Value iteration repeats the Bellman updates:  </p>
+<p><img src="https://pic.imgdb.cn/item/667c101bd9c307b7e9c9a337.png" alt="alt text"></p>
+<p>o Problem 1: It’s slow – O(S2A) per iteration<br>o Problem 2: The “max” at each state rarely changes<br>o Problem 3: The policy often converges long before the values   </p>
+<h2 id="Policy-Iteration-策略迭代"><a href="#Policy-Iteration-策略迭代" class="headerlink" title="Policy Iteration 策略迭代"></a>Policy Iteration 策略迭代</h2><p>Alternative approach for optimal values:</p>
+<p>Step 1: Policy evaluation: calculate utilities for some fixed policy (not optimalutilities!) until convergence</p>
+<p>Step 2: Policy improvement: update policy using one-step look-ahead with resulting converged (but not optimal!) utilities as future values</p>
+<p>o Repeat steps until policy converges<br>o This is policy iteration<br>o It’s still optimal!<br>o Can converge (much) faster under some conditions   </p>
+<p>o 第 1 步：策略评估：计算某些固定策略的效用（不是最优效用！），直至收敛</p>
+<p>o 第 2 步：策略改进：使用一步前瞻更新策略，并将所得收敛（但不是最优！）效用作为未来值</p>
+<p>o 重复步骤直到策略收敛</p>
+<p>它仍然是最佳的！ </p>
+<p>在某些条件下可以更快地收敛</p>
+<p><img src="https://pic.imgdb.cn/item/667c11f0d9c307b7e9ce7f4b.png" alt="alt text"></p>
+<h2 id="Comparison"><a href="#Comparison" class="headerlink" title="Comparison"></a>Comparison</h2><p>Both <code>value iteration</code> and <code>policy iteration</code> compute the same thing (all optimal values)</p>
+<p>In value iteration:</p>
+<p>(1)Every iteration updates both the values and (implicitly) the policy</p>
+<p>(2)We don’t track the policy, but taking the max over actions implicitly recomputes it</p>
+<p>In policy iteration:</p>
+<p>(1)We do several passes that update utilities with fixed policy (each pass is fast because we consider only one action, not all of them)</p>
+<p>(2)After the policy is evaluated, a new policy is chosen (slow like a value iteration pass)</p>
+<p>(3)The new policy will be better (or we’re done)</p>
+<p>Both are dynamic programs for solving MDPs</p>
+<h2 id="Summary-MDP-Algorithms"><a href="#Summary-MDP-Algorithms" class="headerlink" title="Summary: MDP Algorithms"></a>Summary: MDP Algorithms</h2><p>So you want to….</p>
+<p>o Compute optimal values: use value iteration or policy iteration</p>
+<p>o Compute values for a particular policy: use policy evaluation</p>
+<p>o Turn your values into a policy: use policy extraction (one-step lookahead)</p>
+<p>These all look the same!</p>
+<p>o They basically are – they are all variations of Bellman updates</p>
+<p>o They all use one-step lookahead expectimax fragments</p>
+<p>o They differ only in whether we plug in a fixed policy or max over actions</p>
+<p><img src="https://pic.imgdb.cn/item/667c1336d9c307b7e9d15596.png" alt="alt text"></p>
+<h2 id="Reinforcement-Learning"><a href="#Reinforcement-Learning" class="headerlink" title="Reinforcement Learning"></a>Reinforcement Learning</h2><p>That wasn’t planning, it was learning!, Specifically, reinforcement learning</p>
+<p>There was an MDP, but you couldn’t solve it with just computation, You needed to actually act to figure it out</p>
+<p>o 具体来说，强化学习<br>o 有一个 MDP，但你无法仅通过计算来解决它<br>o 你需要实际行动来解决它   </p>
+<h2 id="Important-ideas-in-reinforcement-learning-that-came-up"><a href="#Important-ideas-in-reinforcement-learning-that-came-up" class="headerlink" title="Important ideas in reinforcement learning that came up"></a>Important ideas in reinforcement learning that came up</h2><p>Exploration: you have to try unknown actions to get information<br>Exploitation: eventually, you have to use what you know<br>Regret: even if you learn intelligently, you make mistakes<br>Sampling: because of chance, you have to try things repeatedly<br>Difficulty: learning can be much harder than solving a known MDP   </p>
+<p>o 探索：你必须尝试未知的行动来获取信息<br>o 利用：最终，你必须使用你所知道的<br>o 遗憾：即使你聪明地学习，你也会犯错误<br>o 采样：因为偶然，你必须反复尝试<br>o 难度：学习比解决已知的 MDP 困难得多    </p>
+<p>New twist: don’t know T or R<br>I.e. we don’t know which states are good or what the actions do<br>Must actually try actions and states out to learn    </p>
+<p><img src="https://pic.imgdb.cn/item/667c1647d9c307b7e9d7e009.png" alt="alt text"></p>
+<p>Basic idea:<br>Receive feedback in the form of rewards<br>Agent’s utility is defined by the reward function<br>Must (learn to) act so as to maximize expected rewards<br>All learning is based on observed samples of outcomes!   </p>
+<h2 id="Offline-MDPs-vs-Online-RL"><a href="#Offline-MDPs-vs-Online-RL" class="headerlink" title="Offline (MDPs) vs. Online (RL)"></a>Offline (MDPs) vs. Online (RL)</h2><h3 id="Model-Based-Learning-概率模型"><a href="#Model-Based-Learning-概率模型" class="headerlink" title="Model-Based Learning(概率模型)"></a>Model-Based Learning(概率模型)</h3><p>Estimate T and R using historical data (Episodes).</p>
+<p>利用重复尝试的概率来实现</p>
+<h3 id="Model-Free-Learning"><a href="#Model-Free-Learning" class="headerlink" title="Model-Free Learning"></a>Model-Free Learning</h3><p>无模型的学习又可分为：被动强化学习和主动强化学习</p>
+<p>1、Passive reinforcement learning</p>
+<p>Goal: learn the state values</p>
+<p>（1）Direct evaluation 直接评估</p>
+<p>Goal: Compute values for each state under Π</p>
+<p>（2）Temporal difference learning 时序差分学习</p>
+<p>Big idea: learn from every experience!</p>
+<p>2、Active reinforcement learning</p>
+<p>Q-learning</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/tags/">标签</a></li>
+        
+          <li><a href="/categories/">分类</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Markov-Decision-Processes"><span class="toc-number">1.</span> <span class="toc-text">Markov Decision Processes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-Markov-about-MDPs"><span class="toc-number">2.</span> <span class="toc-text">What is Markov about MDPs?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Policies"><span class="toc-number">3.</span> <span class="toc-text">Policies</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MDP-Search-Trees"><span class="toc-number">4.</span> <span class="toc-text">MDP Search Trees</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Recursive-definition-of-value"><span class="toc-number">5.</span> <span class="toc-text">Recursive definition of value</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Value-Iteration"><span class="toc-number">6.</span> <span class="toc-text">Value Iteration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Problems-with-Value-Iteration"><span class="toc-number">7.</span> <span class="toc-text">Problems with Value Iteration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Policy-Iteration-%E7%AD%96%E7%95%A5%E8%BF%AD%E4%BB%A3"><span class="toc-number">8.</span> <span class="toc-text">Policy Iteration 策略迭代</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Comparison"><span class="toc-number">9.</span> <span class="toc-text">Comparison</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Summary-MDP-Algorithms"><span class="toc-number">10.</span> <span class="toc-text">Summary: MDP Algorithms</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reinforcement-Learning"><span class="toc-number">11.</span> <span class="toc-text">Reinforcement Learning</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Important-ideas-in-reinforcement-learning-that-came-up"><span class="toc-number">12.</span> <span class="toc-text">Important ideas in reinforcement learning that came up</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Offline-MDPs-vs-Online-RL"><span class="toc-number">13.</span> <span class="toc-text">Offline (MDPs) vs. Online (RL)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Model-Based-Learning-%E6%A6%82%E7%8E%87%E6%A8%A1%E5%9E%8B"><span class="toc-number">13.1.</span> <span class="toc-text">Model-Based Learning(概率模型)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Model-Free-Learning"><span class="toc-number">13.2.</span> <span class="toc-text">Model-Free Learning</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/06/26/ren-gong-zhi-neng-yuan-li-fu-xi-6/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/06/26/ren-gong-zhi-neng-yuan-li-fu-xi-6/&text=人工智能原理复习6"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/06/26/ren-gong-zhi-neng-yuan-li-fu-xi-6/&title=人工智能原理复习6"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/06/26/ren-gong-zhi-neng-yuan-li-fu-xi-6/&is_video=false&description=人工智能原理复习6"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=人工智能原理复习6&body=Check out this article: http://jrhu0048.github.io/2024/06/26/ren-gong-zhi-neng-yuan-li-fu-xi-6/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/06/26/ren-gong-zhi-neng-yuan-li-fu-xi-6/&title=人工智能原理复习6"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/06/26/ren-gong-zhi-neng-yuan-li-fu-xi-6/&title=人工智能原理复习6"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/06/26/ren-gong-zhi-neng-yuan-li-fu-xi-6/&title=人工智能原理复习6"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/06/26/ren-gong-zhi-neng-yuan-li-fu-xi-6/&title=人工智能原理复习6"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/06/26/ren-gong-zhi-neng-yuan-li-fu-xi-6/&name=人工智能原理复习6&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/06/26/ren-gong-zhi-neng-yuan-li-fu-xi-6/&t=人工智能原理复习6"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022-2024
+    JR.HU
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
