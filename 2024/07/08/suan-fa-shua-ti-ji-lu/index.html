@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="暑期算法刷题记录 希望能够有所改变！ 1、数位递增的数题目链接 1234567891011# 解法一n &#x3D; int(input())ans &#x3D; 0for i in range(1, n):    x &#x3D; str(i)    for j in range(len(x)-1):        if x[j] &gt; x[j+1]:            break    else:        a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法刷题记录">
+<meta property="og:url" content="http://jrhu0048.github.io/2024/07/08/suan-fa-shua-ti-ji-lu/index.html">
+<meta property="og:site_name" content="CHARMMY">
+<meta property="og:description" content="暑期算法刷题记录 希望能够有所改变！ 1、数位递增的数题目链接 1234567891011# 解法一n &#x3D; int(input())ans &#x3D; 0for i in range(1, n):    x &#x3D; str(i)    for j in range(len(x)-1):        if x[j] &gt; x[j+1]:            break    else:        a">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-07-08T09:53:40.000Z">
+<meta property="article:modified_time" content="2024-07-30T09:40:29.080Z">
+<meta property="article:author" content="JR.HU">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>算法刷题记录</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2024/07/06/c-ji-chu/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/07/08/suan-fa-shua-ti-ji-lu/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/07/08/suan-fa-shua-ti-ji-lu/&text=算法刷题记录"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/07/08/suan-fa-shua-ti-ji-lu/&title=算法刷题记录"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/07/08/suan-fa-shua-ti-ji-lu/&is_video=false&description=算法刷题记录"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=算法刷题记录&body=Check out this article: http://jrhu0048.github.io/2024/07/08/suan-fa-shua-ti-ji-lu/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/07/08/suan-fa-shua-ti-ji-lu/&title=算法刷题记录"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/07/08/suan-fa-shua-ti-ji-lu/&title=算法刷题记录"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/07/08/suan-fa-shua-ti-ji-lu/&title=算法刷题记录"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/07/08/suan-fa-shua-ti-ji-lu/&title=算法刷题记录"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/07/08/suan-fa-shua-ti-ji-lu/&name=算法刷题记录&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/07/08/suan-fa-shua-ti-ji-lu/&t=算法刷题记录"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E6%95%B0%E4%BD%8D%E9%80%92%E5%A2%9E%E7%9A%84%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">1、数位递增的数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%87%AF%E6%92%92%E5%8A%A0%E5%AF%86"><span class="toc-number">2.</span> <span class="toc-text">2、凯撒加密   </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E6%9C%80%E5%A4%A7%E8%B7%9D%E7%A6%BB"><span class="toc-number">3.</span> <span class="toc-text">3、最大距离 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E5%8F%8D%E5%80%8D%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text">4、反倍数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E6%B4%81%E5%87%80%E6%95%B0"><span class="toc-number">5.</span> <span class="toc-text">5、洁净数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81%E7%A1%AE%E5%AE%9A%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E5%8C%85%E5%90%AB%E5%94%AF%E4%B8%80%E5%AD%97%E7%AC%A6"><span class="toc-number">6.</span> <span class="toc-text">6、确定字符串是否包含唯一字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81%E7%A1%AE%E5%AE%9A%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E6%98%AF%E5%8F%A6%E4%B8%80%E4%B8%AA%E7%9A%84%E6%8E%92%E5%88%97"><span class="toc-number">7.</span> <span class="toc-text">7、确定字符串是否是另一个的排列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8%E3%80%81%E5%8E%8B%E7%BC%A9%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">8.</span> <span class="toc-text">8、压缩字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9%E3%80%81Fizz-Buzz%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%98"><span class="toc-number">9.</span> <span class="toc-text">9、Fizz Buzz经典问题</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        算法刷题记录
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">JR.HU</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-07-08T09:53:40.000Z" class="dt-published" itemprop="datePublished">2024-07-08</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>暑期算法刷题记录</p>
+<p>希望能够有所改变！</p>
+<h2 id="1、数位递增的数"><a href="#1、数位递增的数" class="headerlink" title="1、数位递增的数"></a>1、数位递增的数</h2><p><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/145/learning/?page_size=10&first_category_id=1&tags=%E7%9C%81%E6%A8%A1%E6%8B%9F%E8%B5%9B&origin=cup">题目链接</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解法一</span></span><br><span class="line">n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">ans = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n):</span><br><span class="line">    x = <span class="built_in">str</span>(i)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(x)-<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> x[j] &gt; x[j+<span class="number">1</span>]:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        ans += <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(ans)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解法二</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">num = <span class="number">0</span></span><br><span class="line">n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n+<span class="number">1</span>):</span><br><span class="line">    c = i</span><br><span class="line">    b = sys.maxsize  <span class="comment"># 获取最大整数值sys.maxsize</span></span><br><span class="line">    <span class="keyword">while</span> c &gt; <span class="number">0</span>:</span><br><span class="line">        a = c % <span class="number">10</span></span><br><span class="line">        <span class="keyword">if</span> a &gt; b:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        b = a</span><br><span class="line">        c //= <span class="number">10</span>  <span class="comment"># 使用整数除法</span></span><br><span class="line">    <span class="keyword">if</span> c == <span class="number">0</span>:</span><br><span class="line">        num += <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(num)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、凯撒加密"><a href="#2、凯撒加密" class="headerlink" title="2、凯撒加密   "></a>2、凯撒加密   </h2><p><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/154/learning/?page_size=10&first_category_id=1&tags=%E7%9C%81%E6%A8%A1%E6%8B%9F%E8%B5%9B&origin=cup">题目链接</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">c = <span class="built_in">input</span>()  <span class="comment"># 直接读取输入</span></span><br><span class="line">new_c = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> char <span class="keyword">in</span> c:</span><br><span class="line">    <span class="comment"># 计算下一个字符的ASCII值，并确保在有效的ASCII字符范围内</span></span><br><span class="line">    new_char = <span class="built_in">chr</span>((<span class="built_in">ord</span>(char)-<span class="number">97</span>+<span class="number">3</span>)%<span class="number">26</span>+<span class="number">97</span>)</span><br><span class="line">    new_c += new_char</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(new_c)</span><br></pre></td></tr></table></figure>
+
+<h2 id="3、最大距离"><a href="#3、最大距离" class="headerlink" title="3、最大距离 "></a>3、最大距离 </h2><p><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/155/learning/?page_size=10&first_category_id=1&tags=%E7%9C%81%E6%A8%A1%E6%8B%9F%E8%B5%9B&origin=cup&page=1">题目链接</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">s = <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">max_num = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n-<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i+<span class="number">1</span>,n):</span><br><span class="line">        max_num = <span class="built_in">max</span>(max_num,<span class="built_in">abs</span>(j-i) + <span class="built_in">abs</span>(s[j]-s[i]))</span><br><span class="line"><span class="built_in">print</span>(max_num)</span><br></pre></td></tr></table></figure>
+
+<h2 id="4、反倍数"><a href="#4、反倍数" class="headerlink" title="4、反倍数"></a>4、反倍数</h2><p><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/152/learning/?page_size=10&first_category_id=1&tags=%E7%9C%81%E6%A8%A1%E6%8B%9F%E8%B5%9B&origin=cup&page=1">题目链接</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">s = <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">ans = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">if</span> i%s[<span class="number">0</span>]!=<span class="number">0</span> <span class="keyword">and</span> i%s[<span class="number">1</span>]!=<span class="number">0</span> <span class="keyword">and</span> i%s[<span class="number">2</span>]!=<span class="number">0</span>:</span><br><span class="line">        ans += <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(ans)</span><br></pre></td></tr></table></figure>
+
+<h2 id="5、洁净数"><a href="#5、洁净数" class="headerlink" title="5、洁净数"></a>5、洁净数</h2><p><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/153/learning/?page_size=10&first_category_id=1&tags=%E7%9C%81%E6%A8%A1%E6%8B%9F%E8%B5%9B&origin=cup&page=1">题目链接</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不太聪明的版本,这里会运行超时</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">n= <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">ans=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    i_str = <span class="built_in">str</span>(i)</span><br><span class="line">    <span class="keyword">while</span> <span class="built_in">len</span>(i_str)&gt;<span class="number">0</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(i_str) == <span class="number">1</span> <span class="keyword">and</span> <span class="built_in">int</span>(i_str) != <span class="number">2</span>:</span><br><span class="line">            ans += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        a=<span class="built_in">int</span>(i_str[-<span class="number">1</span>])  <span class="comment"># 取个位数</span></span><br><span class="line">        <span class="keyword">if</span> a == <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            i_str = i_str[:-<span class="number">1</span>]  <span class="comment"># 去掉最后一位数</span></span><br><span class="line"><span class="built_in">print</span>(ans)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 参考别人的版本，使用到了判断字符或字符串是否在目标中</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">n=<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">count=<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n):</span><br><span class="line">      <span class="keyword">if</span> <span class="string">&quot;2&quot;</span> <span class="keyword">in</span> <span class="built_in">str</span>(i):</span><br><span class="line">          <span class="keyword">continue</span></span><br><span class="line">      <span class="keyword">else</span>:</span><br><span class="line">          count=count+<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(count)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="6、确定字符串是否包含唯一字符"><a href="#6、确定字符串是否包含唯一字符" class="headerlink" title="6、确定字符串是否包含唯一字符"></a>6、确定字符串是否包含唯一字符</h2><p><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/202/learning/?page=1&first_category_id=1&second_category_id=6">题目链接</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解法一：使用字典来计算各个字符出现的次数，再单独使用一个循环来判断是否有不唯一的字符出现</span></span><br><span class="line">c = <span class="built_in">input</span>().strip()</span><br><span class="line">n = <span class="built_in">len</span>(c)</span><br><span class="line">count = &#123;&#125;  <span class="comment"># 初始化计数器字典</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    <span class="keyword">if</span> c[i] <span class="keyword">in</span> count:</span><br><span class="line">        count[c[i]] += <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        count[c[i]] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查是否有重复的字符</span></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">any</span>(value &gt; <span class="number">1</span> <span class="keyword">for</span> value <span class="keyword">in</span> count.values()):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;NO&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;YES&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解法二：set(s) 将字符串 s 转换成一个集合，集合中的元素是唯一的，这意味着所有重复的字符都会被移除</span></span><br><span class="line">s=<span class="built_in">input</span>()</span><br><span class="line"><span class="keyword">if</span> <span class="built_in">len</span>(<span class="built_in">set</span>(s))==<span class="built_in">len</span>(s):</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&#x27;YES&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&#x27;NO&#x27;</span>) </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解法三：类似解法一，换了一种表达方式，使用列表来存储数据</span></span><br><span class="line">s = <span class="built_in">input</span>()</span><br><span class="line">s = s.upper()</span><br><span class="line">d = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">    <span class="keyword">if</span> i <span class="keyword">not</span> <span class="keyword">in</span> d:</span><br><span class="line">        d.append(i)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;NO&quot;</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;YES&quot;</span>) </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解法四：从第一个字符开始判断字符串中有几个该字符出现</span></span><br><span class="line"><span class="comment"># 使用到了str.count(sub)方法来计算子字符串sub在字符串s中出现的次数</span></span><br><span class="line">s = <span class="built_in">input</span>()</span><br><span class="line"><span class="keyword">for</span> word <span class="keyword">in</span> s:</span><br><span class="line">    <span class="keyword">if</span> s.count(word) != <span class="number">1</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;NO&quot;</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">if</span> word == s[-<span class="number">1</span>]:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;YES&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="7、确定字符串是否是另一个的排列"><a href="#7、确定字符串是否是另一个的排列" class="headerlink" title="7、确定字符串是否是另一个的排列"></a>7、确定字符串是否是另一个的排列</h2><p><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/203/learning/?page=1&first_category_id=1&second_category_id=6">题目链接</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解法一：使用字段来统计字符出现的次数，字典的键是字符，值是出现的次数</span></span><br><span class="line">s1 = <span class="built_in">input</span>()</span><br><span class="line">s2 = <span class="built_in">input</span>()</span><br><span class="line"></span><br><span class="line">count1 = &#123;&#125;</span><br><span class="line">count2 = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> s1:</span><br><span class="line">    <span class="keyword">if</span> i <span class="keyword">not</span> <span class="keyword">in</span> count1:</span><br><span class="line">        count1[i]=<span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        count1[i]+=<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> s2:</span><br><span class="line">    <span class="keyword">if</span> j <span class="keyword">not</span> <span class="keyword">in</span> count2:</span><br><span class="line">        count2[j]=<span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        count2[j]+=<span class="number">1</span></span><br><span class="line">        </span><br><span class="line"><span class="keyword">if</span> count1==count2:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;YES&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;NO&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解法二：将输入转换为列表，并使用sort()方法进行排序，确保列表中的字符按照升序排列，然后比较两个列表是否完全相同即可</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">s1 = <span class="built_in">list</span>(<span class="built_in">input</span>())</span><br><span class="line">s2 = <span class="built_in">list</span>(<span class="built_in">input</span>())</span><br><span class="line">s1.sort()</span><br><span class="line">s2.sort()</span><br><span class="line"><span class="keyword">if</span> s1 == s2:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;YES&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;NO&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解法三：确保两个字符串的长度一定相同，并且每个字符出现的次数也相同，同样可以保证两个字符串是一致的</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">a=<span class="built_in">input</span>()</span><br><span class="line">b=<span class="built_in">input</span>()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">    <span class="keyword">if</span> a.count(i)!=b.count(i) <span class="keyword">or</span> <span class="built_in">len</span>(a)!=<span class="built_in">len</span>(b): </span><br><span class="line">        s=<span class="string">&#x27;NO&#x27;</span></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        s=<span class="string">&#x27;YES&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(s)</span><br></pre></td></tr></table></figure>
+
+<h2 id="8、压缩字符串"><a href="#8、压缩字符串" class="headerlink" title="8、压缩字符串"></a>8、压缩字符串</h2><p><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/204/learning/?page=1&first_category_id=1&second_category_id=6">题目链接</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">s=<span class="built_in">input</span>()</span><br><span class="line">count=&#123;&#125;</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">    <span class="keyword">if</span> i <span class="keyword">not</span> <span class="keyword">in</span> count:</span><br><span class="line">        count[i] = <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        count[i]+=<span class="number">1</span></span><br><span class="line"></span><br><span class="line">ss=<span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> count:</span><br><span class="line">    <span class="keyword">if</span> count[i]&gt;<span class="number">1</span>:  <span class="comment"># 如果字符出现次数大于1</span></span><br><span class="line">        ss += i + <span class="built_in">str</span>(count[i])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        ss += i   <span class="comment"># 若只出现一次，那么数字1可以省略</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">len</span>(ss)&lt;<span class="built_in">len</span>(s):  <span class="comment"># 如果输入的字符串可以压缩，输出压缩的字符串</span></span><br><span class="line">    <span class="built_in">print</span>(ss)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;NO&quot;</span>)   <span class="comment"># 否则输出NO</span></span><br></pre></td></tr></table></figure>
+
+<p>但是上述解法不具备普遍性，比如：<br>测试 AAABBWWWWFFAAAAAAAVVQQQQER 输出是 A10B2W4F2V2Q4ER 但是正确答案是 A3B2W4F2A7V2Q4ER</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 优化版</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">s = <span class="built_in">input</span>()</span><br><span class="line">compressed = <span class="string">&quot;&quot;</span></span><br><span class="line">count = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(s)):</span><br><span class="line">    <span class="comment"># 如果当前字符与下一个字符相同，则增加计数----使用这种思路就可以解决上面提到的问题了</span></span><br><span class="line">    <span class="keyword">if</span> i &lt; <span class="built_in">len</span>(s) - <span class="number">1</span> <span class="keyword">and</span> s[i] == s[i + <span class="number">1</span>]:</span><br><span class="line">        count += <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># 否则，将字符和计数添加到压缩字符串中</span></span><br><span class="line">        <span class="keyword">if</span> count &gt; <span class="number">1</span>:</span><br><span class="line">            compressed += s[i] + <span class="built_in">str</span>(count)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            compressed += s[i]</span><br><span class="line">        count = <span class="number">1</span>  <span class="comment"># 重置计数</span></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">len</span>(compressed) &lt; <span class="built_in">len</span>(s):  </span><br><span class="line">    <span class="built_in">print</span>(compressed)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;NO&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="9、Fizz-Buzz经典问题"><a href="#9、Fizz-Buzz经典问题" class="headerlink" title="9、Fizz Buzz经典问题"></a>9、Fizz Buzz经典问题</h2><p><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/253/learning/?page=1&first_category_id=1&second_category_id=6">题目链接</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"><span class="keyword">if</span> n % <span class="number">3</span>==<span class="number">0</span>:</span><br><span class="line">    <span class="keyword">if</span> n % <span class="number">5</span>==<span class="number">0</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;FizzBuzz&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Fizz&quot;</span>)</span><br><span class="line"><span class="keyword">elif</span> n % <span class="number">5</span>==<span class="number">0</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Buzz&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(n)</span><br></pre></td></tr></table></figure>
+
+<p>10、</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/tags/">标签</a></li>
+        
+          <li><a href="/categories/">分类</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E6%95%B0%E4%BD%8D%E9%80%92%E5%A2%9E%E7%9A%84%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">1、数位递增的数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%87%AF%E6%92%92%E5%8A%A0%E5%AF%86"><span class="toc-number">2.</span> <span class="toc-text">2、凯撒加密   </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E6%9C%80%E5%A4%A7%E8%B7%9D%E7%A6%BB"><span class="toc-number">3.</span> <span class="toc-text">3、最大距离 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E5%8F%8D%E5%80%8D%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text">4、反倍数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E6%B4%81%E5%87%80%E6%95%B0"><span class="toc-number">5.</span> <span class="toc-text">5、洁净数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81%E7%A1%AE%E5%AE%9A%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E5%8C%85%E5%90%AB%E5%94%AF%E4%B8%80%E5%AD%97%E7%AC%A6"><span class="toc-number">6.</span> <span class="toc-text">6、确定字符串是否包含唯一字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81%E7%A1%AE%E5%AE%9A%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E6%98%AF%E5%8F%A6%E4%B8%80%E4%B8%AA%E7%9A%84%E6%8E%92%E5%88%97"><span class="toc-number">7.</span> <span class="toc-text">7、确定字符串是否是另一个的排列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8%E3%80%81%E5%8E%8B%E7%BC%A9%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">8.</span> <span class="toc-text">8、压缩字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9%E3%80%81Fizz-Buzz%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%98"><span class="toc-number">9.</span> <span class="toc-text">9、Fizz Buzz经典问题</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/07/08/suan-fa-shua-ti-ji-lu/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/07/08/suan-fa-shua-ti-ji-lu/&text=算法刷题记录"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/07/08/suan-fa-shua-ti-ji-lu/&title=算法刷题记录"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/07/08/suan-fa-shua-ti-ji-lu/&is_video=false&description=算法刷题记录"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=算法刷题记录&body=Check out this article: http://jrhu0048.github.io/2024/07/08/suan-fa-shua-ti-ji-lu/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/07/08/suan-fa-shua-ti-ji-lu/&title=算法刷题记录"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/07/08/suan-fa-shua-ti-ji-lu/&title=算法刷题记录"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/07/08/suan-fa-shua-ti-ji-lu/&title=算法刷题记录"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/07/08/suan-fa-shua-ti-ji-lu/&title=算法刷题记录"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/07/08/suan-fa-shua-ti-ji-lu/&name=算法刷题记录&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/07/08/suan-fa-shua-ti-ji-lu/&t=算法刷题记录"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022-2024
+    JR.HU
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
