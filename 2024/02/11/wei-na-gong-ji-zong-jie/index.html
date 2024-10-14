@@ -1,11 +1,24 @@
+
+
 <!DOCTYPE html>
-<html lang=zh>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
 <head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="JR.HU">
+  <meta name="keywords" content="">
+  
     <meta name="description" content="维纳攻击wiener attack 是依靠连分数进行的攻击方式，适用于非常接近某一值（比如1）时，求一个比例关系(通常是e &#x2F; N &#x3D; 1)，在不同的题目中也会产生很多变式。 解题模板12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535">
 <meta property="og:type" content="article">
 <meta property="og:title" content="维纳攻击总结">
@@ -18,191 +31,277 @@
 <meta property="article:modified_time" content="2024-04-08T01:04:22.097Z">
 <meta property="article:author" content="JR.HU">
 <meta property="article:tag" content="维纳攻击">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://pic.imgdb.cn/item/65eecd579f345e8d035b6589.png">
-    
-    
-      
-        
-          <link rel="shortcut icon" href="/images/favicon.ico">
-        
-      
-      
-        
-          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-        
-      
-      
-        
-          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-        
-      
-    
-    <!-- title -->
-    <title>维纳攻击总结</title>
-    <!-- async scripts -->
-    <!-- Google Analytics -->
+  
+  
+  
+  <title>维纳攻击总结 - CHARMMY</title>
 
-
-    <!-- Umami Analytics -->
-
-
-    <!-- styles -->
-    
-<link rel="stylesheet" href="/css/style.css">
-
-    <!-- persian styles -->
-    
-    <!-- rss -->
-    
-    
-	<!-- mathjax -->
-	
-		<script type="text/x-mathjax-config">
-		  MathJax.Hub.Config({
-			tex2jax: {
-			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-			  inlineMath: [['$','$']]
-			}
-		  });
-		</script>
-		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
-	
-<meta name="generator" content="Hexo 7.1.1"></head>
-
-<body class="max-width mx-auto px3 ltr">
-    
-      <div id="header-post">
-  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-        <!--
-       --><li><a href="/">首页</a></li><!--
-     --><!--
-       --><li><a href="/about/">关于</a></li><!--
-     --><!--
-       --><li><a href="/archives/">归档</a></li><!--
-     --><!--
-       --><li><a href="/tags/">标签</a></li><!--
-     --><!--
-       --><li><a href="/categories/">分类</a></li><!--
-     -->
-      </ul>
-    </span>
-    <br/>
-    <span id="actions">
-      <ul>
-        
-        <li><a class="icon" aria-label="上一篇" href="/2024/03/04/wp-2021swpuctf-xin-sheng-sai-crypto-traditional/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
-        
-        
-        <li><a class="icon" aria-label="下一篇" href="/2023/08/24/k-jun-zhi-ju-lei-suan-fa/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
-        
-        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">上一篇</span>
-      <span id="i-next" class="info" style="display:none;">下一篇</span>
-      <span id="i-top" class="info" style="display:none;">返回顶部</span>
-      <span id="i-share" class="info" style="display:none;">分享文章</span>
-    </span>
-    <br/>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/02/11/wei-na-gong-ji-zong-jie/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/02/11/wei-na-gong-ji-zong-jie/&text=维纳攻击总结"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/02/11/wei-na-gong-ji-zong-jie/&title=维纳攻击总结"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/02/11/wei-na-gong-ji-zong-jie/&is_video=false&description=维纳攻击总结"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=维纳攻击总结&body=Check out this article: http://jrhu0048.github.io/2024/02/11/wei-na-gong-ji-zong-jie/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/02/11/wei-na-gong-ji-zong-jie/&title=维纳攻击总结"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/02/11/wei-na-gong-ji-zong-jie/&title=维纳攻击总结"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/02/11/wei-na-gong-ji-zong-jie/&title=维纳攻击总结"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/02/11/wei-na-gong-ji-zong-jie/&title=维纳攻击总结"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/02/11/wei-na-gong-ji-zong-jie/&name=维纳攻击总结&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/02/11/wei-na-gong-ji-zong-jie/&t=维纳攻击总结"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-    
-    
-      <div id="toc">
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%B4%E7%BA%B3%E6%94%BB%E5%87%BB"><span class="toc-number">1.</span> <span class="toc-text">维纳攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%A8%A1%E6%9D%BF"><span class="toc-number">1.1.</span> <span class="toc-text">解题模板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98%E4%B8%80-HGAME-2022-week3-RSA-attack-3"><span class="toc-number">1.2.</span> <span class="toc-text">例题一 [HGAME 2022 week3]RSA attack 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98%E4%BA%8C-%E7%BE%8A%E5%9F%8E%E6%9D%AF-2020-RRRRRRRSA"><span class="toc-number">1.3.</span> <span class="toc-text">例题二 [羊城杯 2020]RRRRRRRSA</span></a></li></ol></li></ol>
-      </div>
-    
-  </span>
-</div>
-
-    
-    <div class="content index py4 ">
-        
-        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
-    
-    <h1 class="posttitle p-name" itemprop="name headline">
-        维纳攻击总结
-    </h1>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
 
-    <div class="meta">
-      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span class="p-name" itemprop="name">JR.HU</span>
-      </span>
-      
-    <div class="postdate">
-      
-        <time datetime="2024-02-11T01:49:19.000Z" class="dt-published" itemprop="datePublished">2024-02-11</time>
-        
-      
-    </div>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
-      
-    <div class="article-category">
-        <i class="fa-solid fa-archive"></i>
-        <a class="category-link" href="/categories/CTF/">CTF</a>
-    </div>
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
-      
-    <div class="article-tag">
-        <i class="fa-solid fa-tag"></i>
-        <a class="p-category" href="/tags/%E7%BB%B4%E7%BA%B3%E6%94%BB%E5%87%BB/" rel="tag">维纳攻击</a>
-    </div>
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
 
 
-    </div>
-  </header>
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
-  <div class="content e-content" itemprop="articleBody">
-    <h2 id="维纳攻击"><a href="#维纳攻击" class="headerlink" title="维纳攻击"></a>维纳攻击</h2><p>wiener attack 是依靠连分数进行的攻击方式，适用于非常接近某一值（比如1）时，求一个比例关系(通常是e &#x2F; N &#x3D; 1)，在不同的题目中也会产生很多变式。</p>
-<h3 id="解题模板"><a href="#解题模板" class="headerlink" title="解题模板"></a>解题模板</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">import</span> libnum</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">continuedFra</span>(<span class="params">x, y</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;计算连分数</span></span><br><span class="line"><span class="string">    :param x: 分子</span></span><br><span class="line"><span class="string">    :param y: 分母</span></span><br><span class="line"><span class="string">    :return: 连分数列表</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    cf = []</span><br><span class="line">    <span class="keyword">while</span> y:</span><br><span class="line">        cf.append(x // y)</span><br><span class="line">        x, y = y, x % y</span><br><span class="line">    <span class="keyword">return</span> cf</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">gradualFra</span>(<span class="params">cf</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;计算传入列表最后的渐进分数</span></span><br><span class="line"><span class="string">    :param cf: 连分数列表</span></span><br><span class="line"><span class="string">    :return: 该列表最后的渐近分数</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    numerator = <span class="number">0</span></span><br><span class="line">    denominator = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> cf[::-<span class="number">1</span>]:</span><br><span class="line">        <span class="comment"># 这里的渐进分数分子分母要分开</span></span><br><span class="line">        numerator, denominator = denominator, x * denominator + numerator</span><br><span class="line">    <span class="keyword">return</span> numerator, denominator</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">solve_pq</span>(<span class="params">a, b, c</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;使用韦达定理解出pq，x^2−(p+q)∗x+pq=0</span></span><br><span class="line"><span class="string">    :param a:x^2的系数</span></span><br><span class="line"><span class="string">    :param b:x的系数</span></span><br><span class="line"><span class="string">    :param c:pq</span></span><br><span class="line"><span class="string">    :return:p，q</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    par = gmpy2.isqrt(b * b - <span class="number">4</span> * a * c)</span><br><span class="line">    <span class="keyword">return</span> (-b + par) // (<span class="number">2</span> * a), (-b - par) // (<span class="number">2</span> * a)</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">getGradualFra</span>(<span class="params">cf</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;计算列表所有的渐近分数</span></span><br><span class="line"><span class="string">    :param cf: 连分数列表</span></span><br><span class="line"><span class="string">    :return: 该列表所有的渐近分数</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    gf = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(cf) + <span class="number">1</span>):</span><br><span class="line">        gf.append(gradualFra(cf[:i]))</span><br><span class="line">    <span class="keyword">return</span> gf</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">wienerAttack</span>(<span class="params">e, n</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    :param e:</span></span><br><span class="line"><span class="string">    :param n:</span></span><br><span class="line"><span class="string">    :return: 私钥d</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    cf = continuedFra(e, n)</span><br><span class="line">    gf = getGradualFra(cf)</span><br><span class="line">    <span class="keyword">for</span> d, k <span class="keyword">in</span> gf:</span><br><span class="line">        <span class="keyword">if</span> k == <span class="number">0</span>: <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">if</span> (e * d - <span class="number">1</span>) % k != <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        phi = (e * d - <span class="number">1</span>) // k</span><br><span class="line">        p, q = solve_pq(<span class="number">1</span>, n - phi + <span class="number">1</span>, n)</span><br><span class="line">        <span class="keyword">if</span> p * q == n:</span><br><span class="line">            <span class="keyword">return</span> d</span><br><span class="line"></span><br><span class="line">n = <span class="number">639662333905190724963174274393118134850652056724765488685973275138948202602626008285649108873241886836533441901790252560580886492518792249844707754890068885294414947775869189660933854702732140888525369256213185908742658834741758334492843871934294115437721034834635565406377520933839418094457376057043593848401</span></span><br><span class="line">e = <span class="number">548564175098067125961375319851171259385596271876637657761522885808657855394647972481844447376596437557651275057610120865395646169671221375251081541213042646978655686531005856899936162320404991331623237305862913250487293880446994470841390688087392282045130633013139311548859962245908782253213294049851175315059</span></span><br><span class="line">c = <span class="number">266367266471585923035346980467315672043839080179258966276144775106482166900911004389808367589961536843898187180012055918063504477273067284037318171833017082239907978935274619109926579983150571298634653886980563681026116724117473808890951091279814434050754571460308728024448607359710055618866766919226511213734</span></span><br><span class="line"></span><br><span class="line">d=wienerAttack(e, n)</span><br><span class="line">m=<span class="built_in">pow</span>(c, d, n)</span><br><span class="line"><span class="built_in">print</span>(libnum.n2s(m).decode())</span><br></pre></td></tr></table></figure>
 
 
-<h3 id="例题一-HGAME-2022-week3-RSA-attack-3"><a href="#例题一-HGAME-2022-week3-RSA-attack-3" class="headerlink" title="例题一 [HGAME 2022 week3]RSA attack 3"></a>例题一 [HGAME 2022 week3]RSA attack 3</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> getPrime</span><br><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> invert</span><br><span class="line"><span class="keyword">from</span> libnum <span class="keyword">import</span> s2n</span><br><span class="line"><span class="keyword">from</span> secret <span class="keyword">import</span> flag</span><br><span class="line"></span><br><span class="line">p = getPrime(<span class="number">2048</span>)</span><br><span class="line">q = getPrime(<span class="number">2048</span>)</span><br><span class="line">n = p * q</span><br><span class="line">d = getPrime(<span class="number">64</span>)</span><br><span class="line">e = invert(d, (p - <span class="number">1</span>) * (q - <span class="number">1</span>))</span><br><span class="line">c = <span class="built_in">pow</span>(s2n(flag), e, n)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;n = <span class="subst">&#123;n&#125;</span>&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;e = <span class="subst">&#123;e&#125;</span>&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;c = <span class="subst">&#123;c&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">n = <span class="number">507419170088344932990702256911694788408493968749527614421614568612944144764889717229444020813658893362983714454159980719026366361318789415279417172858536381938870379267670180128174798344744371725609827872339512302232610590888649555446972990419313445687852636305518801236132032618350847705234643521557851434711389664130274468354405273873218264222293858509477860634889001898462547712800153111774564939279190835857445378261920532206352364005840238252284065587291779196975457288580812526597185332036342330147250312262816994625317482869849388424397437470502449815132000588425028055964432298176942124697105509057090546600330760364385753313923003549670107599757996810939165300581847068233156887269181096893089415302163770884312255957584660964506028002922164767453287973102961910781312351686488047510932997937700597992705557881172640175117476017503918294534205898046483981707558521558992058512940087192655700351675718815723840568640509355338482631416345193176708501897458649841539192993142790402734898948352382350766125000186026261167277014748183012844440603384989647664190074853086693408529737767147592432979469020671772152652865219092597717869942730499507426269170189547020660681363276871874469322437194397171763927907099922324375991793759</span></span><br><span class="line">e = <span class="number">77310199867448677782081572109343472783781135641712597643597122591443011229091533516758925238949755491395489408922437493670252550920826641442189683907973926843505436730014899918587477913032286153545247063493885982941194996251799882984145155733050069564485120660716110828110738784644223519725613280140006783618393995138076030616463398284819550627612102010214315235269945251741407899692274978642663650687157736417831290404871181902463904311095448368498432147292938825418930527188720696497596867575843476810225152659244529481480993843168383016583068747733118703000287423374094051895724494193455175131120243097065270804457787026492578916584536863548445813916819417857064037664101684455000184987531252344582899589746272173970083733130106407810619258077266603898529285634495710846838011858287024329514491058790557305041389614650730267774482954666726949886313386881066593946789460028399523245777171320319444673551268379126203862576627540177888290265714418064334752499940587750374552330008143708562065940245637685833371348603338834447212248648869514585047871442060412622164276894766238383894693759347590977926306581080390685360615407766600573527565016914830132066428454738135380178959590692145577418811677639050929791996313180297924833690095</span></span><br><span class="line">c = <span class="number">165251729917394529793163344300848992394021337429474789711805041655116845722480301677817165053253655027459227404782607373107477419083333844871948673626672704233977397989843349633720167495862807995411682262559392496273163155214888276398332204954185252030616473235814999366132031184631541209554169938146205402400412307638567132128690379079483633171535375278689326189057930259534983374296873110199636558962144635514392282351103900375366360933088605794654279480277782805401749872568584335215630740265944133347038070337891035560658434763924576508969938866566235926587685108811154229747423410476421860059769485356567301897413767088823807510568561254627099309752215808220067495561412081320541540679503218232020279947159175547517811501280846596226165148013762293861131544331444165070186672186027410082671602892508739473724143698396105392623164025712124329254933353509384748403154342322725203183050328143736631333990445537119855865348221215277608372952942702104088940952142851523651639574409075484106857403651453121036577767672430612728022444370874223001778580387635197325043524719396707713385963432915855227152371800527536048555551237729690663544828830627192867570345853910196397851763591543484023134551876591248557980182981967782409054277224</span></span><br></pre></td></tr></table></figure>
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jrhu0048.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="维纳攻击总结"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-02-11 09:49" pubdate>
+          2024年2月11日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          10 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">维纳攻击总结</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="维纳攻击"><a href="#维纳攻击" class="headerlink" title="维纳攻击"></a>维纳攻击</h2><p>wiener attack 是依靠连分数进行的攻击方式，适用于非常接近某一值（比如1）时，求一个比例关系(通常是e &#x2F; N &#x3D; 1)，在不同的题目中也会产生很多变式。</p>
+<h3 id="解题模板"><a href="#解题模板" class="headerlink" title="解题模板"></a>解题模板</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> gmpy2<br><span class="hljs-keyword">import</span> libnum<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">continuedFra</span>(<span class="hljs-params">x, y</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;计算连分数</span><br><span class="hljs-string">    :param x: 分子</span><br><span class="hljs-string">    :param y: 分母</span><br><span class="hljs-string">    :return: 连分数列表</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    cf = []<br>    <span class="hljs-keyword">while</span> y:<br>        cf.append(x // y)<br>        x, y = y, x % y<br>    <span class="hljs-keyword">return</span> cf<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">gradualFra</span>(<span class="hljs-params">cf</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;计算传入列表最后的渐进分数</span><br><span class="hljs-string">    :param cf: 连分数列表</span><br><span class="hljs-string">    :return: 该列表最后的渐近分数</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    numerator = <span class="hljs-number">0</span><br>    denominator = <span class="hljs-number">1</span><br>    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> cf[::-<span class="hljs-number">1</span>]:<br>        <span class="hljs-comment"># 这里的渐进分数分子分母要分开</span><br>        numerator, denominator = denominator, x * denominator + numerator<br>    <span class="hljs-keyword">return</span> numerator, denominator<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solve_pq</span>(<span class="hljs-params">a, b, c</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;使用韦达定理解出pq，x^2−(p+q)∗x+pq=0</span><br><span class="hljs-string">    :param a:x^2的系数</span><br><span class="hljs-string">    :param b:x的系数</span><br><span class="hljs-string">    :param c:pq</span><br><span class="hljs-string">    :return:p，q</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    par = gmpy2.isqrt(b * b - <span class="hljs-number">4</span> * a * c)<br>    <span class="hljs-keyword">return</span> (-b + par) // (<span class="hljs-number">2</span> * a), (-b - par) // (<span class="hljs-number">2</span> * a)<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">getGradualFra</span>(<span class="hljs-params">cf</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;计算列表所有的渐近分数</span><br><span class="hljs-string">    :param cf: 连分数列表</span><br><span class="hljs-string">    :return: 该列表所有的渐近分数</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    gf = []<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-built_in">len</span>(cf) + <span class="hljs-number">1</span>):<br>        gf.append(gradualFra(cf[:i]))<br>    <span class="hljs-keyword">return</span> gf<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">wienerAttack</span>(<span class="hljs-params">e, n</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    :param e:</span><br><span class="hljs-string">    :param n:</span><br><span class="hljs-string">    :return: 私钥d</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    cf = continuedFra(e, n)<br>    gf = getGradualFra(cf)<br>    <span class="hljs-keyword">for</span> d, k <span class="hljs-keyword">in</span> gf:<br>        <span class="hljs-keyword">if</span> k == <span class="hljs-number">0</span>: <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">if</span> (e * d - <span class="hljs-number">1</span>) % k != <span class="hljs-number">0</span>:<br>            <span class="hljs-keyword">continue</span><br>        phi = (e * d - <span class="hljs-number">1</span>) // k<br>        p, q = solve_pq(<span class="hljs-number">1</span>, n - phi + <span class="hljs-number">1</span>, n)<br>        <span class="hljs-keyword">if</span> p * q == n:<br>            <span class="hljs-keyword">return</span> d<br><br>n = <span class="hljs-number">639662333905190724963174274393118134850652056724765488685973275138948202602626008285649108873241886836533441901790252560580886492518792249844707754890068885294414947775869189660933854702732140888525369256213185908742658834741758334492843871934294115437721034834635565406377520933839418094457376057043593848401</span><br>e = <span class="hljs-number">548564175098067125961375319851171259385596271876637657761522885808657855394647972481844447376596437557651275057610120865395646169671221375251081541213042646978655686531005856899936162320404991331623237305862913250487293880446994470841390688087392282045130633013139311548859962245908782253213294049851175315059</span><br>c = <span class="hljs-number">266367266471585923035346980467315672043839080179258966276144775106482166900911004389808367589961536843898187180012055918063504477273067284037318171833017082239907978935274619109926579983150571298634653886980563681026116724117473808890951091279814434050754571460308728024448607359710055618866766919226511213734</span><br><br>d=wienerAttack(e, n)<br>m=<span class="hljs-built_in">pow</span>(c, d, n)<br><span class="hljs-built_in">print</span>(libnum.n2s(m).decode())<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="例题一-HGAME-2022-week3-RSA-attack-3"><a href="#例题一-HGAME-2022-week3-RSA-attack-3" class="headerlink" title="例题一 [HGAME 2022 week3]RSA attack 3"></a>例题一 [HGAME 2022 week3]RSA attack 3</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> getPrime<br><span class="hljs-keyword">from</span> gmpy2 <span class="hljs-keyword">import</span> invert<br><span class="hljs-keyword">from</span> libnum <span class="hljs-keyword">import</span> s2n<br><span class="hljs-keyword">from</span> secret <span class="hljs-keyword">import</span> flag<br><br>p = getPrime(<span class="hljs-number">2048</span>)<br>q = getPrime(<span class="hljs-number">2048</span>)<br>n = p * q<br>d = getPrime(<span class="hljs-number">64</span>)<br>e = invert(d, (p - <span class="hljs-number">1</span>) * (q - <span class="hljs-number">1</span>))<br>c = <span class="hljs-built_in">pow</span>(s2n(flag), e, n)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;n = <span class="hljs-subst">&#123;n&#125;</span>&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;e = <span class="hljs-subst">&#123;e&#125;</span>&quot;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;c = <span class="hljs-subst">&#123;c&#125;</span>&quot;</span>)<br><br>n = <span class="hljs-number">507419170088344932990702256911694788408493968749527614421614568612944144764889717229444020813658893362983714454159980719026366361318789415279417172858536381938870379267670180128174798344744371725609827872339512302232610590888649555446972990419313445687852636305518801236132032618350847705234643521557851434711389664130274468354405273873218264222293858509477860634889001898462547712800153111774564939279190835857445378261920532206352364005840238252284065587291779196975457288580812526597185332036342330147250312262816994625317482869849388424397437470502449815132000588425028055964432298176942124697105509057090546600330760364385753313923003549670107599757996810939165300581847068233156887269181096893089415302163770884312255957584660964506028002922164767453287973102961910781312351686488047510932997937700597992705557881172640175117476017503918294534205898046483981707558521558992058512940087192655700351675718815723840568640509355338482631416345193176708501897458649841539192993142790402734898948352382350766125000186026261167277014748183012844440603384989647664190074853086693408529737767147592432979469020671772152652865219092597717869942730499507426269170189547020660681363276871874469322437194397171763927907099922324375991793759</span><br>e = <span class="hljs-number">77310199867448677782081572109343472783781135641712597643597122591443011229091533516758925238949755491395489408922437493670252550920826641442189683907973926843505436730014899918587477913032286153545247063493885982941194996251799882984145155733050069564485120660716110828110738784644223519725613280140006783618393995138076030616463398284819550627612102010214315235269945251741407899692274978642663650687157736417831290404871181902463904311095448368498432147292938825418930527188720696497596867575843476810225152659244529481480993843168383016583068747733118703000287423374094051895724494193455175131120243097065270804457787026492578916584536863548445813916819417857064037664101684455000184987531252344582899589746272173970083733130106407810619258077266603898529285634495710846838011858287024329514491058790557305041389614650730267774482954666726949886313386881066593946789460028399523245777171320319444673551268379126203862576627540177888290265714418064334752499940587750374552330008143708562065940245637685833371348603338834447212248648869514585047871442060412622164276894766238383894693759347590977926306581080390685360615407766600573527565016914830132066428454738135380178959590692145577418811677639050929791996313180297924833690095</span><br>c = <span class="hljs-number">165251729917394529793163344300848992394021337429474789711805041655116845722480301677817165053253655027459227404782607373107477419083333844871948673626672704233977397989843349633720167495862807995411682262559392496273163155214888276398332204954185252030616473235814999366132031184631541209554169938146205402400412307638567132128690379079483633171535375278689326189057930259534983374296873110199636558962144635514392282351103900375366360933088605794654279480277782805401749872568584335215630740265944133347038070337891035560658434763924576508969938866566235926587685108811154229747423410476421860059769485356567301897413767088823807510568561254627099309752215808220067495561412081320541540679503218232020279947159175547517811501280846596226165148013762293861131544331444165070186672186027410082671602892508739473724143698396105392623164025712124329254933353509384748403154342322725203183050328143736631333990445537119855865348221215277608372952942702104088940952142851523651639574409075484106857403651453121036577767672430612728022444370874223001778580387635197325043524719396707713385963432915855227152371800527536048555551237729690663544828830627192867570345853910196397851763591543484023134551876591248557980182981967782409054277224</span><br></code></pre></td></tr></table></figure>
 
 <p>比较常规的 RSA 题型，但问题是e相当的大，甚至与n相当的接近（差了一位数）</p>
 <p>因此我们可以通过 </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n = p * q</span><br><span class="line">d = gmpy2.invert(e, （p-<span class="number">1</span>)*(q-<span class="number">1</span>)）     </span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">n = p * q<br>d = gmpy2.invert(e, （p-<span class="hljs-number">1</span>)*(q-<span class="hljs-number">1</span>)）     <br></code></pre></td></tr></table></figure>
 <p>推出 d 非常的小,对此通常采取 维纳攻击 的方法来求取 d (需要知道 e,n)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">import</span> libnum</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">continuedFra</span>(<span class="params">x, y</span>):</span><br><span class="line">    cf = []</span><br><span class="line">    <span class="keyword">while</span> y:</span><br><span class="line">        cf.append(x // y)</span><br><span class="line">        x, y = y, x % y</span><br><span class="line">    <span class="keyword">return</span> cf</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">gradualFra</span>(<span class="params">cf</span>):</span><br><span class="line">    numerator = <span class="number">0</span></span><br><span class="line">    denominator = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> cf[::-<span class="number">1</span>]:</span><br><span class="line">        numerator, denominator = denominator, x * denominator + numerator</span><br><span class="line">    <span class="keyword">return</span> numerator, denominator</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">solve_pq</span>(<span class="params">a, b, c</span>):</span><br><span class="line">    par = gmpy2.isqrt(b * b - <span class="number">4</span> * a * c)</span><br><span class="line">    <span class="keyword">return</span> (-b + par) // (<span class="number">2</span> * a), (-b - par) // (<span class="number">2</span> * a)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">getGradualFra</span>(<span class="params">cf</span>):</span><br><span class="line">    gf = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(cf) + <span class="number">1</span>):</span><br><span class="line">        gf.append(gradualFra(cf[:i]))</span><br><span class="line">    <span class="keyword">return</span> gf</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">wienerAttack</span>(<span class="params">e, n</span>):</span><br><span class="line">    cf = continuedFra(e, n)</span><br><span class="line">    gf = getGradualFra(cf)</span><br><span class="line">    <span class="keyword">for</span> d, k <span class="keyword">in</span> gf:</span><br><span class="line">        <span class="keyword">if</span> k == <span class="number">0</span>: <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">if</span> (e * d - <span class="number">1</span>) % k != <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        phi = (e * d - <span class="number">1</span>) // k</span><br><span class="line">        p, q = solve_pq(<span class="number">1</span>, n - phi + <span class="number">1</span>, n)</span><br><span class="line">        <span class="keyword">if</span> p * q == n:</span><br><span class="line">            <span class="keyword">return</span> d</span><br><span class="line"></span><br><span class="line">n= <span class="number">507419170088344932990702256911694788408493968749527614421614568612944144764889717229444020813658893362983714454159980719026366361318789415279417172858536381938870379267670180128174798344744371725609827872339512302232610590888649555446972990419313445687852636305518801236132032618350847705234643521557851434711389664130274468354405273873218264222293858509477860634889001898462547712800153111774564939279190835857445378261920532206352364005840238252284065587291779196975457288580812526597185332036342330147250312262816994625317482869849388424397437470502449815132000588425028055964432298176942124697105509057090546600330760364385753313923003549670107599757996810939165300581847068233156887269181096893089415302163770884312255957584660964506028002922164767453287973102961910781312351686488047510932997937700597992705557881172640175117476017503918294534205898046483981707558521558992058512940087192655700351675718815723840568640509355338482631416345193176708501897458649841539192993142790402734898948352382350766125000186026261167277014748183012844440603384989647664190074853086693408529737767147592432979469020671772152652865219092597717869942730499507426269170189547020660681363276871874469322437194397171763927907099922324375991793759</span></span><br><span class="line">e= <span class="number">77310199867448677782081572109343472783781135641712597643597122591443011229091533516758925238949755491395489408922437493670252550920826641442189683907973926843505436730014899918587477913032286153545247063493885982941194996251799882984145155733050069564485120660716110828110738784644223519725613280140006783618393995138076030616463398284819550627612102010214315235269945251741407899692274978642663650687157736417831290404871181902463904311095448368498432147292938825418930527188720696497596867575843476810225152659244529481480993843168383016583068747733118703000287423374094051895724494193455175131120243097065270804457787026492578916584536863548445813916819417857064037664101684455000184987531252344582899589746272173970083733130106407810619258077266603898529285634495710846838011858287024329514491058790557305041389614650730267774482954666726949886313386881066593946789460028399523245777171320319444673551268379126203862576627540177888290265714418064334752499940587750374552330008143708562065940245637685833371348603338834447212248648869514585047871442060412622164276894766238383894693759347590977926306581080390685360615407766600573527565016914830132066428454738135380178959590692145577418811677639050929791996313180297924833690095</span></span><br><span class="line">c= <span class="number">165251729917394529793163344300848992394021337429474789711805041655116845722480301677817165053253655027459227404782607373107477419083333844871948673626672704233977397989843349633720167495862807995411682262559392496273163155214888276398332204954185252030616473235814999366132031184631541209554169938146205402400412307638567132128690379079483633171535375278689326189057930259534983374296873110199636558962144635514392282351103900375366360933088605794654279480277782805401749872568584335215630740265944133347038070337891035560658434763924576508969938866566235926587685108811154229747423410476421860059769485356567301897413767088823807510568561254627099309752215808220067495561412081320541540679503218232020279947159175547517811501280846596226165148013762293861131544331444165070186672186027410082671602892508739473724143698396105392623164025712124329254933353509384748403154342322725203183050328143736631333990445537119855865348221215277608372952942702104088940952142851523651639574409075484106857403651453121036577767672430612728022444370874223001778580387635197325043524719396707713385963432915855227152371800527536048555551237729690663544828830627192867570345853910196397851763591543484023134551876591248557980182981967782409054277224</span></span><br><span class="line"></span><br><span class="line">d=wienerAttack(e, n)</span><br><span class="line">m=<span class="built_in">pow</span>(c, d, n)</span><br><span class="line"><span class="built_in">print</span>(libnum.n2s(m).decode())</span><br><span class="line"><span class="comment"># hgame&#123;dO|YOU:kNOw!tHE*PRINcIplE*bEhInd%WInNEr#aTTacK&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> gmpy2<br><span class="hljs-keyword">import</span> libnum<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">continuedFra</span>(<span class="hljs-params">x, y</span>):<br>    cf = []<br>    <span class="hljs-keyword">while</span> y:<br>        cf.append(x // y)<br>        x, y = y, x % y<br>    <span class="hljs-keyword">return</span> cf<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">gradualFra</span>(<span class="hljs-params">cf</span>):<br>    numerator = <span class="hljs-number">0</span><br>    denominator = <span class="hljs-number">1</span><br>    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> cf[::-<span class="hljs-number">1</span>]:<br>        numerator, denominator = denominator, x * denominator + numerator<br>    <span class="hljs-keyword">return</span> numerator, denominator<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solve_pq</span>(<span class="hljs-params">a, b, c</span>):<br>    par = gmpy2.isqrt(b * b - <span class="hljs-number">4</span> * a * c)<br>    <span class="hljs-keyword">return</span> (-b + par) // (<span class="hljs-number">2</span> * a), (-b - par) // (<span class="hljs-number">2</span> * a)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">getGradualFra</span>(<span class="hljs-params">cf</span>):<br>    gf = []<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-built_in">len</span>(cf) + <span class="hljs-number">1</span>):<br>        gf.append(gradualFra(cf[:i]))<br>    <span class="hljs-keyword">return</span> gf<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">wienerAttack</span>(<span class="hljs-params">e, n</span>):<br>    cf = continuedFra(e, n)<br>    gf = getGradualFra(cf)<br>    <span class="hljs-keyword">for</span> d, k <span class="hljs-keyword">in</span> gf:<br>        <span class="hljs-keyword">if</span> k == <span class="hljs-number">0</span>: <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">if</span> (e * d - <span class="hljs-number">1</span>) % k != <span class="hljs-number">0</span>:<br>            <span class="hljs-keyword">continue</span><br>        phi = (e * d - <span class="hljs-number">1</span>) // k<br>        p, q = solve_pq(<span class="hljs-number">1</span>, n - phi + <span class="hljs-number">1</span>, n)<br>        <span class="hljs-keyword">if</span> p * q == n:<br>            <span class="hljs-keyword">return</span> d<br><br>n= <span class="hljs-number">507419170088344932990702256911694788408493968749527614421614568612944144764889717229444020813658893362983714454159980719026366361318789415279417172858536381938870379267670180128174798344744371725609827872339512302232610590888649555446972990419313445687852636305518801236132032618350847705234643521557851434711389664130274468354405273873218264222293858509477860634889001898462547712800153111774564939279190835857445378261920532206352364005840238252284065587291779196975457288580812526597185332036342330147250312262816994625317482869849388424397437470502449815132000588425028055964432298176942124697105509057090546600330760364385753313923003549670107599757996810939165300581847068233156887269181096893089415302163770884312255957584660964506028002922164767453287973102961910781312351686488047510932997937700597992705557881172640175117476017503918294534205898046483981707558521558992058512940087192655700351675718815723840568640509355338482631416345193176708501897458649841539192993142790402734898948352382350766125000186026261167277014748183012844440603384989647664190074853086693408529737767147592432979469020671772152652865219092597717869942730499507426269170189547020660681363276871874469322437194397171763927907099922324375991793759</span><br>e= <span class="hljs-number">77310199867448677782081572109343472783781135641712597643597122591443011229091533516758925238949755491395489408922437493670252550920826641442189683907973926843505436730014899918587477913032286153545247063493885982941194996251799882984145155733050069564485120660716110828110738784644223519725613280140006783618393995138076030616463398284819550627612102010214315235269945251741407899692274978642663650687157736417831290404871181902463904311095448368498432147292938825418930527188720696497596867575843476810225152659244529481480993843168383016583068747733118703000287423374094051895724494193455175131120243097065270804457787026492578916584536863548445813916819417857064037664101684455000184987531252344582899589746272173970083733130106407810619258077266603898529285634495710846838011858287024329514491058790557305041389614650730267774482954666726949886313386881066593946789460028399523245777171320319444673551268379126203862576627540177888290265714418064334752499940587750374552330008143708562065940245637685833371348603338834447212248648869514585047871442060412622164276894766238383894693759347590977926306581080390685360615407766600573527565016914830132066428454738135380178959590692145577418811677639050929791996313180297924833690095</span><br>c= <span class="hljs-number">165251729917394529793163344300848992394021337429474789711805041655116845722480301677817165053253655027459227404782607373107477419083333844871948673626672704233977397989843349633720167495862807995411682262559392496273163155214888276398332204954185252030616473235814999366132031184631541209554169938146205402400412307638567132128690379079483633171535375278689326189057930259534983374296873110199636558962144635514392282351103900375366360933088605794654279480277782805401749872568584335215630740265944133347038070337891035560658434763924576508969938866566235926587685108811154229747423410476421860059769485356567301897413767088823807510568561254627099309752215808220067495561412081320541540679503218232020279947159175547517811501280846596226165148013762293861131544331444165070186672186027410082671602892508739473724143698396105392623164025712124329254933353509384748403154342322725203183050328143736631333990445537119855865348221215277608372952942702104088940952142851523651639574409075484106857403651453121036577767672430612728022444370874223001778580387635197325043524719396707713385963432915855227152371800527536048555551237729690663544828830627192867570345853910196397851763591543484023134551876591248557980182981967782409054277224</span><br><br>d=wienerAttack(e, n)<br>m=<span class="hljs-built_in">pow</span>(c, d, n)<br><span class="hljs-built_in">print</span>(libnum.n2s(m).decode())<br><span class="hljs-comment"># hgame&#123;dO|YOU:kNOw!tHE*PRINcIplE*bEhInd%WInNEr#aTTacK&#125;</span><br></code></pre></td></tr></table></figure>
 
 
-<h3 id="例题二-羊城杯-2020-RRRRRRRSA"><a href="#例题二-羊城杯-2020-RRRRRRRSA" class="headerlink" title="例题二 [羊城杯 2020]RRRRRRRSA"></a>例题二 [羊城杯 2020]RRRRRRRSA</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">import</span> sympy</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">flag = <span class="string">&#x27;GWHT&#123;************&#125;&#x27;</span></span><br><span class="line"></span><br><span class="line">flag1 = flag[:<span class="number">19</span>].encode()  <span class="comment">#两截flag</span></span><br><span class="line">flag2 = flag[<span class="number">19</span>:].encode()</span><br><span class="line"><span class="keyword">assert</span>(<span class="built_in">len</span>(flag) == <span class="number">38</span>)</span><br><span class="line"></span><br><span class="line">P1 = getPrime(<span class="number">1038</span>)</span><br><span class="line">P2 = sympy.nextprime(P1)  <span class="comment">#p2&gt;p1</span></span><br><span class="line"><span class="keyword">assert</span>(P2 - P1 &lt; <span class="number">1000</span>)</span><br><span class="line"></span><br><span class="line">Q1 = getPrime(<span class="number">512</span>)</span><br><span class="line">Q2 = sympy.nextprime(Q1)  <span class="comment">#q2&gt;q1</span></span><br><span class="line"></span><br><span class="line">N1 = P1 * P1 * Q1</span><br><span class="line">N2 = P2 * P2 * Q2</span><br><span class="line"></span><br><span class="line">E1 = getPrime(<span class="number">1024</span>)</span><br><span class="line">E2 = sympy.nextprime(E1)</span><br><span class="line"></span><br><span class="line">m1 = bytes_to_long(flag1)</span><br><span class="line">m2 = bytes_to_long(flag2)</span><br><span class="line"></span><br><span class="line">c1 = <span class="built_in">pow</span>(m1, E1, N1)</span><br><span class="line">c2 = <span class="built_in">pow</span>(m2, E2, N2)</span><br><span class="line"></span><br><span class="line">output = <span class="built_in">open</span>(<span class="string">&#x27;secret&#x27;</span>, <span class="string">&#x27;w&#x27;</span>)</span><br><span class="line">output.write(<span class="string">&#x27;N1=&#x27;</span> + <span class="built_in">str</span>(N1) + <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">output.write(<span class="string">&#x27;c1=&#x27;</span> + <span class="built_in">str</span>(c1) + <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">output.write(<span class="string">&#x27;E1=&#x27;</span> + <span class="built_in">str</span>(E1) + <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">output.write(<span class="string">&#x27;N2=&#x27;</span> + <span class="built_in">str</span>(N2) + <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">output.write(<span class="string">&#x27;c2=&#x27;</span> + <span class="built_in">str</span>(c2) + <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">output.write(<span class="string">&#x27;E2=&#x27;</span> + <span class="built_in">str</span>(E2) + <span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">output.close()</span><br><span class="line"></span><br><span class="line">N1=<span class="number">60143104944034567859993561862949071559877219267755259679749062284763163484947626697494729046430386559610613113754453726683312513915610558734802079868190554644983911078936369464590301246394586190666760362763580192139772729890492729488892169933099057105842090125200369295070365451134781912223048179092058016446222199742919885472867511334714233086339832790286482634562102936600597781342756061479024744312357407750731307860842457299116947352106025529309727703385914891200109853084742321655388368371397596144557614128458065859276522963419738435137978069417053712567764148183279165963454266011754149684758060746773409666706463583389316772088889398359242197165140562147489286818190852679930372669254697353483887004105934649944725189954685412228899457155711301864163839538810653626724347</span></span><br><span class="line">c1=<span class="number">55094296873556883585060020895253176070835143350249581136609315815308788255684072804968957510292559743192424646169207794748893753882418256401223641287546922358162629295622258913168323493447075410872354874300793298956869374606043622559405978242734950156459436487837698668489891733875650048466360950142617732135781244969524095348835624828008115829566644654403962285001724209210887446203934276651265377137788183939798543755386888532680013170540716736656670269251318800501517579803401154996881233025210176293554542024052540093890387437964747460765498713092018160196637928204190194154199389276666685436565665236397481709703644555328705818892269499380797044554054118656321389474821224725533693520856047736578402581854165941599254178019515615183102894716647680969742744705218868455450832</span></span><br><span class="line">E1=<span class="number">125932919717342481428108392434488550259190856475011752106073050593074410065655587870702051419898088541590032209854048032649625269856337901048406066968337289491951404384300466543616578679539808215698754491076340386697518948419895268049696498272031094236309803803729823608854215226233796069683774155739820423103</span></span><br><span class="line">N2=<span class="number">60143104944034567859993561862949071559877219267755259679749062284763163484947626697494729046430386559610613113754453726683312513915610558734802079868195633647431732875392121458684331843306730889424418620069322578265236351407591029338519809538995249896905137642342435659572917714183543305243715664380787797562011006398730320980994747939791561885622949912698246701769321430325902912003041678774440704056597862093530981040696872522868921139041247362592257285423948870944137019745161211585845927019259709501237550818918272189606436413992759328318871765171844153527424347985462767028135376552302463861324408178183842139330244906606776359050482977256728910278687996106152971028878653123533559760167711270265171441623056873903669918694259043580017081671349232051870716493557434517579121</span></span><br><span class="line">c2=<span class="number">39328446140156257571484184713861319722905864197556720730852773059147902283123252767651430278357950872626778348596897711320942449693270603776870301102881405303651558719085454281142395652056217241751656631812580544180434349840236919765433122389116860827593711593732385562328255759509355298662361508611531972386995239908513273236239858854586845849686865360780290350287139092143587037396801704351692736985955152935601987758859759421886670907735120137698039900161327397951758852875291442188850946273771733011504922325622240838288097946309825051094566685479503461938502373520983684296658971700922069426788236476575236189040102848418547634290214175167767431475003216056701094275899211419979340802711684989710130215926526387138538819531199810841475218142606691152928236362534181622201347</span></span><br><span class="line">E2=<span class="number">125932919717342481428108392434488550259190856475011752106073050593074410065655587870702051419898088541590032209854048032649625269856337901048406066968337289491951404384300466543616578679539808215698754491076340386697518948419895268049696498272031094236309803803729823608854215226233796069683774155739820425393</span></span><br></pre></td></tr></table></figure>
+<h3 id="例题二-羊城杯-2020-RRRRRRRSA"><a href="#例题二-羊城杯-2020-RRRRRRRSA" class="headerlink" title="例题二 [羊城杯 2020]RRRRRRRSA"></a>例题二 [羊城杯 2020]RRRRRRRSA</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> hashlib<br><span class="hljs-keyword">import</span> sympy<br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><br>flag = <span class="hljs-string">&#x27;GWHT&#123;************&#125;&#x27;</span><br><br>flag1 = flag[:<span class="hljs-number">19</span>].encode()  <span class="hljs-comment">#两截flag</span><br>flag2 = flag[<span class="hljs-number">19</span>:].encode()<br><span class="hljs-keyword">assert</span>(<span class="hljs-built_in">len</span>(flag) == <span class="hljs-number">38</span>)<br><br>P1 = getPrime(<span class="hljs-number">1038</span>)<br>P2 = sympy.nextprime(P1)  <span class="hljs-comment">#p2&gt;p1</span><br><span class="hljs-keyword">assert</span>(P2 - P1 &lt; <span class="hljs-number">1000</span>)<br><br>Q1 = getPrime(<span class="hljs-number">512</span>)<br>Q2 = sympy.nextprime(Q1)  <span class="hljs-comment">#q2&gt;q1</span><br><br>N1 = P1 * P1 * Q1<br>N2 = P2 * P2 * Q2<br><br>E1 = getPrime(<span class="hljs-number">1024</span>)<br>E2 = sympy.nextprime(E1)<br><br>m1 = bytes_to_long(flag1)<br>m2 = bytes_to_long(flag2)<br><br>c1 = <span class="hljs-built_in">pow</span>(m1, E1, N1)<br>c2 = <span class="hljs-built_in">pow</span>(m2, E2, N2)<br><br>output = <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;secret&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>)<br>output.write(<span class="hljs-string">&#x27;N1=&#x27;</span> + <span class="hljs-built_in">str</span>(N1) + <span class="hljs-string">&#x27;\n&#x27;</span>)<br>output.write(<span class="hljs-string">&#x27;c1=&#x27;</span> + <span class="hljs-built_in">str</span>(c1) + <span class="hljs-string">&#x27;\n&#x27;</span>)<br>output.write(<span class="hljs-string">&#x27;E1=&#x27;</span> + <span class="hljs-built_in">str</span>(E1) + <span class="hljs-string">&#x27;\n&#x27;</span>)<br>output.write(<span class="hljs-string">&#x27;N2=&#x27;</span> + <span class="hljs-built_in">str</span>(N2) + <span class="hljs-string">&#x27;\n&#x27;</span>)<br>output.write(<span class="hljs-string">&#x27;c2=&#x27;</span> + <span class="hljs-built_in">str</span>(c2) + <span class="hljs-string">&#x27;\n&#x27;</span>)<br>output.write(<span class="hljs-string">&#x27;E2=&#x27;</span> + <span class="hljs-built_in">str</span>(E2) + <span class="hljs-string">&#x27;\n&#x27;</span>)<br>output.close()<br><br>N1=<span class="hljs-number">60143104944034567859993561862949071559877219267755259679749062284763163484947626697494729046430386559610613113754453726683312513915610558734802079868190554644983911078936369464590301246394586190666760362763580192139772729890492729488892169933099057105842090125200369295070365451134781912223048179092058016446222199742919885472867511334714233086339832790286482634562102936600597781342756061479024744312357407750731307860842457299116947352106025529309727703385914891200109853084742321655388368371397596144557614128458065859276522963419738435137978069417053712567764148183279165963454266011754149684758060746773409666706463583389316772088889398359242197165140562147489286818190852679930372669254697353483887004105934649944725189954685412228899457155711301864163839538810653626724347</span><br>c1=<span class="hljs-number">55094296873556883585060020895253176070835143350249581136609315815308788255684072804968957510292559743192424646169207794748893753882418256401223641287546922358162629295622258913168323493447075410872354874300793298956869374606043622559405978242734950156459436487837698668489891733875650048466360950142617732135781244969524095348835624828008115829566644654403962285001724209210887446203934276651265377137788183939798543755386888532680013170540716736656670269251318800501517579803401154996881233025210176293554542024052540093890387437964747460765498713092018160196637928204190194154199389276666685436565665236397481709703644555328705818892269499380797044554054118656321389474821224725533693520856047736578402581854165941599254178019515615183102894716647680969742744705218868455450832</span><br>E1=<span class="hljs-number">125932919717342481428108392434488550259190856475011752106073050593074410065655587870702051419898088541590032209854048032649625269856337901048406066968337289491951404384300466543616578679539808215698754491076340386697518948419895268049696498272031094236309803803729823608854215226233796069683774155739820423103</span><br>N2=<span class="hljs-number">60143104944034567859993561862949071559877219267755259679749062284763163484947626697494729046430386559610613113754453726683312513915610558734802079868195633647431732875392121458684331843306730889424418620069322578265236351407591029338519809538995249896905137642342435659572917714183543305243715664380787797562011006398730320980994747939791561885622949912698246701769321430325902912003041678774440704056597862093530981040696872522868921139041247362592257285423948870944137019745161211585845927019259709501237550818918272189606436413992759328318871765171844153527424347985462767028135376552302463861324408178183842139330244906606776359050482977256728910278687996106152971028878653123533559760167711270265171441623056873903669918694259043580017081671349232051870716493557434517579121</span><br>c2=<span class="hljs-number">39328446140156257571484184713861319722905864197556720730852773059147902283123252767651430278357950872626778348596897711320942449693270603776870301102881405303651558719085454281142395652056217241751656631812580544180434349840236919765433122389116860827593711593732385562328255759509355298662361508611531972386995239908513273236239858854586845849686865360780290350287139092143587037396801704351692736985955152935601987758859759421886670907735120137698039900161327397951758852875291442188850946273771733011504922325622240838288097946309825051094566685479503461938502373520983684296658971700922069426788236476575236189040102848418547634290214175167767431475003216056701094275899211419979340802711684989710130215926526387138538819531199810841475218142606691152928236362534181622201347</span><br>E2=<span class="hljs-number">125932919717342481428108392434488550259190856475011752106073050593074410065655587870702051419898088541590032209854048032649625269856337901048406066968337289491951404384300466543616578679539808215698754491076340386697518948419895268049696498272031094236309803803729823608854215226233796069683774155739820425393</span><br></code></pre></td></tr></table></figure>
 <p>首先 发现 e 的数值比较大，按照前一题的思路尝试分别对两段加密使用 维纳攻击 发现报错 </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">    par = gmpy2.isqrt(b * b - <span class="number">4</span> * a * c)</span><br><span class="line">ValueError: isqrt() of negative number</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">    par = gmpy2.isqrt(b * b - <span class="hljs-number">4</span> * a * c)<br>ValueError: isqrt() of negative number<br></code></pre></td></tr></table></figure>
 <p>产生的原因可能是 E&#x2F;N 远小于 1，并不满足 E 和 N 比较接近这一前提条件</p>
 <p>但是我们发现 N1 和 N2 之间的数值比较接近，符合维纳攻击的前提条件</p>
 <p>为什么使用 N1 和 N2 进行维纳攻击也可以实现解呢</p>
 <p>我们可以通过下面的公式推导得出</p>
-<p><img src="https://pic.imgdb.cn/item/65eecd579f345e8d035b6589.png" alt="alt text"></p>
+<p><img src="https://pic.imgdb.cn/item/65eecd579f345e8d035b6589.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <p>挖个坑：需要了解的内容有： 连分数、低解密指数攻击 等</p>
 <p>有如下解码脚本</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line">N1=<span class="number">60143104944034567859993561862949071559877219267755259679749062284763163484947626697494729046430386559610613113754453726683312513915610558734802079868190554644983911078936369464590301246394586190666760362763580192139772729890492729488892169933099057105842090125200369295070365451134781912223048179092058016446222199742919885472867511334714233086339832790286482634562102936600597781342756061479024744312357407750731307860842457299116947352106025529309727703385914891200109853084742321655388368371397596144557614128458065859276522963419738435137978069417053712567764148183279165963454266011754149684758060746773409666706463583389316772088889398359242197165140562147489286818190852679930372669254697353483887004105934649944725189954685412228899457155711301864163839538810653626724347</span></span><br><span class="line">c1=<span class="number">55094296873556883585060020895253176070835143350249581136609315815308788255684072804968957510292559743192424646169207794748893753882418256401223641287546922358162629295622258913168323493447075410872354874300793298956869374606043622559405978242734950156459436487837698668489891733875650048466360950142617732135781244969524095348835624828008115829566644654403962285001724209210887446203934276651265377137788183939798543755386888532680013170540716736656670269251318800501517579803401154996881233025210176293554542024052540093890387437964747460765498713092018160196637928204190194154199389276666685436565665236397481709703644555328705818892269499380797044554054118656321389474821224725533693520856047736578402581854165941599254178019515615183102894716647680969742744705218868455450832</span></span><br><span class="line">E1=<span class="number">125932919717342481428108392434488550259190856475011752106073050593074410065655587870702051419898088541590032209854048032649625269856337901048406066968337289491951404384300466543616578679539808215698754491076340386697518948419895268049696498272031094236309803803729823608854215226233796069683774155739820423103</span></span><br><span class="line">N2=<span class="number">60143104944034567859993561862949071559877219267755259679749062284763163484947626697494729046430386559610613113754453726683312513915610558734802079868195633647431732875392121458684331843306730889424418620069322578265236351407591029338519809538995249896905137642342435659572917714183543305243715664380787797562011006398730320980994747939791561885622949912698246701769321430325902912003041678774440704056597862093530981040696872522868921139041247362592257285423948870944137019745161211585845927019259709501237550818918272189606436413992759328318871765171844153527424347985462767028135376552302463861324408178183842139330244906606776359050482977256728910278687996106152971028878653123533559760167711270265171441623056873903669918694259043580017081671349232051870716493557434517579121</span></span><br><span class="line">c2=<span class="number">39328446140156257571484184713861319722905864197556720730852773059147902283123252767651430278357950872626778348596897711320942449693270603776870301102881405303651558719085454281142395652056217241751656631812580544180434349840236919765433122389116860827593711593732385562328255759509355298662361508611531972386995239908513273236239858854586845849686865360780290350287139092143587037396801704351692736985955152935601987758859759421886670907735120137698039900161327397951758852875291442188850946273771733011504922325622240838288097946309825051094566685479503461938502373520983684296658971700922069426788236476575236189040102848418547634290214175167767431475003216056701094275899211419979340802711684989710130215926526387138538819531199810841475218142606691152928236362534181622201347</span></span><br><span class="line">E2=<span class="number">125932919717342481428108392434488550259190856475011752106073050593074410065655587870702051419898088541590032209854048032649625269856337901048406066968337289491951404384300466543616578679539808215698754491076340386697518948419895268049696498272031094236309803803729823608854215226233796069683774155739820425393</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">continuedFra</span>(<span class="params">x, y</span>):</span><br><span class="line">    cF = []</span><br><span class="line">    <span class="keyword">while</span> y:</span><br><span class="line">        cF += [x // y]</span><br><span class="line">        x, y = y, x % y</span><br><span class="line">    <span class="keyword">return</span> cF</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">Simplify</span>(<span class="params">ctnf</span>):</span><br><span class="line">    numerator = <span class="number">0</span></span><br><span class="line">    denominator = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> ctnf[::-<span class="number">1</span>]:</span><br><span class="line">        numerator, denominator = denominator, x * denominator + numerator</span><br><span class="line">    <span class="keyword">return</span> (numerator, denominator)</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">getit</span>(<span class="params">c</span>):</span><br><span class="line">    cf=[]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="built_in">len</span>(c)):</span><br><span class="line">        cf.append(Simplify(c[:i]))</span><br><span class="line">    <span class="keyword">return</span> cf</span><br><span class="line"><span class="comment">#求渐进分数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">wienerAttack</span>(<span class="params">e, n</span>):</span><br><span class="line">    cf=continuedFra(e,n)</span><br><span class="line">    <span class="keyword">for</span> (p2,p1) <span class="keyword">in</span> getit(cf):</span><br><span class="line">        <span class="keyword">if</span> p1 == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">if</span> N1%p1==<span class="number">0</span> <span class="keyword">and</span> p1!=<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> p1</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;not find!&#x27;</span>)</span><br><span class="line">q1=wienerAttack(N1,N2)</span><br><span class="line"><span class="comment">#p1=11628371843051760370952910026406764366191062991235308941262037248377376991693250742343307155422036713746576338866595433599862614339347536916226536644210947</span></span><br><span class="line"><span class="built_in">print</span>(q1)</span><br><span class="line">p1=gmpy2.iroot(N1//q1,<span class="number">2</span>)[<span class="number">0</span>]</span><br><span class="line">p2=gmpy2.next_prime(p1)</span><br><span class="line">q2=gmpy2.next_prime(q1)</span><br><span class="line">phi1=p1*(p1-<span class="number">1</span>)*(q1-<span class="number">1</span>)</span><br><span class="line">phi2=p2*(p2-<span class="number">1</span>)*(q2-<span class="number">1</span>)</span><br><span class="line">d1=gmpy2.invert(E1,phi1)</span><br><span class="line">d2=gmpy2.invert(E2,phi2)</span><br><span class="line"><span class="keyword">from</span> Crypto.Util <span class="keyword">import</span> number</span><br><span class="line">m1=number.long_to_bytes(gmpy2.powmod(c1,d1,N1))</span><br><span class="line">m2=number.long_to_bytes(gmpy2.powmod(c2,d2,N2))</span><br><span class="line"><span class="built_in">print</span>((m1+m2))</span><br><span class="line"></span><br><span class="line"><span class="comment">#GWHT&#123;3aadab41754799f978669d53e64a3aca&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> gmpy2<br>N1=<span class="hljs-number">60143104944034567859993561862949071559877219267755259679749062284763163484947626697494729046430386559610613113754453726683312513915610558734802079868190554644983911078936369464590301246394586190666760362763580192139772729890492729488892169933099057105842090125200369295070365451134781912223048179092058016446222199742919885472867511334714233086339832790286482634562102936600597781342756061479024744312357407750731307860842457299116947352106025529309727703385914891200109853084742321655388368371397596144557614128458065859276522963419738435137978069417053712567764148183279165963454266011754149684758060746773409666706463583389316772088889398359242197165140562147489286818190852679930372669254697353483887004105934649944725189954685412228899457155711301864163839538810653626724347</span><br>c1=<span class="hljs-number">55094296873556883585060020895253176070835143350249581136609315815308788255684072804968957510292559743192424646169207794748893753882418256401223641287546922358162629295622258913168323493447075410872354874300793298956869374606043622559405978242734950156459436487837698668489891733875650048466360950142617732135781244969524095348835624828008115829566644654403962285001724209210887446203934276651265377137788183939798543755386888532680013170540716736656670269251318800501517579803401154996881233025210176293554542024052540093890387437964747460765498713092018160196637928204190194154199389276666685436565665236397481709703644555328705818892269499380797044554054118656321389474821224725533693520856047736578402581854165941599254178019515615183102894716647680969742744705218868455450832</span><br>E1=<span class="hljs-number">125932919717342481428108392434488550259190856475011752106073050593074410065655587870702051419898088541590032209854048032649625269856337901048406066968337289491951404384300466543616578679539808215698754491076340386697518948419895268049696498272031094236309803803729823608854215226233796069683774155739820423103</span><br>N2=<span class="hljs-number">60143104944034567859993561862949071559877219267755259679749062284763163484947626697494729046430386559610613113754453726683312513915610558734802079868195633647431732875392121458684331843306730889424418620069322578265236351407591029338519809538995249896905137642342435659572917714183543305243715664380787797562011006398730320980994747939791561885622949912698246701769321430325902912003041678774440704056597862093530981040696872522868921139041247362592257285423948870944137019745161211585845927019259709501237550818918272189606436413992759328318871765171844153527424347985462767028135376552302463861324408178183842139330244906606776359050482977256728910278687996106152971028878653123533559760167711270265171441623056873903669918694259043580017081671349232051870716493557434517579121</span><br>c2=<span class="hljs-number">39328446140156257571484184713861319722905864197556720730852773059147902283123252767651430278357950872626778348596897711320942449693270603776870301102881405303651558719085454281142395652056217241751656631812580544180434349840236919765433122389116860827593711593732385562328255759509355298662361508611531972386995239908513273236239858854586845849686865360780290350287139092143587037396801704351692736985955152935601987758859759421886670907735120137698039900161327397951758852875291442188850946273771733011504922325622240838288097946309825051094566685479503461938502373520983684296658971700922069426788236476575236189040102848418547634290214175167767431475003216056701094275899211419979340802711684989710130215926526387138538819531199810841475218142606691152928236362534181622201347</span><br>E2=<span class="hljs-number">125932919717342481428108392434488550259190856475011752106073050593074410065655587870702051419898088541590032209854048032649625269856337901048406066968337289491951404384300466543616578679539808215698754491076340386697518948419895268049696498272031094236309803803729823608854215226233796069683774155739820425393</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">continuedFra</span>(<span class="hljs-params">x, y</span>):<br>    cF = []<br>    <span class="hljs-keyword">while</span> y:<br>        cF += [x // y]<br>        x, y = y, x % y<br>    <span class="hljs-keyword">return</span> cF<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">Simplify</span>(<span class="hljs-params">ctnf</span>):<br>    numerator = <span class="hljs-number">0</span><br>    denominator = <span class="hljs-number">1</span><br>    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> ctnf[::-<span class="hljs-number">1</span>]:<br>        numerator, denominator = denominator, x * denominator + numerator<br>    <span class="hljs-keyword">return</span> (numerator, denominator)<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">getit</span>(<span class="hljs-params">c</span>):<br>    cf=[]<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-built_in">len</span>(c)):<br>        cf.append(Simplify(c[:i]))<br>    <span class="hljs-keyword">return</span> cf<br><span class="hljs-comment">#求渐进分数</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">wienerAttack</span>(<span class="hljs-params">e, n</span>):<br>    cf=continuedFra(e,n)<br>    <span class="hljs-keyword">for</span> (p2,p1) <span class="hljs-keyword">in</span> getit(cf):<br>        <span class="hljs-keyword">if</span> p1 == <span class="hljs-number">0</span>:<br>            <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">if</span> N1%p1==<span class="hljs-number">0</span> <span class="hljs-keyword">and</span> p1!=<span class="hljs-number">1</span>:<br>            <span class="hljs-keyword">return</span> p1<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;not find!&#x27;</span>)<br>q1=wienerAttack(N1,N2)<br><span class="hljs-comment">#p1=11628371843051760370952910026406764366191062991235308941262037248377376991693250742343307155422036713746576338866595433599862614339347536916226536644210947</span><br><span class="hljs-built_in">print</span>(q1)<br>p1=gmpy2.iroot(N1//q1,<span class="hljs-number">2</span>)[<span class="hljs-number">0</span>]<br>p2=gmpy2.next_prime(p1)<br>q2=gmpy2.next_prime(q1)<br>phi1=p1*(p1-<span class="hljs-number">1</span>)*(q1-<span class="hljs-number">1</span>)<br>phi2=p2*(p2-<span class="hljs-number">1</span>)*(q2-<span class="hljs-number">1</span>)<br>d1=gmpy2.invert(E1,phi1)<br>d2=gmpy2.invert(E2,phi2)<br><span class="hljs-keyword">from</span> Crypto.Util <span class="hljs-keyword">import</span> number<br>m1=number.long_to_bytes(gmpy2.powmod(c1,d1,N1))<br>m2=number.long_to_bytes(gmpy2.powmod(c2,d2,N2))<br><span class="hljs-built_in">print</span>((m1+m2))<br><br><span class="hljs-comment">#GWHT&#123;3aadab41754799f978669d53e64a3aca&#125;</span><br></code></pre></td></tr></table></figure>
 
 <p>【参考资料】</p>
 <p><a target="_blank" rel="noopener" href="http://t.csdnimg.cn/HzyzT">http://t.csdnimg.cn/HzyzT</a></p>
@@ -211,147 +310,371 @@
 <p>后面还有羊城杯的22年、23年相关真题，有时间再分析</p>
 <p><a target="_blank" rel="noopener" href="http://t.csdnimg.cn/OvTUm">http://t.csdnimg.cn/OvTUm</a></p>
 
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CTF/" class="category-chain-item">CTF</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%BB%B4%E7%BA%B3%E6%94%BB%E5%87%BB/" class="print-no-link">#维纳攻击</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>维纳攻击总结</div>
+      <div>http://jrhu0048.github.io/2024/02/11/wei-na-gong-ji-zong-jie/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>JR.HU</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年2月11日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
   </div>
-</article>
 
 
 
-        
-          <div id="footer-post-container">
-  <div id="footer-post">
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/03/04/wp-2021swpuctf-xin-sheng-sai-crypto-traditional/" title="WP_2021SWPUCTF新生赛_CRYPTO_traditional">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">WP_2021SWPUCTF新生赛_CRYPTO_traditional</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/08/24/k-jun-zhi-ju-lei-suan-fa/" title="k-means聚类算法">
+                        <span class="hidden-mobile">k-means聚类算法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
 
-    <div id="nav-footer" style="display: none">
-      <ul>
-        
-          <li><a href="/">首页</a></li>
-        
-          <li><a href="/about/">关于</a></li>
-        
-          <li><a href="/archives/">归档</a></li>
-        
-          <li><a href="/tags/">标签</a></li>
-        
-          <li><a href="/categories/">分类</a></li>
-        
-      </ul>
-    </div>
-
-    
-    
-      <div id="toc-footer" style="display: none">
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%B4%E7%BA%B3%E6%94%BB%E5%87%BB"><span class="toc-number">1.</span> <span class="toc-text">维纳攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%A8%A1%E6%9D%BF"><span class="toc-number">1.1.</span> <span class="toc-text">解题模板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98%E4%B8%80-HGAME-2022-week3-RSA-attack-3"><span class="toc-number">1.2.</span> <span class="toc-text">例题一 [HGAME 2022 week3]RSA attack 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98%E4%BA%8C-%E7%BE%8A%E5%9F%8E%E6%9D%AF-2020-RRRRRRRSA"><span class="toc-number">1.3.</span> <span class="toc-text">例题二 [羊城杯 2020]RRRRRRRSA</span></a></li></ol></li></ol>
+            
+          </article>
+        </div>
       </div>
-    
-
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/02/11/wei-na-gong-ji-zong-jie/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/02/11/wei-na-gong-ji-zong-jie/&text=维纳攻击总结"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/02/11/wei-na-gong-ji-zong-jie/&title=维纳攻击总结"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/02/11/wei-na-gong-ji-zong-jie/&is_video=false&description=维纳攻击总结"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=维纳攻击总结&body=Check out this article: http://jrhu0048.github.io/2024/02/11/wei-na-gong-ji-zong-jie/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/02/11/wei-na-gong-ji-zong-jie/&title=维纳攻击总结"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/02/11/wei-na-gong-ji-zong-jie/&title=维纳攻击总结"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/02/11/wei-na-gong-ji-zong-jie/&title=维纳攻击总结"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/02/11/wei-na-gong-ji-zong-jie/&title=维纳攻击总结"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/02/11/wei-na-gong-ji-zong-jie/&name=维纳攻击总结&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/02/11/wei-na-gong-ji-zong-jie/&t=维纳攻击总结"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
-</ul>
-
     </div>
 
-    <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
-        
-          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
-        
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
-    </div>
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
 
+
+
+  </aside>
+
+
+    </div>
   </div>
 </div>
 
-        
-        <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy;
-    
-    
-    2022-2024
-    JR.HU
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-        <!--
-       --><li><a href="/">首页</a></li><!--
-     --><!--
-       --><li><a href="/about/">关于</a></li><!--
-     --><!--
-       --><li><a href="/archives/">归档</a></li><!--
-     --><!--
-       --><li><a href="/tags/">标签</a></li><!--
-     --><!--
-       --><li><a href="/categories/">分类</a></li><!--
-     -->
-      </ul>
-    </nav>
-  </div>
-</footer>
 
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
     </div>
-    <!-- styles -->
+  </div>
+</div>
 
+    
 
+    
+  </main>
 
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
-
-
-    <!-- jquery -->
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
-
-
-
-
-<!-- clipboard -->
-
+  <footer>
+    <div class="footer-inner">
   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
   
-  <script type="text/javascript">
-  $(function() {
-    // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
-    btn += '<i class="fa-regular fa-clone"></i>';
-    btn += '</span>';
-    // mount it!
-    $(".highlight table").before(btn);
-    var clip = new ClipboardJS('.btn-copy', {
-      text: function(trigger) {
-        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
-      }
-    });
-    clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "复制成功！");
-      e.clearSelection();
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
     })
-  })
   </script>
 
 
-<script src="/js/main.js"></script>
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
-<!-- search -->
 
-<!-- Baidu Analytics -->
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
 
-<!-- Cloudflare Analytics -->
 
-<!-- Disqus Comments -->
 
-<!-- utterances Comments -->
 
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>

@@ -1,11 +1,24 @@
+
+
 <!DOCTYPE html>
-<html lang=zh>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
 <head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="JR.HU">
+  <meta name="keywords" content="">
+  
     <meta name="description" content="元胞自动机的一些基本特性： 离散空间：元胞自动机通常定义在一个规则的网格上，如一维、二维或三维的格子。  有限状态：每个元胞在任何给定时间都处于有限个状态中的一个，状态可以是二进制的（例如0和1）或具有更多可能值。  局部规则：元胞的状态更新基于局部规则，这些规则只依赖于元胞自身和其邻居的状态。  同步更新：在每个时间步，所有元胞的状态都是同时更新的。  初始条件：元胞自动机的初始状态对系统的长期">
 <meta property="og:type" content="article">
 <meta property="og:title" content="元胞自动机">
@@ -16,157 +29,253 @@
 <meta property="article:published_time" content="2024-05-01T02:51:06.000Z">
 <meta property="article:modified_time" content="2024-05-01T06:04:12.765Z">
 <meta property="article:author" content="JR.HU">
-<meta name="twitter:card" content="summary">
-    
-    
-      
-        
-          <link rel="shortcut icon" href="/images/favicon.ico">
-        
-      
-      
-        
-          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-        
-      
-      
-        
-          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-        
-      
-    
-    <!-- title -->
-    <title>元胞自动机</title>
-    <!-- async scripts -->
-    <!-- Google Analytics -->
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>元胞自动机 - CHARMMY</title>
 
-
-    <!-- Umami Analytics -->
-
-
-    <!-- styles -->
-    
-<link rel="stylesheet" href="/css/style.css">
-
-    <!-- persian styles -->
-    
-    <!-- rss -->
-    
-    
-	<!-- mathjax -->
-	
-		<script type="text/x-mathjax-config">
-		  MathJax.Hub.Config({
-			tex2jax: {
-			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-			  inlineMath: [['$','$']]
-			}
-		  });
-		</script>
-		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
-	
-<meta name="generator" content="Hexo 7.1.1"></head>
-
-<body class="max-width mx-auto px3 ltr">
-    
-      <div id="header-post">
-  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-        <!--
-       --><li><a href="/">首页</a></li><!--
-     --><!--
-       --><li><a href="/about/">关于</a></li><!--
-     --><!--
-       --><li><a href="/archives/">归档</a></li><!--
-     --><!--
-       --><li><a href="/tags/">标签</a></li><!--
-     --><!--
-       --><li><a href="/categories/">分类</a></li><!--
-     -->
-      </ul>
-    </span>
-    <br/>
-    <span id="actions">
-      <ul>
-        
-        <li><a class="icon" aria-label="上一篇" href="/2024/05/01/hui-gui-xiao-bo-shen-jing-wang-luo/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
-        
-        
-        <li><a class="icon" aria-label="下一篇" href="/2024/04/26/xi-yin-pai-chi-you-hua-suan-fa/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
-        
-        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">上一篇</span>
-      <span id="i-next" class="info" style="display:none;">下一篇</span>
-      <span id="i-top" class="info" style="display:none;">返回顶部</span>
-      <span id="i-share" class="info" style="display:none;">分享文章</span>
-    </span>
-    <br/>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/05/01/yuan-bao-zi-dong-ji/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/05/01/yuan-bao-zi-dong-ji/&text=元胞自动机"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/05/01/yuan-bao-zi-dong-ji/&title=元胞自动机"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/05/01/yuan-bao-zi-dong-ji/&is_video=false&description=元胞自动机"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=元胞自动机&body=Check out this article: http://jrhu0048.github.io/2024/05/01/yuan-bao-zi-dong-ji/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/05/01/yuan-bao-zi-dong-ji/&title=元胞自动机"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/05/01/yuan-bao-zi-dong-ji/&title=元胞自动机"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/05/01/yuan-bao-zi-dong-ji/&title=元胞自动机"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/05/01/yuan-bao-zi-dong-ji/&title=元胞自动机"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/05/01/yuan-bao-zi-dong-ji/&name=元胞自动机&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/05/01/yuan-bao-zi-dong-ji/&t=元胞自动机"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-    
-    
-      <div id="toc">
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%83%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">元胞自动机的一些基本特性：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%B7%E5%A8%81%E7%9A%84%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F%EF%BC%88Conway%E2%80%99s-Game-of-Life%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">康威的生命游戏（Conway’s Game of Life）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E5%85%83%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA%E6%A8%A1%E6%8B%9F%EF%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">二维元胞自动机模拟：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%83%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%A1%88%E4%BE%8B%E4%BA%8C"><span class="toc-number">4.</span> <span class="toc-text">元胞自动机模拟案例二</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%83%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA%E7%9A%84%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B%E2%80%94Nagel-Schreckenberg-%E6%A8%A1%E5%9E%8B%E6%A8%A1%E6%8B%9F"><span class="toc-number">5.</span> <span class="toc-text">元胞自动机的应用实例—Nagel Schreckenberg 模型模拟</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E4%BB%8B%E7%BB%8D"><span class="toc-number">5.1.</span> <span class="toc-text">模型介绍</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">6.</span> <span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9%EF%BC%9A"><span class="toc-number">6.1.</span> <span class="toc-text">注意点：</span></a></li></ol></li></ol>
-      </div>
-    
-  </span>
-</div>
-
-    
-    <div class="content index py4 ">
-        
-        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
-    
-    <h1 class="posttitle p-name" itemprop="name headline">
-        元胞自动机
-    </h1>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
 
-    <div class="meta">
-      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span class="p-name" itemprop="name">JR.HU</span>
-      </span>
-      
-    <div class="postdate">
-      
-        <time datetime="2024-05-01T02:51:06.000Z" class="dt-published" itemprop="datePublished">2024-05-01</time>
-        
-      
-    </div>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
-      
 
-      
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
 
-    </div>
-  </header>
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
-  <div class="content e-content" itemprop="articleBody">
-    <h2 id="元胞自动机的一些基本特性："><a href="#元胞自动机的一些基本特性：" class="headerlink" title="元胞自动机的一些基本特性："></a>元胞自动机的一些基本特性：</h2><ol>
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jrhu0048.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="元胞自动机"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-05-01 10:51" pubdate>
+          2024年5月1日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          34 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">元胞自动机</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="元胞自动机的一些基本特性："><a href="#元胞自动机的一些基本特性：" class="headerlink" title="元胞自动机的一些基本特性："></a>元胞自动机的一些基本特性：</h2><ol>
 <li><p><strong>离散空间</strong>：元胞自动机通常定义在一个规则的网格上，如一维、二维或三维的格子。</p>
 </li>
 <li><p><strong>有限状态</strong>：每个元胞在任何给定时间都处于有限个状态中的一个，状态可以是二进制的（例如0和1）或具有更多可能值。</p>
@@ -192,9 +301,9 @@
 <p><strong>1.</strong> 对周围的 8 个近邻的元胞状态求和</p>
 <p><strong>2.</strong> 如果总和为 2 的话，则下一时刻的状态不改变</p>
 <p><strong>3.</strong> 如果总和为 3 ，则下一时刻的状态为 1，否则状态为 0</p>
-<h2 id="二维元胞自动机模拟："><a href="#二维元胞自动机模拟：" class="headerlink" title="二维元胞自动机模拟："></a>二维元胞自动机模拟：</h2><figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%% 设置GUI按键</span></span><br><span class="line">plotbutton<span class="built_in">=</span>uicontrol(<span class="string">&#x27;style&#x27;</span>,<span class="string">&#x27;pushbutton&#x27;</span>,<span class="string">&#x27;string&#x27;</span>,<span class="string">&#x27;运行&#x27;</span>, <span class="string">&#x27;fontsize&#x27;</span>,<span class="number">12</span>, <span class="string">&#x27;position&#x27;</span>,[<span class="number">150</span>,<span class="number">400</span>,<span class="number">50</span>,<span class="number">20</span>], <span class="string">&#x27;callback&#x27;</span>, <span class="string">&#x27;run=1;&#x27;</span>);</span><br><span class="line">erasebutton<span class="built_in">=</span>uicontrol(<span class="string">&#x27;style&#x27;</span>,<span class="string">&#x27;pushbutton&#x27;</span>,<span class="string">&#x27;string&#x27;</span>,<span class="string">&#x27;停止&#x27;</span>,<span class="string">&#x27;fontsize&#x27;</span>,<span class="number">12</span>,<span class="string">&#x27;position&#x27;</span>,[<span class="number">250</span>,<span class="number">400</span>,<span class="number">50</span>,<span class="number">20</span>],<span class="string">&#x27;callback&#x27;</span>,<span class="string">&#x27;freeze=1;&#x27;</span>);</span><br><span class="line">quitbutton<span class="built_in">=</span>uicontrol(<span class="string">&#x27;style&#x27;</span>,<span class="string">&#x27;pushbutton&#x27;</span>,<span class="string">&#x27;string&#x27;</span>,<span class="string">&#x27;退出&#x27;</span>,<span class="string">&#x27;fontsize&#x27;</span>,<span class="number">12</span>,<span class="string">&#x27;position&#x27;</span>,[<span class="number">350</span>,<span class="number">400</span>,<span class="number">50</span>,<span class="number">20</span>],<span class="string">&#x27;callback&#x27;</span>,<span class="string">&#x27;stop=1;close;&#x27;</span>);</span><br><span class="line">number <span class="built_in">=</span> uicontrol(<span class="string">&#x27;style&#x27;</span>,<span class="string">&#x27;text&#x27;</span>,<span class="string">&#x27;string&#x27;</span>,<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;fontsize&#x27;</span>,<span class="number">12</span>, <span class="string">&#x27;position&#x27;</span>,[<span class="number">20</span>,<span class="number">400</span>,<span class="number">50</span>,<span class="number">20</span>]);</span><br><span class="line"><span class="comment">%% 元胞自动机设置</span></span><br><span class="line">n<span class="built_in">=</span><span class="number">200</span>;</span><br><span class="line"><span class="comment">%初始化各元胞状态</span></span><br><span class="line">z <span class="built_in">=</span> zeros(n,n);</span><br><span class="line">sum <span class="built_in">=</span> z;</span><br><span class="line">cells <span class="built_in">=</span> (rand(n,n))&lt;.<span class="number">6</span>;</span><br><span class="line"><span class="comment">% 建立图像句柄</span></span><br><span class="line">imh <span class="built_in">=</span> image(cat(<span class="number">3</span>,cells,z,z));</span><br><span class="line">set(imh, <span class="string">&#x27;erasemode&#x27;</span>, <span class="string">&#x27;none&#x27;</span>)</span><br><span class="line"><span class="comment">% 元胞更新的行列数设置</span></span><br><span class="line">x <span class="built_in">=</span> <span class="number">2</span>:n-<span class="number">1</span>;</span><br><span class="line">y <span class="built_in">=</span> <span class="number">2</span>:n-<span class="number">1</span>;</span><br><span class="line"><span class="comment">% 主事件循环</span></span><br><span class="line">stop<span class="built_in">=</span> <span class="number">0</span>; run <span class="built_in">=</span> <span class="number">0</span>;freeze <span class="built_in">=</span> <span class="number">0</span>; </span><br><span class="line">while stop<span class="built_in">=</span><span class="built_in">=</span><span class="number">0</span></span><br><span class="line">    <span class="built_in">if</span> run<span class="built_in">=</span><span class="built_in">=</span><span class="number">1</span></span><br><span class="line">        <span class="comment">% 计算邻居存活的总数</span></span><br><span class="line">        sum(x,y) <span class="built_in">=</span> cells(x,y-<span class="number">1</span>) + cells(x,y+<span class="number">1</span>) + cells(x-<span class="number">1</span>, y) + cells(x+<span class="number">1</span>,y)...</span><br><span class="line">            + cells(x-<span class="number">1</span>,y-<span class="number">1</span>) + cells(x-<span class="number">1</span>,y+<span class="number">1</span>) + cells(x+<span class="number">1</span>,y-<span class="number">1</span>) + cells(x+<span class="number">1</span>,y+<span class="number">1</span>);</span><br><span class="line">        <span class="comment">% 按照规则更新</span></span><br><span class="line">        cells <span class="built_in">=</span> (sum<span class="built_in">=</span><span class="built_in">=</span><span class="number">3</span>) | (sum<span class="built_in">=</span><span class="built_in">=</span><span class="number">2</span> &amp; cells);</span><br><span class="line">        set(imh, <span class="string">&#x27;cdata&#x27;</span>, cat(<span class="number">3</span>,cells,z,z) )</span><br><span class="line">        stepnumber <span class="built_in">=</span> <span class="number">1</span> + str2double(get(number,<span class="string">&#x27;string&#x27;</span>));</span><br><span class="line">        set(number,<span class="string">&#x27;string&#x27;</span>,num2str(stepnumber))</span><br><span class="line">    end</span><br><span class="line">    <span class="built_in">if</span> freeze<span class="built_in">=</span><span class="built_in">=</span><span class="number">1</span></span><br><span class="line">        run <span class="built_in">=</span> <span class="number">0</span>;</span><br><span class="line">        freeze <span class="built_in">=</span> <span class="number">0</span>;</span><br><span class="line">    end</span><br><span class="line">    drawnow</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<h2 id="二维元胞自动机模拟："><a href="#二维元胞自动机模拟：" class="headerlink" title="二维元胞自动机模拟："></a>二维元胞自动机模拟：</h2><figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs m"><span class="hljs-comment">%% 设置GUI按键</span><br>plotbutton<span class="hljs-built_in">=</span>uicontrol(<span class="hljs-string">&#x27;style&#x27;</span>,<span class="hljs-string">&#x27;pushbutton&#x27;</span>,<span class="hljs-string">&#x27;string&#x27;</span>,<span class="hljs-string">&#x27;运行&#x27;</span>, <span class="hljs-string">&#x27;fontsize&#x27;</span>,<span class="hljs-number">12</span>, <span class="hljs-string">&#x27;position&#x27;</span>,[<span class="hljs-number">150</span>,<span class="hljs-number">400</span>,<span class="hljs-number">50</span>,<span class="hljs-number">20</span>], <span class="hljs-string">&#x27;callback&#x27;</span>, <span class="hljs-string">&#x27;run=1;&#x27;</span>);<br>erasebutton<span class="hljs-built_in">=</span>uicontrol(<span class="hljs-string">&#x27;style&#x27;</span>,<span class="hljs-string">&#x27;pushbutton&#x27;</span>,<span class="hljs-string">&#x27;string&#x27;</span>,<span class="hljs-string">&#x27;停止&#x27;</span>,<span class="hljs-string">&#x27;fontsize&#x27;</span>,<span class="hljs-number">12</span>,<span class="hljs-string">&#x27;position&#x27;</span>,[<span class="hljs-number">250</span>,<span class="hljs-number">400</span>,<span class="hljs-number">50</span>,<span class="hljs-number">20</span>],<span class="hljs-string">&#x27;callback&#x27;</span>,<span class="hljs-string">&#x27;freeze=1;&#x27;</span>);<br>quitbutton<span class="hljs-built_in">=</span>uicontrol(<span class="hljs-string">&#x27;style&#x27;</span>,<span class="hljs-string">&#x27;pushbutton&#x27;</span>,<span class="hljs-string">&#x27;string&#x27;</span>,<span class="hljs-string">&#x27;退出&#x27;</span>,<span class="hljs-string">&#x27;fontsize&#x27;</span>,<span class="hljs-number">12</span>,<span class="hljs-string">&#x27;position&#x27;</span>,[<span class="hljs-number">350</span>,<span class="hljs-number">400</span>,<span class="hljs-number">50</span>,<span class="hljs-number">20</span>],<span class="hljs-string">&#x27;callback&#x27;</span>,<span class="hljs-string">&#x27;stop=1;close;&#x27;</span>);<br>number <span class="hljs-built_in">=</span> uicontrol(<span class="hljs-string">&#x27;style&#x27;</span>,<span class="hljs-string">&#x27;text&#x27;</span>,<span class="hljs-string">&#x27;string&#x27;</span>,<span class="hljs-string">&#x27;1&#x27;</span>,<span class="hljs-string">&#x27;fontsize&#x27;</span>,<span class="hljs-number">12</span>, <span class="hljs-string">&#x27;position&#x27;</span>,[<span class="hljs-number">20</span>,<span class="hljs-number">400</span>,<span class="hljs-number">50</span>,<span class="hljs-number">20</span>]);<br><span class="hljs-comment">%% 元胞自动机设置</span><br>n<span class="hljs-built_in">=</span><span class="hljs-number">200</span>;<br><span class="hljs-comment">%初始化各元胞状态</span><br>z <span class="hljs-built_in">=</span> zeros(n,n);<br>sum <span class="hljs-built_in">=</span> z;<br>cells <span class="hljs-built_in">=</span> (rand(n,n))&lt;.<span class="hljs-number">6</span>;<br><span class="hljs-comment">% 建立图像句柄</span><br>imh <span class="hljs-built_in">=</span> image(cat(<span class="hljs-number">3</span>,cells,z,z));<br>set(imh, <span class="hljs-string">&#x27;erasemode&#x27;</span>, <span class="hljs-string">&#x27;none&#x27;</span>)<br><span class="hljs-comment">% 元胞更新的行列数设置</span><br>x <span class="hljs-built_in">=</span> <span class="hljs-number">2</span>:n-<span class="hljs-number">1</span>;<br>y <span class="hljs-built_in">=</span> <span class="hljs-number">2</span>:n-<span class="hljs-number">1</span>;<br><span class="hljs-comment">% 主事件循环</span><br>stop<span class="hljs-built_in">=</span> <span class="hljs-number">0</span>; run <span class="hljs-built_in">=</span> <span class="hljs-number">0</span>;freeze <span class="hljs-built_in">=</span> <span class="hljs-number">0</span>; <br>while stop<span class="hljs-built_in">=</span><span class="hljs-built_in">=</span><span class="hljs-number">0</span><br>    <span class="hljs-built_in">if</span> run<span class="hljs-built_in">=</span><span class="hljs-built_in">=</span><span class="hljs-number">1</span><br>        <span class="hljs-comment">% 计算邻居存活的总数</span><br>        sum(x,y) <span class="hljs-built_in">=</span> cells(x,y-<span class="hljs-number">1</span>) + cells(x,y+<span class="hljs-number">1</span>) + cells(x-<span class="hljs-number">1</span>, y) + cells(x+<span class="hljs-number">1</span>,y)...<br>            + cells(x-<span class="hljs-number">1</span>,y-<span class="hljs-number">1</span>) + cells(x-<span class="hljs-number">1</span>,y+<span class="hljs-number">1</span>) + cells(x+<span class="hljs-number">1</span>,y-<span class="hljs-number">1</span>) + cells(x+<span class="hljs-number">1</span>,y+<span class="hljs-number">1</span>);<br>        <span class="hljs-comment">% 按照规则更新</span><br>        cells <span class="hljs-built_in">=</span> (sum<span class="hljs-built_in">=</span><span class="hljs-built_in">=</span><span class="hljs-number">3</span>) | (sum<span class="hljs-built_in">=</span><span class="hljs-built_in">=</span><span class="hljs-number">2</span> &amp; cells);<br>        set(imh, <span class="hljs-string">&#x27;cdata&#x27;</span>, cat(<span class="hljs-number">3</span>,cells,z,z) )<br>        stepnumber <span class="hljs-built_in">=</span> <span class="hljs-number">1</span> + str2double(get(number,<span class="hljs-string">&#x27;string&#x27;</span>));<br>        set(number,<span class="hljs-string">&#x27;string&#x27;</span>,num2str(stepnumber))<br>    end<br>    <span class="hljs-built_in">if</span> freeze<span class="hljs-built_in">=</span><span class="hljs-built_in">=</span><span class="hljs-number">1</span><br>        run <span class="hljs-built_in">=</span> <span class="hljs-number">0</span>;<br>        freeze <span class="hljs-built_in">=</span> <span class="hljs-number">0</span>;<br>    end<br>    drawnow<br>end<br></code></pre></td></tr></table></figure>
 <h2 id="元胞自动机模拟案例二"><a href="#元胞自动机模拟案例二" class="headerlink" title="元胞自动机模拟案例二"></a>元胞自动机模拟案例二</h2><p><strong>规则制定：</strong><br>首先定义平面中心点的数值为1，接着在每一时间步对每一点，如果周围八个点的和为偶数，则变为0，为奇数则变为 1</p>
-<figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 颜色控制</span></span><br><span class="line">Map <span class="built_in">=</span> [<span class="number">1</span> <span class="number">1</span> <span class="number">1</span>; <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>];</span><br><span class="line">colormap(Map);    <span class="comment">%定义所有值为1的元胞将显示为白色，值为0的元胞将显示为黑色</span></span><br><span class="line"><span class="comment">% 设置网格大小</span></span><br><span class="line">S <span class="built_in">=</span> <span class="number">121</span>;</span><br><span class="line">L <span class="built_in">=</span> zeros(S);</span><br><span class="line"><span class="comment">% 把中间一个数设置为 1 作为元胞种子</span></span><br><span class="line">M <span class="built_in">=</span> (S+<span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line">L(M, M) <span class="built_in">=</span> <span class="number">1</span>;</span><br><span class="line">Temp <span class="built_in">=</span> L;</span><br><span class="line">imagesc(L);</span><br><span class="line"><span class="comment">% 计算层数</span></span><br><span class="line">Layer <span class="built_in">=</span> (S-<span class="number">1</span>)/<span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">for t<span class="built_in">=</span><span class="number">2</span>:Layer</span><br><span class="line">    for x<span class="built_in">=</span>M-t+<span class="number">1</span>:M+t-<span class="number">1</span></span><br><span class="line">       <span class="built_in">if</span> x<span class="built_in">=</span><span class="built_in">=</span>M-t+<span class="number">1</span> || x<span class="built_in">=</span><span class="built_in">=</span>M+t-<span class="number">1</span></span><br><span class="line"></span><br><span class="line">          for y<span class="built_in">=</span>M-t+<span class="number">1</span>:M+t-<span class="number">1</span></span><br><span class="line">            SUM <span class="built_in">=</span> <span class="number">0</span>;</span><br><span class="line">            for m<span class="built_in">=</span>-<span class="number">1</span>:<span class="number">1</span></span><br><span class="line">               for n<span class="built_in">=</span>-<span class="number">1</span>:<span class="number">1</span></span><br><span class="line">                  <span class="built_in">if</span> x+m&gt;<span class="number">0</span> &amp;&amp; x+m<span class="built_in">&lt;=</span>S &amp;&amp; y+n&gt;<span class="number">0</span> &amp;&amp; y+n<span class="built_in">&lt;=</span>S</span><br><span class="line">                     SUM <span class="built_in">=</span> SUM + L(x+m, y+n); </span><br><span class="line">                  end</span><br><span class="line">               end</span><br><span class="line">            end</span><br><span class="line">            SUM <span class="built_in">=</span> SUM - L(x, y);</span><br><span class="line">            Temp(x, y) <span class="built_in">=</span> mod(SUM, <span class="number">2</span>);</span><br><span class="line">          end</span><br><span class="line">          </span><br><span class="line">       <span class="built_in">else</span></span><br><span class="line">            y <span class="built_in">=</span> M-t+<span class="number">1</span>;</span><br><span class="line">            SUM <span class="built_in">=</span> <span class="number">0</span>;</span><br><span class="line">            for m<span class="built_in">=</span>-<span class="number">1</span>:<span class="number">1</span></span><br><span class="line">               for n<span class="built_in">=</span>-<span class="number">1</span>:<span class="number">1</span></span><br><span class="line">                  <span class="built_in">if</span> x+m&gt;<span class="number">0</span> &amp;&amp; x+m<span class="built_in">&lt;=</span>S &amp;&amp; y+n&gt;<span class="number">0</span> &amp;&amp; y+n<span class="built_in">&lt;=</span>S</span><br><span class="line">                     SUM <span class="built_in">=</span> SUM + L(x+m, y+n); </span><br><span class="line">                  end</span><br><span class="line">               end</span><br><span class="line">            end</span><br><span class="line">            SUM <span class="built_in">=</span> SUM - L(x, y);</span><br><span class="line">            Temp(x, y) <span class="built_in">=</span> mod(SUM, <span class="number">2</span>);</span><br><span class="line">            </span><br><span class="line">            y <span class="built_in">=</span> M+t-<span class="number">1</span>;</span><br><span class="line">            SUM <span class="built_in">=</span> <span class="number">0</span>;</span><br><span class="line">            for m<span class="built_in">=</span>-<span class="number">1</span>:<span class="number">1</span></span><br><span class="line">               for n<span class="built_in">=</span>-<span class="number">1</span>:<span class="number">1</span></span><br><span class="line">                  <span class="built_in">if</span> x+m&gt;<span class="number">0</span> &amp;&amp; x+m<span class="built_in">&lt;=</span>S &amp;&amp; y+n&gt;<span class="number">0</span> &amp;&amp; y+n<span class="built_in">&lt;=</span>S</span><br><span class="line">                     SUM <span class="built_in">=</span> SUM + L(x+m, y+n); </span><br><span class="line">                  end</span><br><span class="line">               end</span><br><span class="line">            end</span><br><span class="line">            SUM <span class="built_in">=</span> SUM - L(x, y);</span><br><span class="line">            Temp(x, y) <span class="built_in">=</span> mod(SUM, <span class="number">2</span>);</span><br><span class="line">       end</span><br><span class="line">    end</span><br><span class="line">    L <span class="built_in">=</span> Temp;</span><br><span class="line">    imagesc(L);</span><br><span class="line">    <span class="comment">% 速度控制</span></span><br><span class="line">    pause(<span class="number">0.2</span>);</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><code class="hljs m"><span class="hljs-comment">% 颜色控制</span><br>Map <span class="hljs-built_in">=</span> [<span class="hljs-number">1</span> <span class="hljs-number">1</span> <span class="hljs-number">1</span>; <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span>];<br>colormap(Map);    <span class="hljs-comment">%定义所有值为1的元胞将显示为白色，值为0的元胞将显示为黑色</span><br><span class="hljs-comment">% 设置网格大小</span><br>S <span class="hljs-built_in">=</span> <span class="hljs-number">121</span>;<br>L <span class="hljs-built_in">=</span> zeros(S);<br><span class="hljs-comment">% 把中间一个数设置为 1 作为元胞种子</span><br>M <span class="hljs-built_in">=</span> (S+<span class="hljs-number">1</span>)/<span class="hljs-number">2</span>;<br>L(M, M) <span class="hljs-built_in">=</span> <span class="hljs-number">1</span>;<br>Temp <span class="hljs-built_in">=</span> L;<br>imagesc(L);<br><span class="hljs-comment">% 计算层数</span><br>Layer <span class="hljs-built_in">=</span> (S-<span class="hljs-number">1</span>)/<span class="hljs-number">2</span> + <span class="hljs-number">1</span>;<br><br>for t<span class="hljs-built_in">=</span><span class="hljs-number">2</span>:Layer<br>    for x<span class="hljs-built_in">=</span>M-t+<span class="hljs-number">1</span>:M+t-<span class="hljs-number">1</span><br>       <span class="hljs-built_in">if</span> x<span class="hljs-built_in">=</span><span class="hljs-built_in">=</span>M-t+<span class="hljs-number">1</span> || x<span class="hljs-built_in">=</span><span class="hljs-built_in">=</span>M+t-<span class="hljs-number">1</span><br><br>          for y<span class="hljs-built_in">=</span>M-t+<span class="hljs-number">1</span>:M+t-<span class="hljs-number">1</span><br>            SUM <span class="hljs-built_in">=</span> <span class="hljs-number">0</span>;<br>            for m<span class="hljs-built_in">=</span>-<span class="hljs-number">1</span>:<span class="hljs-number">1</span><br>               for n<span class="hljs-built_in">=</span>-<span class="hljs-number">1</span>:<span class="hljs-number">1</span><br>                  <span class="hljs-built_in">if</span> x+m&gt;<span class="hljs-number">0</span> &amp;&amp; x+m<span class="hljs-built_in">&lt;=</span>S &amp;&amp; y+n&gt;<span class="hljs-number">0</span> &amp;&amp; y+n<span class="hljs-built_in">&lt;=</span>S<br>                     SUM <span class="hljs-built_in">=</span> SUM + L(x+m, y+n); <br>                  end<br>               end<br>            end<br>            SUM <span class="hljs-built_in">=</span> SUM - L(x, y);<br>            Temp(x, y) <span class="hljs-built_in">=</span> mod(SUM, <span class="hljs-number">2</span>);<br>          end<br>          <br>       <span class="hljs-built_in">else</span><br>            y <span class="hljs-built_in">=</span> M-t+<span class="hljs-number">1</span>;<br>            SUM <span class="hljs-built_in">=</span> <span class="hljs-number">0</span>;<br>            for m<span class="hljs-built_in">=</span>-<span class="hljs-number">1</span>:<span class="hljs-number">1</span><br>               for n<span class="hljs-built_in">=</span>-<span class="hljs-number">1</span>:<span class="hljs-number">1</span><br>                  <span class="hljs-built_in">if</span> x+m&gt;<span class="hljs-number">0</span> &amp;&amp; x+m<span class="hljs-built_in">&lt;=</span>S &amp;&amp; y+n&gt;<span class="hljs-number">0</span> &amp;&amp; y+n<span class="hljs-built_in">&lt;=</span>S<br>                     SUM <span class="hljs-built_in">=</span> SUM + L(x+m, y+n); <br>                  end<br>               end<br>            end<br>            SUM <span class="hljs-built_in">=</span> SUM - L(x, y);<br>            Temp(x, y) <span class="hljs-built_in">=</span> mod(SUM, <span class="hljs-number">2</span>);<br>            <br>            y <span class="hljs-built_in">=</span> M+t-<span class="hljs-number">1</span>;<br>            SUM <span class="hljs-built_in">=</span> <span class="hljs-number">0</span>;<br>            for m<span class="hljs-built_in">=</span>-<span class="hljs-number">1</span>:<span class="hljs-number">1</span><br>               for n<span class="hljs-built_in">=</span>-<span class="hljs-number">1</span>:<span class="hljs-number">1</span><br>                  <span class="hljs-built_in">if</span> x+m&gt;<span class="hljs-number">0</span> &amp;&amp; x+m<span class="hljs-built_in">&lt;=</span>S &amp;&amp; y+n&gt;<span class="hljs-number">0</span> &amp;&amp; y+n<span class="hljs-built_in">&lt;=</span>S<br>                     SUM <span class="hljs-built_in">=</span> SUM + L(x+m, y+n); <br>                  end<br>               end<br>            end<br>            SUM <span class="hljs-built_in">=</span> SUM - L(x, y);<br>            Temp(x, y) <span class="hljs-built_in">=</span> mod(SUM, <span class="hljs-number">2</span>);<br>       end<br>    end<br>    L <span class="hljs-built_in">=</span> Temp;<br>    imagesc(L);<br>    <span class="hljs-comment">% 速度控制</span><br>    pause(<span class="hljs-number">0.2</span>);<br>end<br></code></pre></td></tr></table></figure>
 
 <h2 id="元胞自动机的应用实例—Nagel-Schreckenberg-模型模拟"><a href="#元胞自动机的应用实例—Nagel-Schreckenberg-模型模拟" class="headerlink" title="元胞自动机的应用实例—Nagel Schreckenberg 模型模拟"></a>元胞自动机的应用实例—Nagel Schreckenberg 模型模拟</h2><h3 id="模型介绍"><a href="#模型介绍" class="headerlink" title="模型介绍"></a>模型介绍</h3><p>Nagel-Schreckenberg模型是一种用于模拟交通流的简单而有效的元胞自动机模型，由德国物理学家Reinhard Nagel和Michael Schreckenberg在1992年提出。该模型主要用于描述单向道路上车辆流动的行为，能够展示出交通堵塞的形成、消散以及密度波的传播等现象。它通过规则定义车辆的加速、减速、保持速度以及换道行为，每个时间步长内，模型中的每一辆车根据以下规则更新其速度和位置：</p>
 <ol>
@@ -209,11 +318,11 @@
 </ol>
 <p>模型中的每辆车占据一格空间，每一步更新时，车辆按照其当前速度前移相应的格数，然后根据上述规则调整速度，以此循环模拟交通流随时间的动态变化。Nagel-Schreckenberg模型因其简明性和能够捕捉交通流宏观特性而广泛应用于交通工程、复杂系统科学和物理学的研究中。</p>
 <h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>python简单模拟</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 参考链接：http://t.csdnimg.cn/2QgNz</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"> </span><br><span class="line">start = time.time()</span><br><span class="line">path = <span class="number">5000</span>  <span class="comment"># 道路长度</span></span><br><span class="line">n = <span class="number">100</span>  <span class="comment"># 车辆数目</span></span><br><span class="line">v0 = <span class="number">90</span>  <span class="comment"># 初始速度</span></span><br><span class="line">p = <span class="number">0.3</span>  <span class="comment"># 车辆减速概率</span></span><br><span class="line">Times = <span class="number">6000</span>  <span class="comment"># 模拟的时刻数目,时刻越长所耗时间越长</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">np.random.seed(<span class="number">0</span>)</span><br><span class="line">x = np.random.rand(n) * path  <span class="comment"># 保存每辆车在道路上的位置,随机进行初始化</span></span><br><span class="line">x.sort()</span><br><span class="line">v = np.tile([v0], n).astype(np.float64)  <span class="comment"># 保存每辆车的速度,并且初速度相同</span></span><br><span class="line"> </span><br><span class="line">plt.figure(figsize=(<span class="number">8</span>, <span class="number">6</span>), facecolor=<span class="string">&#x27;w&#x27;</span>)</span><br><span class="line"><span class="comment"># 模拟每个时刻</span></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> <span class="built_in">range</span>(Times):</span><br><span class="line">    plt.scatter(x, [t] * n, s=<span class="number">1</span>, c=<span class="string">&#x27;k&#x27;</span>, alpha=<span class="number">0.05</span>)</span><br><span class="line">    <span class="comment"># 模拟每辆车</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">        <span class="comment"># 计算当前车与前车的距离（是环形车道）</span></span><br><span class="line">        <span class="keyword">if</span> x[(i + <span class="number">1</span>) % n] &gt; x[i]:</span><br><span class="line">            d = x[(i + <span class="number">1</span>) % n] - x[i]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            d = path - x[i] + x[(i + <span class="number">1</span>) % n]</span><br><span class="line">        <span class="comment"># 根据距离计算下一秒的速度</span></span><br><span class="line">        <span class="keyword">if</span> v[i] &lt; d:</span><br><span class="line">            <span class="keyword">if</span> np.random.rand() &gt; p:</span><br><span class="line">                v[i] += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                v[i] -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            v[i] = d - <span class="number">1</span></span><br><span class="line">    <span class="comment"># 对速度进行限制(最高速度不得超过120)</span></span><br><span class="line">    v = v.clip(<span class="number">0</span>, <span class="number">120</span>)</span><br><span class="line">    <span class="comment"># 一秒后,车辆的位置发生变化</span></span><br><span class="line">    x += v</span><br><span class="line">    x %= path</span><br><span class="line">plt.rcParams[<span class="string">&#x27;font.sans-serif&#x27;</span>] = [<span class="string">&#x27;SimHei&#x27;</span>]</span><br><span class="line">plt.xlim(<span class="number">0</span>, path)</span><br><span class="line">plt.ylim(<span class="number">0</span>, Times)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;车辆位置&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;模拟时间&#x27;</span>)</span><br><span class="line">plt.title(<span class="string">f&#x27;Nagel-Schreckenberg模型模拟(车道长度:<span class="subst">&#123;path&#125;</span>,车辆数:<span class="subst">&#123;n&#125;</span>,初速度:<span class="subst">&#123;v0&#125;</span>,减速概率:<span class="subst">&#123;p&#125;</span>)&#x27;</span>)</span><br><span class="line">end = time.time()</span><br><span class="line">plt.text(<span class="number">1800</span>, <span class="number">6400</span>, s=<span class="string">f&#x27;Running time: <span class="subst">&#123;(end - start)&#125;</span> seconds&#x27;</span>, fontsize=<span class="number">15</span>, color=<span class="string">&#x27;red&#x27;</span>)</span><br><span class="line"> </span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 参考链接：http://t.csdnimg.cn/2QgNz</span><br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">from</span> matplotlib <span class="hljs-keyword">import</span> pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">import</span> time<br> <br>start = time.time()<br>path = <span class="hljs-number">5000</span>  <span class="hljs-comment"># 道路长度</span><br>n = <span class="hljs-number">100</span>  <span class="hljs-comment"># 车辆数目</span><br>v0 = <span class="hljs-number">90</span>  <span class="hljs-comment"># 初始速度</span><br>p = <span class="hljs-number">0.3</span>  <span class="hljs-comment"># 车辆减速概率</span><br>Times = <span class="hljs-number">6000</span>  <span class="hljs-comment"># 模拟的时刻数目,时刻越长所耗时间越长</span><br> <br> <br>np.random.seed(<span class="hljs-number">0</span>)<br>x = np.random.rand(n) * path  <span class="hljs-comment"># 保存每辆车在道路上的位置,随机进行初始化</span><br>x.sort()<br>v = np.tile([v0], n).astype(np.float64)  <span class="hljs-comment"># 保存每辆车的速度,并且初速度相同</span><br> <br>plt.figure(figsize=(<span class="hljs-number">8</span>, <span class="hljs-number">6</span>), facecolor=<span class="hljs-string">&#x27;w&#x27;</span>)<br><span class="hljs-comment"># 模拟每个时刻</span><br><span class="hljs-keyword">for</span> t <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(Times):<br>    plt.scatter(x, [t] * n, s=<span class="hljs-number">1</span>, c=<span class="hljs-string">&#x27;k&#x27;</span>, alpha=<span class="hljs-number">0.05</span>)<br>    <span class="hljs-comment"># 模拟每辆车</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>        <span class="hljs-comment"># 计算当前车与前车的距离（是环形车道）</span><br>        <span class="hljs-keyword">if</span> x[(i + <span class="hljs-number">1</span>) % n] &gt; x[i]:<br>            d = x[(i + <span class="hljs-number">1</span>) % n] - x[i]<br>        <span class="hljs-keyword">else</span>:<br>            d = path - x[i] + x[(i + <span class="hljs-number">1</span>) % n]<br>        <span class="hljs-comment"># 根据距离计算下一秒的速度</span><br>        <span class="hljs-keyword">if</span> v[i] &lt; d:<br>            <span class="hljs-keyword">if</span> np.random.rand() &gt; p:<br>                v[i] += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>:<br>                v[i] -= <span class="hljs-number">1</span><br>        <span class="hljs-keyword">else</span>:<br>            v[i] = d - <span class="hljs-number">1</span><br>    <span class="hljs-comment"># 对速度进行限制(最高速度不得超过120)</span><br>    v = v.clip(<span class="hljs-number">0</span>, <span class="hljs-number">120</span>)<br>    <span class="hljs-comment"># 一秒后,车辆的位置发生变化</span><br>    x += v<br>    x %= path<br>plt.rcParams[<span class="hljs-string">&#x27;font.sans-serif&#x27;</span>] = [<span class="hljs-string">&#x27;SimHei&#x27;</span>]<br>plt.xlim(<span class="hljs-number">0</span>, path)<br>plt.ylim(<span class="hljs-number">0</span>, Times)<br>plt.xlabel(<span class="hljs-string">&#x27;车辆位置&#x27;</span>)<br>plt.ylabel(<span class="hljs-string">&#x27;模拟时间&#x27;</span>)<br>plt.title(<span class="hljs-string">f&#x27;Nagel-Schreckenberg模型模拟(车道长度:<span class="hljs-subst">&#123;path&#125;</span>,车辆数:<span class="hljs-subst">&#123;n&#125;</span>,初速度:<span class="hljs-subst">&#123;v0&#125;</span>,减速概率:<span class="hljs-subst">&#123;p&#125;</span>)&#x27;</span>)<br>end = time.time()<br>plt.text(<span class="hljs-number">1800</span>, <span class="hljs-number">6400</span>, s=<span class="hljs-string">f&#x27;Running time: <span class="hljs-subst">&#123;(end - start)&#125;</span> seconds&#x27;</span>, fontsize=<span class="hljs-number">15</span>, color=<span class="hljs-string">&#x27;red&#x27;</span>)<br> <br>plt.show()<br></code></pre></td></tr></table></figure>
 
 
 <p>基于MATLAB编写交通流模拟程序，通过计算机仿真来探索和分析交通流量与道路密度之间的关系，这通常被称为“流量-密度曲线”（Fundamental Diagram of Traffic Flow）。</p>
-<figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 初始化参数</span></span><br><span class="line">clear; </span><br><span class="line">clc;   </span><br><span class="line">vmax <span class="built_in">=</span> <span class="number">10</span>; <span class="comment">% 最大速度</span></span><br><span class="line">p <span class="built_in">=</span> <span class="number">0.6</span>;       <span class="comment">% 随机制动的概率（原始数据为0.8）</span></span><br><span class="line">road_length <span class="built_in">=</span> <span class="number">1000</span>; <span class="comment">% 道路长度</span></span><br><span class="line">simulation_steps <span class="built_in">=</span> <span class="number">1000</span>; <span class="comment">% 模拟步数</span></span><br><span class="line">render_on <span class="built_in">=</span> <span class="number">0</span>; <span class="comment">% 是否渲染图形界面</span></span><br><span class="line">pause_on <span class="built_in">=</span> <span class="number">0</span>; <span class="comment">% 是否在模拟中暂停</span></span><br><span class="line">delay_on <span class="built_in">=</span> <span class="number">0</span>; <span class="comment">% 是否在模拟中延迟</span></span><br><span class="line">delay_length <span class="built_in">=</span> <span class="number">0.02</span>;    <span class="comment">% 延迟时间，用于控制帧率（10 FPS）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 初始化道路和速度状态</span></span><br><span class="line">road <span class="built_in">=</span> zeros(<span class="number">1</span>,road_length); <span class="comment">% 道路占用状态数组</span></span><br><span class="line">road_next <span class="built_in">=</span> road; <span class="comment">% 下一状态的数组</span></span><br><span class="line">velocities <span class="built_in">=</span> zeros(<span class="number">1</span>,road_length); <span class="comment">% 车辆速度状态数组</span></span><br><span class="line">velocities_next <span class="built_in">=</span> velocities; <span class="comment">% 下一速度状态的数组</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 采样设置</span></span><br><span class="line">num_samples <span class="built_in">=</span> <span class="number">2000</span>; <span class="comment">% 采样数量</span></span><br><span class="line">samples <span class="built_in">=</span> zeros(<span class="number">2</span>,num_samples); <span class="comment">% 存储密度和流量的数组</span></span><br><span class="line">density_step <span class="built_in">=</span> <span class="number">1</span>/num_samples; <span class="comment">% 密度步长</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 初始化历史记录数组</span></span><br><span class="line">history <span class="built_in">=</span> zeros(simulation_steps, road_length); <span class="comment">% 记录道路状态历史</span></span><br><span class="line">velocity_history <span class="built_in">=</span> zeros(simulation_steps, road_length); <span class="comment">% 记录速度状态历史</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 打开图形界面</span></span><br><span class="line">figure;</span><br><span class="line"></span><br><span class="line"><span class="comment">% 采样循环</span></span><br><span class="line">for g<span class="built_in">=</span><span class="number">1</span>:num_samples</span><br><span class="line">    <span class="comment">% 生成不同密度的交通流</span></span><br><span class="line">    road <span class="built_in">=</span> zeros(<span class="number">1</span>,road_length); <span class="comment">% 重置道路状态</span></span><br><span class="line">    road_next <span class="built_in">=</span> road; <span class="comment">% 重置下一状态</span></span><br><span class="line">    density <span class="built_in">=</span> g/num_samples; <span class="comment">% 当前密度</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">% 根据密度在道路上随机放置车辆</span></span><br><span class="line">    for i<span class="built_in">=</span><span class="number">1</span>:road_length</span><br><span class="line">        <span class="built_in">if</span> rand &lt; density</span><br><span class="line">            road(i) <span class="built_in">=</span> <span class="number">1</span>;</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line"></span><br><span class="line">    <span class="comment">% 如果开启渲染，显示当前道路状态</span></span><br><span class="line">    <span class="built_in">if</span> render_on</span><br><span class="line">        imshow(road);</span><br><span class="line">        drawnow;</span><br><span class="line">    end</span><br><span class="line"></span><br><span class="line">    <span class="comment">% 模拟循环</span></span><br><span class="line">    for i<span class="built_in">=</span><span class="number">1</span>:simulation_steps</span><br><span class="line">        <span class="comment">% 记录当前状态</span></span><br><span class="line">        history(i, :) <span class="built_in">=</span> road;</span><br><span class="line">        velocity_history(i,:) <span class="built_in">=</span> velocities;</span><br><span class="line"></span><br><span class="line">        <span class="comment">% 速度更新</span></span><br><span class="line">        for j<span class="built_in">=</span><span class="number">1</span>:road_length</span><br><span class="line">            <span class="built_in">if</span> road(j) <span class="built_in">=</span><span class="built_in">=</span> <span class="number">1</span></span><br><span class="line">                <span class="comment">% 寻找前方 vmax 个单元格内没有车辆的最远距离</span></span><br><span class="line">                distance <span class="built_in">=</span> <span class="number">0</span>;</span><br><span class="line">                bf <span class="built_in">=</span> <span class="number">0</span>; <span class="comment">% 标志变量，表示是否找到车辆</span></span><br><span class="line">                for k<span class="built_in">=</span><span class="number">1</span>:vmax</span><br><span class="line">                    distance <span class="built_in">=</span> k;</span><br><span class="line">                    <span class="built_in">if</span> j+k <span class="built_in">&lt;=</span> road_length</span><br><span class="line">                        index <span class="built_in">=</span> j+k;</span><br><span class="line">                    <span class="built_in">else</span></span><br><span class="line">                        index <span class="built_in">=</span> j+k-road_length; <span class="comment">% 处理循环道路的边界情况</span></span><br><span class="line">                    end</span><br><span class="line">                    <span class="built_in">if</span> road(index) <span class="built_in">=</span><span class="built_in">=</span> <span class="number">1</span></span><br><span class="line">                        bf <span class="built_in">=</span> <span class="number">1</span>;</span><br><span class="line">                    end</span><br><span class="line">                    <span class="built_in">if</span> bf <span class="built_in">=</span><span class="built_in">=</span> <span class="number">1</span>, break, end</span><br><span class="line">                end</span><br><span class="line"></span><br><span class="line">                <span class="comment">% 根据规则更新车辆速度</span></span><br><span class="line">                <span class="built_in">if</span> velocities(j) &lt; vmax</span><br><span class="line">                    velocities(j) <span class="built_in">=</span> velocities(j) + <span class="number">1</span>; <span class="comment">% 加速</span></span><br><span class="line">                end</span><br><span class="line">                <span class="built_in">if</span> (velocities(j) &gt; distance - <span class="number">1</span>) &amp;&amp; bf <span class="built_in">=</span><span class="built_in">=</span> <span class="number">1</span></span><br><span class="line">                    velocities(j) <span class="built_in">=</span> distance - <span class="number">1</span>; <span class="comment">% 避免碰撞</span></span><br><span class="line">                end</span><br><span class="line">                <span class="built_in">if</span> rand &lt; p &amp;&amp; velocities(j) &gt; <span class="number">0</span></span><br><span class="line">                    velocities(j) <span class="built_in">=</span> velocities(j) - <span class="number">1</span>; <span class="comment">% 随机减速</span></span><br><span class="line">                end</span><br><span class="line">            end</span><br><span class="line">        end</span><br><span class="line"></span><br><span class="line">        <span class="comment">% 移动更新</span></span><br><span class="line">        for j<span class="built_in">=</span><span class="number">1</span>:road_length</span><br><span class="line">            <span class="built_in">if</span> road(j) <span class="built_in">=</span><span class="built_in">=</span> <span class="number">1</span></span><br><span class="line">                <span class="built_in">if</span> j+velocities(j) <span class="built_in">&lt;=</span> road_length</span><br><span class="line">                    index <span class="built_in">=</span> j+velocities(j);</span><br><span class="line">                <span class="built_in">else</span></span><br><span class="line">                    index <span class="built_in">=</span> j+velocities(j) - road_length; <span class="comment">% 处理循环道路的边界情况</span></span><br><span class="line">                end</span><br><span class="line">                <span class="comment">% 检测碰撞</span></span><br><span class="line">                <span class="built_in">if</span> road_next(index) <span class="built_in">=</span><span class="built_in">=</span> <span class="number">1</span></span><br><span class="line">                    disp(<span class="string">&#x27;Collision detected&#x27;</span>);</span><br><span class="line">                end</span><br><span class="line">                road_next(index) <span class="built_in">=</span> <span class="number">1</span>;</span><br><span class="line">                velocities_next(index) <span class="built_in">=</span> velocities(j);</span><br><span class="line">            end</span><br><span class="line">        end</span><br><span class="line"></span><br><span class="line">        <span class="comment">% 更新道路和速度状态</span></span><br><span class="line">        velocities <span class="built_in">=</span> velocities_next;</span><br><span class="line">        road <span class="built_in">=</span> road_next;</span><br><span class="line">        road_next <span class="built_in">=</span> zeros(<span class="number">1</span>,road_length);</span><br><span class="line"></span><br><span class="line">        <span class="comment">% 如果开启渲染，显示当前道路状态</span></span><br><span class="line">        <span class="built_in">if</span> render_on</span><br><span class="line">            imshow(road);</span><br><span class="line">            drawnow;</span><br><span class="line">        end</span><br><span class="line"></span><br><span class="line">        <span class="comment">% 如果开启暂停，等待用户操作</span></span><br><span class="line">        <span class="built_in">if</span> pause_on</span><br><span class="line">            pause;</span><br><span class="line">        end</span><br><span class="line"></span><br><span class="line">        <span class="comment">% 如果开启延迟，暂停一段时间</span></span><br><span class="line">        <span class="built_in">if</span> delay_on</span><br><span class="line">            pause(delay_length);</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line"></span><br><span class="line">    <span class="comment">% 记录当前密度下的流量和密度</span></span><br><span class="line">    velocity_history <span class="built_in">=</span> velocity_history.*history; <span class="comment">% 计算流量</span></span><br><span class="line">    samples(:,g) <span class="built_in">=</span> [mean2(history) (sum(velocity_history(:))/sum(history(:)))*mean2(history)]; <span class="comment">% 计算平均密度和流量</span></span><br><span class="line">    disp(<span class="string">&#x27;Sample step:&#x27;</span>)</span><br><span class="line">    g <span class="comment">% 显示当前采样步骤</span></span><br><span class="line">end</span><br><span class="line"></span><br><span class="line"><span class="comment">% 绘制流量-密度曲线</span></span><br><span class="line">scatter(samples(<span class="number">1</span>,:), samples(<span class="number">2</span>,:));</span><br><span class="line">axis([<span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span>]); <span class="comment">% 设置坐标轴范围</span></span><br><span class="line">xlabel(<span class="string">&#x27;Density&#x27;</span>); <span class="comment">% X轴标签</span></span><br><span class="line">ylabel(<span class="string">&#x27;Flow (normalized)&#x27;</span>); <span class="comment">% Y轴标签</span></span><br><span class="line">title(<span class="string">&#x27;Flow-density Curve&#x27;</span>); <span class="comment">% 图形标题</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 可以选择显示整个模拟过程中的道路状态或流量状态</span></span><br><span class="line"><span class="comment">%imshow(history);</span></span><br><span class="line"><span class="comment">%ts(simulation_steps,history);</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br></pre></td><td class="code"><pre><code class="hljs m"><span class="hljs-comment">% 初始化参数</span><br>clear; <br>clc;   <br>vmax <span class="hljs-built_in">=</span> <span class="hljs-number">10</span>; <span class="hljs-comment">% 最大速度</span><br>p <span class="hljs-built_in">=</span> <span class="hljs-number">0.6</span>;       <span class="hljs-comment">% 随机制动的概率（原始数据为0.8）</span><br>road_length <span class="hljs-built_in">=</span> <span class="hljs-number">1000</span>; <span class="hljs-comment">% 道路长度</span><br>simulation_steps <span class="hljs-built_in">=</span> <span class="hljs-number">1000</span>; <span class="hljs-comment">% 模拟步数</span><br>render_on <span class="hljs-built_in">=</span> <span class="hljs-number">0</span>; <span class="hljs-comment">% 是否渲染图形界面</span><br>pause_on <span class="hljs-built_in">=</span> <span class="hljs-number">0</span>; <span class="hljs-comment">% 是否在模拟中暂停</span><br>delay_on <span class="hljs-built_in">=</span> <span class="hljs-number">0</span>; <span class="hljs-comment">% 是否在模拟中延迟</span><br>delay_length <span class="hljs-built_in">=</span> <span class="hljs-number">0.02</span>;    <span class="hljs-comment">% 延迟时间，用于控制帧率（10 FPS）</span><br><br><span class="hljs-comment">% 初始化道路和速度状态</span><br>road <span class="hljs-built_in">=</span> zeros(<span class="hljs-number">1</span>,road_length); <span class="hljs-comment">% 道路占用状态数组</span><br>road_next <span class="hljs-built_in">=</span> road; <span class="hljs-comment">% 下一状态的数组</span><br>velocities <span class="hljs-built_in">=</span> zeros(<span class="hljs-number">1</span>,road_length); <span class="hljs-comment">% 车辆速度状态数组</span><br>velocities_next <span class="hljs-built_in">=</span> velocities; <span class="hljs-comment">% 下一速度状态的数组</span><br><br><span class="hljs-comment">% 采样设置</span><br>num_samples <span class="hljs-built_in">=</span> <span class="hljs-number">2000</span>; <span class="hljs-comment">% 采样数量</span><br>samples <span class="hljs-built_in">=</span> zeros(<span class="hljs-number">2</span>,num_samples); <span class="hljs-comment">% 存储密度和流量的数组</span><br>density_step <span class="hljs-built_in">=</span> <span class="hljs-number">1</span>/num_samples; <span class="hljs-comment">% 密度步长</span><br><br><span class="hljs-comment">% 初始化历史记录数组</span><br>history <span class="hljs-built_in">=</span> zeros(simulation_steps, road_length); <span class="hljs-comment">% 记录道路状态历史</span><br>velocity_history <span class="hljs-built_in">=</span> zeros(simulation_steps, road_length); <span class="hljs-comment">% 记录速度状态历史</span><br><br><span class="hljs-comment">% 打开图形界面</span><br>figure;<br><br><span class="hljs-comment">% 采样循环</span><br>for g<span class="hljs-built_in">=</span><span class="hljs-number">1</span>:num_samples<br>    <span class="hljs-comment">% 生成不同密度的交通流</span><br>    road <span class="hljs-built_in">=</span> zeros(<span class="hljs-number">1</span>,road_length); <span class="hljs-comment">% 重置道路状态</span><br>    road_next <span class="hljs-built_in">=</span> road; <span class="hljs-comment">% 重置下一状态</span><br>    density <span class="hljs-built_in">=</span> g/num_samples; <span class="hljs-comment">% 当前密度</span><br><br>    <span class="hljs-comment">% 根据密度在道路上随机放置车辆</span><br>    for i<span class="hljs-built_in">=</span><span class="hljs-number">1</span>:road_length<br>        <span class="hljs-built_in">if</span> rand &lt; density<br>            road(i) <span class="hljs-built_in">=</span> <span class="hljs-number">1</span>;<br>        end<br>    end<br><br>    <span class="hljs-comment">% 如果开启渲染，显示当前道路状态</span><br>    <span class="hljs-built_in">if</span> render_on<br>        imshow(road);<br>        drawnow;<br>    end<br><br>    <span class="hljs-comment">% 模拟循环</span><br>    for i<span class="hljs-built_in">=</span><span class="hljs-number">1</span>:simulation_steps<br>        <span class="hljs-comment">% 记录当前状态</span><br>        history(i, :) <span class="hljs-built_in">=</span> road;<br>        velocity_history(i,:) <span class="hljs-built_in">=</span> velocities;<br><br>        <span class="hljs-comment">% 速度更新</span><br>        for j<span class="hljs-built_in">=</span><span class="hljs-number">1</span>:road_length<br>            <span class="hljs-built_in">if</span> road(j) <span class="hljs-built_in">=</span><span class="hljs-built_in">=</span> <span class="hljs-number">1</span><br>                <span class="hljs-comment">% 寻找前方 vmax 个单元格内没有车辆的最远距离</span><br>                distance <span class="hljs-built_in">=</span> <span class="hljs-number">0</span>;<br>                bf <span class="hljs-built_in">=</span> <span class="hljs-number">0</span>; <span class="hljs-comment">% 标志变量，表示是否找到车辆</span><br>                for k<span class="hljs-built_in">=</span><span class="hljs-number">1</span>:vmax<br>                    distance <span class="hljs-built_in">=</span> k;<br>                    <span class="hljs-built_in">if</span> j+k <span class="hljs-built_in">&lt;=</span> road_length<br>                        index <span class="hljs-built_in">=</span> j+k;<br>                    <span class="hljs-built_in">else</span><br>                        index <span class="hljs-built_in">=</span> j+k-road_length; <span class="hljs-comment">% 处理循环道路的边界情况</span><br>                    end<br>                    <span class="hljs-built_in">if</span> road(index) <span class="hljs-built_in">=</span><span class="hljs-built_in">=</span> <span class="hljs-number">1</span><br>                        bf <span class="hljs-built_in">=</span> <span class="hljs-number">1</span>;<br>                    end<br>                    <span class="hljs-built_in">if</span> bf <span class="hljs-built_in">=</span><span class="hljs-built_in">=</span> <span class="hljs-number">1</span>, break, end<br>                end<br><br>                <span class="hljs-comment">% 根据规则更新车辆速度</span><br>                <span class="hljs-built_in">if</span> velocities(j) &lt; vmax<br>                    velocities(j) <span class="hljs-built_in">=</span> velocities(j) + <span class="hljs-number">1</span>; <span class="hljs-comment">% 加速</span><br>                end<br>                <span class="hljs-built_in">if</span> (velocities(j) &gt; distance - <span class="hljs-number">1</span>) &amp;&amp; bf <span class="hljs-built_in">=</span><span class="hljs-built_in">=</span> <span class="hljs-number">1</span><br>                    velocities(j) <span class="hljs-built_in">=</span> distance - <span class="hljs-number">1</span>; <span class="hljs-comment">% 避免碰撞</span><br>                end<br>                <span class="hljs-built_in">if</span> rand &lt; p &amp;&amp; velocities(j) &gt; <span class="hljs-number">0</span><br>                    velocities(j) <span class="hljs-built_in">=</span> velocities(j) - <span class="hljs-number">1</span>; <span class="hljs-comment">% 随机减速</span><br>                end<br>            end<br>        end<br><br>        <span class="hljs-comment">% 移动更新</span><br>        for j<span class="hljs-built_in">=</span><span class="hljs-number">1</span>:road_length<br>            <span class="hljs-built_in">if</span> road(j) <span class="hljs-built_in">=</span><span class="hljs-built_in">=</span> <span class="hljs-number">1</span><br>                <span class="hljs-built_in">if</span> j+velocities(j) <span class="hljs-built_in">&lt;=</span> road_length<br>                    index <span class="hljs-built_in">=</span> j+velocities(j);<br>                <span class="hljs-built_in">else</span><br>                    index <span class="hljs-built_in">=</span> j+velocities(j) - road_length; <span class="hljs-comment">% 处理循环道路的边界情况</span><br>                end<br>                <span class="hljs-comment">% 检测碰撞</span><br>                <span class="hljs-built_in">if</span> road_next(index) <span class="hljs-built_in">=</span><span class="hljs-built_in">=</span> <span class="hljs-number">1</span><br>                    disp(<span class="hljs-string">&#x27;Collision detected&#x27;</span>);<br>                end<br>                road_next(index) <span class="hljs-built_in">=</span> <span class="hljs-number">1</span>;<br>                velocities_next(index) <span class="hljs-built_in">=</span> velocities(j);<br>            end<br>        end<br><br>        <span class="hljs-comment">% 更新道路和速度状态</span><br>        velocities <span class="hljs-built_in">=</span> velocities_next;<br>        road <span class="hljs-built_in">=</span> road_next;<br>        road_next <span class="hljs-built_in">=</span> zeros(<span class="hljs-number">1</span>,road_length);<br><br>        <span class="hljs-comment">% 如果开启渲染，显示当前道路状态</span><br>        <span class="hljs-built_in">if</span> render_on<br>            imshow(road);<br>            drawnow;<br>        end<br><br>        <span class="hljs-comment">% 如果开启暂停，等待用户操作</span><br>        <span class="hljs-built_in">if</span> pause_on<br>            pause;<br>        end<br><br>        <span class="hljs-comment">% 如果开启延迟，暂停一段时间</span><br>        <span class="hljs-built_in">if</span> delay_on<br>            pause(delay_length);<br>        end<br>    end<br><br>    <span class="hljs-comment">% 记录当前密度下的流量和密度</span><br>    velocity_history <span class="hljs-built_in">=</span> velocity_history.*history; <span class="hljs-comment">% 计算流量</span><br>    samples(:,g) <span class="hljs-built_in">=</span> [mean2(history) (sum(velocity_history(:))/sum(history(:)))*mean2(history)]; <span class="hljs-comment">% 计算平均密度和流量</span><br>    disp(<span class="hljs-string">&#x27;Sample step:&#x27;</span>)<br>    g <span class="hljs-comment">% 显示当前采样步骤</span><br>end<br><br><span class="hljs-comment">% 绘制流量-密度曲线</span><br>scatter(samples(<span class="hljs-number">1</span>,:), samples(<span class="hljs-number">2</span>,:));<br>axis([<span class="hljs-number">0</span> <span class="hljs-number">1</span> <span class="hljs-number">0</span> <span class="hljs-number">1</span>]); <span class="hljs-comment">% 设置坐标轴范围</span><br>xlabel(<span class="hljs-string">&#x27;Density&#x27;</span>); <span class="hljs-comment">% X轴标签</span><br>ylabel(<span class="hljs-string">&#x27;Flow (normalized)&#x27;</span>); <span class="hljs-comment">% Y轴标签</span><br>title(<span class="hljs-string">&#x27;Flow-density Curve&#x27;</span>); <span class="hljs-comment">% 图形标题</span><br><br><span class="hljs-comment">% 可以选择显示整个模拟过程中的道路状态或流量状态</span><br><span class="hljs-comment">%imshow(history);</span><br><span class="hljs-comment">%ts(simulation_steps,history);</span><br></code></pre></td></tr></table></figure>
 
 
 
@@ -262,7 +371,7 @@
 </ol>
 <h3 id="注意点："><a href="#注意点：" class="headerlink" title="注意点："></a><strong>注意点：</strong></h3><p>这里的”密度”（density）是指在模拟的道路长度单位内单位时间内存在的车辆数，或者说是单位长度车道上的车辆数。具体到代码实现中，它是通过变量<code>density = g/num_samples;</code>来定义的，其中<code>g</code>是当前的采样序号，<code>num_samples</code>是总的采样数量，因此<code>density</code>实质上代表了一个从0到1范围内的比例值，用来模拟从完全没有车辆（密度为0）到道路完全被车辆占据（密度接近1）的各种情况。这个密度值决定了初始时在模拟道路上放置车辆的随机概率，即<code>if rand &lt; density</code>这一条件控制下的车辆分布。</p>
 <p> <code>ts</code> 的函数，用于绘制交通模拟的时间-空间图。时间-空间图是一种展示随时间变化的空间分布情况的图表，常用于交通流模拟中，以观察车辆在道路上随时间的移动情况。</p>
-<figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function ts(simulation_steps,history)</span><br><span class="line">figTS<span class="built_in">=</span>figure;</span><br><span class="line">axes1 <span class="built_in">=</span> axes(<span class="string">&#x27;Parent&#x27;</span>,figTS,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">12</span>,<span class="string">&#x27;FontName&#x27;</span>,<span class="string">&#x27;Arial&#x27;</span>);</span><br><span class="line">for i<span class="built_in">=</span><span class="number">1</span>:<span class="number">1</span>:simulation_steps</span><br><span class="line">    [~,col]<span class="built_in">=</span>find(history(i,:)<span class="built_in">=</span><span class="built_in">=</span><span class="number">1</span>);</span><br><span class="line">    plot(i*ones(<span class="number">1</span>,length(col)),col,<span class="string">&#x27;k.&#x27;</span>);</span><br><span class="line">    hold on</span><br><span class="line">end</span><br><span class="line">xlabel(<span class="string">&#x27;Time&#x27;</span>,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">12</span>,<span class="string">&#x27;FontName&#x27;</span>,<span class="string">&#x27;Arial&#x27;</span>)</span><br><span class="line">ylabel(<span class="string">&#x27;Space&#x27;</span>,<span class="string">&#x27;FontSize&#x27;</span>,<span class="number">12</span>,<span class="string">&#x27;FontName&#x27;</span>,<span class="string">&#x27;Arial&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs m">function ts(simulation_steps,history)<br>figTS<span class="hljs-built_in">=</span>figure;<br>axes1 <span class="hljs-built_in">=</span> axes(<span class="hljs-string">&#x27;Parent&#x27;</span>,figTS,<span class="hljs-string">&#x27;FontSize&#x27;</span>,<span class="hljs-number">12</span>,<span class="hljs-string">&#x27;FontName&#x27;</span>,<span class="hljs-string">&#x27;Arial&#x27;</span>);<br>for i<span class="hljs-built_in">=</span><span class="hljs-number">1</span>:<span class="hljs-number">1</span>:simulation_steps<br>    [~,col]<span class="hljs-built_in">=</span>find(history(i,:)<span class="hljs-built_in">=</span><span class="hljs-built_in">=</span><span class="hljs-number">1</span>);<br>    plot(i*ones(<span class="hljs-number">1</span>,length(col)),col,<span class="hljs-string">&#x27;k.&#x27;</span>);<br>    hold on<br>end<br>xlabel(<span class="hljs-string">&#x27;Time&#x27;</span>,<span class="hljs-string">&#x27;FontSize&#x27;</span>,<span class="hljs-number">12</span>,<span class="hljs-string">&#x27;FontName&#x27;</span>,<span class="hljs-string">&#x27;Arial&#x27;</span>)<br>ylabel(<span class="hljs-string">&#x27;Space&#x27;</span>,<span class="hljs-string">&#x27;FontSize&#x27;</span>,<span class="hljs-number">12</span>,<span class="hljs-string">&#x27;FontName&#x27;</span>,<span class="hljs-string">&#x27;Arial&#x27;</span>)<br></code></pre></td></tr></table></figure>
 
 <ol>
 <li><p><code>function ts(simulation_steps,history)</code>：定义了一个名为 <code>ts</code> 的函数，它接受两个参数：<code>simulation_steps</code>（模拟步数）和 <code>history</code>（记录每一步道路状态的矩阵）。</p>
@@ -286,147 +395,343 @@
 </ol>
 <p>上述函数的功能是绘制出每个时间步长上车辆的位置，从而形成时间-空间图。图中的每个点代表在特定时间步长下道路上的一个车辆位置。通过观察这个图，可以直观地看到车辆随时间在道路上的分布和移动情况。</p>
 
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>元胞自动机</div>
+      <div>http://jrhu0048.github.io/2024/05/01/yuan-bao-zi-dong-ji/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>JR.HU</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年5月1日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
   </div>
-</article>
 
 
 
-        
-          <div id="footer-post-container">
-  <div id="footer-post">
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/05/01/hui-gui-xiao-bo-shen-jing-wang-luo/" title="回归———小波神经网络">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">回归———小波神经网络</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/04/26/xi-yin-pai-chi-you-hua-suan-fa/" title="吸引-排斥优化算法">
+                        <span class="hidden-mobile">吸引-排斥优化算法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
 
-    <div id="nav-footer" style="display: none">
-      <ul>
-        
-          <li><a href="/">首页</a></li>
-        
-          <li><a href="/about/">关于</a></li>
-        
-          <li><a href="/archives/">归档</a></li>
-        
-          <li><a href="/tags/">标签</a></li>
-        
-          <li><a href="/categories/">分类</a></li>
-        
-      </ul>
-    </div>
-
-    
-    
-      <div id="toc-footer" style="display: none">
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%83%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">元胞自动机的一些基本特性：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%B7%E5%A8%81%E7%9A%84%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F%EF%BC%88Conway%E2%80%99s-Game-of-Life%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">康威的生命游戏（Conway’s Game of Life）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E5%85%83%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA%E6%A8%A1%E6%8B%9F%EF%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">二维元胞自动机模拟：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%83%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA%E6%A8%A1%E6%8B%9F%E6%A1%88%E4%BE%8B%E4%BA%8C"><span class="toc-number">4.</span> <span class="toc-text">元胞自动机模拟案例二</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%83%E8%83%9E%E8%87%AA%E5%8A%A8%E6%9C%BA%E7%9A%84%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B%E2%80%94Nagel-Schreckenberg-%E6%A8%A1%E5%9E%8B%E6%A8%A1%E6%8B%9F"><span class="toc-number">5.</span> <span class="toc-text">元胞自动机的应用实例—Nagel Schreckenberg 模型模拟</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E4%BB%8B%E7%BB%8D"><span class="toc-number">5.1.</span> <span class="toc-text">模型介绍</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">6.</span> <span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9%EF%BC%9A"><span class="toc-number">6.1.</span> <span class="toc-text">注意点：</span></a></li></ol></li></ol>
+            
+          </article>
+        </div>
       </div>
-    
-
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/05/01/yuan-bao-zi-dong-ji/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/05/01/yuan-bao-zi-dong-ji/&text=元胞自动机"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/05/01/yuan-bao-zi-dong-ji/&title=元胞自动机"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/05/01/yuan-bao-zi-dong-ji/&is_video=false&description=元胞自动机"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=元胞自动机&body=Check out this article: http://jrhu0048.github.io/2024/05/01/yuan-bao-zi-dong-ji/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/05/01/yuan-bao-zi-dong-ji/&title=元胞自动机"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/05/01/yuan-bao-zi-dong-ji/&title=元胞自动机"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/05/01/yuan-bao-zi-dong-ji/&title=元胞自动机"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/05/01/yuan-bao-zi-dong-ji/&title=元胞自动机"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/05/01/yuan-bao-zi-dong-ji/&name=元胞自动机&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/05/01/yuan-bao-zi-dong-ji/&t=元胞自动机"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
-</ul>
-
     </div>
 
-    <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
-        
-          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
-        
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
-    </div>
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
 
+
+
+  </aside>
+
+
+    </div>
   </div>
 </div>
 
-        
-        <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy;
-    
-    
-    2022-2024
-    JR.HU
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-        <!--
-       --><li><a href="/">首页</a></li><!--
-     --><!--
-       --><li><a href="/about/">关于</a></li><!--
-     --><!--
-       --><li><a href="/archives/">归档</a></li><!--
-     --><!--
-       --><li><a href="/tags/">标签</a></li><!--
-     --><!--
-       --><li><a href="/categories/">分类</a></li><!--
-     -->
-      </ul>
-    </nav>
-  </div>
-</footer>
 
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
     </div>
-    <!-- styles -->
+  </div>
+</div>
 
+    
 
+    
+  </main>
 
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
-
-
-    <!-- jquery -->
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
-
-
-
-
-<!-- clipboard -->
-
+  <footer>
+    <div class="footer-inner">
   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
   
-  <script type="text/javascript">
-  $(function() {
-    // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
-    btn += '<i class="fa-regular fa-clone"></i>';
-    btn += '</span>';
-    // mount it!
-    $(".highlight table").before(btn);
-    var clip = new ClipboardJS('.btn-copy', {
-      text: function(trigger) {
-        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
-      }
-    });
-    clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "复制成功！");
-      e.clearSelection();
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
     })
-  })
   </script>
 
 
-<script src="/js/main.js"></script>
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
-<!-- search -->
 
-<!-- Baidu Analytics -->
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
 
-<!-- Cloudflare Analytics -->
 
-<!-- Disqus Comments -->
 
-<!-- utterances Comments -->
 
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>

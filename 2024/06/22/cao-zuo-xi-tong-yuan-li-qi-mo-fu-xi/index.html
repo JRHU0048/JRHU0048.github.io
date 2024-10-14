@@ -1,11 +1,24 @@
+
+
 <!DOCTYPE html>
-<html lang=zh>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
 <head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="JR.HU">
+  <meta name="keywords" content="">
+  
     <meta name="description" content="第一章操作系统的基本特性： 并发与（资源）共享、虚拟、异步 操作系统四大功能： 处理机管理、存储器管理、设备管理、文件管理，除此之外，还需要提供友好的用户接口 设计现代OS的目标是： 提高资源利用率和方便用户 单道批处理系统是在解决人机矛盾和CPU与I&#x2F;O设备速率不匹配矛盾的过程中形成的 第二章 进程与线程进程之间的通信（进程之间的数据交互）：1.共享存储（数据共享、存储区共享）,2.消息传递（直">
 <meta property="og:type" content="article">
 <meta property="og:title" content="操作系统原理期末复习">
@@ -16,157 +29,253 @@
 <meta property="article:published_time" content="2024-06-22T06:27:59.000Z">
 <meta property="article:modified_time" content="2024-07-29T12:06:41.769Z">
 <meta property="article:author" content="JR.HU">
-<meta name="twitter:card" content="summary">
-    
-    
-      
-        
-          <link rel="shortcut icon" href="/images/favicon.ico">
-        
-      
-      
-        
-          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-        
-      
-      
-        
-          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-        
-      
-    
-    <!-- title -->
-    <title>操作系统原理期末复习</title>
-    <!-- async scripts -->
-    <!-- Google Analytics -->
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>操作系统原理期末复习 - CHARMMY</title>
 
-
-    <!-- Umami Analytics -->
-
-
-    <!-- styles -->
-    
-<link rel="stylesheet" href="/css/style.css">
-
-    <!-- persian styles -->
-    
-    <!-- rss -->
-    
-    
-	<!-- mathjax -->
-	
-		<script type="text/x-mathjax-config">
-		  MathJax.Hub.Config({
-			tex2jax: {
-			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-			  inlineMath: [['$','$']]
-			}
-		  });
-		</script>
-		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
-	
-<meta name="generator" content="Hexo 7.1.1"></head>
-
-<body class="max-width mx-auto px3 ltr">
-    
-      <div id="header-post">
-  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-        <!--
-       --><li><a href="/">首页</a></li><!--
-     --><!--
-       --><li><a href="/about/">关于</a></li><!--
-     --><!--
-       --><li><a href="/archives/">归档</a></li><!--
-     --><!--
-       --><li><a href="/tags/">标签</a></li><!--
-     --><!--
-       --><li><a href="/categories/">分类</a></li><!--
-     -->
-      </ul>
-    </span>
-    <br/>
-    <span id="actions">
-      <ul>
-        
-        <li><a class="icon" aria-label="上一篇" href="/2024/06/24/ren-gong-zhi-neng-yuan-li-fu-xi-5/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
-        
-        
-        <li><a class="icon" aria-label="下一篇" href="/2024/06/20/ji-suan-ji-zu-cheng-yuan-li-qi-mo-fu-xi/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
-        
-        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">上一篇</span>
-      <span id="i-next" class="info" style="display:none;">下一篇</span>
-      <span id="i-top" class="info" style="display:none;">返回顶部</span>
-      <span id="i-share" class="info" style="display:none;">分享文章</span>
-    </span>
-    <br/>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/06/22/cao-zuo-xi-tong-yuan-li-qi-mo-fu-xi/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/06/22/cao-zuo-xi-tong-yuan-li-qi-mo-fu-xi/&text=操作系统原理期末复习"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/06/22/cao-zuo-xi-tong-yuan-li-qi-mo-fu-xi/&title=操作系统原理期末复习"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/06/22/cao-zuo-xi-tong-yuan-li-qi-mo-fu-xi/&is_video=false&description=操作系统原理期末复习"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=操作系统原理期末复习&body=Check out this article: http://jrhu0048.github.io/2024/06/22/cao-zuo-xi-tong-yuan-li-qi-mo-fu-xi/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/06/22/cao-zuo-xi-tong-yuan-li-qi-mo-fu-xi/&title=操作系统原理期末复习"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/06/22/cao-zuo-xi-tong-yuan-li-qi-mo-fu-xi/&title=操作系统原理期末复习"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/06/22/cao-zuo-xi-tong-yuan-li-qi-mo-fu-xi/&title=操作系统原理期末复习"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/06/22/cao-zuo-xi-tong-yuan-li-qi-mo-fu-xi/&title=操作系统原理期末复习"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/06/22/cao-zuo-xi-tong-yuan-li-qi-mo-fu-xi/&name=操作系统原理期末复习&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/06/22/cao-zuo-xi-tong-yuan-li-qi-mo-fu-xi/&t=操作系统原理期末复习"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-    
-    
-      <div id="toc">
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0"><span class="toc-number">1.</span> <span class="toc-text">第一章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">第二章 进程与线程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-number">2.1.</span> <span class="toc-text">对进程的理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%94%A4%E9%86%92%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">2.2.</span> <span class="toc-text">进程唤醒的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E6%A0%B8%E7%BA%A7%E7%BA%BF%E7%A8%8B"><span class="toc-number">2.3.</span> <span class="toc-text">内核级线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%BA%A7%E7%BA%BF%E7%A8%8B"><span class="toc-number">2.4.</span> <span class="toc-text">用户级线程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6"><span class="toc-number">3.</span> <span class="toc-text">第三章 处理机调度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7"><span class="toc-number">4.</span> <span class="toc-text">操作系统的基本特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%B0%E4%BB%A3OS%E7%9A%84%E7%9B%AE%E6%A0%87%E6%98%AF"><span class="toc-number">5.</span> <span class="toc-text">现代OS的目标是</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%85%B7%E6%9C%89%E7%9A%84%E5%9B%9B%E5%A4%A7%E5%8A%9F%E8%83%BD"><span class="toc-number">6.</span> <span class="toc-text">操作系统具有的四大功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E8%A7%A3%E5%86%B3%E4%BA%BA%E6%9C%BA%E4%BA%A4%E4%BA%92%E9%97%AE%E9%A2%98%EF%BC%8C%E5%BC%95%E5%85%A5%E6%97%B6%E9%97%B4%E7%89%87%E7%9A%84%E6%A6%82%E5%BF%B5%EF%BC%8C%E9%87%87%E7%94%A8"><span class="toc-number">7.</span> <span class="toc-text">为解决人机交互问题，引入时间片的概念，采用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E6%97%B6%E7%B3%BB%E7%BB%9F%E5%8F%AF%E4%BB%A5%E5%88%86%E4%B8%BA"><span class="toc-number">8.</span> <span class="toc-text">实时系统可以分为</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-O%E8%BD%AF%E4%BB%B6%E9%80%9A%E5%B8%B8%E8%A2%AB%E7%BB%84%E7%BB%87%E6%88%90"><span class="toc-number">9.</span> <span class="toc-text">I&#x2F;O软件通常被组织成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95"><span class="toc-number">10.</span> <span class="toc-text">银行家算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E4%BA%A7%E8%80%85-%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98"><span class="toc-number">11.</span> <span class="toc-text">生产者-消费者问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%B2%E5%AD%A6%E5%AE%B6%E5%B0%B1%E9%A4%90%E9%97%AE%E9%A2%98"><span class="toc-number">12.</span> <span class="toc-text">哲学家就餐问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%E5%86%85%E5%AE%B9%EF%BC%9A%E4%BB%80%E4%B9%88%E6%98%AF%E4%BF%A1%E5%8F%B7%E9%87%8F%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="toc-number">13.</span> <span class="toc-text">补充内容：什么是信号量机制？</span></a></li></ol>
-      </div>
-    
-  </span>
-</div>
-
-    
-    <div class="content index py4 ">
-        
-        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
-    
-    <h1 class="posttitle p-name" itemprop="name headline">
-        操作系统原理期末复习
-    </h1>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
 
-    <div class="meta">
-      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span class="p-name" itemprop="name">JR.HU</span>
-      </span>
-      
-    <div class="postdate">
-      
-        <time datetime="2024-06-22T06:27:59.000Z" class="dt-published" itemprop="datePublished">2024-06-22</time>
-        
-      
-    </div>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
-      
 
-      
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
 
-    </div>
-  </header>
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
-  <div class="content e-content" itemprop="articleBody">
-    <h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><p>操作系统的基本特性：</p>
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jrhu0048.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="操作系统原理期末复习"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-06-22 14:27" pubdate>
+          2024年6月22日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          40 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">操作系统原理期末复习</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><p>操作系统的基本特性：</p>
 <p><code>并发与（资源）共享、虚拟、异步</code></p>
 <p>操作系统四大功能：</p>
 <p><code>处理机管理、存储器管理、设备管理、文件管理</code>，除此之外，还需要提供友好的<code>用户接口</code></p>
@@ -223,7 +332,7 @@
 <p>银行家算法：是一种避免死锁的方法</p>
 <p>Requesti[j]&#x3D;k 表示进程i需要资源 j 的数量为 k</p>
 <p>伪代码</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>( Requesti[j]=k ≤ Need[i,j])</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">if</span>( Requesti[j]=k ≤ Available[j] )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="comment">//系统将资源分配给进程</span></span><br><span class="line">    <span class="comment">//并修改如下数据</span></span><br><span class="line">    Available[j] -= Requesti[j];</span><br><span class="line">    Allocation +=Requesti[j];</span><br><span class="line">    Need[i,j] -= Requesti[j];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span>（目前所需资源不足，等待...）</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>(认为出错了，所需资源大于其宣布的最大资源量)</span><br><span class="line"><span class="comment">//系统执行安全性算法，检验是否安全</span></span><br><span class="line"><span class="keyword">if</span>(safe)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">//正式进行分配</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">//本次试探分配作废，系统回复原来状态，让该进程处于等待状态</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">if</span>( Requesti[j]=k ≤ Need[i,j])<br>&#123;<br>  <span class="hljs-keyword">if</span>( Requesti[j]=k ≤ Available[j] )<br>  &#123;<br>    <span class="hljs-comment">//系统将资源分配给进程</span><br>    <span class="hljs-comment">//并修改如下数据</span><br>    Available[j] -= Requesti[j];<br>    Allocation +=Requesti[j];<br>    Need[i,j] -= Requesti[j];<br>  &#125;<br>  <span class="hljs-keyword">else</span>（目前所需资源不足，等待...）<br>&#125;<br><span class="hljs-keyword">else</span>(认为出错了，所需资源大于其宣布的最大资源量)<br><span class="hljs-comment">//系统执行安全性算法，检验是否安全</span><br><span class="hljs-keyword">if</span>(safe)<br>&#123;<br>  <span class="hljs-comment">//正式进行分配</span><br>&#125;<br><span class="hljs-keyword">else</span><br>&#123;<br>  <span class="hljs-comment">//本次试探分配作废，系统回复原来状态，让该进程处于等待状态</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>重点在<code>安全性算法</code>，所以需要好好看看</p>
 <p>服务完进程后，Available更新为<code>+=Allocation</code></p>
@@ -235,14 +344,14 @@
 <p>仓库的管理只要求出入库互斥，由于仓库无限大，只需操作互斥就可以完成，出库要考虑有无产品，SA对应于仓库中的A产品量，SB对应于仓库中的B产品量；</p>
 <p>销售要满足：-n≤生产A的件数-生产B的件数≤m，用difference表示A的件数-B的件数，即</p>
 <p><code>difference=A的件数-B的件数</code>，</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">difference==-n 的时候，不能取产品B，只能取A；</span><br><span class="line"></span><br><span class="line">difference==m 的时候，不能取产品A，只能取B；</span><br><span class="line"></span><br><span class="line">-n&lt; difference&lt; m，即可以取产品A也可以取产品B；</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c">difference==-n 的时候，不能取产品B，只能取A；<br><br>difference==m 的时候，不能取产品A，只能取B；<br><br>-n&lt; difference&lt; m，即可以取产品A也可以取产品B；<br></code></pre></td></tr></table></figure>
 
 <p>答：为了互斥地入库和出库，需为仓库设置一初值为1的互斥量信号mutex；为了使生产的产品件数满足-n≤生产A的件数-生产B的件数≤m，需要设置两个同步的信号量，其中SAB表示当前允许A生产的产品数量，其初始值为m ，SBA表示当前允许B生产的产品数量，其初值为n；</p>
 <p>另外还需要设置一个整数difference表示所销售的A、B产品数量之差，而为了同步生产者和销售者并使销售的A、B产品的件数满足 -n≤生产A的件数-生产B的件数≤m，还需要设置三个资源信号量，其中S对应于仓库中的总的产品量，SA对应于仓库中的A产品量，SB对应于仓库中的B产品量，他们的初值都为0.</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/liushall/article/details/81569609">https://blog.csdn.net/liushall/article/details/81569609</a></p>
 <p>假设缓冲区大小为10，生产者、消费者线程若干。生产者和消费者相互等效,只要缓冲池未满,生产者便可将消息送入缓冲池;只要缓冲池未空,消费者便可从缓冲池中取走一个消息。</p>
 <p>用伪代码将简单的逻辑表达清楚！</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// items代表缓冲区已经使用的资源数，spaces代表缓冲区可用资源数</span></span><br><span class="line"><span class="comment">// mutex代表互斥锁</span></span><br><span class="line"><span class="comment">// buf[10] 代表缓冲区，其内容类型为item</span></span><br><span class="line"><span class="comment">// in、out代表第一个资源和最后一个资源</span></span><br><span class="line">var items = <span class="number">0</span>, space = <span class="number">10</span>, mutex = <span class="number">1</span>;</span><br><span class="line">var in = <span class="number">0</span>, out = <span class="number">0</span>;</span><br><span class="line">item buf[<span class="number">10</span>] = &#123; <span class="literal">NULL</span> &#125;;</span><br><span class="line"></span><br><span class="line">producer &#123;</span><br><span class="line">    <span class="keyword">while</span>( <span class="literal">true</span> ) &#123;</span><br><span class="line">        wait( space );  <span class="comment">// 等待缓冲区有空闲位置， 在使用PV操作时，条件变量需要在互斥锁之前</span></span><br><span class="line">        wait( mutex );  <span class="comment">// 保证在product时不会有其他线程访问缓冲区</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// product</span></span><br><span class="line">        buf.push( item, in );  <span class="comment">// 将新资源放到buf[in]位置 </span></span><br><span class="line">        in = ( in + <span class="number">1</span> ) % <span class="number">10</span>;</span><br><span class="line">        </span><br><span class="line">        signal( mutex );  <span class="comment">// 唤醒的顺序可以不同</span></span><br><span class="line">        signal( items );  <span class="comment">// 通知consumer缓冲区有资源可以取走</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">consumer &#123;</span><br><span class="line">    <span class="keyword">while</span>( <span class="literal">true</span> ) &#123;</span><br><span class="line">        wait( items );  <span class="comment">// 等待缓冲区有资源可以使用</span></span><br><span class="line">        wait( mutex );  <span class="comment">// 保证在consume时不会有其他线程访问缓冲区</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// consume</span></span><br><span class="line">        buf.pop( out );  <span class="comment">// 将buf[out]位置的的资源取走</span></span><br><span class="line">        out = ( out + <span class="number">1</span> ) % <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">        signal( mutex );  <span class="comment">// 唤醒的顺序可以不同</span></span><br><span class="line">        signal( space );  <span class="comment">// 通知缓冲区有空闲位置</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// items代表缓冲区已经使用的资源数，spaces代表缓冲区可用资源数</span><br><span class="hljs-comment">// mutex代表互斥锁</span><br><span class="hljs-comment">// buf[10] 代表缓冲区，其内容类型为item</span><br><span class="hljs-comment">// in、out代表第一个资源和最后一个资源</span><br>var items = <span class="hljs-number">0</span>, space = <span class="hljs-number">10</span>, mutex = <span class="hljs-number">1</span>;<br>var in = <span class="hljs-number">0</span>, out = <span class="hljs-number">0</span>;<br>item buf[<span class="hljs-number">10</span>] = &#123; <span class="hljs-literal">NULL</span> &#125;;<br><br>producer &#123;<br>    <span class="hljs-keyword">while</span>( <span class="hljs-literal">true</span> ) &#123;<br>        wait( space );  <span class="hljs-comment">// 等待缓冲区有空闲位置， 在使用PV操作时，条件变量需要在互斥锁之前</span><br>        wait( mutex );  <span class="hljs-comment">// 保证在product时不会有其他线程访问缓冲区</span><br><br>        <span class="hljs-comment">// product</span><br>        buf.push( item, in );  <span class="hljs-comment">// 将新资源放到buf[in]位置 </span><br>        in = ( in + <span class="hljs-number">1</span> ) % <span class="hljs-number">10</span>;<br>        <br>        signal( mutex );  <span class="hljs-comment">// 唤醒的顺序可以不同</span><br>        signal( items );  <span class="hljs-comment">// 通知consumer缓冲区有资源可以取走</span><br>    &#125;<br>&#125;<br><br>consumer &#123;<br>    <span class="hljs-keyword">while</span>( <span class="hljs-literal">true</span> ) &#123;<br>        wait( items );  <span class="hljs-comment">// 等待缓冲区有资源可以使用</span><br>        wait( mutex );  <span class="hljs-comment">// 保证在consume时不会有其他线程访问缓冲区</span><br><br>        <span class="hljs-comment">// consume</span><br>        buf.pop( out );  <span class="hljs-comment">// 将buf[out]位置的的资源取走</span><br>        out = ( out + <span class="hljs-number">1</span> ) % <span class="hljs-number">10</span>;<br><br>        signal( mutex );  <span class="hljs-comment">// 唤醒的顺序可以不同</span><br>        signal( space );  <span class="hljs-comment">// 通知缓冲区有空闲位置</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>不能将线程里两个wait的顺序调换否则会出现死锁。</p>
 <p>例如(调换后)，将consumer的两个wait调换，在producer发出signal信号后，如果producer线程此时再次获得运行机会，执行完了wait(space)，</p>
@@ -256,163 +365,359 @@
 <p>方案一：</p>
 <p>第一种解决死锁问题的办法就是同时只允许四位哲学家同时拿起同一边的筷子，这样就能保证一定会有一位哲学家能够拿起两根筷子完成进食并释放资源，供其他哲学家使用，从而实现永动，避免了死锁。举个最简单的栗子，假定0~3号哲学家已经拿起了他左边的筷子，然后当4号哲学家企图去拿他左边的筷子的时候，将该哲学家的线程锁住，使其拿不到其左边的筷子，然后其左边的筷子就可以被3号哲学家拿到，然后3号哲学家进餐，释放筷子，然后更多的哲学家拿到筷子并进餐。</p>
 <p>​ 如何才能实现当4号哲学家企图拿起其左边的筷子的时候将该哲学家的线程阻塞？这个时候就要用到该问题的提出者迪杰斯特拉（迪杰斯特拉最短路径算法，银行家算法）提出的<code>信号量机制</code>。因为同时只允许有四位哲学家同时拿起左筷子，因此我们可以设置一个信号量r，使其<code>初始值为4</code>，然后每当一位哲学家企图去拿起他左边的筷子的时候，先对信号量做一次P操作，从而当第五位哲学家企图去拿做筷子的时候，对r做一次P操作，<code>r = -1</code>，由r &lt; 0得第五位哲学家的线程被阻塞，从而不能拿起左筷子，因此也就避免了死锁问题。然后当哲学家放下他左边的筷子的时候，就对r做一次V操作。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">semaphore chopstick[<span class="number">5</span>]=&#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>&#125;;</span><br><span class="line">semaphore r=<span class="number">4</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">philosopher</span><span class="params">(<span class="type">int</span> i)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    think();</span><br><span class="line">    wait(r);                       <span class="comment">//请求进餐</span></span><br><span class="line">    wait(chopstick[i]);            <span class="comment">//请求左边的筷子</span></span><br><span class="line">    wait(chopstick[(i+<span class="number">1</span>)mod5]);    <span class="comment">//请求右边的筷子</span></span><br><span class="line">    eat();</span><br><span class="line">    singal(chopstick[(i+<span class="number">1</span>)mod5]);  <span class="comment">//释放右边的筷子</span></span><br><span class="line">    singal(chopstick[i]);          <span class="comment">//释放左边的筷子</span></span><br><span class="line">    singal(r);                     <span class="comment">//释放信号量r</span></span><br><span class="line">    think();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c">semaphore chopstick[<span class="hljs-number">5</span>]=&#123;<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>&#125;;<br>semaphore r=<span class="hljs-number">4</span>;<br><span class="hljs-type">void</span> <span class="hljs-title function_">philosopher</span><span class="hljs-params">(<span class="hljs-type">int</span> i)</span><br>&#123;<br>  <span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)<br>  &#123;<br>    think();<br>    wait(r);                       <span class="hljs-comment">//请求进餐</span><br>    wait(chopstick[i]);            <span class="hljs-comment">//请求左边的筷子</span><br>    wait(chopstick[(i+<span class="hljs-number">1</span>)mod5]);    <span class="hljs-comment">//请求右边的筷子</span><br>    eat();<br>    singal(chopstick[(i+<span class="hljs-number">1</span>)mod5]);  <span class="hljs-comment">//释放右边的筷子</span><br>    singal(chopstick[i]);          <span class="hljs-comment">//释放左边的筷子</span><br>    singal(r);                     <span class="hljs-comment">//释放信号量r</span><br>    think();<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>方案二：</p>
 <p>使用<code>AND信号量机制</code>，意思就是如果想给某个哲学家筷子，就将他需要的所有资源都给他，然后让他进餐，否则就一个都不给他。</p>
 <p>​根据上面的分析，可以将代码修改为：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">semaphore chopstick[<span class="number">5</span>]=&#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>&#125;;</span><br><span class="line"><span class="type">void</span> <span class="title function_">philosopher</span><span class="params">(<span class="type">int</span> t)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    think();</span><br><span class="line">    Swait(chopstick[i];chopstick[(i+<span class="number">1</span>)mod5]);<span class="comment">//将左右筷子资源都分配给一个哲学家</span></span><br><span class="line">  eat();</span><br><span class="line">  singal(chopstick[(i+<span class="number">1</span>)mod5];chopstick[i]);</span><br><span class="line">  think();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c">semaphore chopstick[<span class="hljs-number">5</span>]=&#123;<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>&#125;;<br><span class="hljs-type">void</span> <span class="hljs-title function_">philosopher</span><span class="hljs-params">(<span class="hljs-type">int</span> t)</span><br>&#123;<br>  <span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)<br>  &#123;<br>    think();<br>    Swait(chopstick[i];chopstick[(i+<span class="hljs-number">1</span>)mod5]);<span class="hljs-comment">//将左右筷子资源都分配给一个哲学家</span><br>  eat();<br>  singal(chopstick[(i+<span class="hljs-number">1</span>)mod5];chopstick[i]);<br>  think();<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>方案三：</p>
 <p>规定奇数号哲学家先拿起他左边的筷子，然后再去拿他右边的筷子，而偶数号的哲学家则相反，这样的话总能保证一个哲学家能获得两根筷子完成进餐，从而释放其所占用的资源，代码如下：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">semaphore chopstick[<span class="number">5</span>]=&#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>&#125;;</span><br><span class="line"><span class="type">void</span> <span class="title function_">philosopher</span><span class="params">(<span class="type">int</span> i)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span>(i mod <span class="number">2</span>==<span class="number">0</span>)    <span class="comment">//偶数哲学家，先右后左</span></span><br><span class="line">    &#123;</span><br><span class="line">      wait(chopstick[(i+<span class="number">1</span>)mod <span class="number">5</span>]);</span><br><span class="line">      wait(chopstick[i]);</span><br><span class="line">      eat();</span><br><span class="line">      singal(chopstick[i]);</span><br><span class="line">      singal(chopstick[(i+<span class="number">1</span>)mod <span class="number">5</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>             <span class="comment">//奇数哲学家，先左后右</span></span><br><span class="line">    &#123;</span><br><span class="line">      wait(chopstick[i]);</span><br><span class="line">      wait(chopstick[(i+<span class="number">1</span>)mod <span class="number">5</span>]);</span><br><span class="line">      eat();</span><br><span class="line">      singal(chopstick[(i+<span class="number">1</span>)mod <span class="number">5</span>]);</span><br><span class="line">      singal(chopstick[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c">semaphore chopstick[<span class="hljs-number">5</span>]=&#123;<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>&#125;;<br><span class="hljs-type">void</span> <span class="hljs-title function_">philosopher</span><span class="hljs-params">(<span class="hljs-type">int</span> i)</span><br>&#123;<br>  <span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)<br>  &#123;<br>    <span class="hljs-keyword">if</span>(i mod <span class="hljs-number">2</span>==<span class="hljs-number">0</span>)    <span class="hljs-comment">//偶数哲学家，先右后左</span><br>    &#123;<br>      wait(chopstick[(i+<span class="hljs-number">1</span>)mod <span class="hljs-number">5</span>]);<br>      wait(chopstick[i]);<br>      eat();<br>      singal(chopstick[i]);<br>      singal(chopstick[(i+<span class="hljs-number">1</span>)mod <span class="hljs-number">5</span>]);<br>    &#125;<br>    <span class="hljs-keyword">else</span>             <span class="hljs-comment">//奇数哲学家，先左后右</span><br>    &#123;<br>      wait(chopstick[i]);<br>      wait(chopstick[(i+<span class="hljs-number">1</span>)mod <span class="hljs-number">5</span>]);<br>      eat();<br>      singal(chopstick[(i+<span class="hljs-number">1</span>)mod <span class="hljs-number">5</span>]);<br>      singal(chopstick[i]);<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h2 id="补充内容：什么是信号量机制？"><a href="#补充内容：什么是信号量机制？" class="headerlink" title="补充内容：什么是信号量机制？"></a>补充内容：什么是信号量机制？</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/theLostLamb/article/details/80741319">https://blog.csdn.net/theLostLamb/article/details/80741319</a></p>
 <p>信号量s是具有非负整数值的全局变量，只能由两种特殊的操作来处理，这两种操作称为P和V：</p>
 <p>P(s)：如果s是非零的，那么P将s减1，并且立即返回。如果s为零，那么就挂起这个线程，直到s变为非零，而一个V操作会重启这个线程。在重启之后，P操作将s减1，并将控制返回给调用者。</p>
 <p>V(s)：V操作将s加1。如果有任何线程阻塞在P操作等待s变成非零，那么V操作会重启这些线程中的一个，然后该线程将s减1，完成它的P操作。</p>
 
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>操作系统原理期末复习</div>
+      <div>http://jrhu0048.github.io/2024/06/22/cao-zuo-xi-tong-yuan-li-qi-mo-fu-xi/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>JR.HU</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年6月22日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
   </div>
-</article>
 
 
 
-        
-          <div id="footer-post-container">
-  <div id="footer-post">
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/06/24/ren-gong-zhi-neng-yuan-li-fu-xi-5/" title="人工智能原理复习5">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">人工智能原理复习5</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/06/20/ji-suan-ji-zu-cheng-yuan-li-qi-mo-fu-xi/" title="计算机组成原理期末复习">
+                        <span class="hidden-mobile">计算机组成原理期末复习</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
 
-    <div id="nav-footer" style="display: none">
-      <ul>
-        
-          <li><a href="/">首页</a></li>
-        
-          <li><a href="/about/">关于</a></li>
-        
-          <li><a href="/archives/">归档</a></li>
-        
-          <li><a href="/tags/">标签</a></li>
-        
-          <li><a href="/categories/">分类</a></li>
-        
-      </ul>
-    </div>
-
-    
-    
-      <div id="toc-footer" style="display: none">
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0"><span class="toc-number">1.</span> <span class="toc-text">第一章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">第二章 进程与线程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-number">2.1.</span> <span class="toc-text">对进程的理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%94%A4%E9%86%92%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">2.2.</span> <span class="toc-text">进程唤醒的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E6%A0%B8%E7%BA%A7%E7%BA%BF%E7%A8%8B"><span class="toc-number">2.3.</span> <span class="toc-text">内核级线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%BA%A7%E7%BA%BF%E7%A8%8B"><span class="toc-number">2.4.</span> <span class="toc-text">用户级线程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6"><span class="toc-number">3.</span> <span class="toc-text">第三章 处理机调度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7"><span class="toc-number">4.</span> <span class="toc-text">操作系统的基本特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%B0%E4%BB%A3OS%E7%9A%84%E7%9B%AE%E6%A0%87%E6%98%AF"><span class="toc-number">5.</span> <span class="toc-text">现代OS的目标是</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%85%B7%E6%9C%89%E7%9A%84%E5%9B%9B%E5%A4%A7%E5%8A%9F%E8%83%BD"><span class="toc-number">6.</span> <span class="toc-text">操作系统具有的四大功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E8%A7%A3%E5%86%B3%E4%BA%BA%E6%9C%BA%E4%BA%A4%E4%BA%92%E9%97%AE%E9%A2%98%EF%BC%8C%E5%BC%95%E5%85%A5%E6%97%B6%E9%97%B4%E7%89%87%E7%9A%84%E6%A6%82%E5%BF%B5%EF%BC%8C%E9%87%87%E7%94%A8"><span class="toc-number">7.</span> <span class="toc-text">为解决人机交互问题，引入时间片的概念，采用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E6%97%B6%E7%B3%BB%E7%BB%9F%E5%8F%AF%E4%BB%A5%E5%88%86%E4%B8%BA"><span class="toc-number">8.</span> <span class="toc-text">实时系统可以分为</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#I-O%E8%BD%AF%E4%BB%B6%E9%80%9A%E5%B8%B8%E8%A2%AB%E7%BB%84%E7%BB%87%E6%88%90"><span class="toc-number">9.</span> <span class="toc-text">I&#x2F;O软件通常被组织成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95"><span class="toc-number">10.</span> <span class="toc-text">银行家算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E4%BA%A7%E8%80%85-%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98"><span class="toc-number">11.</span> <span class="toc-text">生产者-消费者问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%B2%E5%AD%A6%E5%AE%B6%E5%B0%B1%E9%A4%90%E9%97%AE%E9%A2%98"><span class="toc-number">12.</span> <span class="toc-text">哲学家就餐问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%E5%86%85%E5%AE%B9%EF%BC%9A%E4%BB%80%E4%B9%88%E6%98%AF%E4%BF%A1%E5%8F%B7%E9%87%8F%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="toc-number">13.</span> <span class="toc-text">补充内容：什么是信号量机制？</span></a></li></ol>
+            
+          </article>
+        </div>
       </div>
-    
-
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/06/22/cao-zuo-xi-tong-yuan-li-qi-mo-fu-xi/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/06/22/cao-zuo-xi-tong-yuan-li-qi-mo-fu-xi/&text=操作系统原理期末复习"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/06/22/cao-zuo-xi-tong-yuan-li-qi-mo-fu-xi/&title=操作系统原理期末复习"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/06/22/cao-zuo-xi-tong-yuan-li-qi-mo-fu-xi/&is_video=false&description=操作系统原理期末复习"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=操作系统原理期末复习&body=Check out this article: http://jrhu0048.github.io/2024/06/22/cao-zuo-xi-tong-yuan-li-qi-mo-fu-xi/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/06/22/cao-zuo-xi-tong-yuan-li-qi-mo-fu-xi/&title=操作系统原理期末复习"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/06/22/cao-zuo-xi-tong-yuan-li-qi-mo-fu-xi/&title=操作系统原理期末复习"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/06/22/cao-zuo-xi-tong-yuan-li-qi-mo-fu-xi/&title=操作系统原理期末复习"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/06/22/cao-zuo-xi-tong-yuan-li-qi-mo-fu-xi/&title=操作系统原理期末复习"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/06/22/cao-zuo-xi-tong-yuan-li-qi-mo-fu-xi/&name=操作系统原理期末复习&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/06/22/cao-zuo-xi-tong-yuan-li-qi-mo-fu-xi/&t=操作系统原理期末复习"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
-</ul>
-
     </div>
 
-    <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
-        
-          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
-        
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
-    </div>
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
 
+
+
+  </aside>
+
+
+    </div>
   </div>
 </div>
 
-        
-        <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy;
-    
-    
-    2022-2024
-    JR.HU
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-        <!--
-       --><li><a href="/">首页</a></li><!--
-     --><!--
-       --><li><a href="/about/">关于</a></li><!--
-     --><!--
-       --><li><a href="/archives/">归档</a></li><!--
-     --><!--
-       --><li><a href="/tags/">标签</a></li><!--
-     --><!--
-       --><li><a href="/categories/">分类</a></li><!--
-     -->
-      </ul>
-    </nav>
-  </div>
-</footer>
 
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
     </div>
-    <!-- styles -->
+  </div>
+</div>
 
+    
 
+    
+  </main>
 
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
-
-
-    <!-- jquery -->
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
-
-
-
-
-<!-- clipboard -->
-
+  <footer>
+    <div class="footer-inner">
   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
   
-  <script type="text/javascript">
-  $(function() {
-    // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
-    btn += '<i class="fa-regular fa-clone"></i>';
-    btn += '</span>';
-    // mount it!
-    $(".highlight table").before(btn);
-    var clip = new ClipboardJS('.btn-copy', {
-      text: function(trigger) {
-        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
-      }
-    });
-    clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "复制成功！");
-      e.clearSelection();
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
     })
-  })
   </script>
 
 
-<script src="/js/main.js"></script>
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
-<!-- search -->
 
-<!-- Baidu Analytics -->
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
 
-<!-- Cloudflare Analytics -->
 
-<!-- Disqus Comments -->
 
-<!-- utterances Comments -->
 
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>

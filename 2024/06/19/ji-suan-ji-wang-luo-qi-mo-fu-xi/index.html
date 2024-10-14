@@ -1,11 +1,24 @@
+
+
 <!DOCTYPE html>
-<html lang=zh>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
 <head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="JR.HU">
+  <meta name="keywords" content="">
+  
     <meta name="description" content="复习时可以针对相关知识点做一做如下题目。1-02、1-14、1-17、1-21、1-22、1-24、1-29、1-30 2-01、2-10、2-13 3-01、3-03、3-04、3-06、3-07、3-10、3-20、3-29 4-04、4-05、4-06、4-07、4-15、4-17、4-19、4-20、4-24、4-25、4-26、4-31、4-33、4-47、4-48 5-23、传输层PP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机网络期末复习">
@@ -35,158 +48,254 @@
 <meta property="article:published_time" content="2024-06-19T08:43:32.000Z">
 <meta property="article:modified_time" content="2024-06-30T04:10:54.621Z">
 <meta property="article:author" content="JR.HU">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://pic.imgdb.cn/item/6679835cd9c307b7e9a4fdec.png">
-    
-    
-      
-        
-          <link rel="shortcut icon" href="/images/favicon.ico">
-        
-      
-      
-        
-          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-        
-      
-      
-        
-          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-        
-      
-    
-    <!-- title -->
-    <title>计算机网络期末复习</title>
-    <!-- async scripts -->
-    <!-- Google Analytics -->
+  
+  
+  
+  <title>计算机网络期末复习 - CHARMMY</title>
 
-
-    <!-- Umami Analytics -->
-
-
-    <!-- styles -->
-    
-<link rel="stylesheet" href="/css/style.css">
-
-    <!-- persian styles -->
-    
-    <!-- rss -->
-    
-    
-	<!-- mathjax -->
-	
-		<script type="text/x-mathjax-config">
-		  MathJax.Hub.Config({
-			tex2jax: {
-			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-			  inlineMath: [['$','$']]
-			}
-		  });
-		</script>
-		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
-	
-<meta name="generator" content="Hexo 7.1.1"></head>
-
-<body class="max-width mx-auto px3 ltr">
-    
-      <div id="header-post">
-  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-        <!--
-       --><li><a href="/">首页</a></li><!--
-     --><!--
-       --><li><a href="/about/">关于</a></li><!--
-     --><!--
-       --><li><a href="/archives/">归档</a></li><!--
-     --><!--
-       --><li><a href="/tags/">标签</a></li><!--
-     --><!--
-       --><li><a href="/categories/">分类</a></li><!--
-     -->
-      </ul>
-    </span>
-    <br/>
-    <span id="actions">
-      <ul>
-        
-        <li><a class="icon" aria-label="上一篇" href="/2024/06/20/ji-suan-ji-zu-cheng-yuan-li-qi-mo-fu-xi/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
-        
-        
-        <li><a class="icon" aria-label="下一篇" href="/2024/06/19/ren-gong-zhi-neng-yuan-li-fu-xi-4/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
-        
-        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">上一篇</span>
-      <span id="i-next" class="info" style="display:none;">下一篇</span>
-      <span id="i-top" class="info" style="display:none;">返回顶部</span>
-      <span id="i-share" class="info" style="display:none;">分享文章</span>
-    </span>
-    <br/>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/06/19/ji-suan-ji-wang-luo-qi-mo-fu-xi/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/06/19/ji-suan-ji-wang-luo-qi-mo-fu-xi/&text=计算机网络期末复习"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/06/19/ji-suan-ji-wang-luo-qi-mo-fu-xi/&title=计算机网络期末复习"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/06/19/ji-suan-ji-wang-luo-qi-mo-fu-xi/&is_video=false&description=计算机网络期末复习"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=计算机网络期末复习&body=Check out this article: http://jrhu0048.github.io/2024/06/19/ji-suan-ji-wang-luo-qi-mo-fu-xi/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/06/19/ji-suan-ji-wang-luo-qi-mo-fu-xi/&title=计算机网络期末复习"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/06/19/ji-suan-ji-wang-luo-qi-mo-fu-xi/&title=计算机网络期末复习"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/06/19/ji-suan-ji-wang-luo-qi-mo-fu-xi/&title=计算机网络期末复习"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/06/19/ji-suan-ji-wang-luo-qi-mo-fu-xi/&title=计算机网络期末复习"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/06/19/ji-suan-ji-wang-luo-qi-mo-fu-xi/&name=计算机网络期末复习&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/06/19/ji-suan-ji-wang-luo-qi-mo-fu-xi/&t=计算机网络期末复习"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-    
-    
-      <div id="toc">
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E4%B9%A0%E6%97%B6%E5%8F%AF%E4%BB%A5%E9%92%88%E5%AF%B9%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9%E5%81%9A%E4%B8%80%E5%81%9A%E5%A6%82%E4%B8%8B%E9%A2%98%E7%9B%AE%E3%80%82"><span class="toc-number">1.</span> <span class="toc-text">复习时可以针对相关知识点做一做如下题目。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">第一章课后习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-02"><span class="toc-number">2.1.</span> <span class="toc-text">1-02</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-14"><span class="toc-number">2.2.</span> <span class="toc-text">1-14</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%9C%89%E5%93%AA%E4%BA%9B%E5%B8%B8%E7%94%A8%E7%9A%84%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87%EF%BC%9F%EF%BC%88%E8%BF%99%E9%A2%98%E9%87%8D%E7%82%B9%E5%A4%8D%E4%B9%A0%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">计算机网络有哪些常用的性能指标？（这题重点复习）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-17"><span class="toc-number">3.1.</span> <span class="toc-text">1-17</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-21"><span class="toc-number">3.2.</span> <span class="toc-text">1-21</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-22"><span class="toc-number">3.3.</span> <span class="toc-text">1-22</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-24"><span class="toc-number">3.4.</span> <span class="toc-text">1-24</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-29"><span class="toc-number">3.5.</span> <span class="toc-text">1-29</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-30"><span class="toc-number">3.6.</span> <span class="toc-text">1-30</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">第二章课后习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-01"><span class="toc-number">4.1.</span> <span class="toc-text">2-01</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-10"><span class="toc-number">4.2.</span> <span class="toc-text">2-10</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-13"><span class="toc-number">4.3.</span> <span class="toc-text">2-13</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98"><span class="toc-number">5.</span> <span class="toc-text">第三章课后习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-01"><span class="toc-number">5.1.</span> <span class="toc-text">3-01</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-03"><span class="toc-number">5.2.</span> <span class="toc-text">3-03</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-06"><span class="toc-number">5.3.</span> <span class="toc-text">3-06</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%9ACRC%E6%A3%80%E9%AA%8C"><span class="toc-number">6.</span> <span class="toc-text">补充知识点：CRC检验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-07"><span class="toc-number">6.1.</span> <span class="toc-text">3-07</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-8%EF%BC%88%E8%A1%A5%E5%85%85%E7%BB%83%E4%B9%A0%EF%BC%89"><span class="toc-number">6.2.</span> <span class="toc-text">3-8（补充练习）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-10"><span class="toc-number">6.3.</span> <span class="toc-text">3-10</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-20"><span class="toc-number">6.4.</span> <span class="toc-text">3-20</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-29"><span class="toc-number">6.5.</span> <span class="toc-text">3-29</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98"><span class="toc-number">7.</span> <span class="toc-text">第四章课后习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-04"><span class="toc-number">7.1.</span> <span class="toc-text">4-04</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-05"><span class="toc-number">7.2.</span> <span class="toc-text">4-05</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-06"><span class="toc-number">7.3.</span> <span class="toc-text">4-06</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-07"><span class="toc-number">7.4.</span> <span class="toc-text">4-07</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-15"><span class="toc-number">7.5.</span> <span class="toc-text">4-15</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-16"><span class="toc-number">7.6.</span> <span class="toc-text">4-16</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-17"><span class="toc-number">7.7.</span> <span class="toc-text">4-17</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-19"><span class="toc-number">7.8.</span> <span class="toc-text">4-19</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-19-1"><span class="toc-number">7.9.</span> <span class="toc-text">4-19</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-24"><span class="toc-number">7.10.</span> <span class="toc-text">4-24</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-25"><span class="toc-number">7.11.</span> <span class="toc-text">4-25</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-26"><span class="toc-number">7.12.</span> <span class="toc-text">4-26</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-31"><span class="toc-number">7.13.</span> <span class="toc-text">4-31</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-33"><span class="toc-number">7.14.</span> <span class="toc-text">4-33</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-47"><span class="toc-number">7.15.</span> <span class="toc-text">4-47</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-48"><span class="toc-number">7.16.</span> <span class="toc-text">4-48</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98"><span class="toc-number">8.</span> <span class="toc-text">第五章课后习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-23-%E4%B8%BB%E6%9C%BA-A-%E5%90%91%E4%B8%BB%E6%9C%BA-B-%E8%BF%9E%E7%BB%AD%E5%8F%91%E9%80%81%E4%BA%86%E4%B8%A4%E4%B8%AA-TCP-%E6%8A%A5%E6%96%87%E6%AE%B5%EF%BC%8C%E5%85%B6%E5%BA%8F%E5%8F%B7%E5%88%86%E5%88%AB%E6%98%AF-70-%E5%92%8C-100-%E3%80%82%E8%AF%95%E9%97%AE%EF%BC%9A"><span class="toc-number">8.1.</span> <span class="toc-text">5-23 主机 A 向主机 B 连续发送了两个 TCP 报文段，其序号分别是 70 和 100 。试问：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%80%83%E9%A2%98"><span class="toc-number">8.2.</span> <span class="toc-text">思考题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98"><span class="toc-number">9.</span> <span class="toc-text">第六章课后习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-02-%E5%9F%9F%E5%90%8D%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%9F%9F%E5%90%8D%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E6%9C%AC%E5%9C%B0%E5%9F%9F%E5%90%8D%E6%9C%8D%E5%8A%A1%E5%99%A8%E3%80%81%E6%A0%B9%E5%9F%9F%E5%90%8D%E6%9C%8D%E5%8A%A1%E5%99%A8%E3%80%81%E9%A1%B6%E7%BA%A7%E5%9F%9F%E5%90%8D%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BB%A5%E5%8F%8A%E6%9D%83%E9%99%90%E5%9F%9F%E5%90%8D%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9C%89%E4%BD%95%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">9.1.</span> <span class="toc-text">6-02 域名系统的主要功能是什么？域名系统中的本地域名服务器、根域名服务器、顶级域名服务器以及权限域名服务器有何区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-03-%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8E%E5%9F%9F%E5%90%8D%E8%BD%AC%E6%8D%A2%E7%9A%84%E8%BF%87%E7%A8%8B%E3%80%82-%E5%9F%9F%E5%90%8D%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E7%9A%84%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">9.2.</span> <span class="toc-text">6-03 举例说明域名转换的过程。 域名服务器中的高速缓存的作用是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-14-%E8%AF%B7%E5%88%A4%E6%96%AD%E4%BB%A5%E4%B8%8B%E8%AE%BA%E8%BF%B0%E7%9A%84%E6%AD%A3%E8%AF%AF%EF%BC%8C%E5%B9%B6%E7%AE%80%E8%BF%B0%E7%90%86%E7%94%B1%E3%80%82"><span class="toc-number">9.3.</span> <span class="toc-text">6-14 请判断以下论述的正误，并简述理由。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-20-%E8%AF%95%E8%BF%B0%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6%E7%9A%84%E6%9C%80%E4%B8%BB%E8%A6%81%E7%9A%84%E7%BB%84%E6%88%90%E9%83%A8%E4%BB%B6%E3%80%82%E7%94%A8%E6%88%B7%E4%BB%A3%E7%90%86-UA-%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E6%B2%A1%E6%9C%89-UA-%E8%A1%8C%E4%B8%8D%E8%A1%8C%EF%BC%9F"><span class="toc-number">9.4.</span> <span class="toc-text">6-20 试述电子邮件的最主要的组成部件。用户代理 UA 的作用是什么？没有 UA 行不行？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-22%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6%E7%9A%84%E5%9C%B0%E5%9D%80%E6%A0%BC%E5%BC%8F%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84%EF%BC%9F%E8%AF%B7%E8%AF%B4%E6%98%8E%E5%90%84%E9%83%A8%E5%88%86%E7%9A%84%E6%84%8F%E6%80%9D%E3%80%82"><span class="toc-number">9.5.</span> <span class="toc-text">6-22电子邮件的地址格式是怎样的？请说明各部分的意思。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-24%E8%AF%95%E8%BF%B0%E9%82%AE%E5%B1%80%E5%8D%8F%E8%AE%AE-POP-%E7%9A%84%E5%B7%A5%E4%BD%9C%E8%BF%87%E7%A8%8B%E3%80%82%E5%9C%A8%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6%E4%B8%AD%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E4%BD%BF%E7%94%A8-POP-%E5%92%8C-SMTP%E8%BF%99%E4%B8%A4%E4%B8%AA%E5%8D%8F%E8%AE%AE%EF%BC%9F-IMAP-%E4%B8%8E-POP-%E6%9C%89%E4%BD%95%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">9.6.</span> <span class="toc-text">6-24试述邮局协议 POP 的工作过程。在电子邮件中，为什么需要使用 POP 和 SMTP这两个协议？ IMAP 与 POP 有何区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-25-MIME-%E4%B8%8E-SMTP-%E7%9A%84%E5%85%B3%E7%B3%BB%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84%EF%BC%9F%E4%BB%80%E4%B9%88%E6%98%AF-quoted-printable-%E7%BC%96%E7%A0%81%E5%92%8C-Base64-%E7%BC%96%E7%A0%81%EF%BC%9F"><span class="toc-number">9.7.</span> <span class="toc-text">6-25 MIME 与 SMTP 的关系是怎样的？什么是 quoted-printable 编码和 Base64 编码？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BE%E5%A0%82%E7%BB%83%E4%B9%A0"><span class="toc-number">10.</span> <span class="toc-text">课堂练习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-%E7%89%A9%E7%90%86%E5%B1%82"><span class="toc-number">10.1.</span> <span class="toc-text">概述+物理层</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E5%88%97%E5%85%B3%E4%BA%8E%E5%AE%A2%E6%88%B7-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%BC%8F%E7%9A%84%E7%89%B9%E7%82%B9%EF%BC%8C%E4%B8%8D%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%98%AF%EF%BC%88-B-%EF%BC%89%E3%80%82"><span class="toc-number">10.1.1.</span> <span class="toc-text">下列关于客户-服务器工作方式的特点，不正确的是（ B ）。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E5%88%97%E5%85%B3%E4%BA%8E%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2%E7%9A%84%E8%A1%A8%E8%BF%B0%EF%BC%8C%E4%B8%8D%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%98%AF%EF%BC%88-B-%EF%BC%89%E3%80%82"><span class="toc-number">10.1.2.</span> <span class="toc-text">下列关于分组交换的表述，不正确的是（ B ）。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#100M%E5%92%8C1000M%E7%9A%84%E7%BD%91%E5%8D%A1%EF%BC%8C%E5%AE%83%E4%BB%AC%E7%9A%84%E5%8F%91%E9%80%81%E9%80%9F%E7%8E%87%E4%B8%8D%E5%90%8C%EF%BC%8C%E4%BD%86%E6%98%AF%E5%9C%A8%E5%8F%8C%E7%BB%9E%E7%BA%BF%E4%B8%8A%E7%9A%84%E4%BC%A0%E6%92%AD%E9%80%9F%E7%8E%87%E6%98%AF%E7%9B%B8%E5%90%8C%E7%9A%84%E3%80%82-A"><span class="toc-number">10.1.3.</span> <span class="toc-text">100M和1000M的网卡，它们的发送速率不同，但是在双绞线上的传播速率是相同的。 A</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%B8%89%E8%A6%81%E7%B4%A0%E6%98%AF%E6%8C%87-ABC"><span class="toc-number">10.1.4.</span> <span class="toc-text">协议的三要素是指  ABC</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E5%88%97%E8%A1%A8%E8%BF%B0%E4%B8%AD%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%98%AF-D"><span class="toc-number">10.1.5.</span> <span class="toc-text">下列表述中正确的是  D</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E5%88%97%E8%A1%A8%E8%BF%B0%E4%B8%AD%E4%B8%8D%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%98%AF-A"><span class="toc-number">10.1.6.</span> <span class="toc-text">下列表述中不正确的是  A</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%8D%A1%E7%9A%84%E6%B0%B4%E6%99%B6%E5%A4%B4%EF%BC%8C%E4%BB%8E%E5%A4%96%E8%A7%82%E4%B8%8A%E8%A7%82%E7%9C%8B%E4%BD%93%E7%8E%B0%E4%BA%86-A"><span class="toc-number">10.1.7.</span> <span class="toc-text">以太网卡的水晶头，从外观上观看体现了  A</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PCM%E7%B3%BB%E7%BB%9F%E9%87%8F%E5%8C%96%E6%97%B6%E8%8B%A5%E9%87%87%E7%94%A8128%E4%B8%AA%E9%87%8F%E5%8C%96%E7%AD%89%E7%BA%A7%EF%BC%8C%E7%BC%96%E7%A0%81%E6%97%B6%E7%9A%84%E7%A0%81%E9%95%BF%E4%B8%BA%EF%BC%88-B-%EF%BC%89%E4%BD%8D"><span class="toc-number">10.1.8.</span> <span class="toc-text">PCM系统量化时若采用128个量化等级，编码时的码长为（ B ）位</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="toc-number">10.2.</span> <span class="toc-text">数据链路层</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E8%AF%BE%E5%A0%82%E4%BD%9C%E4%B8%9A%EF%BC%88%E5%88%A4%E6%96%AD%E9%A2%98%EF%BC%9A%E6%89%93%E2%88%9A%E6%88%96%C3%97%EF%BC%89"><span class="toc-number">10.2.1.</span> <span class="toc-text">数据链路层课堂作业（判断题：打√或×）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E5%85%B3%E8%99%9A%E6%8B%9F%E5%B1%80%E5%9F%9F%E7%BD%91%E7%9A%84%E6%A6%82%E5%BF%B5%EF%BC%8C%E4%B8%8B%E9%9D%A2%E5%93%AA%E4%B8%AA%E8%AF%B4%E6%B3%95%E4%B8%8D%E6%AD%A3%E7%A1%AE%EF%BC%9F%EF%BC%88-D-%EF%BC%89"><span class="toc-number">10.2.2.</span> <span class="toc-text">有关虚拟局域网的概念，下面哪个说法不正确？（ D ）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10Mb-s%E4%BB%A5%E5%A4%AA%E7%BD%91%E8%A7%84%E5%AE%9A%E7%9A%84%E6%97%A0%E6%95%88%E9%A1%BF%E6%98%AF%E9%95%BF%E5%BA%A6%E5%B0%8F%E4%BA%8E%EF%BC%88C%EF%BC%89%E5%AD%97%E8%8A%82%E7%9A%84%E5%B8%A7"><span class="toc-number">10.2.3.</span> <span class="toc-text">10Mb&#x2F;s以太网规定的无效顿是长度小于（C）字节的帧</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%8F%96%EF%BC%88B%EF%BC%89us%E4%B8%BA%E4%BA%89%E7%94%A8%E6%9C%9F%E7%9A%84%E9%95%BF%E5%BA%A6"><span class="toc-number">10.2.4.</span> <span class="toc-text">以太网取（B）us为争用期的长度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E4%B8%8A%E5%A4%84%E7%90%86%E5%8F%91%E9%80%81%E6%96%B9%E5%92%8C%E6%8E%A5%E6%94%B6%E6%96%B9%E7%9A%84%E6%94%B6%E5%8F%91%E5%B8%A7%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98%E7%9A%84%E6%98%AF%EF%BC%88-C-%EF%BC%89"><span class="toc-number">10.2.5.</span> <span class="toc-text">在数据链路层上处理发送方和接收方的收发帧同步问题的是（ C ）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E5%88%97%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E4%B8%AD%EF%BC%8C%E5%9C%A8%E7%89%A9%E7%90%86%E5%B1%82%E4%B8%8A%E8%83%BD%E5%A4%9F%E6%89%A9%E5%B1%95%E4%BB%A5%E5%A4%AA%E7%BD%91%EF%BC%8C%E4%BD%86%E4%BC%9A%E5%BD%A2%E6%88%90%E6%9B%B4%E5%A4%A7%E7%A2%B0%E6%92%9E%E5%9F%9F%E7%9A%84%E6%98%AF%EF%BC%88D%EF%BC%89"><span class="toc-number">10.2.6.</span> <span class="toc-text">下列网络设备中，在物理层上能够扩展以太网，但会形成更大碰撞域的是（D）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E5%88%97%E7%BD%91%E7%BB%9C%E4%BA%92%E8%81%94%E8%AE%BE%E5%A4%87%E4%B8%AD%EF%BC%8C%E4%B8%8D%E8%83%BD%E9%9A%94%E7%A6%BB%E5%86%B2%E7%AA%81%E5%9F%9F%E7%9A%84%E6%98%AF%EF%BC%88-B-%EF%BC%89"><span class="toc-number">10.2.7.</span> <span class="toc-text">下列网络互联设备中，不能隔离冲突域的是（ B ）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E5%88%97%E7%BD%91%E7%BB%9C%E4%BA%92%E8%81%94%E8%AE%BE%E5%A4%87%E4%B8%AD%EF%BC%8C%E8%83%BD%E5%A4%9F%E9%9A%94%E7%A6%BB%E5%B9%BF%E6%92%AD%E5%9F%9F%E7%9A%84%E6%98%AF%EF%BC%88A%EF%BC%89"><span class="toc-number">10.2.8.</span> <span class="toc-text">下列网络互联设备中，能够隔离广播域的是（A）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A5%E4%B8%8B%E5%93%AA%E4%BA%9B%E6%98%AF%E9%93%BE%E8%B7%AF%E5%B1%82%E9%9C%80%E8%A6%81%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%9F%EF%BC%88ACD%EF%BC%89"><span class="toc-number">10.2.9.</span> <span class="toc-text">以下哪些是链路层需要解决的问题？（ACD）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="toc-number">10.3.</span> <span class="toc-text">网络层</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E4%BA%8EARP%E5%8D%8F%E8%AE%AE%EF%BC%8C%E4%B8%8B%E5%88%97%E5%93%AA%E4%BA%9B%E6%83%85%E5%86%B5%E4%B8%8D%E9%9C%80%E8%A6%81%E5%8F%91%E9%80%81ARP%E8%AF%B7%E6%B1%82-%EF%BC%88ABC%EF%BC%89"><span class="toc-number">10.3.1.</span> <span class="toc-text">关于ARP协议，下列哪些情况不需要发送ARP请求  （ABC）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E4%BA%8EARP%E5%8D%8F%E8%AE%AE%EF%BC%8C%E5%81%87%E8%AE%BE%E4%B8%BB%E6%9C%BAA%E5%92%8C%E4%B8%BB%E6%9C%BAB%E8%A6%81%E8%B7%A8%E8%B6%8A10%E4%B8%AA%E8%B7%AF%E7%94%B1%E5%99%A8%E4%BA%92%E8%BF%9E%E7%9A%84%E7%BD%91%E7%BB%9C%EF%BC%8C%E4%BB%8EA%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%E5%88%B0B%EF%BC%8C%E9%9C%80%E8%A6%81%E7%BB%8F%E5%8E%86%EF%BC%88C%EF%BC%89%E6%AC%A1ARP%E8%A7%A3%E6%9E%90"><span class="toc-number">10.3.2.</span> <span class="toc-text">关于ARP协议，假设主机A和主机B要跨越10个路由器互连的网络，从A发送数据到B，需要经历（C）次ARP解析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A5%E4%B8%8B%E5%AF%B9IP%E5%9C%B0%E5%9D%80%E5%88%86%E9%85%8D%E4%B8%AD%E6%8F%8F%E8%BF%B0%E4%B8%8D%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%98%AF%EF%BC%88B%EF%BC%89%E3%80%82"><span class="toc-number">10.3.3.</span> <span class="toc-text">以下对IP地址分配中描述不正确的是（B）。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#255-255-255-224%E5%8F%AF%E8%83%BD%E4%BB%A3%E8%A1%A8%E7%9A%84%E6%98%AF%EF%BC%88C%EF%BC%89%E3%80%82"><span class="toc-number">10.3.4.</span> <span class="toc-text">255.255.255.224可能代表的是（C）。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CIDR%E5%9C%B0%E5%9D%80%E5%9D%97%EF%BC%9A138-130-28-22%E5%8C%85%E5%90%AB%E4%BA%86%E5%A4%9A%E5%B0%91%E4%B8%AAC%E7%B1%BB%E5%9C%B0%E5%9D%80%EF%BC%9F-D"><span class="toc-number">10.3.5.</span> <span class="toc-text">CIDR地址块：138.130.28&#x2F;22包含了多少个C类地址？ D</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%90%E5%85%AC%E5%8F%B8%E7%94%B3%E8%AF%B7%E5%88%B0%E4%B8%80%E4%B8%AAC%E7%B1%BBIP%E5%9C%B0%E5%9D%80%EF%BC%8C%E4%BD%86%E8%A6%81%E8%BF%9E%E6%8E%A56%E4%B8%AA%E7%9A%84%E5%AD%90%E5%85%AC%E5%8F%B8%EF%BC%8C%E6%9C%80%E5%A4%A7%E7%9A%84%E4%B8%80%E4%B8%AA%E5%AD%90%E5%85%AC%E5%8F%B8%E6%9C%8926%E5%8F%B0%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%8C%E6%AF%8F%E4%B8%AA%E5%AD%90%E5%85%AC%E5%8F%B8%E5%9C%A8%E4%B8%80%E4%B8%AA%E7%BD%91%E6%AE%B5%E4%B8%AD%EF%BC%8C%E5%88%99%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81%E5%BA%94%E8%AE%BE%E4%B8%BA%EF%BC%88D%EF%BC%89%E3%80%82"><span class="toc-number">10.3.6.</span> <span class="toc-text">某公司申请到一个C类IP地址，但要连接6个的子公司，最大的一个子公司有26台计算机，每个子公司在一个网段中，则子网掩码应设为（D）。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%90A%E7%B1%BB%E7%BD%91%E7%BB%9C%E5%88%92%E5%88%86%E4%BA%86122%E4%B8%AA%E5%AD%90%E7%BD%91%EF%BC%8C%E5%AE%83%E7%9A%84%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81%E6%98%AF-D"><span class="toc-number">10.3.7.</span> <span class="toc-text">某A类网络划分了122个子网，它的子网掩码是  D</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BD%93%E8%B7%AF%E7%94%B1%E5%99%A8%E6%8E%A5%E6%94%B6%E7%9A%84IP%E6%8A%A5%E6%96%87%E4%B8%AD%E7%9A%84%E7%9B%AE%E6%A0%87%E7%BD%91%E7%BB%9C%E4%B8%8D%E5%9C%A8%E8%B7%AF%E7%94%B1%E8%A1%A8%E4%B8%AD%E6%97%B6%EF%BC%8C%E5%B0%86%E9%87%87%E5%8F%96%E7%9A%84%E7%AD%96%E7%95%A5%E6%98%AF%EF%BC%88-A-%EF%BC%89%E3%80%82"><span class="toc-number">10.3.8.</span> <span class="toc-text">当路由器接收的IP报文中的目标网络不在路由表中时，将采取的策略是（ A ）。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82"><span class="toc-number">10.4.</span> <span class="toc-text">应用层</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E5%9F%9F%E5%90%8Dwww-jnu-edu-cn%EF%BC%8C%E5%9C%A8%E5%BA%94%E7%94%A8%E5%B1%82%E3%80%81%E8%BF%90%E8%BE%93%E5%B1%82%E5%92%8C%E7%BD%91%E7%BB%9C%E5%B1%82%E4%BC%9A%E4%BD%BF%E7%94%A8%E5%93%AA%E4%BA%9B%E5%8D%8F%E8%AE%AE%EF%BC%9F"><span class="toc-number">10.4.1.</span> <span class="toc-text">访问域名www.jnu.edu.cn，在应用层、运输层和网络层会使用哪些协议？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BD%9C%E4%B8%9A"><span class="toc-number">11.</span> <span class="toc-text">计算机网络作业</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-09-%E5%85%B3%E4%BA%8EIP%E5%9C%B0%E5%9D%80%E4%B8%8E%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81%E3%80%82"><span class="toc-number">11.1.</span> <span class="toc-text">4-09 关于IP地址与子网掩码。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-27"><span class="toc-number">11.2.</span> <span class="toc-text">4-27</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%88"><span class="toc-number">12.</span> <span class="toc-text">计算机网络期末复习题及答案</span></a></li></ol>
-      </div>
-    
-  </span>
-</div>
-
-    
-    <div class="content index py4 ">
-        
-        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
-    
-    <h1 class="posttitle p-name" itemprop="name headline">
-        计算机网络期末复习
-    </h1>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
 
-    <div class="meta">
-      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span class="p-name" itemprop="name">JR.HU</span>
-      </span>
-      
-    <div class="postdate">
-      
-        <time datetime="2024-06-19T08:43:32.000Z" class="dt-published" itemprop="datePublished">2024-06-19</time>
-        
-      
-    </div>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
-      
 
-      
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
 
-    </div>
-  </header>
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
-  <div class="content e-content" itemprop="articleBody">
-    <h2 id="复习时可以针对相关知识点做一做如下题目。"><a href="#复习时可以针对相关知识点做一做如下题目。" class="headerlink" title="复习时可以针对相关知识点做一做如下题目。"></a>复习时可以针对相关知识点做一做如下题目。</h2><p>1-02、1-14、1-17、1-21、1-22、1-24、1-29、1-30</p>
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jrhu0048.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="计算机网络期末复习"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-06-19 16:43" pubdate>
+          2024年6月19日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          25k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          209 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">计算机网络期末复习</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="复习时可以针对相关知识点做一做如下题目。"><a href="#复习时可以针对相关知识点做一做如下题目。" class="headerlink" title="复习时可以针对相关知识点做一做如下题目。"></a>复习时可以针对相关知识点做一做如下题目。</h2><p>1-02、1-14、1-17、1-21、1-22、1-24、1-29、1-30</p>
 <p>2-01、2-10、2-13</p>
 <p>3-01、3-03、3-04、3-06、3-07、3-10、3-20、3-29</p>
 <p>4-04、4-05、4-06、4-07、4-15、4-17、4-19、4-20、4-24、4-25、4-26、4-31、4-33、4-47、4-48</p>
@@ -255,7 +364,7 @@
 <p>网络协议的三要素：语法、语义、同步！！！</p>
 <h3 id="1-24"><a href="#1-24" class="headerlink" title="1-24"></a>1-24</h3><p>试述具有五层协议的网络体系结构的要点，包括各层的主要功能。   </p>
 <p>解答：我们知道， OSI 的体系结构是七层协议。 TCP&#x2F;IP 的体系结构是四层协议，而真正有具体内容的只是上面三层。在学习计算机网络的原理时往往采取折中的办法，即综合 OSI和 TCP&#x2F;IP 的优点，采用一种有五层协议的体系结构。图 T-1-24 给出了五层协议的结构。</p>
-<p><img src="https://pic.imgdb.cn/item/6679835cd9c307b7e9a4fdec.png" alt="alt text"></p>
+<p><img src="https://pic.imgdb.cn/item/6679835cd9c307b7e9a4fdec.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <p>这五层协议的主要功能如下。</p>
 <p>(1) 物理层－-在物理层上所传数据的单位是比特 (bit) 。物理层的任务就是透明地传送比特流。物理层还要确定连接电缆的插头应当有多少根引脚以及各条引脚应如何连接。当然，哪几个比特代表什么意思，则不是物理层所要管的。请注意，传递信息所利用的一些物理媒体，如双绞线、同轴电缆、光缆、无线信道等，并不在物理层协议之内而是在物理层协议的下面。因此也有人把物理媒体当作第 0 层。</p>
 <p>(2) 数据链路层－－常简称为链路层。在两个相邻节点之间（主机和路由器之间或两个路由器之间）传送数据是直接传送的（即不需要经过转发的点对点通信）。这时就需要使用专门的链路层的协议。数据链路层将网络层交下来的 IP 数据报组装成帧，在两个相邻节点间的链路上“透明“地传送帧中的数据。每一帧包括数据和必要的控制信息（如同步信息、地址信息、差错控制等）。</p>
@@ -272,7 +381,7 @@
 <p>x&#x3D;3.2*10^6&#x3D;3.2Mbit&#x2F;s</p>
 <h3 id="1-30"><a href="#1-30" class="headerlink" title="1-30"></a>1-30</h3><p>有一个点对点链路，长度为 20000km。数据的发送速率是 1 kbit&#x2F;s, 要发送的数据有 100 bit 。数据在此链路上的传播速度为 2 X 10^8 m&#x2F;s 。假定我们可以看见在线路上传输的比特，试画出我们看到的线路上的比特（画两张图，一张是在 100 bit 刚刚发送完时，另一张是再经过 0.05 s 后）。</p>
 <p>解答： 100 bit 的发送时间＝ 100 bit&#x2F; (1000 bit&#x2F;s) &#x3D; 0.1 s 。<br>如图 T-1-30 所示， 0.1 秒的时间可以传播 20000km, 正好是线路的长度。因此，当发送的第一个比特到达终点时，发送方也正好把 100 bit 发送完毕，整个线路上都充满了所传输的 100 bit 。</p>
-<p><img src="https://pic.imgdb.cn/item/6679875ad9c307b7e9b19585.png" alt="alt text"></p>
+<p><img src="https://pic.imgdb.cn/item/6679875ad9c307b7e9b19585.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <p>再经过 0.05 s 后，所有的比特都向前走了 10000 km 。这就是说，发送的前 50 bit 已经到达终点了，剩下的 50 bit 还在线路上传播。最后一个比特正好走了一半 10000 km ，在线路的正中间。</p>
 <p>这题还是比较简单的，当作练习</p>
 <h2 id="第二章课后习题"><a href="#第二章课后习题" class="headerlink" title="第二章课后习题"></a><strong>第二章课后习题</strong></h2><h3 id="2-01"><a href="#2-01" class="headerlink" title="2-01"></a>2-01</h3><p>物理层要解决哪些问题？物理层的主要特点是什么？</p>
@@ -365,19 +474,19 @@
 <blockquote>
 <p>余数R总是比除数P少一位,所以在计算余数R时，我们先假设为4个0，计算得到的余数替换成4个0就好</p>
 </blockquote>
-<p><img src="https://pic.imgdb.cn/item/66763447d9c307b7e9c46d48.png" alt="alt text"></p>
+<p><img src="https://pic.imgdb.cn/item/66763447d9c307b7e9c46d48.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <p>（2）原本的被除数序列为：11010110111110  因为数据位的最后一位的1换成了0，所以替换后的数据序列为： 11010110101110  （注意是数据序列！）</p>
 <p>用  11010110101110 除以 10011 得到商：1100001011  余数：  0011</p>
 <p>余数不为0，接收端是可以发现的</p>
-<p><img src="https://pic.imgdb.cn/item/66763732d9c307b7e9c9d5eb.png" alt="alt text"></p>
+<p><img src="https://pic.imgdb.cn/item/66763732d9c307b7e9c9d5eb.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <p>（3）当数据最后两位1都变成了0时，即 1101011011 -&gt; 1101011000</p>
 <p>再添加FCS检验序列   1110</p>
 <p>得到被除数：  11010110001110</p>
 <p>除数 p&#x3D;10011 </p>
 <p>11010110001110&#x2F;10011  得到商：1100001001  余数 R &#x3D; 0101</p>
-<p><img src="https://pic.imgdb.cn/item/66763a00d9c307b7e9cf65a6.png" alt="alt text"></p>
+<p><img src="https://pic.imgdb.cn/item/66763a00d9c307b7e9cf65a6.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <p>（4）采用 CRC 检验后，数据链路层的传输并非变成了可靠的传输。当接收方进行 CRC 检验时，如果发现有差错，就简单地丢弃这个帧。数据链路层并不能保证接收方接收到的和发送方发送的完全一样。</p>
-<h3 id="3-8（补充练习）"><a href="#3-8（补充练习）" class="headerlink" title="3-8（补充练习）"></a>3-8（补充练习）</h3><p><img src="https://pic.imgdb.cn/item/66763bf9d9c307b7e9d3557d.png" alt="alt text"></p>
+<h3 id="3-8（补充练习）"><a href="#3-8（补充练习）" class="headerlink" title="3-8（补充练习）"></a>3-8（补充练习）</h3><p><img src="https://pic.imgdb.cn/item/66763bf9d9c307b7e9d3557d.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <h3 id="3-10"><a href="#3-10" class="headerlink" title="3-10"></a>3-10</h3><blockquote>
 <p>ppp协议使用零比特填充的方式来实现透明传输，这是一种同步传输技术！！！</p>
 </blockquote>
@@ -405,7 +514,7 @@
 <p>因此，最短帧长为 10000 bit, 或 1250 字节 。</p>
 <p>我的理解是：如果帧的长度太短了，那么会导致一个问题就是传播过去的帧数据再传播过来所需要的时间就短于传播时延，发送端是无法检测到碰撞信号的，所以无法保证信息的准确传播</p>
 <h3 id="3-29"><a href="#3-29" class="headerlink" title="3-29"></a>3-29</h3><p>以太网交换机有何特点？用它怎样组成虚拟局域网？</p>
-<p><img src="https://pic.imgdb.cn/item/6676529fd9c307b7e9032631.png" alt="alt text"></p>
+<p><img src="https://pic.imgdb.cn/item/6676529fd9c307b7e9032631.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <p>【一些笔记】</p>
 <p>局域网的概念大于以太网，但是现在讲局域网默认是以太网</p>
 <p>只考虑媒体接入控制MAC子层，简化了概念</p>
@@ -426,7 +535,7 @@
 <p>D 类地址：用于多播，最前面的 4 位是 1110 。 </p>
 <p>E 类地址：保留今后使用，最前面的 4 位是 1111 。 </p>
 <p>无分类地址又称为 CIDR 。由“网络前缀 “(network-prefix) （简称为“前缀＂）和主机号组 成 。 主机号字段称为后缀(suffix) 。 CIDR 的记法是： IP 地址：：＝｛＜网络前缀＞，＜主机号＞｝ 但网络前缀的位数不固定，并且没有 A 类、 B 类或 C 类的划分。</p>
-<p><img src="https://pic.imgdb.cn/item/66737be2d9c307b7e9d80a5f.png" alt="![](Aspose.Words.52609da6-82ff-4708-ac03-bc1781cb7297.001.png)"></p>
+<p><img src="https://pic.imgdb.cn/item/66737be2d9c307b7e9d80a5f.png" srcset="/img/loading.gif" lazyload alt="![](Aspose.Words.52609da6-82ff-4708-ac03-bc1781cb7297.001.png)"></p>
 <h3 id="4-06"><a href="#4-06" class="headerlink" title="4-06"></a>4-06</h3><p> IP 地址的主要特点是什么？</p>
 <p>【解答】</p>
 <p>IP 地址具有以下一些重要特点： </p>
@@ -451,7 +560,7 @@
 </blockquote>
 <p>片偏移是以8字节为偏移单位的，这就是说，除最后一个数据报外，其他每个分片的长度一定为8字节的整数倍，这里最大只能是1024！！！</p>
 <p>可以这样划分：TCP 交给 IP 的数据共 3200 bit&#x3D; 1024 + 1024 + 1024 + 128, 因此 3200 bit 的数据必须划分为 4 个数据报，如图 T-4-15 所示。</p>
-<p><img src="https://pic.imgdb.cn/item/66737c80d9c307b7e9d8c235.png" alt=" ![](Aspose.Words.52609da6-82ff-4708-ac03-bc1781cb7297.002.png)"></p>
+<p><img src="https://pic.imgdb.cn/item/66737c80d9c307b7e9d8c235.png" srcset="/img/loading.gif" lazyload alt=" ![](Aspose.Words.52609da6-82ff-4708-ac03-bc1781cb7297.002.png)"></p>
 <p>图中的 Hl, H2, H3, H4 分别是这 4 个数据报的首部，其长度都是 160 bit （但里面的内 容并不相同），而 TCP_l, TCP_2, TCP_3, TCP_4 分别是这四个数据报片的数据部分，其长度分别为 1024 bit, 1024 bit, 1024 bit 和 128 bit。这 4 个数据报的总长度（首部加上数据部分） 分别为 1184bit, 1184bit, 1184bit 和 288 bit。上面这些就是第二个局域网向其上层要传送的数据。因此，第二个局域网向上传送 1184 + 1184 + 1184 + 288 &#x3D; 3840 bit。</p>
 <p>IP数据报首部的<strong>固定部分</strong>是20字节（160bit）</p>
 <h3 id="4-16"><a href="#4-16" class="headerlink" title="4-16"></a>4-16</h3><p>(1) 试解释为什么 ARP 高速缓存每存入一个项目就要设置 10~20 分钟的超时计时器。这个时间设置得太长或太短会出现什么问题？  </p>
@@ -481,13 +590,13 @@
 <p>129.250.2&#x2F;24, IP 地址范围： 129.250.2.0 ~ 129.250.2.255 </p>
 <p>……</p>
 <p>129.250.16&#x2F;24, IP 地址范围： 129.250.16.0 ~ 129.250.16.255</p>
-<h3 id="4-24"><a href="#4-24" class="headerlink" title="4-24"></a>4-24</h3><p><img src="https://pic.imgdb.cn/item/66739e7ed9c307b7e90d895f.png" alt="alt text"></p>
-<p><img src="https://pic.imgdb.cn/item/6673a070d9c307b7e910d4a4.png" alt="alt text"></p>
-<p><img src="https://pic.imgdb.cn/item/6673a08ed9c307b7e9110c5e.png" alt="alt text"></p>
+<h3 id="4-24"><a href="#4-24" class="headerlink" title="4-24"></a>4-24</h3><p><img src="https://pic.imgdb.cn/item/66739e7ed9c307b7e90d895f.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<p><img src="https://pic.imgdb.cn/item/6673a070d9c307b7e910d4a4.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<p><img src="https://pic.imgdb.cn/item/6673a08ed9c307b7e9110c5e.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <h3 id="4-25"><a href="#4-25" class="headerlink" title="4-25"></a>4-25</h3><p>一个主机要向另一个主机发送 IP 数据报，是否使用 ARP 就可以得到该目的主机的 MAC 地址，然后直接用这个 MAC 地址将 IP 数据报发送给目的主机？ </p>
 <p>【解答】：</p>
 <p>有时是这样，但有时也不是这样。ARP 只能对连接在同一个网络上的主机或路由器进行地址解析。我们看图 Q-4-25 的例子。</p>
-<p><img src="https://pic.imgdb.cn/item/667380c5d9c307b7e9dea2ae.png" alt="![](Aspose.Words.52609da6-82ff-4708-ac03-bc1781cb7297.003.png)"></p>
+<p><img src="https://pic.imgdb.cn/item/667380c5d9c307b7e9dea2ae.png" srcset="/img/loading.gif" lazyload alt="![](Aspose.Words.52609da6-82ff-4708-ac03-bc1781cb7297.003.png)"></p>
 <p>由于 A 和 B 连接在同一个网络上，因此主机 A 使用 ARP 协议就可得到 B 的 MAC 地址， 然后用 B 的 MAC 地址，将 IP 数据报组装成帧，发送给 B 。 </p>
 <p>但当目的主机是 F 时，情况就不同了。 A 无法得到 F 的 MAC 地址，只能先将 IP 数据报 发送给本网络上的一个路由器（在本例中就是路由器 R1) 。因此，当 A 发送 IP 数据报给 F 时， 在地址解析方面要经过以下三个步骤：</p>
 <p>（1）A 先通过 ARP 解析出路由器凡的 MAC 地址，将 IP 数据报发送到 R1</p>
@@ -496,7 +605,7 @@
 <p>因此， A 发送 IP 数据报给 F 要经过三次 ARP 地址解析。 A 只知道 F 的 IP 地址，但并不知道F的MAC地址。</p>
 <p>从A到F，中间经过了两个路由器，需要使用三次（2+1）ARP地址解析协议</p>
 <h3 id="4-26"><a href="#4-26" class="headerlink" title="4-26"></a>4-26</h3><p> 一个大公司有一个总部和三个下属部门 。 公司分配到的网络前缀是 192.77.33&#x2F;24 。<br>公司的网络布局如图 T-4-26 所示。总部共有 5 个局域网，其中的 LAN1 ~ LAN4<br>都连接到路由器 R1 上， R1 再通过 LAN5 与路由器 R2 相连。 R2 和远地的三个部门<br>的局域网 LAN6 ~ LAN8 通过广域网相连。每一个局域网旁边标明的数字是局域<br>网上的主机数。试给每一个局域网分配一个合适的网络前缀。</p>
-<p><img src="https://pic.imgdb.cn/item/667388e6d9c307b7e9e94207.png" alt="alt text"></p>
+<p><img src="https://pic.imgdb.cn/item/667388e6d9c307b7e9e94207.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <p>1100 0000.0100 1101.0010 0001.0000 0000</p>
 <p>50+10+28+10+20+20+25&#x3D;163&lt;256  8位</p>
 <p>lan1:<br>192.77.33. + 1100.0000   64-2个</p>
@@ -570,11 +679,11 @@
 <p>分配给子网 N2 ( &#x2F;26 ) 的首地址是 14 . 24.74.128, 末地址是 14.24.74.191 。</p>
 <p>分配给子网 N3 C&#x2F;28) 的首地址是 14 . 24.74.192, 末地址是 14. 24 . 74.207 。</p>
 <p>图 T-4-47 显示了上述分配方案。</p>
-<p><img src="https://pic.imgdb.cn/item/6673945fd9c307b7e9fb1f6d.png" alt="alt text"></p>
+<p><img src="https://pic.imgdb.cn/item/6673945fd9c307b7e9fb1f6d.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <h3 id="4-48"><a href="#4-48" class="headerlink" title="4-48"></a>4-48</h3><p>如图 T-4-48(a)所示，网络 145.13.0.0&#x2F;16 划分为四个子网 N1,N2, N3 和 N4 。这四个子网与路由器 R 连接的接口分别是 m0, m1, m2 和 m3 。路由器 R 的第五个接口m4 连接到互联网 。</p>
 <p>(I) 试给出路由器 R 的路由表 。</p>
 <p>(2) 路由器 R 收到一个分组，其目的地址是 145.13.160.78。试解释这个分组是怎样被转发的。</p>
-<p><img src="https://pic.imgdb.cn/item/6673967dd9c307b7e9ff0af7.png" alt="alt text"></p>
+<p><img src="https://pic.imgdb.cn/item/6673967dd9c307b7e9ff0af7.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <p>笔记：</p>
 <blockquote>
 <p>路由表长啥样要知道！！！</p>
@@ -584,7 +693,7 @@
 <p>145.13.64.0&#x2F;18    直接交付，接口m1</p>
 <p>145.13.128.0&#x2F;18   直接交付 接口m2</p>
 <p>145.13.192.0&#x2F;18    直接交付，接口m3</p>
-<p><img src="https://pic.imgdb.cn/item/6673984fd9c307b7e9020866.png" alt="https://pic.imgdb.cn/item/6673984fd9c307b7e9020866.png"></p>
+<p><img src="https://pic.imgdb.cn/item/6673984fd9c307b7e9020866.png" srcset="/img/loading.gif" lazyload alt="https://pic.imgdb.cn/item/6673984fd9c307b7e9020866.png"></p>
 <p>请注意，最后一行的网络前缀是 0.0.0.0&#x2F;0 。这样的网络前缀和任何一个 IP<br>地址进行按位 AND 运算，其结果都必定是 0, 即一定是匹配的。这时就通过接口 m4 交给默认路由器来处理</p>
 <p>默认路由是当路由器在路由表中找不到目标网络的路由条目时，路由器把请求转发到默认路由接口的一种特殊路由。它是对IP数据包中的目的地址找不到存在的其他路由时，路由器所选择的路由。默认路由一般应用于网络出口，指向互联网，实现内网主机能够跟外网通信。默认路由在路由表中的处理方式是，当常规的路由列表没有匹配时，才会查看或调用默认路由，因此也被称作“最后一根稻草”。</p>
 <p>默认路由的特点包括：</p>
@@ -595,8 +704,8 @@
 </blockquote>
 <p>在计算机网络中，IP地址的子网掩码用于确定IP地址中的哪一部分表示网络地址，哪一部分表示主机地址。子网掩码由一系列连续的1组成，后面跟着0。当子网掩码为0.0.0.0时，表示<strong>没有网络地址部分，即所有的IP地址位都用于主机地址</strong></p>
 <p>&#x2F;0表示子网掩码的位数，当子网掩码为&#x2F;0时，意味着子网掩码的所有位都是0，即0.0.0.0。这表示没有任何网络地址的限制，可以匹配任何目的地址。</p>
-<p><img src="https://pic.imgdb.cn/item/66739e29d9c307b7e90cfc54.png" alt="alt text"></p>
-<p><img src="https://pic.imgdb.cn/item/66739e41d9c307b7e90d22b1.png" alt="alt text"></p>
+<p><img src="https://pic.imgdb.cn/item/66739e29d9c307b7e90cfc54.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<p><img src="https://pic.imgdb.cn/item/66739e41d9c307b7e90d22b1.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <h2 id="第五章课后习题"><a href="#第五章课后习题" class="headerlink" title="第五章课后习题"></a><strong>第五章课后习题</strong></h2><p>涉及到的题目有：5-23、传输层PPT最后一页的思考题</p>
 <h3 id="5-23-主机-A-向主机-B-连续发送了两个-TCP-报文段，其序号分别是-70-和-100-。试问："><a href="#5-23-主机-A-向主机-B-连续发送了两个-TCP-报文段，其序号分别是-70-和-100-。试问：" class="headerlink" title="5-23 主机 A 向主机 B 连续发送了两个 TCP 报文段，其序号分别是 70 和 100 。试问："></a>5-23 主机 A 向主机 B 连续发送了两个 TCP 报文段，其序号分别是 70 和 100 。试问：</h3><p>(1) 第一个报文段携带了多少字节的数据？</p>
 <p>(2) 主机 B 收到第一个报文段后发回的确认中的确认号应当是多少？</p>
@@ -655,7 +764,7 @@
 <p>邮件地址的格式如下：</p>
 <p><code>收件入邮箱名＠邮箱所在主机的域名</code></p>
 <p>在上式中，符号“@“读作 “at”, 表示“在＂的意思。<code>收件人邮箱名又简称为用户名，是收件人自己定义的字符串标识符</code>。但应注意，标志收件人邮箱名的字符串在邮箱所在邮件服<br>务器的计算机中必须是唯一的。我们知道，<code>邮箱所在的主机的域名在互联网中是唯一的</code>，这样就<code>保证了这个电子邮件地址在整个互联网范围内是唯一的</code>。这对保证电子邮件能够在整个互联网范围内的准确交付是十分重要的。</p>
-<p>电子邮件的用户一般采用容易记忆的字符串。例如，域名 163.com 在互联网范围内是唯一的。如果我们要向网易(163.com) 申请一个电子邮件地址，就可以先取一个收件人邮箱名试试看。例如，我们选择 xyz 。这时可能屏幕显示此邮箱名已经有人选用了，于是我们可以在 xyz 后面加上一些字符再试试。例如，我们取xyz2010, 如果屏幕显示可以用这个邮箱名，那么以后我们就使用 <a href="mailto:&#120;&#x79;&#122;&#50;&#x30;&#x31;&#48;&#x40;&#x31;&#54;&#x33;&#46;&#99;&#111;&#109;">&#120;&#x79;&#122;&#50;&#x30;&#x31;&#48;&#x40;&#x31;&#54;&#x33;&#46;&#99;&#111;&#109;</a> 这个电子邮件地址，可以保证在整个互联网范围内一定是唯一的。</p>
+<p>电子邮件的用户一般采用容易记忆的字符串。例如，域名 163.com 在互联网范围内是唯一的。如果我们要向网易(163.com) 申请一个电子邮件地址，就可以先取一个收件人邮箱名试试看。例如，我们选择 xyz 。这时可能屏幕显示此邮箱名已经有人选用了，于是我们可以在 xyz 后面加上一些字符再试试。例如，我们取xyz2010, 如果屏幕显示可以用这个邮箱名，那么以后我们就使用 <a href="mailto:&#120;&#x79;&#x7a;&#50;&#48;&#49;&#x30;&#x40;&#x31;&#54;&#x33;&#46;&#99;&#111;&#109;">&#120;&#x79;&#x7a;&#50;&#48;&#49;&#x30;&#x40;&#x31;&#54;&#x33;&#46;&#99;&#111;&#109;</a> 这个电子邮件地址，可以保证在整个互联网范围内一定是唯一的。</p>
 <h3 id="6-24试述邮局协议-POP-的工作过程。在电子邮件中，为什么需要使用-POP-和-SMTP这两个协议？-IMAP-与-POP-有何区别？"><a href="#6-24试述邮局协议-POP-的工作过程。在电子邮件中，为什么需要使用-POP-和-SMTP这两个协议？-IMAP-与-POP-有何区别？" class="headerlink" title="6-24试述邮局协议 POP 的工作过程。在电子邮件中，为什么需要使用 POP 和 SMTP这两个协议？ IMAP 与 POP 有何区别？"></a>6-24试述邮局协议 POP 的工作过程。在电子邮件中，为什么需要使用 POP 和 SMTP这两个协议？ IMAP 与 POP 有何区别？</h3><p>解答：<code>邮局协议 POP 是一个非常简单、但功能有限的邮件读取协议</code>。 POP 已成为互联网的正式标准。大多数的 ISP 都支持 POP 。 POP3 可简称为 POP 。</p>
 <p>在电子邮件系统中， <code>SMTP 协议是用来发送电子邮件的</code>，而 <code>POP 协议是用户读取电子邮件的协议</code>。因此，<code>这两个协议都是电子邮件系统必不可少的</code>。</p>
 <p>在<code>电子邮件读取协议中有 POP 和 IMAP 两种</code>。 POP 协议的一个特点就是只要用户从 POP服务器读取了邮件，POP 服务器就把该邮件删除。这在某些情况下就不够方便。</p>
@@ -1106,147 +1215,343 @@
 <p>7、子网掩码能够表示IP地址中的主机地址段怎样划分子网地址和主机号。子网掩码规定了全1的为网络号，全0的为主机号。</p>
 <p>子网掩码255.255.255.0代表C类IP地址默认子网掩码。</p>
 
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>计算机网络期末复习</div>
+      <div>http://jrhu0048.github.io/2024/06/19/ji-suan-ji-wang-luo-qi-mo-fu-xi/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>JR.HU</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年6月19日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
   </div>
-</article>
 
 
 
-        
-          <div id="footer-post-container">
-  <div id="footer-post">
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/06/20/ji-suan-ji-zu-cheng-yuan-li-qi-mo-fu-xi/" title="计算机组成原理期末复习">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">计算机组成原理期末复习</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/06/19/ren-gong-zhi-neng-yuan-li-fu-xi-4/" title="人工智能原理复习4">
+                        <span class="hidden-mobile">人工智能原理复习4</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
 
-    <div id="nav-footer" style="display: none">
-      <ul>
-        
-          <li><a href="/">首页</a></li>
-        
-          <li><a href="/about/">关于</a></li>
-        
-          <li><a href="/archives/">归档</a></li>
-        
-          <li><a href="/tags/">标签</a></li>
-        
-          <li><a href="/categories/">分类</a></li>
-        
-      </ul>
-    </div>
-
-    
-    
-      <div id="toc-footer" style="display: none">
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E4%B9%A0%E6%97%B6%E5%8F%AF%E4%BB%A5%E9%92%88%E5%AF%B9%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9%E5%81%9A%E4%B8%80%E5%81%9A%E5%A6%82%E4%B8%8B%E9%A2%98%E7%9B%AE%E3%80%82"><span class="toc-number">1.</span> <span class="toc-text">复习时可以针对相关知识点做一做如下题目。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">第一章课后习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-02"><span class="toc-number">2.1.</span> <span class="toc-text">1-02</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-14"><span class="toc-number">2.2.</span> <span class="toc-text">1-14</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%9C%89%E5%93%AA%E4%BA%9B%E5%B8%B8%E7%94%A8%E7%9A%84%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87%EF%BC%9F%EF%BC%88%E8%BF%99%E9%A2%98%E9%87%8D%E7%82%B9%E5%A4%8D%E4%B9%A0%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">计算机网络有哪些常用的性能指标？（这题重点复习）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-17"><span class="toc-number">3.1.</span> <span class="toc-text">1-17</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-21"><span class="toc-number">3.2.</span> <span class="toc-text">1-21</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-22"><span class="toc-number">3.3.</span> <span class="toc-text">1-22</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-24"><span class="toc-number">3.4.</span> <span class="toc-text">1-24</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-29"><span class="toc-number">3.5.</span> <span class="toc-text">1-29</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-30"><span class="toc-number">3.6.</span> <span class="toc-text">1-30</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">第二章课后习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-01"><span class="toc-number">4.1.</span> <span class="toc-text">2-01</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-10"><span class="toc-number">4.2.</span> <span class="toc-text">2-10</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-13"><span class="toc-number">4.3.</span> <span class="toc-text">2-13</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98"><span class="toc-number">5.</span> <span class="toc-text">第三章课后习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-01"><span class="toc-number">5.1.</span> <span class="toc-text">3-01</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-03"><span class="toc-number">5.2.</span> <span class="toc-text">3-03</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-06"><span class="toc-number">5.3.</span> <span class="toc-text">3-06</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%9ACRC%E6%A3%80%E9%AA%8C"><span class="toc-number">6.</span> <span class="toc-text">补充知识点：CRC检验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-07"><span class="toc-number">6.1.</span> <span class="toc-text">3-07</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-8%EF%BC%88%E8%A1%A5%E5%85%85%E7%BB%83%E4%B9%A0%EF%BC%89"><span class="toc-number">6.2.</span> <span class="toc-text">3-8（补充练习）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-10"><span class="toc-number">6.3.</span> <span class="toc-text">3-10</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-20"><span class="toc-number">6.4.</span> <span class="toc-text">3-20</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-29"><span class="toc-number">6.5.</span> <span class="toc-text">3-29</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98"><span class="toc-number">7.</span> <span class="toc-text">第四章课后习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-04"><span class="toc-number">7.1.</span> <span class="toc-text">4-04</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-05"><span class="toc-number">7.2.</span> <span class="toc-text">4-05</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-06"><span class="toc-number">7.3.</span> <span class="toc-text">4-06</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-07"><span class="toc-number">7.4.</span> <span class="toc-text">4-07</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-15"><span class="toc-number">7.5.</span> <span class="toc-text">4-15</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-16"><span class="toc-number">7.6.</span> <span class="toc-text">4-16</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-17"><span class="toc-number">7.7.</span> <span class="toc-text">4-17</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-19"><span class="toc-number">7.8.</span> <span class="toc-text">4-19</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-19-1"><span class="toc-number">7.9.</span> <span class="toc-text">4-19</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-24"><span class="toc-number">7.10.</span> <span class="toc-text">4-24</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-25"><span class="toc-number">7.11.</span> <span class="toc-text">4-25</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-26"><span class="toc-number">7.12.</span> <span class="toc-text">4-26</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-31"><span class="toc-number">7.13.</span> <span class="toc-text">4-31</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-33"><span class="toc-number">7.14.</span> <span class="toc-text">4-33</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-47"><span class="toc-number">7.15.</span> <span class="toc-text">4-47</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-48"><span class="toc-number">7.16.</span> <span class="toc-text">4-48</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98"><span class="toc-number">8.</span> <span class="toc-text">第五章课后习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-23-%E4%B8%BB%E6%9C%BA-A-%E5%90%91%E4%B8%BB%E6%9C%BA-B-%E8%BF%9E%E7%BB%AD%E5%8F%91%E9%80%81%E4%BA%86%E4%B8%A4%E4%B8%AA-TCP-%E6%8A%A5%E6%96%87%E6%AE%B5%EF%BC%8C%E5%85%B6%E5%BA%8F%E5%8F%B7%E5%88%86%E5%88%AB%E6%98%AF-70-%E5%92%8C-100-%E3%80%82%E8%AF%95%E9%97%AE%EF%BC%9A"><span class="toc-number">8.1.</span> <span class="toc-text">5-23 主机 A 向主机 B 连续发送了两个 TCP 报文段，其序号分别是 70 和 100 。试问：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%80%83%E9%A2%98"><span class="toc-number">8.2.</span> <span class="toc-text">思考题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98"><span class="toc-number">9.</span> <span class="toc-text">第六章课后习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-02-%E5%9F%9F%E5%90%8D%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%9F%9F%E5%90%8D%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E6%9C%AC%E5%9C%B0%E5%9F%9F%E5%90%8D%E6%9C%8D%E5%8A%A1%E5%99%A8%E3%80%81%E6%A0%B9%E5%9F%9F%E5%90%8D%E6%9C%8D%E5%8A%A1%E5%99%A8%E3%80%81%E9%A1%B6%E7%BA%A7%E5%9F%9F%E5%90%8D%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BB%A5%E5%8F%8A%E6%9D%83%E9%99%90%E5%9F%9F%E5%90%8D%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9C%89%E4%BD%95%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">9.1.</span> <span class="toc-text">6-02 域名系统的主要功能是什么？域名系统中的本地域名服务器、根域名服务器、顶级域名服务器以及权限域名服务器有何区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-03-%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8E%E5%9F%9F%E5%90%8D%E8%BD%AC%E6%8D%A2%E7%9A%84%E8%BF%87%E7%A8%8B%E3%80%82-%E5%9F%9F%E5%90%8D%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AD%E7%9A%84%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">9.2.</span> <span class="toc-text">6-03 举例说明域名转换的过程。 域名服务器中的高速缓存的作用是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-14-%E8%AF%B7%E5%88%A4%E6%96%AD%E4%BB%A5%E4%B8%8B%E8%AE%BA%E8%BF%B0%E7%9A%84%E6%AD%A3%E8%AF%AF%EF%BC%8C%E5%B9%B6%E7%AE%80%E8%BF%B0%E7%90%86%E7%94%B1%E3%80%82"><span class="toc-number">9.3.</span> <span class="toc-text">6-14 请判断以下论述的正误，并简述理由。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-20-%E8%AF%95%E8%BF%B0%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6%E7%9A%84%E6%9C%80%E4%B8%BB%E8%A6%81%E7%9A%84%E7%BB%84%E6%88%90%E9%83%A8%E4%BB%B6%E3%80%82%E7%94%A8%E6%88%B7%E4%BB%A3%E7%90%86-UA-%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E6%B2%A1%E6%9C%89-UA-%E8%A1%8C%E4%B8%8D%E8%A1%8C%EF%BC%9F"><span class="toc-number">9.4.</span> <span class="toc-text">6-20 试述电子邮件的最主要的组成部件。用户代理 UA 的作用是什么？没有 UA 行不行？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-22%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6%E7%9A%84%E5%9C%B0%E5%9D%80%E6%A0%BC%E5%BC%8F%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84%EF%BC%9F%E8%AF%B7%E8%AF%B4%E6%98%8E%E5%90%84%E9%83%A8%E5%88%86%E7%9A%84%E6%84%8F%E6%80%9D%E3%80%82"><span class="toc-number">9.5.</span> <span class="toc-text">6-22电子邮件的地址格式是怎样的？请说明各部分的意思。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-24%E8%AF%95%E8%BF%B0%E9%82%AE%E5%B1%80%E5%8D%8F%E8%AE%AE-POP-%E7%9A%84%E5%B7%A5%E4%BD%9C%E8%BF%87%E7%A8%8B%E3%80%82%E5%9C%A8%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6%E4%B8%AD%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E4%BD%BF%E7%94%A8-POP-%E5%92%8C-SMTP%E8%BF%99%E4%B8%A4%E4%B8%AA%E5%8D%8F%E8%AE%AE%EF%BC%9F-IMAP-%E4%B8%8E-POP-%E6%9C%89%E4%BD%95%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">9.6.</span> <span class="toc-text">6-24试述邮局协议 POP 的工作过程。在电子邮件中，为什么需要使用 POP 和 SMTP这两个协议？ IMAP 与 POP 有何区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-25-MIME-%E4%B8%8E-SMTP-%E7%9A%84%E5%85%B3%E7%B3%BB%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84%EF%BC%9F%E4%BB%80%E4%B9%88%E6%98%AF-quoted-printable-%E7%BC%96%E7%A0%81%E5%92%8C-Base64-%E7%BC%96%E7%A0%81%EF%BC%9F"><span class="toc-number">9.7.</span> <span class="toc-text">6-25 MIME 与 SMTP 的关系是怎样的？什么是 quoted-printable 编码和 Base64 编码？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BE%E5%A0%82%E7%BB%83%E4%B9%A0"><span class="toc-number">10.</span> <span class="toc-text">课堂练习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0-%E7%89%A9%E7%90%86%E5%B1%82"><span class="toc-number">10.1.</span> <span class="toc-text">概述+物理层</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E5%88%97%E5%85%B3%E4%BA%8E%E5%AE%A2%E6%88%B7-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%BC%8F%E7%9A%84%E7%89%B9%E7%82%B9%EF%BC%8C%E4%B8%8D%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%98%AF%EF%BC%88-B-%EF%BC%89%E3%80%82"><span class="toc-number">10.1.1.</span> <span class="toc-text">下列关于客户-服务器工作方式的特点，不正确的是（ B ）。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E5%88%97%E5%85%B3%E4%BA%8E%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2%E7%9A%84%E8%A1%A8%E8%BF%B0%EF%BC%8C%E4%B8%8D%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%98%AF%EF%BC%88-B-%EF%BC%89%E3%80%82"><span class="toc-number">10.1.2.</span> <span class="toc-text">下列关于分组交换的表述，不正确的是（ B ）。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#100M%E5%92%8C1000M%E7%9A%84%E7%BD%91%E5%8D%A1%EF%BC%8C%E5%AE%83%E4%BB%AC%E7%9A%84%E5%8F%91%E9%80%81%E9%80%9F%E7%8E%87%E4%B8%8D%E5%90%8C%EF%BC%8C%E4%BD%86%E6%98%AF%E5%9C%A8%E5%8F%8C%E7%BB%9E%E7%BA%BF%E4%B8%8A%E7%9A%84%E4%BC%A0%E6%92%AD%E9%80%9F%E7%8E%87%E6%98%AF%E7%9B%B8%E5%90%8C%E7%9A%84%E3%80%82-A"><span class="toc-number">10.1.3.</span> <span class="toc-text">100M和1000M的网卡，它们的发送速率不同，但是在双绞线上的传播速率是相同的。 A</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%B8%89%E8%A6%81%E7%B4%A0%E6%98%AF%E6%8C%87-ABC"><span class="toc-number">10.1.4.</span> <span class="toc-text">协议的三要素是指  ABC</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E5%88%97%E8%A1%A8%E8%BF%B0%E4%B8%AD%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%98%AF-D"><span class="toc-number">10.1.5.</span> <span class="toc-text">下列表述中正确的是  D</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E5%88%97%E8%A1%A8%E8%BF%B0%E4%B8%AD%E4%B8%8D%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%98%AF-A"><span class="toc-number">10.1.6.</span> <span class="toc-text">下列表述中不正确的是  A</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%8D%A1%E7%9A%84%E6%B0%B4%E6%99%B6%E5%A4%B4%EF%BC%8C%E4%BB%8E%E5%A4%96%E8%A7%82%E4%B8%8A%E8%A7%82%E7%9C%8B%E4%BD%93%E7%8E%B0%E4%BA%86-A"><span class="toc-number">10.1.7.</span> <span class="toc-text">以太网卡的水晶头，从外观上观看体现了  A</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PCM%E7%B3%BB%E7%BB%9F%E9%87%8F%E5%8C%96%E6%97%B6%E8%8B%A5%E9%87%87%E7%94%A8128%E4%B8%AA%E9%87%8F%E5%8C%96%E7%AD%89%E7%BA%A7%EF%BC%8C%E7%BC%96%E7%A0%81%E6%97%B6%E7%9A%84%E7%A0%81%E9%95%BF%E4%B8%BA%EF%BC%88-B-%EF%BC%89%E4%BD%8D"><span class="toc-number">10.1.8.</span> <span class="toc-text">PCM系统量化时若采用128个量化等级，编码时的码长为（ B ）位</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="toc-number">10.2.</span> <span class="toc-text">数据链路层</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E8%AF%BE%E5%A0%82%E4%BD%9C%E4%B8%9A%EF%BC%88%E5%88%A4%E6%96%AD%E9%A2%98%EF%BC%9A%E6%89%93%E2%88%9A%E6%88%96%C3%97%EF%BC%89"><span class="toc-number">10.2.1.</span> <span class="toc-text">数据链路层课堂作业（判断题：打√或×）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E5%85%B3%E8%99%9A%E6%8B%9F%E5%B1%80%E5%9F%9F%E7%BD%91%E7%9A%84%E6%A6%82%E5%BF%B5%EF%BC%8C%E4%B8%8B%E9%9D%A2%E5%93%AA%E4%B8%AA%E8%AF%B4%E6%B3%95%E4%B8%8D%E6%AD%A3%E7%A1%AE%EF%BC%9F%EF%BC%88-D-%EF%BC%89"><span class="toc-number">10.2.2.</span> <span class="toc-text">有关虚拟局域网的概念，下面哪个说法不正确？（ D ）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10Mb-s%E4%BB%A5%E5%A4%AA%E7%BD%91%E8%A7%84%E5%AE%9A%E7%9A%84%E6%97%A0%E6%95%88%E9%A1%BF%E6%98%AF%E9%95%BF%E5%BA%A6%E5%B0%8F%E4%BA%8E%EF%BC%88C%EF%BC%89%E5%AD%97%E8%8A%82%E7%9A%84%E5%B8%A7"><span class="toc-number">10.2.3.</span> <span class="toc-text">10Mb&#x2F;s以太网规定的无效顿是长度小于（C）字节的帧</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%8F%96%EF%BC%88B%EF%BC%89us%E4%B8%BA%E4%BA%89%E7%94%A8%E6%9C%9F%E7%9A%84%E9%95%BF%E5%BA%A6"><span class="toc-number">10.2.4.</span> <span class="toc-text">以太网取（B）us为争用期的长度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E4%B8%8A%E5%A4%84%E7%90%86%E5%8F%91%E9%80%81%E6%96%B9%E5%92%8C%E6%8E%A5%E6%94%B6%E6%96%B9%E7%9A%84%E6%94%B6%E5%8F%91%E5%B8%A7%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98%E7%9A%84%E6%98%AF%EF%BC%88-C-%EF%BC%89"><span class="toc-number">10.2.5.</span> <span class="toc-text">在数据链路层上处理发送方和接收方的收发帧同步问题的是（ C ）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E5%88%97%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E4%B8%AD%EF%BC%8C%E5%9C%A8%E7%89%A9%E7%90%86%E5%B1%82%E4%B8%8A%E8%83%BD%E5%A4%9F%E6%89%A9%E5%B1%95%E4%BB%A5%E5%A4%AA%E7%BD%91%EF%BC%8C%E4%BD%86%E4%BC%9A%E5%BD%A2%E6%88%90%E6%9B%B4%E5%A4%A7%E7%A2%B0%E6%92%9E%E5%9F%9F%E7%9A%84%E6%98%AF%EF%BC%88D%EF%BC%89"><span class="toc-number">10.2.6.</span> <span class="toc-text">下列网络设备中，在物理层上能够扩展以太网，但会形成更大碰撞域的是（D）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E5%88%97%E7%BD%91%E7%BB%9C%E4%BA%92%E8%81%94%E8%AE%BE%E5%A4%87%E4%B8%AD%EF%BC%8C%E4%B8%8D%E8%83%BD%E9%9A%94%E7%A6%BB%E5%86%B2%E7%AA%81%E5%9F%9F%E7%9A%84%E6%98%AF%EF%BC%88-B-%EF%BC%89"><span class="toc-number">10.2.7.</span> <span class="toc-text">下列网络互联设备中，不能隔离冲突域的是（ B ）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E5%88%97%E7%BD%91%E7%BB%9C%E4%BA%92%E8%81%94%E8%AE%BE%E5%A4%87%E4%B8%AD%EF%BC%8C%E8%83%BD%E5%A4%9F%E9%9A%94%E7%A6%BB%E5%B9%BF%E6%92%AD%E5%9F%9F%E7%9A%84%E6%98%AF%EF%BC%88A%EF%BC%89"><span class="toc-number">10.2.8.</span> <span class="toc-text">下列网络互联设备中，能够隔离广播域的是（A）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A5%E4%B8%8B%E5%93%AA%E4%BA%9B%E6%98%AF%E9%93%BE%E8%B7%AF%E5%B1%82%E9%9C%80%E8%A6%81%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%9F%EF%BC%88ACD%EF%BC%89"><span class="toc-number">10.2.9.</span> <span class="toc-text">以下哪些是链路层需要解决的问题？（ACD）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="toc-number">10.3.</span> <span class="toc-text">网络层</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E4%BA%8EARP%E5%8D%8F%E8%AE%AE%EF%BC%8C%E4%B8%8B%E5%88%97%E5%93%AA%E4%BA%9B%E6%83%85%E5%86%B5%E4%B8%8D%E9%9C%80%E8%A6%81%E5%8F%91%E9%80%81ARP%E8%AF%B7%E6%B1%82-%EF%BC%88ABC%EF%BC%89"><span class="toc-number">10.3.1.</span> <span class="toc-text">关于ARP协议，下列哪些情况不需要发送ARP请求  （ABC）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E4%BA%8EARP%E5%8D%8F%E8%AE%AE%EF%BC%8C%E5%81%87%E8%AE%BE%E4%B8%BB%E6%9C%BAA%E5%92%8C%E4%B8%BB%E6%9C%BAB%E8%A6%81%E8%B7%A8%E8%B6%8A10%E4%B8%AA%E8%B7%AF%E7%94%B1%E5%99%A8%E4%BA%92%E8%BF%9E%E7%9A%84%E7%BD%91%E7%BB%9C%EF%BC%8C%E4%BB%8EA%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%E5%88%B0B%EF%BC%8C%E9%9C%80%E8%A6%81%E7%BB%8F%E5%8E%86%EF%BC%88C%EF%BC%89%E6%AC%A1ARP%E8%A7%A3%E6%9E%90"><span class="toc-number">10.3.2.</span> <span class="toc-text">关于ARP协议，假设主机A和主机B要跨越10个路由器互连的网络，从A发送数据到B，需要经历（C）次ARP解析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A5%E4%B8%8B%E5%AF%B9IP%E5%9C%B0%E5%9D%80%E5%88%86%E9%85%8D%E4%B8%AD%E6%8F%8F%E8%BF%B0%E4%B8%8D%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%98%AF%EF%BC%88B%EF%BC%89%E3%80%82"><span class="toc-number">10.3.3.</span> <span class="toc-text">以下对IP地址分配中描述不正确的是（B）。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#255-255-255-224%E5%8F%AF%E8%83%BD%E4%BB%A3%E8%A1%A8%E7%9A%84%E6%98%AF%EF%BC%88C%EF%BC%89%E3%80%82"><span class="toc-number">10.3.4.</span> <span class="toc-text">255.255.255.224可能代表的是（C）。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CIDR%E5%9C%B0%E5%9D%80%E5%9D%97%EF%BC%9A138-130-28-22%E5%8C%85%E5%90%AB%E4%BA%86%E5%A4%9A%E5%B0%91%E4%B8%AAC%E7%B1%BB%E5%9C%B0%E5%9D%80%EF%BC%9F-D"><span class="toc-number">10.3.5.</span> <span class="toc-text">CIDR地址块：138.130.28&#x2F;22包含了多少个C类地址？ D</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%90%E5%85%AC%E5%8F%B8%E7%94%B3%E8%AF%B7%E5%88%B0%E4%B8%80%E4%B8%AAC%E7%B1%BBIP%E5%9C%B0%E5%9D%80%EF%BC%8C%E4%BD%86%E8%A6%81%E8%BF%9E%E6%8E%A56%E4%B8%AA%E7%9A%84%E5%AD%90%E5%85%AC%E5%8F%B8%EF%BC%8C%E6%9C%80%E5%A4%A7%E7%9A%84%E4%B8%80%E4%B8%AA%E5%AD%90%E5%85%AC%E5%8F%B8%E6%9C%8926%E5%8F%B0%E8%AE%A1%E7%AE%97%E6%9C%BA%EF%BC%8C%E6%AF%8F%E4%B8%AA%E5%AD%90%E5%85%AC%E5%8F%B8%E5%9C%A8%E4%B8%80%E4%B8%AA%E7%BD%91%E6%AE%B5%E4%B8%AD%EF%BC%8C%E5%88%99%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81%E5%BA%94%E8%AE%BE%E4%B8%BA%EF%BC%88D%EF%BC%89%E3%80%82"><span class="toc-number">10.3.6.</span> <span class="toc-text">某公司申请到一个C类IP地址，但要连接6个的子公司，最大的一个子公司有26台计算机，每个子公司在一个网段中，则子网掩码应设为（D）。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%90A%E7%B1%BB%E7%BD%91%E7%BB%9C%E5%88%92%E5%88%86%E4%BA%86122%E4%B8%AA%E5%AD%90%E7%BD%91%EF%BC%8C%E5%AE%83%E7%9A%84%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81%E6%98%AF-D"><span class="toc-number">10.3.7.</span> <span class="toc-text">某A类网络划分了122个子网，它的子网掩码是  D</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BD%93%E8%B7%AF%E7%94%B1%E5%99%A8%E6%8E%A5%E6%94%B6%E7%9A%84IP%E6%8A%A5%E6%96%87%E4%B8%AD%E7%9A%84%E7%9B%AE%E6%A0%87%E7%BD%91%E7%BB%9C%E4%B8%8D%E5%9C%A8%E8%B7%AF%E7%94%B1%E8%A1%A8%E4%B8%AD%E6%97%B6%EF%BC%8C%E5%B0%86%E9%87%87%E5%8F%96%E7%9A%84%E7%AD%96%E7%95%A5%E6%98%AF%EF%BC%88-A-%EF%BC%89%E3%80%82"><span class="toc-number">10.3.8.</span> <span class="toc-text">当路由器接收的IP报文中的目标网络不在路由表中时，将采取的策略是（ A ）。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82"><span class="toc-number">10.4.</span> <span class="toc-text">应用层</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E5%9F%9F%E5%90%8Dwww-jnu-edu-cn%EF%BC%8C%E5%9C%A8%E5%BA%94%E7%94%A8%E5%B1%82%E3%80%81%E8%BF%90%E8%BE%93%E5%B1%82%E5%92%8C%E7%BD%91%E7%BB%9C%E5%B1%82%E4%BC%9A%E4%BD%BF%E7%94%A8%E5%93%AA%E4%BA%9B%E5%8D%8F%E8%AE%AE%EF%BC%9F"><span class="toc-number">10.4.1.</span> <span class="toc-text">访问域名www.jnu.edu.cn，在应用层、运输层和网络层会使用哪些协议？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BD%9C%E4%B8%9A"><span class="toc-number">11.</span> <span class="toc-text">计算机网络作业</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-09-%E5%85%B3%E4%BA%8EIP%E5%9C%B0%E5%9D%80%E4%B8%8E%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81%E3%80%82"><span class="toc-number">11.1.</span> <span class="toc-text">4-09 关于IP地址与子网掩码。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-27"><span class="toc-number">11.2.</span> <span class="toc-text">4-27</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%88"><span class="toc-number">12.</span> <span class="toc-text">计算机网络期末复习题及答案</span></a></li></ol>
+            
+          </article>
+        </div>
       </div>
-    
-
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/06/19/ji-suan-ji-wang-luo-qi-mo-fu-xi/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/06/19/ji-suan-ji-wang-luo-qi-mo-fu-xi/&text=计算机网络期末复习"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/06/19/ji-suan-ji-wang-luo-qi-mo-fu-xi/&title=计算机网络期末复习"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/06/19/ji-suan-ji-wang-luo-qi-mo-fu-xi/&is_video=false&description=计算机网络期末复习"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=计算机网络期末复习&body=Check out this article: http://jrhu0048.github.io/2024/06/19/ji-suan-ji-wang-luo-qi-mo-fu-xi/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/06/19/ji-suan-ji-wang-luo-qi-mo-fu-xi/&title=计算机网络期末复习"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/06/19/ji-suan-ji-wang-luo-qi-mo-fu-xi/&title=计算机网络期末复习"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/06/19/ji-suan-ji-wang-luo-qi-mo-fu-xi/&title=计算机网络期末复习"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/06/19/ji-suan-ji-wang-luo-qi-mo-fu-xi/&title=计算机网络期末复习"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/06/19/ji-suan-ji-wang-luo-qi-mo-fu-xi/&name=计算机网络期末复习&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/06/19/ji-suan-ji-wang-luo-qi-mo-fu-xi/&t=计算机网络期末复习"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
-</ul>
-
     </div>
 
-    <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
-        
-          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
-        
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
-    </div>
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
 
+
+
+  </aside>
+
+
+    </div>
   </div>
 </div>
 
-        
-        <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy;
-    
-    
-    2022-2024
-    JR.HU
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-        <!--
-       --><li><a href="/">首页</a></li><!--
-     --><!--
-       --><li><a href="/about/">关于</a></li><!--
-     --><!--
-       --><li><a href="/archives/">归档</a></li><!--
-     --><!--
-       --><li><a href="/tags/">标签</a></li><!--
-     --><!--
-       --><li><a href="/categories/">分类</a></li><!--
-     -->
-      </ul>
-    </nav>
-  </div>
-</footer>
 
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
     </div>
-    <!-- styles -->
+  </div>
+</div>
 
+    
 
+    
+  </main>
 
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
-
-
-    <!-- jquery -->
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
-
-
-
-
-<!-- clipboard -->
-
+  <footer>
+    <div class="footer-inner">
   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
   
-  <script type="text/javascript">
-  $(function() {
-    // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
-    btn += '<i class="fa-regular fa-clone"></i>';
-    btn += '</span>';
-    // mount it!
-    $(".highlight table").before(btn);
-    var clip = new ClipboardJS('.btn-copy', {
-      text: function(trigger) {
-        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
-      }
-    });
-    clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "复制成功！");
-      e.clearSelection();
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
     })
-  })
   </script>
 
 
-<script src="/js/main.js"></script>
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
-<!-- search -->
 
-<!-- Baidu Analytics -->
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
 
-<!-- Cloudflare Analytics -->
 
-<!-- Disqus Comments -->
 
-<!-- utterances Comments -->
 
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>

@@ -1,11 +1,24 @@
+
+
 <!DOCTYPE html>
-<html lang=zh>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
 <head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="JR.HU">
+  <meta name="keywords" content="">
+  
     <meta name="description" content="参考论文Emami, Hojjat. “Seasons Optimization Algorithm.” Engineering with Computers, vol. 38, no. 2, Springer Science and Business Media LLC, Aug. 2020, pp. 1845–65, doi:10.1007&#x2F;s00366-020-01133-5. 脚">
 <meta property="og:type" content="article">
 <meta property="og:title" content="季节优化算法">
@@ -17,180 +30,271 @@
 <meta property="article:published_time" content="2024-04-26T08:15:39.000Z">
 <meta property="article:modified_time" content="2024-04-26T08:59:06.530Z">
 <meta property="article:author" content="JR.HU">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://pic.imgdb.cn/item/662b6cb70ea9cb1403eaff37.jpg">
-    
-    
-      
-        
-          <link rel="shortcut icon" href="/images/favicon.ico">
-        
-      
-      
-        
-          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-        
-      
-      
-        
-          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-        
-      
-    
-    <!-- title -->
-    <title>季节优化算法</title>
-    <!-- async scripts -->
-    <!-- Google Analytics -->
+  
+  
+  
+  <title>季节优化算法 - CHARMMY</title>
 
-
-    <!-- Umami Analytics -->
-
-
-    <!-- styles -->
-    
-<link rel="stylesheet" href="/css/style.css">
-
-    <!-- persian styles -->
-    
-    <!-- rss -->
-    
-    
-	<!-- mathjax -->
-	
-		<script type="text/x-mathjax-config">
-		  MathJax.Hub.Config({
-			tex2jax: {
-			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-			  inlineMath: [['$','$']]
-			}
-		  });
-		</script>
-		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
-	
-<meta name="generator" content="Hexo 7.1.1"></head>
-
-<body class="max-width mx-auto px3 ltr">
-    
-      <div id="header-post">
-  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-        <!--
-       --><li><a href="/">首页</a></li><!--
-     --><!--
-       --><li><a href="/about/">关于</a></li><!--
-     --><!--
-       --><li><a href="/archives/">归档</a></li><!--
-     --><!--
-       --><li><a href="/tags/">标签</a></li><!--
-     --><!--
-       --><li><a href="/categories/">分类</a></li><!--
-     -->
-      </ul>
-    </span>
-    <br/>
-    <span id="actions">
-      <ul>
-        
-        <li><a class="icon" aria-label="上一篇" href="/2024/04/26/xi-yin-pai-chi-you-hua-suan-fa/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
-        
-        
-        <li><a class="icon" aria-label="下一篇" href="/2024/04/25/matlab-zhi-tu/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
-        
-        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">上一篇</span>
-      <span id="i-next" class="info" style="display:none;">下一篇</span>
-      <span id="i-top" class="info" style="display:none;">返回顶部</span>
-      <span id="i-share" class="info" style="display:none;">分享文章</span>
-    </span>
-    <br/>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/04/26/ji-jie-you-hua-suan-fa/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/04/26/ji-jie-you-hua-suan-fa/&text=季节优化算法"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/04/26/ji-jie-you-hua-suan-fa/&title=季节优化算法"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/04/26/ji-jie-you-hua-suan-fa/&is_video=false&description=季节优化算法"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=季节优化算法&body=Check out this article: http://jrhu0048.github.io/2024/04/26/ji-jie-you-hua-suan-fa/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/04/26/ji-jie-you-hua-suan-fa/&title=季节优化算法"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/04/26/ji-jie-you-hua-suan-fa/&title=季节优化算法"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/04/26/ji-jie-you-hua-suan-fa/&title=季节优化算法"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/04/26/ji-jie-you-hua-suan-fa/&title=季节优化算法"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/04/26/ji-jie-you-hua-suan-fa/&name=季节优化算法&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/04/26/ji-jie-you-hua-suan-fa/&t=季节优化算法"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-    
-    
-      <div id="toc">
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%AE%BA%E6%96%87"><span class="toc-number">1.</span> <span class="toc-text">参考论文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC%E8%A7%A3%E8%AF%BB"><span class="toc-number">2.</span> <span class="toc-text">脚本解读</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%A4%E4%B8%AA%E5%8F%98%E9%87%8F"><span class="toc-number">3.</span> <span class="toc-text">两个变量</span></a></li></ol>
-      </div>
-    
-  </span>
-</div>
-
-    
-    <div class="content index py4 ">
-        
-        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
-    
-    <h1 class="posttitle p-name" itemprop="name headline">
-        季节优化算法
-    </h1>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
 
-    <div class="meta">
-      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span class="p-name" itemprop="name">JR.HU</span>
-      </span>
-      
-    <div class="postdate">
-      
-        <time datetime="2024-04-26T08:15:39.000Z" class="dt-published" itemprop="datePublished">2024-04-26</time>
-        
-      
-    </div>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
-      
-    <div class="article-category">
-        <i class="fa-solid fa-archive"></i>
-        <a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%BC%98%E5%8C%96/">算法优化</a>
-    </div>
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
-      
 
-    </div>
-  </header>
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
-  <div class="content e-content" itemprop="articleBody">
-    <h2 id="参考论文"><a href="#参考论文" class="headerlink" title="参考论文"></a>参考论文</h2><p>Emami, Hojjat. “Seasons Optimization Algorithm.” Engineering with Computers, vol. 38, no. 2, Springer Science and Business Media LLC, Aug. 2020, pp. 1845–65, doi:10.1007&#x2F;s00366-020-01133-5.</p>
-<h2 id="脚本解读"><a href="#脚本解读" class="headerlink" title="脚本解读"></a>脚本解读</h2><figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">clear <span class="built_in">all</span>;</span><br><span class="line">clc;</span><br><span class="line"></span><br><span class="line"><span class="comment">%% Problem Statement</span></span><br><span class="line">ProblemParams.CostFuncName <span class="built_in">=</span> <span class="string">&#x27;F8&#x27;</span>;</span><br><span class="line">[fobj, lowerbound, upperbound, globalCost, dimension]<span class="built_in">=</span>GetBenchmarkFunction(ProblemParams.CostFuncName);</span><br><span class="line">ProblemParams.CostFuncName<span class="built_in">=</span>fobj;</span><br><span class="line">ProblemParams.lb<span class="built_in">=</span>lowerbound;</span><br><span class="line">ProblemParams.ub<span class="built_in">=</span>upperbound;</span><br><span class="line">ProblemParams.NPar <span class="built_in">=</span> dimension;</span><br><span class="line">ProblemParams.gcost<span class="built_in">=</span>globalCost;</span><br><span class="line"></span><br><span class="line">ProblemParams.VarMin <span class="built_in">=</span>ProblemParams.lb;</span><br><span class="line">ProblemParams.VarMax <span class="built_in">=</span> ProblemParams.ub;</span><br><span class="line"></span><br><span class="line"><span class="built_in">if</span> numel(ProblemParams.VarMin)<span class="built_in">=</span><span class="built_in">=</span><span class="number">1</span></span><br><span class="line">    ProblemParams.VarMin<span class="built_in">=</span>repmat(ProblemParams.VarMin,<span class="number">1</span>,ProblemParams.NPar);</span><br><span class="line">    ProblemParams.VarMax<span class="built_in">=</span>repmat(ProblemParams.VarMax,<span class="number">1</span>,ProblemParams.NPar);</span><br><span class="line">end</span><br><span class="line">ProblemParams.SearchSpaceSize <span class="built_in">=</span> ProblemParams.VarMax - ProblemParams.VarMin;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">AlgorithmParams.NumOfTrees <span class="built_in">=</span> <span class="number">8</span>;</span><br><span class="line">AlgorithmParams.NumOfYears <span class="built_in">=</span> <span class="number">50</span>;</span><br><span class="line">AlgorithmParams.Pmin <span class="built_in">=</span> <span class="number">0.4</span>;</span><br><span class="line">AlgorithmParams.Pmax <span class="built_in">=</span> <span class="number">0.6</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">%% Main Loop</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">for year<span class="built_in">=</span> <span class="number">1</span>:AlgorithmParams.NumOfYears</span><br><span class="line">    </span><br><span class="line">    p<span class="built_in">=</span>AlgorithmParams.Pmax-(year/AlgorithmParams.NumOfYears)*(AlgorithmParams.Pmax-AlgorithmParams.Pmin);            <span class="comment">%pr, ps and pw are in the range [0.4, 0.6]</span></span><br><span class="line">    AlgorithmParams.RenewRate<span class="built_in">=</span>p;</span><br><span class="line">    AlgorithmParams.SeedingRate<span class="built_in">=</span>p;</span><br><span class="line">    AlgorithmParams.ColdThreshold<span class="built_in">=</span>p;</span><br><span class="line">    AlgorithmParams.CompetitionRate <span class="built_in">=</span> p;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">%% Spring Season</span></span><br><span class="line">    <span class="built_in">if</span> (year<span class="built_in">=</span><span class="built_in">=</span><span class="number">1</span>)</span><br><span class="line">        InitialTrees <span class="built_in">=</span> CreateForest(AlgorithmParams, ProblemParams);</span><br><span class="line">        Forest<span class="built_in">=</span>InitialTrees;</span><br><span class="line">        InitialCost <span class="built_in">=</span> feval(ProblemParams.CostFuncName,InitialTrees);</span><br><span class="line">        Forest(:,end+<span class="number">1</span>) <span class="built_in">=</span> InitialCost;</span><br><span class="line">    <span class="built_in">else</span></span><br><span class="line">        Forest <span class="built_in">=</span> Renew(Forest, Seeds, AlgorithmParams, ProblemParams);</span><br><span class="line">    end</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">%% Summer Season  (Growth &amp; Competition)</span></span><br><span class="line">    [Forest] <span class="built_in">=</span> Competition (Forest, AlgorithmParams, ProblemParams, year);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">%% Autumn Season</span></span><br><span class="line">    Seeds <span class="built_in">=</span> Seeding(Forest,AlgorithmParams, ProblemParams);</span><br><span class="line">    s<span class="built_in">=</span>size(Seeds,<span class="number">1</span>);</span><br><span class="line">    AlgorithmParams.s<span class="built_in">=</span>s;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">%% Winter Season</span></span><br><span class="line">    Forest <span class="built_in">=</span> Resistance(Forest,AlgorithmParams, ProblemParams);</span><br><span class="line">    </span><br><span class="line">    Costs <span class="built_in">=</span> Forest(:,end);</span><br><span class="line">    MinimumCost(year) <span class="built_in">=</span> min(Costs);</span><br><span class="line">    </span><br><span class="line">    fprintf(<span class="string">&#x27;Minimum Cost in Iteration %d is %3.16f \n&#x27;</span>, year,MinimumCost(year));</span><br><span class="line">    </span><br><span class="line">end  </span><br></pre></td></tr></table></figure>
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jrhu0048.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="季节优化算法"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-04-26 16:15" pubdate>
+          2024年4月26日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          15 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">季节优化算法</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="参考论文"><a href="#参考论文" class="headerlink" title="参考论文"></a>参考论文</h2><p>Emami, Hojjat. “Seasons Optimization Algorithm.” Engineering with Computers, vol. 38, no. 2, Springer Science and Business Media LLC, Aug. 2020, pp. 1845–65, doi:10.1007&#x2F;s00366-020-01133-5.</p>
+<h2 id="脚本解读"><a href="#脚本解读" class="headerlink" title="脚本解读"></a>脚本解读</h2><figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><code class="hljs m">clear <span class="hljs-built_in">all</span>;<br>clc;<br><br><span class="hljs-comment">%% Problem Statement</span><br>ProblemParams.CostFuncName <span class="hljs-built_in">=</span> <span class="hljs-string">&#x27;F8&#x27;</span>;<br>[fobj, lowerbound, upperbound, globalCost, dimension]<span class="hljs-built_in">=</span>GetBenchmarkFunction(ProblemParams.CostFuncName);<br>ProblemParams.CostFuncName<span class="hljs-built_in">=</span>fobj;<br>ProblemParams.lb<span class="hljs-built_in">=</span>lowerbound;<br>ProblemParams.ub<span class="hljs-built_in">=</span>upperbound;<br>ProblemParams.NPar <span class="hljs-built_in">=</span> dimension;<br>ProblemParams.gcost<span class="hljs-built_in">=</span>globalCost;<br><br>ProblemParams.VarMin <span class="hljs-built_in">=</span>ProblemParams.lb;<br>ProblemParams.VarMax <span class="hljs-built_in">=</span> ProblemParams.ub;<br><br><span class="hljs-built_in">if</span> numel(ProblemParams.VarMin)<span class="hljs-built_in">=</span><span class="hljs-built_in">=</span><span class="hljs-number">1</span><br>    ProblemParams.VarMin<span class="hljs-built_in">=</span>repmat(ProblemParams.VarMin,<span class="hljs-number">1</span>,ProblemParams.NPar);<br>    ProblemParams.VarMax<span class="hljs-built_in">=</span>repmat(ProblemParams.VarMax,<span class="hljs-number">1</span>,ProblemParams.NPar);<br>end<br>ProblemParams.SearchSpaceSize <span class="hljs-built_in">=</span> ProblemParams.VarMax - ProblemParams.VarMin;<br><br><br>AlgorithmParams.NumOfTrees <span class="hljs-built_in">=</span> <span class="hljs-number">8</span>;<br>AlgorithmParams.NumOfYears <span class="hljs-built_in">=</span> <span class="hljs-number">50</span>;<br>AlgorithmParams.Pmin <span class="hljs-built_in">=</span> <span class="hljs-number">0.4</span>;<br>AlgorithmParams.Pmax <span class="hljs-built_in">=</span> <span class="hljs-number">0.6</span>;<br><br><br><span class="hljs-comment">%% Main Loop</span><br><br><br>for year<span class="hljs-built_in">=</span> <span class="hljs-number">1</span>:AlgorithmParams.NumOfYears<br>    <br>    p<span class="hljs-built_in">=</span>AlgorithmParams.Pmax-(year/AlgorithmParams.NumOfYears)*(AlgorithmParams.Pmax-AlgorithmParams.Pmin);            <span class="hljs-comment">%pr, ps and pw are in the range [0.4, 0.6]</span><br>    AlgorithmParams.RenewRate<span class="hljs-built_in">=</span>p;<br>    AlgorithmParams.SeedingRate<span class="hljs-built_in">=</span>p;<br>    AlgorithmParams.ColdThreshold<span class="hljs-built_in">=</span>p;<br>    AlgorithmParams.CompetitionRate <span class="hljs-built_in">=</span> p;<br>    <br>    <br>    <span class="hljs-comment">%% Spring Season</span><br>    <span class="hljs-built_in">if</span> (year<span class="hljs-built_in">=</span><span class="hljs-built_in">=</span><span class="hljs-number">1</span>)<br>        InitialTrees <span class="hljs-built_in">=</span> CreateForest(AlgorithmParams, ProblemParams);<br>        Forest<span class="hljs-built_in">=</span>InitialTrees;<br>        InitialCost <span class="hljs-built_in">=</span> feval(ProblemParams.CostFuncName,InitialTrees);<br>        Forest(:,end+<span class="hljs-number">1</span>) <span class="hljs-built_in">=</span> InitialCost;<br>    <span class="hljs-built_in">else</span><br>        Forest <span class="hljs-built_in">=</span> Renew(Forest, Seeds, AlgorithmParams, ProblemParams);<br>    end<br>    <br>    <br>    <span class="hljs-comment">%% Summer Season  (Growth &amp; Competition)</span><br>    [Forest] <span class="hljs-built_in">=</span> Competition (Forest, AlgorithmParams, ProblemParams, year);<br>    <br>    <span class="hljs-comment">%% Autumn Season</span><br>    Seeds <span class="hljs-built_in">=</span> Seeding(Forest,AlgorithmParams, ProblemParams);<br>    s<span class="hljs-built_in">=</span>size(Seeds,<span class="hljs-number">1</span>);<br>    AlgorithmParams.s<span class="hljs-built_in">=</span>s;<br>    <br>    <span class="hljs-comment">%% Winter Season</span><br>    Forest <span class="hljs-built_in">=</span> Resistance(Forest,AlgorithmParams, ProblemParams);<br>    <br>    Costs <span class="hljs-built_in">=</span> Forest(:,end);<br>    MinimumCost(year) <span class="hljs-built_in">=</span> min(Costs);<br>    <br>    fprintf(<span class="hljs-string">&#x27;Minimum Cost in Iteration %d is %3.16f \n&#x27;</span>, year,MinimumCost(year));<br>    <br>end  <br></code></pre></td></tr></table></figure>
 
 
 <p>这是一个MATLAB脚本，用于模拟森林生态系统演化过程，并寻找最优树种分布以最小化特定成本函数。</p>
 <p><strong>初始化部分</strong></p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">clear all;  <span class="comment">% 清除工作空间中的所有变量</span></span><br><span class="line">clc;        <span class="comment">% 清除命令窗口中的输出信息</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs matlab">clear all;  <span class="hljs-comment">% 清除工作空间中的所有变量</span><br>clc;        <span class="hljs-comment">% 清除命令窗口中的输出信息</span><br></code></pre></td></tr></table></figure>
 
 <p><strong>问题参数设定</strong></p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 定义问题参数</span></span><br><span class="line">ProblemParams.CostFuncName = <span class="string">&#x27;F8&#x27;</span>;   <span class="comment">% 设置成本函数为F8</span></span><br><span class="line">[fobj, lowerbound, upperbound, globalCost, dimension] = GetBenchmarkFunction(ProblemParams.CostFuncName);</span><br><span class="line">ProblemParams.CostFuncName = fobj;    <span class="comment">% 将成本函数句柄赋值给ProblemParams.CostFuncName</span></span><br><span class="line">ProblemParams.lb = lowerbound;       <span class="comment">% 设置变量下界</span></span><br><span class="line">ProblemParams.ub = upperbound;       <span class="comment">% 设置变量上界</span></span><br><span class="line">ProblemParams.NPar = dimension;      <span class="comment">% 设置问题维度（即决策变量个数）</span></span><br><span class="line">ProblemParams.gcost = globalCost;     <span class="comment">% 设置全局最小成本</span></span><br><span class="line"></span><br><span class="line">ProblemParams.VarMin = ProblemParams.lb;   <span class="comment">% 变量最小值</span></span><br><span class="line">ProblemParams.VarMax = ProblemParams.ub;   <span class="comment">% 变量最大值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 如果变量上下界只给出一个值（即所有变量有相同的上下界），则扩展为与维度相匹配的向量</span></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">numel</span>(ProblemParams.VarMin) == <span class="number">1</span></span><br><span class="line">    ProblemParams.VarMin = <span class="built_in">repmat</span>(ProblemParams.VarMin, <span class="number">1</span>, ProblemParams.NPar);</span><br><span class="line">    ProblemParams.VarMax = <span class="built_in">repmat</span>(ProblemParams.VarMax, <span class="number">1</span>, ProblemParams.NPar);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 计算搜索空间大小（即变量取值范围）</span></span><br><span class="line">ProblemParams.SearchSpaceSize = ProblemParams.VarMax - ProblemParams.VarMin;</span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">% 定义问题参数</span><br>ProblemParams.CostFuncName = <span class="hljs-string">&#x27;F8&#x27;</span>;   <span class="hljs-comment">% 设置成本函数为F8</span><br>[fobj, lowerbound, upperbound, globalCost, dimension] = GetBenchmarkFunction(ProblemParams.CostFuncName);<br>ProblemParams.CostFuncName = fobj;    <span class="hljs-comment">% 将成本函数句柄赋值给ProblemParams.CostFuncName</span><br>ProblemParams.lb = lowerbound;       <span class="hljs-comment">% 设置变量下界</span><br>ProblemParams.ub = upperbound;       <span class="hljs-comment">% 设置变量上界</span><br>ProblemParams.NPar = dimension;      <span class="hljs-comment">% 设置问题维度（即决策变量个数）</span><br>ProblemParams.gcost = globalCost;     <span class="hljs-comment">% 设置全局最小成本</span><br><br>ProblemParams.VarMin = ProblemParams.lb;   <span class="hljs-comment">% 变量最小值</span><br>ProblemParams.VarMax = ProblemParams.ub;   <span class="hljs-comment">% 变量最大值</span><br><br><span class="hljs-comment">% 如果变量上下界只给出一个值（即所有变量有相同的上下界），则扩展为与维度相匹配的向量</span><br><span class="hljs-keyword">if</span> <span class="hljs-built_in">numel</span>(ProblemParams.VarMin) == <span class="hljs-number">1</span><br>    ProblemParams.VarMin = <span class="hljs-built_in">repmat</span>(ProblemParams.VarMin, <span class="hljs-number">1</span>, ProblemParams.NPar);<br>    ProblemParams.VarMax = <span class="hljs-built_in">repmat</span>(ProblemParams.VarMax, <span class="hljs-number">1</span>, ProblemParams.NPar);<br><span class="hljs-keyword">end</span><br><br><span class="hljs-comment">% 计算搜索空间大小（即变量取值范围）</span><br>ProblemParams.SearchSpaceSize = ProblemParams.VarMax - ProblemParams.VarMin;<br></code></pre></td></tr></table></figure>
 <p>这部分代码定义了问题参数结构体<code>ProblemParams</code>，包括成本函数名、变量上下界、问题维度、全局最小成本、变量最小值、变量最大值和搜索空间大小。其中，<code>GetBenchmarkFunction</code>函数用于获取成本函数相关信息。</p>
 <p><strong>算法参数设定</strong></p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 定义算法参数</span></span><br><span class="line">AlgorithmParams.NumOfTrees = <span class="number">8</span>;         <span class="comment">% 设置每棵树种的数量</span></span><br><span class="line">AlgorithmParams.NumOfYears = <span class="number">50</span>;        <span class="comment">% 设置模拟年数</span></span><br><span class="line">AlgorithmParams.Pmin = <span class="number">0.4</span>;            <span class="comment">% 设置参数P的最小值</span></span><br><span class="line">AlgorithmParams.Pmax = <span class="number">0.6</span>;            <span class="comment">% 设置参数P的最大值</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">% 定义算法参数</span><br>AlgorithmParams.NumOfTrees = <span class="hljs-number">8</span>;         <span class="hljs-comment">% 设置每棵树种的数量</span><br>AlgorithmParams.NumOfYears = <span class="hljs-number">50</span>;        <span class="hljs-comment">% 设置模拟年数</span><br>AlgorithmParams.Pmin = <span class="hljs-number">0.4</span>;            <span class="hljs-comment">% 设置参数P的最小值</span><br>AlgorithmParams.Pmax = <span class="hljs-number">0.6</span>;            <span class="hljs-comment">% 设置参数P的最大值</span><br></code></pre></td></tr></table></figure>
 <p>这部分代码定义了算法参数结构体<code>AlgorithmParams</code>，包括每棵树种数量、模拟年数和参数P的范围（P在森林生态模型中可能代表更新率、播种率、冷阈值、竞争率等）。</p>
 <p><strong>主循环</strong></p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> year = <span class="number">1</span>:AlgorithmParams.NumOfYears</span><br><span class="line">    <span class="comment">% 根据模拟年份计算参数P的值</span></span><br><span class="line">    p = AlgorithmParams.Pmax - (year / AlgorithmParams.NumOfYears) * (AlgorithmParams.Pmax - AlgorithmParams.Pmin);</span><br><span class="line"></span><br><span class="line">    <span class="comment">% 更新参数P对应的森林生态模型参数</span></span><br><span class="line">    AlgorithmParams.RenewRate = p;          <span class="comment">% 更新率</span></span><br><span class="line">    AlgorithmParams.SeedingRate = p;        <span class="comment">% 播种率</span></span><br><span class="line">    AlgorithmParams.ColdThreshold = p;      <span class="comment">% 冷阈值</span></span><br><span class="line">    AlgorithmParams.CompetitionRate = p;    <span class="comment">% 竞争率</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">%% 春季：创建或更新森林</span></span><br><span class="line">    <span class="keyword">if</span> year == <span class="number">1</span></span><br><span class="line">        InitialTrees = CreateForest(AlgorithmParams, ProblemParams);  <span class="comment">% 第一年创建初始森林</span></span><br><span class="line">        Forest = InitialTrees;</span><br><span class="line">        InitialCost = feval(ProblemParams.CostFuncName, InitialTrees);  <span class="comment">% 计算初始森林的成本</span></span><br><span class="line">        Forest(:, <span class="keyword">end</span> + <span class="number">1</span>) = InitialCost;                             <span class="comment">% 在森林矩阵末尾添加成本列</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        Forest = Renew(Forest, Seeds, AlgorithmParams, ProblemParams);  <span class="comment">% 后续年份更新森林</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">%% 夏季：生长与竞争</span></span><br><span class="line">    [Forest] = Competition(Forest, AlgorithmParams, ProblemParams, year);</span><br><span class="line"></span><br><span class="line">    <span class="comment">%% 秋季：播种</span></span><br><span class="line">    Seeds = Seeding(Forest, AlgorithmParams, ProblemParams);</span><br><span class="line">    s = <span class="built_in">size</span>(Seeds, <span class="number">1</span>);</span><br><span class="line">    AlgorithmParams.s = s;  <span class="comment">% 更新种子数量</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">%% 冬季：抵抗寒冷</span></span><br><span class="line">    Forest = Resistance(Forest, AlgorithmParams, ProblemParams);</span><br><span class="line"></span><br><span class="line">    <span class="comment">%% 记录当前年份最小成本</span></span><br><span class="line">    Costs = Forest(:, <span class="keyword">end</span>);</span><br><span class="line">    MinimumCost(year) = <span class="built_in">min</span>(Costs);</span><br><span class="line"></span><br><span class="line">    <span class="comment">% 输出当前年份最小成本</span></span><br><span class="line">    fprintf(<span class="string">&#x27;Minimum Cost in Iteration %d is %3.16f \n&#x27;</span>, year, MinimumCost(year));</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-keyword">for</span> year = <span class="hljs-number">1</span>:AlgorithmParams.NumOfYears<br>    <span class="hljs-comment">% 根据模拟年份计算参数P的值</span><br>    p = AlgorithmParams.Pmax - (year / AlgorithmParams.NumOfYears) * (AlgorithmParams.Pmax - AlgorithmParams.Pmin);<br><br>    <span class="hljs-comment">% 更新参数P对应的森林生态模型参数</span><br>    AlgorithmParams.RenewRate = p;          <span class="hljs-comment">% 更新率</span><br>    AlgorithmParams.SeedingRate = p;        <span class="hljs-comment">% 播种率</span><br>    AlgorithmParams.ColdThreshold = p;      <span class="hljs-comment">% 冷阈值</span><br>    AlgorithmParams.CompetitionRate = p;    <span class="hljs-comment">% 竞争率</span><br><br>    <span class="hljs-comment">%% 春季：创建或更新森林</span><br>    <span class="hljs-keyword">if</span> year == <span class="hljs-number">1</span><br>        InitialTrees = CreateForest(AlgorithmParams, ProblemParams);  <span class="hljs-comment">% 第一年创建初始森林</span><br>        Forest = InitialTrees;<br>        InitialCost = feval(ProblemParams.CostFuncName, InitialTrees);  <span class="hljs-comment">% 计算初始森林的成本</span><br>        Forest(:, <span class="hljs-keyword">end</span> + <span class="hljs-number">1</span>) = InitialCost;                             <span class="hljs-comment">% 在森林矩阵末尾添加成本列</span><br>    <span class="hljs-keyword">else</span><br>        Forest = Renew(Forest, Seeds, AlgorithmParams, ProblemParams);  <span class="hljs-comment">% 后续年份更新森林</span><br>    <span class="hljs-keyword">end</span><br><br>    <span class="hljs-comment">%% 夏季：生长与竞争</span><br>    [Forest] = Competition(Forest, AlgorithmParams, ProblemParams, year);<br><br>    <span class="hljs-comment">%% 秋季：播种</span><br>    Seeds = Seeding(Forest, AlgorithmParams, ProblemParams);<br>    s = <span class="hljs-built_in">size</span>(Seeds, <span class="hljs-number">1</span>);<br>    AlgorithmParams.s = s;  <span class="hljs-comment">% 更新种子数量</span><br><br>    <span class="hljs-comment">%% 冬季：抵抗寒冷</span><br>    Forest = Resistance(Forest, AlgorithmParams, ProblemParams);<br><br>    <span class="hljs-comment">%% 记录当前年份最小成本</span><br>    Costs = Forest(:, <span class="hljs-keyword">end</span>);<br>    MinimumCost(year) = <span class="hljs-built_in">min</span>(Costs);<br><br>    <span class="hljs-comment">% 输出当前年份最小成本</span><br>    fprintf(<span class="hljs-string">&#x27;Minimum Cost in Iteration %d is %3.16f \n&#x27;</span>, year, MinimumCost(year));<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
 <p>这部分代码是主循环，模拟森林生态系统演化过程。每年按照春季、夏季、秋季、冬季四个季节进行操作，包括创建或更新森林、生长与竞争、播种、抵抗寒冷等步骤，并在每个年份结束时记录最小成本。最后，输出当前年份的最小成本。整个循环共模拟<code>AlgorithmParams.NumOfYears</code>年。</p>
-<figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%% GetBenchmarkFunction.m</span></span><br><span class="line">function [fobj, l, u, g, d]<span class="built_in">=</span>GetBenchmarkFunction(number)</span><br><span class="line">dim<span class="built_in">=</span><span class="number">2</span>;</span><br><span class="line">switch number</span><br><span class="line">    </span><br><span class="line">    case <span class="string">&#x27;F1&#x27;</span></span><br><span class="line">        <span class="comment">% F1- SumSquares lower=[-10], upper=[10], gminimum=[0], dim=30</span></span><br><span class="line">        fobj <span class="built_in">=</span> @F4;</span><br><span class="line">        l<span class="built_in">=</span>[-<span class="number">10</span>];</span><br><span class="line">        u<span class="built_in">=</span>[<span class="number">10</span>];</span><br><span class="line">        g<span class="built_in">=</span><span class="number">0</span>;</span><br><span class="line">        d<span class="built_in">=</span>dim;</span><br><span class="line">        </span><br><span class="line">    case <span class="string">&#x27;F2&#x27;</span></span><br><span class="line">        <span class="comment">% F2- Schwefel 1.2 lower=[-100], upper=[100], gminimum=[0], dim=30</span></span><br><span class="line">        fobj <span class="built_in">=</span> @F2;</span><br><span class="line">        l<span class="built_in">=</span>[-<span class="number">100</span>];</span><br><span class="line">        u<span class="built_in">=</span>[<span class="number">100</span>];</span><br><span class="line">        g<span class="built_in">=</span><span class="number">0</span>;</span><br><span class="line">        d<span class="built_in">=</span>dim;</span><br><span class="line">    case <span class="string">&#x27;F3&#x27;</span></span><br><span class="line">        <span class="comment">% F3- Rosenbrock  lower=[-30], upper=[30], gminimum=[0], dim=30</span></span><br><span class="line">        fobj <span class="built_in">=</span> @F1;</span><br><span class="line">        l<span class="built_in">=</span>[-<span class="number">30</span>];</span><br><span class="line">        u<span class="built_in">=</span>[<span class="number">30</span>];</span><br><span class="line">        g<span class="built_in">=</span><span class="number">0</span>;</span><br><span class="line">        d<span class="built_in">=</span>dim;</span><br><span class="line">        </span><br><span class="line">    case <span class="string">&#x27;F4&#x27;</span></span><br><span class="line">        <span class="comment">% F4- Sphere lower=[-100], upper=[100], gminimum=[0], dim=30</span></span><br><span class="line">        fobj <span class="built_in">=</span> @F3;</span><br><span class="line">        l<span class="built_in">=</span>[-<span class="number">100</span>];</span><br><span class="line">        u<span class="built_in">=</span>[<span class="number">100</span>];</span><br><span class="line">        g<span class="built_in">=</span><span class="number">0</span>;</span><br><span class="line">        d<span class="built_in">=</span>dim;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    case <span class="string">&#x27;F5&#x27;</span></span><br><span class="line">        <span class="comment">% F5- Zakharov lower=[-5], upper=[10], gminimum=[0], dim=10</span></span><br><span class="line">        fobj <span class="built_in">=</span> @F5;</span><br><span class="line">        l<span class="built_in">=</span>[-<span class="number">5</span>];</span><br><span class="line">        u<span class="built_in">=</span>[<span class="number">10</span>];</span><br><span class="line">        g<span class="built_in">=</span><span class="number">0</span>;</span><br><span class="line">        d<span class="built_in">=</span>dim;</span><br><span class="line">        </span><br><span class="line">    case <span class="string">&#x27;F6&#x27;</span></span><br><span class="line">        <span class="comment">% F7- Griewank  lower=[-600], upper=[600] gminimum=[0], dim=30</span></span><br><span class="line">        fobj <span class="built_in">=</span> @F6;</span><br><span class="line">        l<span class="built_in">=</span>[-<span class="number">600</span>];</span><br><span class="line">        u<span class="built_in">=</span>[<span class="number">600</span>];</span><br><span class="line">        g<span class="built_in">=</span>[<span class="number">0</span>];</span><br><span class="line">        d<span class="built_in">=</span>dim;</span><br><span class="line">        </span><br><span class="line">    case <span class="string">&#x27;F7&#x27;</span></span><br><span class="line">        <span class="comment">% F7- Rastrigin  lower=[-5.12], upper=[5.12] gminimum=[0], dim=30</span></span><br><span class="line">        fobj <span class="built_in">=</span> @F7;</span><br><span class="line">        l<span class="built_in">=</span>[-<span class="number">5.12</span>];</span><br><span class="line">        u<span class="built_in">=</span>[<span class="number">5.12</span>];</span><br><span class="line">        g<span class="built_in">=</span><span class="number">0</span>;</span><br><span class="line">        d<span class="built_in">=</span>dim;</span><br><span class="line">                </span><br><span class="line">    case <span class="string">&#x27;F8&#x27;</span></span><br><span class="line">        <span class="comment">% F8- Egg Crate Function  lower=[0], upper=[10] gminimum=[0], dim=2</span></span><br><span class="line">        fobj <span class="built_in">=</span> @F8;</span><br><span class="line">        l<span class="built_in">=</span>[<span class="number">0</span>];</span><br><span class="line">        u<span class="built_in">=</span>[<span class="number">10</span>];</span><br><span class="line">        g<span class="built_in">=</span>-<span class="number">18.5547</span>;</span><br><span class="line">        d<span class="built_in">=</span>dim;</span><br><span class="line">end</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">function z <span class="built_in">=</span> F1(x)</span><br><span class="line"><span class="comment">% F1- SumSquares lower=[-10], upper=[10], gminimum=[0], dim=30</span></span><br><span class="line">[m, n] <span class="built_in">=</span> size(x);</span><br><span class="line">x2 <span class="built_in">=</span> x .^<span class="number">2</span>;</span><br><span class="line">I <span class="built_in">=</span> repmat(<span class="number">1</span>:n, m, <span class="number">1</span>);</span><br><span class="line">z <span class="built_in">=</span> sum( I .* x2, <span class="number">2</span>);</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">function z <span class="built_in">=</span> F2(x)</span><br><span class="line"><span class="comment">% F2- Schwefel 1.2 lower=[-100], upper=[100], gminimum=[0], dim=30</span></span><br><span class="line">z <span class="built_in">=</span> <span class="number">0</span>;</span><br><span class="line">v1 <span class="built_in">=</span> <span class="number">0</span>;</span><br><span class="line">dim<span class="built_in">=</span>size(x,<span class="number">2</span>);</span><br><span class="line">for i <span class="built_in">=</span> <span class="number">1</span>:dim</span><br><span class="line">    v1<span class="built_in">=</span><span class="number">0</span>;</span><br><span class="line">    for j <span class="built_in">=</span> <span class="number">1</span>: i</span><br><span class="line">        v1 <span class="built_in">=</span> v1 + x(:,j);</span><br><span class="line">    end</span><br><span class="line">    z <span class="built_in">=</span> z + v1.^<span class="number">2</span>;</span><br><span class="line">end</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">function z <span class="built_in">=</span> F3(x)</span><br><span class="line"><span class="comment">% F3- Rosenbrock  lower=[-30], upper=[30], gminimum=[0], dim=30</span></span><br><span class="line">z <span class="built_in">=</span> <span class="number">0</span>;</span><br><span class="line">n <span class="built_in">=</span> size(x, <span class="number">2</span>);</span><br><span class="line">assert(n &gt;<span class="built_in">=</span> <span class="number">1</span>, <span class="string">&#x27;Given input X cannot be empty&#x27;</span>);</span><br><span class="line">a <span class="built_in">=</span> <span class="number">1</span>;</span><br><span class="line">b <span class="built_in">=</span> <span class="number">100</span>;</span><br><span class="line">for i <span class="built_in">=</span> <span class="number">1</span> : (n-<span class="number">1</span>)</span><br><span class="line">    z <span class="built_in">=</span> z + (b * ((x(:, i+<span class="number">1</span>) - (x(:, i).^<span class="number">2</span>)) .^ <span class="number">2</span>)) + ((a - x(:, i)) .^ <span class="number">2</span>);</span><br><span class="line">end</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">function z <span class="built_in">=</span> F4(x)</span><br><span class="line"><span class="comment">% F4- Sphere lower=[-100], upper=[100], gminimum=[0], dim=30</span></span><br><span class="line">z<span class="built_in">=</span>sum(x<span class="string">&#x27;.^2)&#x27;</span>;</span><br><span class="line">end</span><br><span class="line">function z <span class="built_in">=</span> F5(x)</span><br><span class="line"><span class="comment">% F5- Zakharov lower=[-5], upper=[10], gminimum=[0], dim=10</span></span><br><span class="line">n <span class="built_in">=</span> size(x, <span class="number">2</span>);</span><br><span class="line">comp1 <span class="built_in">=</span> <span class="number">0</span>;</span><br><span class="line">comp2 <span class="built_in">=</span> <span class="number">0</span>;</span><br><span class="line">for i <span class="built_in">=</span> <span class="number">1</span>:n</span><br><span class="line">    comp1 <span class="built_in">=</span> comp1 + (x(:, i) .^ <span class="number">2</span>);</span><br><span class="line">    comp2 <span class="built_in">=</span> comp2 + (<span class="number">0.5</span> * i * x(:, i));</span><br><span class="line">end</span><br><span class="line">z <span class="built_in">=</span> comp1 + (comp2 .^ <span class="number">2</span>) + (comp2 .^ <span class="number">4</span>);</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">function z <span class="built_in">=</span> F6(x)</span><br><span class="line"><span class="comment">% F6- Griewank  lower=[-600], upper=[600] gminimum=[0], dim=30</span></span><br><span class="line">n <span class="built_in">=</span> size(x, <span class="number">2</span>);</span><br><span class="line">sumcomp <span class="built_in">=</span> <span class="number">0</span>;</span><br><span class="line">prodcomp <span class="built_in">=</span> <span class="number">1</span>;</span><br><span class="line">for i <span class="built_in">=</span> <span class="number">1</span>:n</span><br><span class="line">    sumcomp <span class="built_in">=</span> sumcomp + (x(:, i) .^ <span class="number">2</span>);</span><br><span class="line">    prodcomp <span class="built_in">=</span> prodcomp .* (cos(x(:, i) / sqrt(i)));</span><br><span class="line">end</span><br><span class="line">z <span class="built_in">=</span> (sumcomp / <span class="number">4000</span>) - prodcomp + <span class="number">1</span>;</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">function z <span class="built_in">=</span> F7(x)</span><br><span class="line"><span class="comment">% F7- Rastrigin  lower=[-5.12], upper=[5.12] gminimum=[0], dim=30</span></span><br><span class="line">n <span class="built_in">=</span> size(x, <span class="number">2</span>);</span><br><span class="line">A <span class="built_in">=</span> <span class="number">10</span>;</span><br><span class="line">z <span class="built_in">=</span> (A * n) + (sum(x .^<span class="number">2</span> - A * cos(<span class="number">2</span> * pi .* x), <span class="number">2</span>));</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">function z <span class="built_in">=</span> F8(x)</span><br><span class="line">    X <span class="built_in">=</span> x(:, <span class="number">1</span>);</span><br><span class="line">    Y <span class="built_in">=</span> x(:, <span class="number">2</span>);    </span><br><span class="line">    <span class="comment">%z = X.^2 + Y.^2 + (25 * (sin(X).^2 + sin(Y).^2));</span></span><br><span class="line">    z<span class="built_in">=</span>X.*sin(<span class="number">4</span>.*X)+ <span class="number">1.1</span>.*Y.*sin(<span class="number">2</span>.*Y);</span><br><span class="line">end </span><br></pre></td></tr></table></figure>
+<figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br></pre></td><td class="code"><pre><code class="hljs m"><span class="hljs-comment">%% GetBenchmarkFunction.m</span><br>function [fobj, l, u, g, d]<span class="hljs-built_in">=</span>GetBenchmarkFunction(number)<br>dim<span class="hljs-built_in">=</span><span class="hljs-number">2</span>;<br>switch number<br>    <br>    case <span class="hljs-string">&#x27;F1&#x27;</span><br>        <span class="hljs-comment">% F1- SumSquares lower=[-10], upper=[10], gminimum=[0], dim=30</span><br>        fobj <span class="hljs-built_in">=</span> @F4;<br>        l<span class="hljs-built_in">=</span>[-<span class="hljs-number">10</span>];<br>        u<span class="hljs-built_in">=</span>[<span class="hljs-number">10</span>];<br>        g<span class="hljs-built_in">=</span><span class="hljs-number">0</span>;<br>        d<span class="hljs-built_in">=</span>dim;<br>        <br>    case <span class="hljs-string">&#x27;F2&#x27;</span><br>        <span class="hljs-comment">% F2- Schwefel 1.2 lower=[-100], upper=[100], gminimum=[0], dim=30</span><br>        fobj <span class="hljs-built_in">=</span> @F2;<br>        l<span class="hljs-built_in">=</span>[-<span class="hljs-number">100</span>];<br>        u<span class="hljs-built_in">=</span>[<span class="hljs-number">100</span>];<br>        g<span class="hljs-built_in">=</span><span class="hljs-number">0</span>;<br>        d<span class="hljs-built_in">=</span>dim;<br>    case <span class="hljs-string">&#x27;F3&#x27;</span><br>        <span class="hljs-comment">% F3- Rosenbrock  lower=[-30], upper=[30], gminimum=[0], dim=30</span><br>        fobj <span class="hljs-built_in">=</span> @F1;<br>        l<span class="hljs-built_in">=</span>[-<span class="hljs-number">30</span>];<br>        u<span class="hljs-built_in">=</span>[<span class="hljs-number">30</span>];<br>        g<span class="hljs-built_in">=</span><span class="hljs-number">0</span>;<br>        d<span class="hljs-built_in">=</span>dim;<br>        <br>    case <span class="hljs-string">&#x27;F4&#x27;</span><br>        <span class="hljs-comment">% F4- Sphere lower=[-100], upper=[100], gminimum=[0], dim=30</span><br>        fobj <span class="hljs-built_in">=</span> @F3;<br>        l<span class="hljs-built_in">=</span>[-<span class="hljs-number">100</span>];<br>        u<span class="hljs-built_in">=</span>[<span class="hljs-number">100</span>];<br>        g<span class="hljs-built_in">=</span><span class="hljs-number">0</span>;<br>        d<span class="hljs-built_in">=</span>dim;<br>        <br>        <br>    case <span class="hljs-string">&#x27;F5&#x27;</span><br>        <span class="hljs-comment">% F5- Zakharov lower=[-5], upper=[10], gminimum=[0], dim=10</span><br>        fobj <span class="hljs-built_in">=</span> @F5;<br>        l<span class="hljs-built_in">=</span>[-<span class="hljs-number">5</span>];<br>        u<span class="hljs-built_in">=</span>[<span class="hljs-number">10</span>];<br>        g<span class="hljs-built_in">=</span><span class="hljs-number">0</span>;<br>        d<span class="hljs-built_in">=</span>dim;<br>        <br>    case <span class="hljs-string">&#x27;F6&#x27;</span><br>        <span class="hljs-comment">% F7- Griewank  lower=[-600], upper=[600] gminimum=[0], dim=30</span><br>        fobj <span class="hljs-built_in">=</span> @F6;<br>        l<span class="hljs-built_in">=</span>[-<span class="hljs-number">600</span>];<br>        u<span class="hljs-built_in">=</span>[<span class="hljs-number">600</span>];<br>        g<span class="hljs-built_in">=</span>[<span class="hljs-number">0</span>];<br>        d<span class="hljs-built_in">=</span>dim;<br>        <br>    case <span class="hljs-string">&#x27;F7&#x27;</span><br>        <span class="hljs-comment">% F7- Rastrigin  lower=[-5.12], upper=[5.12] gminimum=[0], dim=30</span><br>        fobj <span class="hljs-built_in">=</span> @F7;<br>        l<span class="hljs-built_in">=</span>[-<span class="hljs-number">5.12</span>];<br>        u<span class="hljs-built_in">=</span>[<span class="hljs-number">5.12</span>];<br>        g<span class="hljs-built_in">=</span><span class="hljs-number">0</span>;<br>        d<span class="hljs-built_in">=</span>dim;<br>                <br>    case <span class="hljs-string">&#x27;F8&#x27;</span><br>        <span class="hljs-comment">% F8- Egg Crate Function  lower=[0], upper=[10] gminimum=[0], dim=2</span><br>        fobj <span class="hljs-built_in">=</span> @F8;<br>        l<span class="hljs-built_in">=</span>[<span class="hljs-number">0</span>];<br>        u<span class="hljs-built_in">=</span>[<span class="hljs-number">10</span>];<br>        g<span class="hljs-built_in">=</span>-<span class="hljs-number">18.5547</span>;<br>        d<span class="hljs-built_in">=</span>dim;<br>end<br>end<br><br>function z <span class="hljs-built_in">=</span> F1(x)<br><span class="hljs-comment">% F1- SumSquares lower=[-10], upper=[10], gminimum=[0], dim=30</span><br>[m, n] <span class="hljs-built_in">=</span> size(x);<br>x2 <span class="hljs-built_in">=</span> x .^<span class="hljs-number">2</span>;<br>I <span class="hljs-built_in">=</span> repmat(<span class="hljs-number">1</span>:n, m, <span class="hljs-number">1</span>);<br>z <span class="hljs-built_in">=</span> sum( I .* x2, <span class="hljs-number">2</span>);<br>end<br><br><br>function z <span class="hljs-built_in">=</span> F2(x)<br><span class="hljs-comment">% F2- Schwefel 1.2 lower=[-100], upper=[100], gminimum=[0], dim=30</span><br>z <span class="hljs-built_in">=</span> <span class="hljs-number">0</span>;<br>v1 <span class="hljs-built_in">=</span> <span class="hljs-number">0</span>;<br>dim<span class="hljs-built_in">=</span>size(x,<span class="hljs-number">2</span>);<br>for i <span class="hljs-built_in">=</span> <span class="hljs-number">1</span>:dim<br>    v1<span class="hljs-built_in">=</span><span class="hljs-number">0</span>;<br>    for j <span class="hljs-built_in">=</span> <span class="hljs-number">1</span>: i<br>        v1 <span class="hljs-built_in">=</span> v1 + x(:,j);<br>    end<br>    z <span class="hljs-built_in">=</span> z + v1.^<span class="hljs-number">2</span>;<br>end<br>end<br><br>function z <span class="hljs-built_in">=</span> F3(x)<br><span class="hljs-comment">% F3- Rosenbrock  lower=[-30], upper=[30], gminimum=[0], dim=30</span><br>z <span class="hljs-built_in">=</span> <span class="hljs-number">0</span>;<br>n <span class="hljs-built_in">=</span> size(x, <span class="hljs-number">2</span>);<br>assert(n &gt;<span class="hljs-built_in">=</span> <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;Given input X cannot be empty&#x27;</span>);<br>a <span class="hljs-built_in">=</span> <span class="hljs-number">1</span>;<br>b <span class="hljs-built_in">=</span> <span class="hljs-number">100</span>;<br>for i <span class="hljs-built_in">=</span> <span class="hljs-number">1</span> : (n-<span class="hljs-number">1</span>)<br>    z <span class="hljs-built_in">=</span> z + (b * ((x(:, i+<span class="hljs-number">1</span>) - (x(:, i).^<span class="hljs-number">2</span>)) .^ <span class="hljs-number">2</span>)) + ((a - x(:, i)) .^ <span class="hljs-number">2</span>);<br>end<br>end<br><br>function z <span class="hljs-built_in">=</span> F4(x)<br><span class="hljs-comment">% F4- Sphere lower=[-100], upper=[100], gminimum=[0], dim=30</span><br>z<span class="hljs-built_in">=</span>sum(x<span class="hljs-string">&#x27;.^2)&#x27;</span>;<br>end<br>function z <span class="hljs-built_in">=</span> F5(x)<br><span class="hljs-comment">% F5- Zakharov lower=[-5], upper=[10], gminimum=[0], dim=10</span><br>n <span class="hljs-built_in">=</span> size(x, <span class="hljs-number">2</span>);<br>comp1 <span class="hljs-built_in">=</span> <span class="hljs-number">0</span>;<br>comp2 <span class="hljs-built_in">=</span> <span class="hljs-number">0</span>;<br>for i <span class="hljs-built_in">=</span> <span class="hljs-number">1</span>:n<br>    comp1 <span class="hljs-built_in">=</span> comp1 + (x(:, i) .^ <span class="hljs-number">2</span>);<br>    comp2 <span class="hljs-built_in">=</span> comp2 + (<span class="hljs-number">0.5</span> * i * x(:, i));<br>end<br>z <span class="hljs-built_in">=</span> comp1 + (comp2 .^ <span class="hljs-number">2</span>) + (comp2 .^ <span class="hljs-number">4</span>);<br>end<br><br>function z <span class="hljs-built_in">=</span> F6(x)<br><span class="hljs-comment">% F6- Griewank  lower=[-600], upper=[600] gminimum=[0], dim=30</span><br>n <span class="hljs-built_in">=</span> size(x, <span class="hljs-number">2</span>);<br>sumcomp <span class="hljs-built_in">=</span> <span class="hljs-number">0</span>;<br>prodcomp <span class="hljs-built_in">=</span> <span class="hljs-number">1</span>;<br>for i <span class="hljs-built_in">=</span> <span class="hljs-number">1</span>:n<br>    sumcomp <span class="hljs-built_in">=</span> sumcomp + (x(:, i) .^ <span class="hljs-number">2</span>);<br>    prodcomp <span class="hljs-built_in">=</span> prodcomp .* (cos(x(:, i) / sqrt(i)));<br>end<br>z <span class="hljs-built_in">=</span> (sumcomp / <span class="hljs-number">4000</span>) - prodcomp + <span class="hljs-number">1</span>;<br>end<br><br>function z <span class="hljs-built_in">=</span> F7(x)<br><span class="hljs-comment">% F7- Rastrigin  lower=[-5.12], upper=[5.12] gminimum=[0], dim=30</span><br>n <span class="hljs-built_in">=</span> size(x, <span class="hljs-number">2</span>);<br>A <span class="hljs-built_in">=</span> <span class="hljs-number">10</span>;<br>z <span class="hljs-built_in">=</span> (A * n) + (sum(x .^<span class="hljs-number">2</span> - A * cos(<span class="hljs-number">2</span> * pi .* x), <span class="hljs-number">2</span>));<br>end<br><br>function z <span class="hljs-built_in">=</span> F8(x)<br>    X <span class="hljs-built_in">=</span> x(:, <span class="hljs-number">1</span>);<br>    Y <span class="hljs-built_in">=</span> x(:, <span class="hljs-number">2</span>);    <br>    <span class="hljs-comment">%z = X.^2 + Y.^2 + (25 * (sin(X).^2 + sin(Y).^2));</span><br>    z<span class="hljs-built_in">=</span>X.*sin(<span class="hljs-number">4</span>.*X)+ <span class="hljs-number">1.1</span>.*Y.*sin(<span class="hljs-number">2</span>.*Y);<br>end <br></code></pre></td></tr></table></figure>
 <h2 id="两个变量"><a href="#两个变量" class="headerlink" title="两个变量"></a>两个变量</h2><p>输入参数：</p>
 <p>number：字符串，表示要选择的基准测试函数编号（如”F1”、”F2”等）。</p>
 <p>输出参数：</p>
@@ -199,153 +303,370 @@
 <p>u：变量上界向量，表示优化问题中每个变量的最大允许值。</p>
 <p>g：全局最小值，表示所选基准测试函数的已知全局最小解对应的函数值。</p>
 <p>d：问题维度，表示优化问题中变量的个数。</p>
-<figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">Minimum Cost in Iteration <span class="number">1</span> <span class="keyword">is</span> -<span class="number">4.6682556618584661</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">2</span> <span class="keyword">is</span> -<span class="number">8.1975662567254535</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">3</span> <span class="keyword">is</span> -<span class="number">8.1975662567254535</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">4</span> <span class="keyword">is</span> -<span class="number">14.6935300252384948</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">5</span> <span class="keyword">is</span> -<span class="number">14.6935300252384948</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">6</span> <span class="keyword">is</span> -<span class="number">14.6935300252384948</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">7</span> <span class="keyword">is</span> -<span class="number">14.6935300252384948</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">8</span> <span class="keyword">is</span> -<span class="number">14.6935300252384948</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">9</span> <span class="keyword">is</span> -<span class="number">14.6935300252384948</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">10</span> <span class="keyword">is</span> -<span class="number">14.6935300252384948</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">11</span> <span class="keyword">is</span> -<span class="number">17.6789369064143571</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">12</span> <span class="keyword">is</span> -<span class="number">17.6789369064143571</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">13</span> <span class="keyword">is</span> -<span class="number">17.6789369064143571</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">14</span> <span class="keyword">is</span> -<span class="number">17.6789369064143571</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">15</span> <span class="keyword">is</span> -<span class="number">17.8433233416086168</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">16</span> <span class="keyword">is</span> -<span class="number">17.8433233416086168</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">17</span> <span class="keyword">is</span> -<span class="number">17.8433233416086168</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">18</span> <span class="keyword">is</span> -<span class="number">17.8433233416086168</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">19</span> <span class="keyword">is</span> -<span class="number">17.8433233416086168</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">20</span> <span class="keyword">is</span> -<span class="number">17.8433233416086168</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">21</span> <span class="keyword">is</span> -<span class="number">17.8433233416086168</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">22</span> <span class="keyword">is</span> -<span class="number">17.8433233416086168</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">23</span> <span class="keyword">is</span> -<span class="number">17.8433233416086168</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">24</span> <span class="keyword">is</span> -<span class="number">18.4564913551477119</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">25</span> <span class="keyword">is</span> -<span class="number">18.4564913551477119</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">26</span> <span class="keyword">is</span> -<span class="number">18.5092203075349104</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">27</span> <span class="keyword">is</span> -<span class="number">18.5092203075349104</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">28</span> <span class="keyword">is</span> -<span class="number">18.5092203075349104</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">29</span> <span class="keyword">is</span> -<span class="number">18.5092203075349104</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">30</span> <span class="keyword">is</span> -<span class="number">18.5365046804113760</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">31</span> <span class="keyword">is</span> -<span class="number">18.5365046804113760</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">32</span> <span class="keyword">is</span> -<span class="number">18.5365046804113760</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">33</span> <span class="keyword">is</span> -<span class="number">18.5365046804113760</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">34</span> <span class="keyword">is</span> -<span class="number">18.5365046804113760</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">35</span> <span class="keyword">is</span> -<span class="number">18.5365046804113760</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">36</span> <span class="keyword">is</span> -<span class="number">18.5365046804113760</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">37</span> <span class="keyword">is</span> -<span class="number">18.5365046804113760</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">38</span> <span class="keyword">is</span> -<span class="number">18.5365046804113760</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">39</span> <span class="keyword">is</span> -<span class="number">18.5365046804113760</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">40</span> <span class="keyword">is</span> -<span class="number">18.5365046804113760</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">41</span> <span class="keyword">is</span> -<span class="number">18.5365046804113760</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">42</span> <span class="keyword">is</span> -<span class="number">18.5365046804113760</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">43</span> <span class="keyword">is</span> -<span class="number">18.5365046804113760</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">44</span> <span class="keyword">is</span> -<span class="number">18.5365046804113760</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">45</span> <span class="keyword">is</span> -<span class="number">18.5365046804113760</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">46</span> <span class="keyword">is</span> -<span class="number">18.5365046804113760</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">47</span> <span class="keyword">is</span> -<span class="number">18.5365046804113760</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">48</span> <span class="keyword">is</span> -<span class="number">18.5365046804113760</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">49</span> <span class="keyword">is</span> -<span class="number">18.5365046804113760</span> </span><br><span class="line">Minimum Cost in Iteration <span class="number">50</span> <span class="keyword">is</span> -<span class="number">18.5365046804113760</span> </span><br></pre></td></tr></table></figure>
+<figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs m">Minimum Cost in Iteration <span class="hljs-number">1</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">4.6682556618584661</span> <br>Minimum Cost in Iteration <span class="hljs-number">2</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">8.1975662567254535</span> <br>Minimum Cost in Iteration <span class="hljs-number">3</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">8.1975662567254535</span> <br>Minimum Cost in Iteration <span class="hljs-number">4</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">14.6935300252384948</span> <br>Minimum Cost in Iteration <span class="hljs-number">5</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">14.6935300252384948</span> <br>Minimum Cost in Iteration <span class="hljs-number">6</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">14.6935300252384948</span> <br>Minimum Cost in Iteration <span class="hljs-number">7</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">14.6935300252384948</span> <br>Minimum Cost in Iteration <span class="hljs-number">8</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">14.6935300252384948</span> <br>Minimum Cost in Iteration <span class="hljs-number">9</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">14.6935300252384948</span> <br>Minimum Cost in Iteration <span class="hljs-number">10</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">14.6935300252384948</span> <br>Minimum Cost in Iteration <span class="hljs-number">11</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">17.6789369064143571</span> <br>Minimum Cost in Iteration <span class="hljs-number">12</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">17.6789369064143571</span> <br>Minimum Cost in Iteration <span class="hljs-number">13</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">17.6789369064143571</span> <br>Minimum Cost in Iteration <span class="hljs-number">14</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">17.6789369064143571</span> <br>Minimum Cost in Iteration <span class="hljs-number">15</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">17.8433233416086168</span> <br>Minimum Cost in Iteration <span class="hljs-number">16</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">17.8433233416086168</span> <br>Minimum Cost in Iteration <span class="hljs-number">17</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">17.8433233416086168</span> <br>Minimum Cost in Iteration <span class="hljs-number">18</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">17.8433233416086168</span> <br>Minimum Cost in Iteration <span class="hljs-number">19</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">17.8433233416086168</span> <br>Minimum Cost in Iteration <span class="hljs-number">20</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">17.8433233416086168</span> <br>Minimum Cost in Iteration <span class="hljs-number">21</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">17.8433233416086168</span> <br>Minimum Cost in Iteration <span class="hljs-number">22</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">17.8433233416086168</span> <br>Minimum Cost in Iteration <span class="hljs-number">23</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">17.8433233416086168</span> <br>Minimum Cost in Iteration <span class="hljs-number">24</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">18.4564913551477119</span> <br>Minimum Cost in Iteration <span class="hljs-number">25</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">18.4564913551477119</span> <br>Minimum Cost in Iteration <span class="hljs-number">26</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">18.5092203075349104</span> <br>Minimum Cost in Iteration <span class="hljs-number">27</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">18.5092203075349104</span> <br>Minimum Cost in Iteration <span class="hljs-number">28</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">18.5092203075349104</span> <br>Minimum Cost in Iteration <span class="hljs-number">29</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">18.5092203075349104</span> <br>Minimum Cost in Iteration <span class="hljs-number">30</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">18.5365046804113760</span> <br>Minimum Cost in Iteration <span class="hljs-number">31</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">18.5365046804113760</span> <br>Minimum Cost in Iteration <span class="hljs-number">32</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">18.5365046804113760</span> <br>Minimum Cost in Iteration <span class="hljs-number">33</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">18.5365046804113760</span> <br>Minimum Cost in Iteration <span class="hljs-number">34</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">18.5365046804113760</span> <br>Minimum Cost in Iteration <span class="hljs-number">35</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">18.5365046804113760</span> <br>Minimum Cost in Iteration <span class="hljs-number">36</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">18.5365046804113760</span> <br>Minimum Cost in Iteration <span class="hljs-number">37</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">18.5365046804113760</span> <br>Minimum Cost in Iteration <span class="hljs-number">38</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">18.5365046804113760</span> <br>Minimum Cost in Iteration <span class="hljs-number">39</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">18.5365046804113760</span> <br>Minimum Cost in Iteration <span class="hljs-number">40</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">18.5365046804113760</span> <br>Minimum Cost in Iteration <span class="hljs-number">41</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">18.5365046804113760</span> <br>Minimum Cost in Iteration <span class="hljs-number">42</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">18.5365046804113760</span> <br>Minimum Cost in Iteration <span class="hljs-number">43</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">18.5365046804113760</span> <br>Minimum Cost in Iteration <span class="hljs-number">44</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">18.5365046804113760</span> <br>Minimum Cost in Iteration <span class="hljs-number">45</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">18.5365046804113760</span> <br>Minimum Cost in Iteration <span class="hljs-number">46</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">18.5365046804113760</span> <br>Minimum Cost in Iteration <span class="hljs-number">47</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">18.5365046804113760</span> <br>Minimum Cost in Iteration <span class="hljs-number">48</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">18.5365046804113760</span> <br>Minimum Cost in Iteration <span class="hljs-number">49</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">18.5365046804113760</span> <br>Minimum Cost in Iteration <span class="hljs-number">50</span> <span class="hljs-keyword">is</span> -<span class="hljs-number">18.5365046804113760</span> <br></code></pre></td></tr></table></figure>
 
-<figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">xx<span class="built_in">=</span><span class="number">0</span>:<span class="number">0.1</span>:<span class="number">10</span>;</span><br><span class="line">yy<span class="built_in">=</span><span class="number">0</span>:<span class="number">0.1</span>:<span class="number">10</span>;</span><br><span class="line">[x,y]<span class="built_in">=</span>meshgrid(xx,yy);</span><br><span class="line">z<span class="built_in">=</span>x.*sin(<span class="number">4</span>.*x)+ <span class="number">1.1</span>.*y.*sin(<span class="number">2</span>.*y);</span><br><span class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>)</span><br><span class="line">mesh(x,y,z)</span><br><span class="line">subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>)</span><br><span class="line">contour(x,y,z)</span><br><span class="line">colorbar</span><br></pre></td></tr></table></figure>
+<figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs m">xx<span class="hljs-built_in">=</span><span class="hljs-number">0</span>:<span class="hljs-number">0.1</span>:<span class="hljs-number">10</span>;<br>yy<span class="hljs-built_in">=</span><span class="hljs-number">0</span>:<span class="hljs-number">0.1</span>:<span class="hljs-number">10</span>;<br>[x,y]<span class="hljs-built_in">=</span>meshgrid(xx,yy);<br>z<span class="hljs-built_in">=</span>x.*sin(<span class="hljs-number">4</span>.*x)+ <span class="hljs-number">1.1</span>.*y.*sin(<span class="hljs-number">2</span>.*y);<br>subplot(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>)<br>mesh(x,y,z)<br>subplot(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>)<br>contour(x,y,z)<br>colorbar<br></code></pre></td></tr></table></figure>
 <p>F8 : z&#x3D;x.*sin(4.*x)+ 1.1.*y.*sin(2.*y)</p>
-<p><img src="https://pic.imgdb.cn/item/662b6cb70ea9cb1403eaff37.jpg" alt="alt text"></p>
+<p><img src="https://pic.imgdb.cn/item/662b6cb70ea9cb1403eaff37.jpg" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E4%BC%98%E5%8C%96/" class="category-chain-item">算法优化</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>季节优化算法</div>
+      <div>http://jrhu0048.github.io/2024/04/26/ji-jie-you-hua-suan-fa/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>JR.HU</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年4月26日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
   </div>
-</article>
 
 
 
-        
-          <div id="footer-post-container">
-  <div id="footer-post">
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/04/26/xi-yin-pai-chi-you-hua-suan-fa/" title="吸引-排斥优化算法">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">吸引-排斥优化算法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/04/25/matlab-zhi-tu/" title="MATLAB制图">
+                        <span class="hidden-mobile">MATLAB制图</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
 
-    <div id="nav-footer" style="display: none">
-      <ul>
-        
-          <li><a href="/">首页</a></li>
-        
-          <li><a href="/about/">关于</a></li>
-        
-          <li><a href="/archives/">归档</a></li>
-        
-          <li><a href="/tags/">标签</a></li>
-        
-          <li><a href="/categories/">分类</a></li>
-        
-      </ul>
-    </div>
-
-    
-    
-      <div id="toc-footer" style="display: none">
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%AE%BA%E6%96%87"><span class="toc-number">1.</span> <span class="toc-text">参考论文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC%E8%A7%A3%E8%AF%BB"><span class="toc-number">2.</span> <span class="toc-text">脚本解读</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%A4%E4%B8%AA%E5%8F%98%E9%87%8F"><span class="toc-number">3.</span> <span class="toc-text">两个变量</span></a></li></ol>
+            
+          </article>
+        </div>
       </div>
-    
-
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jrhu0048.github.io/2024/04/26/ji-jie-you-hua-suan-fa/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jrhu0048.github.io/2024/04/26/ji-jie-you-hua-suan-fa/&text=季节优化算法"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jrhu0048.github.io/2024/04/26/ji-jie-you-hua-suan-fa/&title=季节优化算法"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jrhu0048.github.io/2024/04/26/ji-jie-you-hua-suan-fa/&is_video=false&description=季节优化算法"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=季节优化算法&body=Check out this article: http://jrhu0048.github.io/2024/04/26/ji-jie-you-hua-suan-fa/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jrhu0048.github.io/2024/04/26/ji-jie-you-hua-suan-fa/&title=季节优化算法"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jrhu0048.github.io/2024/04/26/ji-jie-you-hua-suan-fa/&title=季节优化算法"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jrhu0048.github.io/2024/04/26/ji-jie-you-hua-suan-fa/&title=季节优化算法"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jrhu0048.github.io/2024/04/26/ji-jie-you-hua-suan-fa/&title=季节优化算法"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jrhu0048.github.io/2024/04/26/ji-jie-you-hua-suan-fa/&name=季节优化算法&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jrhu0048.github.io/2024/04/26/ji-jie-you-hua-suan-fa/&t=季节优化算法"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
-</ul>
-
     </div>
 
-    <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
-        
-          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
-        
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
-    </div>
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
 
+
+
+  </aside>
+
+
+    </div>
   </div>
 </div>
 
-        
-        <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy;
-    
-    
-    2022-2024
-    JR.HU
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-        <!--
-       --><li><a href="/">首页</a></li><!--
-     --><!--
-       --><li><a href="/about/">关于</a></li><!--
-     --><!--
-       --><li><a href="/archives/">归档</a></li><!--
-     --><!--
-       --><li><a href="/tags/">标签</a></li><!--
-     --><!--
-       --><li><a href="/categories/">分类</a></li><!--
-     -->
-      </ul>
-    </nav>
-  </div>
-</footer>
 
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
     </div>
-    <!-- styles -->
+  </div>
+</div>
 
+    
 
+    
+  </main>
 
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
-
-
-    <!-- jquery -->
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
-
-
-
-
-<!-- clipboard -->
-
+  <footer>
+    <div class="footer-inner">
   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
   
-  <script type="text/javascript">
-  $(function() {
-    // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
-    btn += '<i class="fa-regular fa-clone"></i>';
-    btn += '</span>';
-    // mount it!
-    $(".highlight table").before(btn);
-    var clip = new ClipboardJS('.btn-copy', {
-      text: function(trigger) {
-        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
-      }
-    });
-    clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "复制成功！");
-      e.clearSelection();
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
     })
-  })
   </script>
 
 
-<script src="/js/main.js"></script>
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
-<!-- search -->
 
-<!-- Baidu Analytics -->
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
 
-<!-- Cloudflare Analytics -->
 
-<!-- Disqus Comments -->
 
-<!-- utterances Comments -->
 
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>
