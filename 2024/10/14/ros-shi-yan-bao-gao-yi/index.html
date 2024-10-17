@@ -47,8 +47,12 @@
 <meta property="og:image" content="https://pic.imgdb.cn/item/670d0bb3d29ded1a8c257630.png">
 <meta property="og:image" content="https://pic.imgdb.cn/item/670d0bccd29ded1a8c259535.png">
 <meta property="og:image" content="https://pic.imgdb.cn/item/670d0bded29ded1a8c25a8c9.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/67111d6ed29ded1a8c5e0518.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/67111d80d29ded1a8c5e125d.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/67111d9ad29ded1a8c5e2985.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/67111da9d29ded1a8c5e3629.png">
 <meta property="article:published_time" content="2024-10-14T12:05:30.000Z">
-<meta property="article:modified_time" content="2024-10-14T12:18:03.515Z">
+<meta property="article:modified_time" content="2024-10-17T14:29:00.889Z">
 <meta property="article:author" content="JR.HU">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://pic.imgdb.cn/item/670d09f8d29ded1a8c23598b.png">
@@ -246,7 +250,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          829 字
+          1.6k 字
         
       </span>
     
@@ -257,7 +261,7 @@
         
         
         
-          7 分钟
+          14 分钟
         
       </span>
     
@@ -352,7 +356,27 @@
 <h3 id="6、ROS使用话题通信传输图片原理阐释"><a href="#6、ROS使用话题通信传输图片原理阐释" class="headerlink" title="6、ROS使用话题通信传输图片原理阐释"></a>6、ROS使用话题通信传输图片原理阐释</h3><p>ROS 的话题通信是一种发布 &#x2F; 订阅模式的通信机制，一个节点可以发布特定主题的消息，而其他节点可以订阅该主题以接收这些消息。</p>
 <p>对于传输图片来说，，在ROS中有专门的图像消息类型来表示图像数据，在代码中，使用到的是sensor_msgs&#x2F;Image，首先需要使用cv_bridge将ROS与OpenCV图像进行互相转换，然后利用创建的Image类型的节点发布图像信息，以此来实现图像传输功能</p>
 <p>对于订阅者节点来说，当订阅者接收到图像消息时，回调函数会被触发。在回调函数中，使用cv_bridge将 ROS 图像消息转换为 OpenCV 图像格式，然后可以使用 OpenCV 的函数对图像进行显示或处理。</p>
+<h3 id="7、分析话题通信是否存在数据丢失，以及队列参数的影响。"><a href="#7、分析话题通信是否存在数据丢失，以及队列参数的影响。" class="headerlink" title="7、分析话题通信是否存在数据丢失，以及队列参数的影响。"></a>7、分析话题通信是否存在数据丢失，以及队列参数的影响。</h3><p>在ROS中，我们可以使用 ROS 的日志记录功能或自定义的日志文件来记录数据。检查记录的数据，看是否存在消息丢失的情况。如果订阅者接收到的消息数量与发布者发送的消息数量不一致，那么可能存在数据丢失。</p>
+<p>同时在ROS中，话题通信的队列参数决定了订阅者可以缓存的未处理消息的数量，我们可以设置不同的队列参数值，例如较小的值如 1、5、10，以及较大的值如 50、100 等，分别比较不同队列参数下的数据丢失情况。理论上应该观察到较小队列参数时更容易出现数据丢失，而较大队列参数能够减少数据丢失的可能性。</p>
+<p>发布者的消息队列与订阅者的消息队列的不同之处：</p>
+<p>（1）发布者的消息队列主要用于存储待发布的消息；</p>
+<p>（2）订阅者的消息队列主要用于存储已经接收到但是还未被处理的消息</p>
+<p>当发布者的发布频率为0.01，队列参数为1时，发现出现了多次通信数据的丢失，结果如下图，红色点为丢失的数据点：</p>
+<p><img src="https://pic.imgdb.cn/item/67111d6ed29ded1a8c5e0518.png" srcset="/img/loading.gif" lazyload></p>
+<p>当队列参数为3时，发现还是存在一些通信数据的丢失，但是数量少于参数为1的情况</p>
+<p><img src="https://pic.imgdb.cn/item/67111d80d29ded1a8c5e125d.png" srcset="/img/loading.gif" lazyload></p>
+<p>当队列参数为5时，发现没有通信数据的丢失</p>
+<p><img src="https://pic.imgdb.cn/item/67111d9ad29ded1a8c5e2985.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://pic.imgdb.cn/item/67111da9d29ded1a8c5e3629.png" srcset="/img/loading.gif" lazyload></p>
+<p>通过上述的简单实验，发现队列参数的设置对于通信数据的丢失会产生一定的影响，当队列参数设置较小时，可能会出现通信数据的丢失。</p>
+<p>同时，发现发布者的发布频率对于通信来说同样至关重要，当频率设置较小时（如0.01），发现会产生数据丢失，但是当频率设置较大时（如0.1），发现即使队列参数较小，也可能不会出现数据丢失。</p>
+<p>综上，通过实验，我们发现发布频率以及队列参数对于通信数据是否丢失至关重要。</p>
+<p>涉及到的代码如下</p>
+<p>发布者代码 <code>message_pub.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> rclpy<br><span class="hljs-keyword">from</span> rclpy.node <span class="hljs-keyword">import</span> Node<br><span class="hljs-keyword">from</span> std_msgs.msg <span class="hljs-keyword">import</span> String<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">PublisherNode</span>(<span class="hljs-title class_ inherited__">Node</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-built_in">super</span>().__init__(<span class="hljs-string">&#x27;publisher_node&#x27;</span>)<br>        self.publisher_ = self.create_publisher(String, <span class="hljs-string">&#x27;my_topic&#x27;</span>, <span class="hljs-number">10</span>)<br>        <span class="hljs-comment"># 创建一个定时器，每.01秒钟触发一次回调</span><br>        self.timer = self.create_timer(<span class="hljs-number">0.01</span>, self.publish_message)<br>        self.count = <span class="hljs-number">0</span><br>        <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">publish_message</span>(<span class="hljs-params">self</span>):<br>        msg = String()<br>        msg.data = <span class="hljs-built_in">str</span>(self.count)<br>        self.publisher_.publish(msg)<br>        self.get_logger().info(<span class="hljs-string">f&#x27;Published: <span class="hljs-subst">&#123;self.count&#125;</span>&#x27;</span>)<br>        self.count += <span class="hljs-number">1</span><br>        <br><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>(<span class="hljs-params">args=<span class="hljs-literal">None</span></span>):<br>    rclpy.init(args=args)<br>    node = PublisherNode()<br>    <span class="hljs-keyword">try</span>:<br>        rclpy.spin(node)<br>    <span class="hljs-keyword">except</span> KeyboardInterrupt:<br>        <span class="hljs-keyword">pass</span><br>    node.destroy_node()<br>    rclpy.shutdown()<br></code></pre></td></tr></table></figure>
 
+<p>订阅者代码 <code>message_sub.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> rclpy<br><span class="hljs-keyword">from</span> rclpy.node <span class="hljs-keyword">import</span> Node<br><span class="hljs-keyword">from</span> std_msgs.msg <span class="hljs-keyword">import</span> String<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">SubscriberNode</span>(<span class="hljs-title class_ inherited__">Node</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-built_in">super</span>().__init__(<span class="hljs-string">&#x27;subscriber_node&#x27;</span>)<br>        self.subscription = self.create_subscription(<br>            String,<br>            <span class="hljs-string">&#x27;my_topic&#x27;</span>,<br>            self.listener_callback,<br>            <span class="hljs-number">10</span>)<br>        self.log_file = <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;log.txt&#x27;</span>, <span class="hljs-string">&#x27;a&#x27;</span>)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">listener_callback</span>(<span class="hljs-params">self, msg</span>):<br>        self.get_logger().info(<span class="hljs-string">f&#x27;Received: <span class="hljs-subst">&#123;msg.data&#125;</span>&#x27;</span>)<br>        self.log_file.write(<span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;msg.data&#125;</span>\n&#x27;</span>)<br>        <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">close_log_file</span>(<span class="hljs-params">self</span>):<br>        self.log_file.close()<br>        <br><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>(<span class="hljs-params">args=<span class="hljs-literal">None</span></span>):<br>    rclpy.init(args=args)<br>    node = SubscriberNode()<br>    rclpy.spin(node)<br>    node.close_log_file()<br>    node.destroy_node()<br>    rclpy.shutdown()<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -409,7 +433,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年10月14日</div>
+          <div>2024年10月17日</div>
         </div>
       
       
