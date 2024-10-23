@@ -19,25 +19,25 @@
   <meta name="author" content="JR.HU">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Neural Network使用神经网络进行多分类  神经网络只改变了模型，使用很复杂的模型即可，其他方面都没有改变 神经元的概念线性神经元  神经网络本质上都是多元复合函数!!!!!，是对模型的改变 不加入激活函数的后果：无论多少层神经网络，最后得到的都是线性模型，学习能力比较差  完全体的神经网络模型如下：  常见的激活函数：  全连接神经网络：可以实现各种组合，模型复杂度高，学习能力强  一">
+    <meta name="description" content="本次实验需要实现一个简单的神经网络，并使用梯度下降法训练。 遇到了Xavier初始化,找到了一篇学习资料： https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_67720621&#x2F;article&#x2F;details&#x2F;138045784  networkBackward 函数需要对照课件好好学习一下 实验代码12345678910111213141516171819202122232425262728293">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第七讲_神经网络">
-<meta property="og:url" content="http://jrhu0048.github.io/2024/10/23/di-qi-jiang-shen-jing-wang-luo/index.html">
+<meta property="og:title" content="机器学习实验7">
+<meta property="og:url" content="http://jrhu0048.github.io/2024/10/23/ji-qi-xue-xi-shi-yan-7/index.html">
 <meta property="og:site_name" content="CHARMMY">
-<meta property="og:description" content="Neural Network使用神经网络进行多分类  神经网络只改变了模型，使用很复杂的模型即可，其他方面都没有改变 神经元的概念线性神经元  神经网络本质上都是多元复合函数!!!!!，是对模型的改变 不加入激活函数的后果：无论多少层神经网络，最后得到的都是线性模型，学习能力比较差  完全体的神经网络模型如下：  常见的激活函数：  全连接神经网络：可以实现各种组合，模型复杂度高，学习能力强  一">
+<meta property="og:description" content="本次实验需要实现一个简单的神经网络，并使用梯度下降法训练。 遇到了Xavier初始化,找到了一篇学习资料： https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_67720621&#x2F;article&#x2F;details&#x2F;138045784  networkBackward 函数需要对照课件好好学习一下 实验代码12345678910111213141516171819202122232425262728293">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://pic.imgdb.cn/item/67189789d29ded1a8c8df39e.jpg">
-<meta property="article:published_time" content="2024-10-23T06:25:37.000Z">
-<meta property="article:modified_time" content="2024-10-23T09:40:35.124Z">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6718f238d29ded1a8cefc964.jpg">
+<meta property="article:published_time" content="2024-10-23T10:20:47.000Z">
+<meta property="article:modified_time" content="2024-10-23T12:55:37.732Z">
 <meta property="article:author" content="JR.HU">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://pic.imgdb.cn/item/67189789d29ded1a8c8df39e.jpg">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/6718f238d29ded1a8cefc964.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>第七讲_神经网络 - CHARMMY</title>
+  <title>机器学习实验7 - CHARMMY</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -203,7 +203,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="第七讲_神经网络"></span>
+            <span id="subtitle" data-typed-text="机器学习实验7"></span>
           
         </div>
 
@@ -214,8 +214,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-10-23 14:25" pubdate>
-          2024年10月23日 下午
+        <time datetime="2024-10-23 18:20" pubdate>
+          2024年10月23日 晚上
         </time>
       </span>
     
@@ -226,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          474 字
+          630 字
         
       </span>
     
@@ -237,7 +237,7 @@
         
         
         
-          4 分钟
+          6 分钟
         
       </span>
     
@@ -274,57 +274,19 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">第七讲_神经网络</h1>
+            <h1 id="seo-header">机器学习实验7</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="Neural-Network"><a href="#Neural-Network" class="headerlink" title="Neural Network"></a>Neural Network</h2><p>使用神经网络进行多分类</p>
-<p><img src="https://pic.imgdb.cn/item/66ec41adf21886ccc024991f.png" srcset="/img/loading.gif" lazyload></p>
-<p>神经网络只改变了模型，使用很复杂的模型即可，其他方面都没有改变</p>
-<h3 id="神经元的概念"><a href="#神经元的概念" class="headerlink" title="神经元的概念"></a>神经元的概念</h3><p>线性神经元</p>
-<p><img src="https://pic.imgdb.cn/item/66ec5092f21886ccc0348c8f.png" srcset="/img/loading.gif" lazyload></p>
-<p>神经网络本质上都是<code>多元复合函数!!!!!</code>，是对模型的改变</p>
-<p>不加入激活函数的后果：无论多少层神经网络，最后得到的都是线性模型，学习能力比较差</p>
-<p><img src="https://pic.imgdb.cn/item/66ecef53f21886ccc09ef585.png" srcset="/img/loading.gif" lazyload></p>
-<p>完全体的神经网络模型如下：</p>
-<p><img src="https://pic.imgdb.cn/item/66ecf00ef21886ccc09f9200.png" srcset="/img/loading.gif" lazyload></p>
-<p>常见的激活函数：</p>
-<p><img src="https://pic.imgdb.cn/item/66ecff9ff21886ccc0b8e1f8.png" srcset="/img/loading.gif" lazyload></p>
-<p>全连接神经网络：可以实现各种组合，模型复杂度高，学习能力强</p>
-<p><img src="https://pic.imgdb.cn/item/66ed200bf21886ccc0dffe75.png" srcset="/img/loading.gif" lazyload></p>
-<p>一层全连接层的公式表达如下：</p>
-<p><img src="https://pic.imgdb.cn/item/66ed2215f21886ccc0e29248.png" srcset="/img/loading.gif" lazyload></p>
-<p>神经网络可以理解为把<code>输入向量</code>变成了<code>特征向量</code>，理解为<code>特征提取器</code>，把样本中的特征提取出来</p>
-<p>feature vector &#x3D; feature extractor(input vector)</p>
-<p>最后再对抽取出来的特征进行<code>softmax变换</code>，就变成了<code>线性可分</code>的（针对多分类问题）</p>
-<ul>
-<li>softmax变换的作用是将<code>输出结果</code>转换为<code>概率</code></li>
-<li>每一层sigmoid函数的作用是将线性模型转为非线性</li>
-</ul>
-<p>如果是针对二分类问题，将抽取出来的特征进行<code>sigmoid</code>变换即可,就没必要使用<code>softmax</code>变换了</p>
-<p>如果是针对回归类问题，则不需要使用激活函数，直接预测结果</p>
-<p>输出层是一个softmax回归，数学结构如下：</p>
-<p><img src="https://pic.imgdb.cn/item/6718b12ed29ded1a8ca91076.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>神经网络的损失函数还是沿用了交叉熵损失函数</p>
-<p><img src="https://pic.imgdb.cn/item/6718c278d29ded1a8cbb8874.png" srcset="/img/loading.gif" lazyload></p>
-<p>下面对于梯度下降的公式推导有点点复杂…</p>
-<p>反向第一层的推导相对来说较为简单：</p>
-<p><img src="https://pic.imgdb.cn/item/6718c2ded29ded1a8cbbf2d3.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://pic.imgdb.cn/item/6718c312d29ded1a8cbc2692.png" srcset="/img/loading.gif" lazyload></p>
-<p>反向第二层：</p>
-<p><img src="https://pic.imgdb.cn/item/6718c34ed29ded1a8cbc685e.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://pic.imgdb.cn/item/6718c37dd29ded1a8cbc9e9a.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://pic.imgdb.cn/item/6718c39dd29ded1a8cbcc581.png" srcset="/img/loading.gif" lazyload></p>
-<p>Back Propagation 总结：</p>
-<p><img src="https://pic.imgdb.cn/item/6718c3c7d29ded1a8cbcef95.png" srcset="/img/loading.gif" lazyload></p>
-<p>矩阵形式表示：</p>
-<p><img src="https://pic.imgdb.cn/item/6718c3fad29ded1a8cbd263b.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://pic.imgdb.cn/item/6718c447d29ded1a8cbd8288.png" srcset="/img/loading.gif" lazyload></p>
-<p>神经网络公式总结:</p>
-<p><img src="https://pic.imgdb.cn/item/6718c463d29ded1a8cbda482.png" srcset="/img/loading.gif" lazyload></p>
-<p>去年的视频才看到这里，有空赶一下进度，你最近学习太不努力了！！！</p>
-<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1h34y1M7QZ?t=6100.6">https://www.bilibili.com/video/BV1h34y1M7QZ?t=6100.6</a></p>
+                <p>本次实验需要实现一个简单的神经网络，并使用梯度下降法训练。</p>
+<p>遇到了<code>Xavier初始化</code>,找到了一篇学习资料：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_67720621/article/details/138045784">https://blog.csdn.net/qq_67720621/article/details/138045784</a></p>
+<p><img src="https://pic.imgdb.cn/item/6718e4c9d29ded1a8ce31af9.png" srcset="/img/loading.gif" lazyload></p>
+<p>networkBackward 函数需要对照课件好好学习一下</p>
+<h3 id="实验代码"><a href="#实验代码" class="headerlink" title="实验代码"></a>实验代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><br><span class="hljs-comment"># Utilities</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">onehotEncoder</span>(<span class="hljs-params">Y, ny</span>):<br>    <span class="hljs-keyword">return</span> np.eye(ny)[Y]<br><br><span class="hljs-comment"># Xavier Initialization</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">initWeights</span>(<span class="hljs-params">M</span>):<br>    l = <span class="hljs-built_in">len</span>(M)<br>    W = []<br>    B = []<br>    <br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, l):<br>        W.append(np.random.randn(M[i-<span class="hljs-number">1</span>], M[i]) * np.sqrt(<span class="hljs-number">2.0</span>/M[i-<span class="hljs-number">1</span>]))  <span class="hljs-comment"># (M[i-1], M[i]) 表示当前权重矩阵的形状</span><br>        <span class="hljs-comment"># W.append(np.random.randn(M[i-1], M[i]) * np.sqrt(1.0/M[i-1]))  # TODO 尝试标准的Xavier初始化</span><br>        B.append(np.zeros([<span class="hljs-number">1</span>, M[i]]))<br>        <br>    <span class="hljs-keyword">return</span> W, B<br><br><span class="hljs-comment"># Forward propagation</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">networkForward</span>(<span class="hljs-params">X, W, B</span>):<br>    l = <span class="hljs-built_in">len</span>(W)<br>    A = [X] + [<span class="hljs-literal">None</span> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(l)]<br>    <br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(l):<br>        Z = np.dot(A[i], W[i]) + B[i]<br>        <span class="hljs-comment"># Z到下一层有两种情况</span><br>        <span class="hljs-keyword">if</span> i == l-<span class="hljs-number">1</span>: <span class="hljs-comment"># 输出层使用softmax函数</span><br>            A[i+<span class="hljs-number">1</span>] = np.exp(Z) / np.<span class="hljs-built_in">sum</span>(np.exp(Z), axis=<span class="hljs-number">1</span>, keepdims=<span class="hljs-literal">True</span>)<br>        <span class="hljs-keyword">else</span>:<br>            A[i+<span class="hljs-number">1</span>] = <span class="hljs-number">1</span> / (<span class="hljs-number">1</span> + np.exp(-Z))<br>    <br>    <span class="hljs-keyword">return</span> A<br><br><span class="hljs-comment"># Backward propagation</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">networkBackward</span>(<span class="hljs-params">Y, A, W</span>):<br>    l = <span class="hljs-built_in">len</span>(W)<br>    dW = [<span class="hljs-literal">None</span> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(l)]<br>    dB = [<span class="hljs-literal">None</span> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(l)]<br>    <br>    m = Y.shape[<span class="hljs-number">0</span>]<br>    dA = A[-<span class="hljs-number">1</span>] - Y  <span class="hljs-comment"># 从最后一层往前推导</span><br>    <br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">reversed</span>(<span class="hljs-built_in">range</span>(l)):<br>        <span class="hljs-keyword">if</span> i != l-<span class="hljs-number">1</span>:<br>            dA = np.dot(dA, W[i+<span class="hljs-number">1</span>].T) * (A[i+<span class="hljs-number">1</span>]*(<span class="hljs-number">1</span>-A[i+<span class="hljs-number">1</span>])) <span class="hljs-comment"># sigmoid导数</span><br>        dW[i] = np.dot(A[i].T, dA) / m<br>        dB[i] = np.<span class="hljs-built_in">sum</span>(dA, axis=<span class="hljs-number">0</span>, keepdims=<span class="hljs-literal">True</span>) / m<br>        <br>    <span class="hljs-keyword">return</span> dW, dB<br><br><span class="hljs-comment"># Update weights by gradient descent</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">updateWeights</span>(<span class="hljs-params">W, B, dW, dB, lr</span>):<br>    l = <span class="hljs-built_in">len</span>(W)<br><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(l):<br>        W[i] -= lr * dW[i]<br>        B[i] -= lr * dB[i]<br><br>    <span class="hljs-keyword">return</span> W, B<br><br><span class="hljs-comment"># Compute regularized cost function</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">cost</span>(<span class="hljs-params">A_l, Y, W</span>):<br>    n = Y.shape[<span class="hljs-number">0</span>]<br>    c = -np.<span class="hljs-built_in">sum</span>(Y*np.log(A_l + <span class="hljs-number">1e-8</span>)) / n<br>    <br>    <span class="hljs-keyword">return</span> c<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">train</span>(<span class="hljs-params">X, Y, M, lr, iterations</span>):<br>    costs = []<br>    W, B = initWeights(M)<br><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(iterations):<br>        A = networkForward(X, W, B)<br>        c = cost(A[-<span class="hljs-number">1</span>], Y, W)<br>        dW, dB = networkBackward(Y, A, W)<br>        W, B = updateWeights(W, B, dW, dB, lr)<br><br>        <span class="hljs-keyword">if</span> i % <span class="hljs-number">100</span> == <span class="hljs-number">0</span>:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Cost after iteration %i: %f&quot;</span> %(i, c))<br>            costs.append(c)<br><br>    <span class="hljs-keyword">return</span> W, B, costs<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">predict</span>(<span class="hljs-params">X, W, B, Y</span>):<br>    Y_out = np.zeros([X.shape[<span class="hljs-number">0</span>], Y.shape[<span class="hljs-number">1</span>]])<br>    <br>    A = networkForward(X, W, B)<br>    idx = np.argmax(A[-<span class="hljs-number">1</span>], axis=<span class="hljs-number">1</span>)<br>    Y_out[<span class="hljs-built_in">range</span>(Y.shape[<span class="hljs-number">0</span>]),idx] = <span class="hljs-number">1</span><br>    <br>    <span class="hljs-keyword">return</span> Y_out<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">test</span>(<span class="hljs-params">Y, X, W, B</span>):<br>    Y_out = predict(X, W, B, Y)<br>    acc = np.mean(Y_out == Y)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Training accuracy is: %f&quot;</span> %(acc))<br>    <br>    <span class="hljs-keyword">return</span> acc<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">output</span>(<span class="hljs-params">X, W, B</span>):<br>    A = networkForward(X, W, B)<br>    <br>    Y_hat = np.expand_dims(np.argmax(A[-<span class="hljs-number">1</span>], axis=<span class="hljs-number">1</span>), axis=<span class="hljs-number">1</span>)<br>    idx = np.expand_dims(np.arange(Y_hat.shape[<span class="hljs-number">0</span>]), axis=<span class="hljs-number">1</span>)<br>    np.savetxt(<span class="hljs-string">&quot;predict.csv&quot;</span>, np.concatenate([idx, Y_hat], axis=<span class="hljs-number">1</span>), header=<span class="hljs-string">&quot;Index,ID&quot;</span>, comments=<span class="hljs-string">&#x27;&#x27;</span>, delimiter=<span class="hljs-string">&#x27;,&#x27;</span>)<br><br>iterations = <span class="hljs-number">5000</span>  <span class="hljs-comment"># Training loops</span><br>lr = <span class="hljs-number">0.08</span>          <span class="hljs-comment"># Learning rate</span><br><br>X = np.load(<span class="hljs-string">&quot;train_data.npy&quot;</span>)<br>Y = np.load(<span class="hljs-string">&quot;train_label.npy&quot;</span>)<br>(n, m) = X.shape<br>Y = onehotEncoder(Y, <span class="hljs-number">10</span>)<br><br><span class="hljs-comment"># M = [784, 25, 10]</span><br>M = [<span class="hljs-number">784</span>,<span class="hljs-number">64</span>,<span class="hljs-number">64</span>,<span class="hljs-number">10</span>]  <span class="hljs-comment"># TODO：尝试增加隐藏层来提高模型复杂度 当前模型可以达到0.86</span><br>W, B, costs = train(X, Y, M, lr, iterations)<br><br>plt.figure()<br>plt.plot(<span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(costs)), costs)<br><br>X = np.load(<span class="hljs-string">&quot;train_data.npy&quot;</span>)<br>Y = np.load(<span class="hljs-string">&quot;train_label.npy&quot;</span>)<br>Y = onehotEncoder(Y, <span class="hljs-number">10</span>)<br>test(Y, X, W, B)<br><br>X = np.load(<span class="hljs-string">&quot;test_data.npy&quot;</span>)<br>output(X, W, B)<br></code></pre></td></tr></table></figure>
+
+<p>实验效果最好为 0.86，感觉下标那里好乱啊，搞不明白</p>
 
                 
               </div>
@@ -363,8 +325,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>第七讲_神经网络</div>
-      <div>http://jrhu0048.github.io/2024/10/23/di-qi-jiang-shen-jing-wang-luo/</div>
+      <div>机器学习实验7</div>
+      <div>http://jrhu0048.github.io/2024/10/23/ji-qi-xue-xi-shi-yan-7/</div>
     </div>
     <div class="license-meta">
       
@@ -413,18 +375,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/10/23/ji-qi-xue-xi-shi-yan-7/" title="机器学习实验7">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">机器学习实验7</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/10/21/di-si-zhang-shu-zi-tu-xiang-ji-ben-yun-suan/" title="第四章：数字图像基本运算">
-                        <span class="hidden-mobile">第四章：数字图像基本运算</span>
+                      <a href="/2024/10/23/di-qi-jiang-shen-jing-wang-luo/" title="第七讲_神经网络">
+                        <span class="hidden-mobile">第七讲_神经网络</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
