@@ -19,23 +19,24 @@
   <meta name="author" content="JR.HU">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目1234567891011from Crypto.Util.number import *from gmpy2 import *p &#x3D; 1627858721743596752497831640628357323459243890844363792736407789751577427319257708507686114456632938183775129585728892845205290864">
+    <meta name="description" content="题目123456789101112131415161718192021import osfrom secrets import flagfrom Crypto.Util.number import *from Crypto.Cipher import AESm &#x3D; 8800751370242424370206649084959681730482783954700764152643359778880">
 <meta property="og:type" content="article">
-<meta property="og:title" content="WP_2024HSCCTF_CRYPTO_FUNNY">
-<meta property="og:url" content="http://jrhu0048.github.io/2024/03/09/ctf/wp-2024hscctf-crypto-funny/index.html">
+<meta property="og:title" content="2024_VCTF_crypto_狂飙">
+<meta property="og:url" content="http://jrhu0048.github.io/2024/03/18/2024-vctf-crypto-kuang-biao/index.html">
 <meta property="og:site_name" content="CHARMMY">
-<meta property="og:description" content="题目1234567891011from Crypto.Util.number import *from gmpy2 import *p &#x3D; 1627858721743596752497831640628357323459243890844363792736407789751577427319257708507686114456632938183775129585728892845205290864">
+<meta property="og:description" content="题目123456789101112131415161718192021import osfrom secrets import flagfrom Crypto.Util.number import *from Crypto.Cipher import AESm &#x3D; 8800751370242424370206649084959681730482783954700764152643359778880">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-03-09T09:40:54.000Z">
-<meta property="article:modified_time" content="2024-10-24T00:29:17.011Z">
+<meta property="article:published_time" content="2024-03-18T00:36:21.000Z">
+<meta property="article:modified_time" content="2024-04-08T01:05:14.398Z">
 <meta property="article:author" content="JR.HU">
+<meta property="article:tag" content="VCTF">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>WP_2024HSCCTF_CRYPTO_FUNNY - CHARMMY</title>
+  <title>2024_VCTF_crypto_狂飙 - CHARMMY</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +202,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="WP_2024HSCCTF_CRYPTO_FUNNY"></span>
+            <span id="subtitle" data-typed-text="2024_VCTF_crypto_狂飙"></span>
           
         </div>
 
@@ -212,8 +213,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-03-09 17:40" pubdate>
-          2024年3月9日 下午
+        <time datetime="2024-03-18 08:36" pubdate>
+          2024年3月18日 早上
         </time>
       </span>
     
@@ -224,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          29 字
+          239 字
         
       </span>
     
@@ -235,7 +236,7 @@
         
         
         
-          1 分钟
+          2 分钟
         
       </span>
     
@@ -272,14 +273,19 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">WP_2024HSCCTF_CRYPTO_FUNNY</h1>
+            <h1 id="seo-header">2024_VCTF_crypto_狂飙</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs ruby">from <span class="hljs-title class_">Crypto</span>.<span class="hljs-title class_">Util</span>.number import *<br>from gmpy2 import *<br><br><br>p = <span class="hljs-number">1627858721743596752497831640628357323459243890844363792736407789751577427319257708507686114456632938183775129585728892845205290864750578798354859933996208521450129131173352490118085939969385911306718129785035108056909135931322755908602656567223998858450130768625587559935064753603718657989533793373124922891077849376447589198239126291127263234784363556777780461489387706699053671315621968807065360907667815336609878856798387057891974730460404647229308105442629038061284060276648993434681114539955086828451085582033288860959729755856478065093327544217813990665326820156340461326538271909605715822484950196033809892232121330623027855970475888202583512234213349462680452400729903400494519431590431864717223438807093669836615356855072370571595889807712166659061190031457954071146645411277702230847389264989391715763232453605404095019402186331633202953693057641475300619482863265936513394341066776619336452923951439714749067348507</span><br>q = <span class="hljs-number">165059760196977338034268528857897083190717585647808271832795575354736221674892279730906525407442580833042731114617534865267230347093979480666213073939602212663043286794259410177026619955285626139270678815060566416554620185859901611571955490060241822054715533030464833509114500388615748465579240918292431860839</span><br>c = <span class="hljs-number">209347444484196477254668267578954904181293909211985372842733666165076889646025992007884927283300662833989678431462547742385291078285045060028956748455410812196305788814280968487973559115983082461315009316488143477261307107939530267533197821947240438534411830018967506368459544025037634267899970815198992392565948727381322854560823769432552779881938316107779842525092269591932257206582810678457433166038809740255591841951300818106018061065936083887559841543250701094558114335651396741896281230175124133873529005816838785880680073159461666783649744640398010841282229366323100807220116460976549981263966530038289223576133865992894885483308732021144420507955669760623032114718333853671281281221009397028372653797668774820725717817362383394165014402977767667433542733963298092312930702496796235196487999167666133884266829605503363510544384236303968829214389757297563873395131798724306227675722494797069994655456021649231626359765579028950908065367760981736933167557841586896807116262630848742514005606289980676609588756946993271763119859088002784499062149533167332388600036550273743940503131248513795389688869470432261503038708892320267815658450917855334244502333938120781251564676408212996623419957317150267768978807968208353379334556945</span><br><br>d = inverse(<span class="hljs-number">65537</span>, q - <span class="hljs-number">1</span>)<br>m = powmod(c, d, q)<br>print(long_to_bytes(m))<br></code></pre></td></tr></table></figure>
-<h2 id="解"><a href="#解" class="headerlink" title="解"></a>解</h2><p>直接运行就行</p>
+                <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">from</span> secrets <span class="hljs-keyword">import</span> flag<br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">from</span> Crypto.Cipher <span class="hljs-keyword">import</span> AES<br>m = <span class="hljs-number">88007513702424243702066490849596817304827839547007641526433597788800212065249</span><br>key = os.urandom(<span class="hljs-number">24</span>)<br>key = bytes_to_long(key)<br>n=m % key<br>flag += (<span class="hljs-number">16</span> - <span class="hljs-built_in">len</span>(flag) % <span class="hljs-number">16</span>) * <span class="hljs-string">b&#x27;\x00&#x27;</span><br>iv = os.urandom(<span class="hljs-number">16</span>)<br>aes = AES.new(key,AES.MODE_CBC,iv)<br>enc_flag = aes.encrypt(flag)<br><br><span class="hljs-built_in">print</span>(n)<br><span class="hljs-built_in">print</span>(enc_flag)<br><span class="hljs-built_in">print</span>(iv)<br><br><br><span class="hljs-comment">#103560843006078708944833658339172896192389513625588</span><br><span class="hljs-comment">#b&#x27;\xfc\x87\xcb\x8e\x9d\x1a\x17\x86\xd9~\x16)\xbfU\x98D\xfe\x8f\xde\x9c\xb0\xd1\x9e\xe7\xa7\xefiY\x95C\x14\x13C@j1\x9d\x08\xd9\xe7W&gt;F2\x96cm\xeb&#x27;</span><br><span class="hljs-comment">#b&#x27;UN\x1d\xe2r&lt;\x1db\x00\xdb\x9a\x84\x1e\x82\xf0\x86&#x27;</span><br></code></pre></td></tr></table></figure>
 
+<p>由已知我们可以得到</p>
+<p>m-s*key &#x3D; n</p>
+<p>将 m-n 分解即可得到 s*key 的组合</p>
+<p>根据一个字节 8 位，得到 key 为 192 位</p>
+<p>然后可以利用 sage 进行爆破即可</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#sage</span><br><span class="hljs-keyword">from</span> Crypto.Cipher <span class="hljs-keyword">import</span> AES<br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br>n = <span class="hljs-number">103560843006078708944833658339172896192389513625588</span><br>m = <span class="hljs-number">88007513702424243702066490849596817304827839547007641526433597788800212065249</span><br>key = m-n<br><span class="hljs-comment"># 88007513702424243702066490746035974298749130602173983187260701596410698439661</span><br>enc = <span class="hljs-string">b&#x27;\xfc\x87\xcb\x8e\x9d\x1a\x17\x86\xd9~\x16)\xbfU\x98D\xfe\x8f\xde\x9c\xb0\xd1\x9e\xe7\xa7\xefiY\x95C\x14\x13C@j1\x9d\x08\xd9\xe7W&gt;F2\x96cm\xeb&#x27;</span><br>iv = <span class="hljs-string">b&#x27;UN\x1d\xe2r&lt;\x1db\x00\xdb\x9a\x84\x1e\x82\xf0\x86&#x27;</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> key.divisors():<br>    i=long_to_bytes(i,<span class="hljs-number">24</span>)<br>    aes=AES.new(i,AES.MODE_CBC,iv)<br>    flag=aes.decrypt(enc)<br>    <span class="hljs-keyword">if</span> <span class="hljs-string">b&#x27;flag&#123;&#x27;</span> <span class="hljs-keyword">in</span> flag:<br>        <span class="hljs-built_in">print</span>(flag)<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -309,6 +315,13 @@
     </div>
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/VCTF/" class="print-no-link">#VCTF</a>
+      
+    </div>
+  
 </div>
 
 
@@ -317,8 +330,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>WP_2024HSCCTF_CRYPTO_FUNNY</div>
-      <div>http://jrhu0048.github.io/2024/03/09/ctf/wp-2024hscctf-crypto-funny/</div>
+      <div>2024_VCTF_crypto_狂飙</div>
+      <div>http://jrhu0048.github.io/2024/03/18/2024-vctf-crypto-kuang-biao/</div>
     </div>
     <div class="license-meta">
       
@@ -330,13 +343,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年3月9日</div>
+          <div>2024年3月18日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年10月24日</div>
+          <div>2024年4月8日</div>
         </div>
       
       
@@ -367,9 +380,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/03/09/ctf/wp-2024hscctf-crypto-real-sign-in/" title="WP_2024HSCCTF_CRYPTO_REAL_SIGN_IN">
+                      <a href="/2024/03/20/codingnote/" title="coding_note">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">WP_2024HSCCTF_CRYPTO_REAL_SIGN_IN</span>
+                        <span class="hidden-mobile">coding_note</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -377,8 +390,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/03/07/python-zhong-stylecloud-bao-de-shi-yong/" title="python中stylecloud包的使用">
-                        <span class="hidden-mobile">python中stylecloud包的使用</span>
+                      <a href="/2024/03/11/gmpy2-ku-de-chang-yong-han-shu-zong-jie/" title="gmpy2库的常用函数总结">
+                        <span class="hidden-mobile">gmpy2库的常用函数总结</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
