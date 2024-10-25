@@ -1,0 +1,811 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/hui.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="JR.HU">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Topic 与 Service关于ros中的服务通信机制，是一种同步通信，相较于话题通信，区别如下：  ROS学习笔记6~Topic(话题) 和Service(服务)的区别 话题通信适用于不断更新的数据传输相关的应用场景    对比项 发布&#x2F;订阅 请求&#x2F;响应    通信模式 发布者发布消息，订阅者接收消息，多对多关系 客户端向服务器发送请求，服务器返回响应，一对多关系（一个 S">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ROS实验报告二笔记">
+<meta property="og:url" content="http://jrhu0048.github.io/2024/10/18/ros/ros-shi-yan-bao-gao-er/index.html">
+<meta property="og:site_name" content="CHARMMY">
+<meta property="og:description" content="Topic 与 Service关于ros中的服务通信机制，是一种同步通信，相较于话题通信，区别如下：  ROS学习笔记6~Topic(话题) 和Service(服务)的区别 话题通信适用于不断更新的数据传输相关的应用场景    对比项 发布&#x2F;订阅 请求&#x2F;响应    通信模式 发布者发布消息，订阅者接收消息，多对多关系 客户端向服务器发送请求，服务器返回响应，一对多关系（一个 S">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/671a37f7d29ded1a8c0c5199.jpg">
+<meta property="article:published_time" content="2024-10-18T03:08:04.000Z">
+<meta property="article:modified_time" content="2024-10-25T09:41:44.584Z">
+<meta property="article:author" content="JR.HU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/671a37f7d29ded1a8c0c5199.jpg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>ROS实验报告二笔记 - CHARMMY</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jrhu0048.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>CHARMMY</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="ROS实验报告二笔记"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-10-18 11:08" pubdate>
+          2024年10月18日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          24 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">ROS实验报告二笔记</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="Topic-与-Service"><a href="#Topic-与-Service" class="headerlink" title="Topic 与 Service"></a>Topic 与 Service</h3><p>关于ros中的服务通信机制，是一种同步通信，相较于话题通信，区别如下：</p>
+<p><img src="https://pic.imgdb.cn/item/6711d193d29ded1a8c1e69d6.png" srcset="/img/loading.gif" lazyload></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/shouwangyunkai666/article/details/96454543">ROS学习笔记6~Topic(话题) 和Service(服务)的区别</a></p>
+<p><strong>话题通信适用于不断更新的数据传输相关的应用场景</strong></p>
+<table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>发布&#x2F;订阅</th>
+<th>请求&#x2F;响应</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>通信模式</td>
+<td>发布者发布消息，订阅者接收消息，多对多关系</td>
+<td>客户端向服务器发送请求，服务器返回响应，一对多关系（一个 Server）</td>
+</tr>
+<tr>
+<td>同步性</td>
+<td>异步</td>
+<td>同步</td>
+</tr>
+<tr>
+<td>底层协议</td>
+<td>ROSTCP&#x2F;ROSUDP</td>
+<td>ROSTCP&#x2F;ROSUDP</td>
+</tr>
+<tr>
+<td>缓冲区</td>
+<td>有</td>
+<td>无</td>
+</tr>
+<tr>
+<td>实时性</td>
+<td>弱</td>
+<td>强</td>
+</tr>
+<tr>
+<td>节点关系</td>
+<td>多对多</td>
+<td>一对多</td>
+</tr>
+<tr>
+<td>通信数据</td>
+<td>msg</td>
+<td>srv</td>
+</tr>
+<tr>
+<td>使用场景</td>
+<td>连续高频的数据发布与接收，如雷达、里程计</td>
+<td>偶尔调用或执行某一项特定功能，如拍照、语音识别</td>
+</tr>
+</tbody></table>
+<h4 id="Topic通信存在缺陷"><a href="#Topic通信存在缺陷" class="headerlink" title="Topic通信存在缺陷"></a>Topic通信存在缺陷</h4><p>(1)无法确认发布信息是否被收到</p>
+<p>(2)有些类型的消息（例如相机节点发布的消息），按照一定频率发布，通常会占用比较大的带宽，造成资源浪费</p>
+<p><a target="_blank" rel="noopener" href="https://tr-ros-tutorial.readthedocs.io/zh-cn/latest/_source/basics/1.5_ROS_Service.html#id1">ROS Service</a></p>
+<h4 id="Service通信的特点"><a href="#Service通信的特点" class="headerlink" title="Service通信的特点"></a>Service通信的特点</h4><p>(1)Service使用 请求-查询式 的通信模型，只有接受请求才执行服务，简单而且高效</p>
+<p>(2)Service通信实现的是 一对一 通信，信息流是双向的，包含两部分，Client与Server</p>
+<p>(3)Service是 同步 通信方式</p>
+<p><img src="https://pic.imgdb.cn/item/6711d323d29ded1a8c2200d8.png" srcset="/img/loading.gif" lazyload alt="ROS Node Service通信的图形化表示"></p>
+<p>服务通信较之于话题通信更简单些，理论模型如下图所示，该模型中涉及到三个角色:</p>
+<ul>
+<li>ROS master(管理者)</li>
+<li>Server(服务端)</li>
+<li>Client(客户端)</li>
+</ul>
+<p><img src="https://pic.imgdb.cn/item/6711d455d29ded1a8c23b843.png" srcset="/img/loading.gif" lazyload></p>
+<p>参考链接：<a target="_blank" rel="noopener" href="http://www.autolabor.com.cn/book/ROSTutorials/di-2-zhang-ros-jia-gou-she-ji/23-fu-wu-tong-xin.html">http://www.autolabor.com.cn/book/ROSTutorials/di-2-zhang-ros-jia-gou-she-ji/23-fu-wu-tong-xin.html</a></p>
+<h3 id="实验二要求"><a href="#实验二要求" class="headerlink" title="实验二要求"></a>实验二要求</h3><p>实现一个复杂的服务（services）通信，机器视觉识别行人，并返回其坐标。实验报告需提交PDF，文件命名方式：学号+专业姓名+实验1。提交日期&#x2F;方式：11.1号通过机房电脑系统提交。</p>
+<p>要求一：自定义通信srv格式，分析services的通信机制。</p>
+<p>要求二：需使用ament_python构建功能包，实现行人识别，并返回其中心点。</p>
+<p>要求三：需使用ament_CMake构建功能包，实现行人识别，并返回其中心点。</p>
+<p>要求四：PDF附上关键功能代码。</p>
+<p>这里的行人检测可以借助于Opencv自带的函数功能，链接如下：<a target="_blank" rel="noopener" href="https://blog.csdn.net/hasque2019/article/details/124427656">https://blog.csdn.net/hasque2019/article/details/124427656</a><br>是一个运动物体检测的功能</p>
+<h4 id="创建功能包"><a href="#创建功能包" class="headerlink" title="创建功能包"></a>创建功能包</h4><p>在homework工作空间下创建功能包hw_2：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs markdown">jr<span class="hljs-emphasis">_hu@hu1scp:~/homework/src$ ros2 pkg create hw_</span>2 --build-type ament<span class="hljs-emphasis">_python --dependencies rclpy</span><br><span class="hljs-emphasis">going to create a new package</span><br><span class="hljs-emphasis">package name: hw_</span>2<br>destination directory: /home/jr<span class="hljs-emphasis">_hu/homework/src</span><br><span class="hljs-emphasis">package format: 3</span><br><span class="hljs-emphasis">version: 0.0.0</span><br><span class="hljs-emphasis">description: TODO: Package description</span><br><span class="hljs-emphasis">maintainer: [&#x27;jr_</span>hu <span class="language-xml">&lt;jr_hu@todo.todo&gt;</span>&#x27;]<br>licenses: [&#x27;TODO: License declaration&#x27;]<br>build type: ament<span class="hljs-emphasis">_python</span><br><span class="hljs-emphasis">dependencies: [&#x27;rclpy&#x27;]</span><br><span class="hljs-emphasis">creating folder ./hw_</span>2<br>creating ./hw<span class="hljs-emphasis">_2/package.xml</span><br><span class="hljs-emphasis">creating source folder</span><br><span class="hljs-emphasis">creating folder ./hw_</span>2/hw<span class="hljs-emphasis">_2</span><br><span class="hljs-emphasis">creating ./hw_</span>2/setup.py<br>creating ./hw<span class="hljs-emphasis">_2/setup.cfg</span><br><span class="hljs-emphasis">creating folder ./hw_</span>2/resource<br>creating ./hw<span class="hljs-emphasis">_2/resource/hw_</span>2<br>creating ./hw<span class="hljs-emphasis">_2/hw_</span>2/<span class="hljs-strong">__init__</span>.py<br>creating folder ./hw<span class="hljs-emphasis">_2/test</span><br><span class="hljs-emphasis">creating ./hw_</span>2/test/test<span class="hljs-emphasis">_copyright.py</span><br><span class="hljs-emphasis">creating ./hw_</span>2/test/test<span class="hljs-emphasis">_flake8.py</span><br><span class="hljs-emphasis">creating ./hw_</span>2/test/test<span class="hljs-emphasis">_pep257.py</span><br><span class="hljs-emphasis"></span><br><span class="hljs-emphasis">[WARNING]: Unknown license &#x27;TODO: License declaration&#x27;.  This has been set in the package.xml, but no LICENSE file has been created.</span><br><span class="hljs-emphasis">It is recommended to use one of the ament license identitifers:</span><br><span class="hljs-emphasis">Apache-2.0</span><br><span class="hljs-emphasis">BSL-1.0</span><br><span class="hljs-emphasis">BSD-2.0</span><br><span class="hljs-emphasis">BSD-2-Clause</span><br><span class="hljs-emphasis">BSD-3-Clause</span><br><span class="hljs-emphasis">GPL-3.0-only</span><br><span class="hljs-emphasis">LGPL-3.0-only</span><br><span class="hljs-emphasis">MIT</span><br><span class="hljs-emphasis">MIT-0</span><br></code></pre></td></tr></table></figure>
+
+<p>进入hw_2文件夹下，使用code打开文件</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown">jr<span class="hljs-emphasis">_hu@hu1scp:~/homework/src$ cd hw_</span>2/<br>jr<span class="hljs-emphasis">_hu@hu1scp:~/homework/src/hw_</span>2$ code ..<br>jr<span class="hljs-emphasis">_hu@hu1scp:~/homework/src/hw_</span>2$ <br></code></pre></td></tr></table></figure>
+
+
+<h4 id="编写客户端代码"><a href="#编写客户端代码" class="headerlink" title="编写客户端代码"></a>编写客户端代码</h4><p>先使用python实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/env python3</span><br><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-keyword">import</span> rclpy                                            <span class="hljs-comment"># ROS2 Python接口库</span><br><span class="hljs-keyword">from</span> rclpy.node <span class="hljs-keyword">import</span> Node                           <span class="hljs-comment"># ROS2 节点类</span><br><span class="hljs-keyword">from</span> learning_interface.srv <span class="hljs-keyword">import</span> GetObjectPosition    <span class="hljs-comment"># 自定义的服务接口</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">objectClient</span>(<span class="hljs-title class_ inherited__">Node</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, name</span>):<br>        <span class="hljs-built_in">super</span>().__init__(name)                                                                  <span class="hljs-comment"># ROS2节点父类初始化</span><br>        self.client = self.create_client(GetObjectPosition, <span class="hljs-string">&#x27;get_target_position&#x27;</span>)<br>        <span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> self.client.wait_for_service(timeout_sec=<span class="hljs-number">1.0</span>):<br>            self.get_logger().info(<span class="hljs-string">&#x27;service not available, waiting again...&#x27;</span>)<br>        self.request = GetObjectPosition.Request()<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">send_request</span>(<span class="hljs-params">self</span>):<br>        self.request.get = <span class="hljs-literal">True</span><br>        self.future = self.client.call_async(self.request)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>(<span class="hljs-params">args=<span class="hljs-literal">None</span></span>):<br>    rclpy.init(args=args)                             <span class="hljs-comment"># ROS2 Python接口初始化</span><br>    node = objectClient(<span class="hljs-string">&quot;service_client&quot;</span>)       <span class="hljs-comment"># 创建ROS2节点对象并进行初始化</span><br>    node.send_request()<br>    <br>    <span class="hljs-keyword">while</span> rclpy.ok():<br>        rclpy.spin_once(node)<br><br>        <span class="hljs-keyword">if</span> node.future.done():<br>            <span class="hljs-keyword">try</span>:<br>                response = node.future.result()<br>            <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>                node.get_logger().info(<br>                    <span class="hljs-string">&#x27;Service call failed %r&#x27;</span> % (e,))<br>            <span class="hljs-keyword">else</span>:<br>                node.get_logger().info(<br>                    <span class="hljs-string">&#x27;Result of object position:\n x: %d y: %d&#x27;</span> %<br>                    (response.x, response.y))<br>            <span class="hljs-keyword">break</span><br>    node.destroy_node()                              <span class="hljs-comment"># 销毁节点对象</span><br>    rclpy.shutdown()                                 <span class="hljs-comment"># 关闭ROS2 Python接口</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="编写服务代码"><a href="#编写服务代码" class="headerlink" title="编写服务代码"></a>编写服务代码</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/env python3</span><br><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-keyword">import</span> rclpy                                           <span class="hljs-comment"># ROS2 Python接口库</span><br><span class="hljs-keyword">from</span> rclpy.node <span class="hljs-keyword">import</span> Node                            <span class="hljs-comment"># ROS2 节点类</span><br><span class="hljs-keyword">from</span> sensor_msgs.msg <span class="hljs-keyword">import</span> Image                      <span class="hljs-comment"># 图像消息类型</span><br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np                                     <span class="hljs-comment"># Python数值计算库</span><br><span class="hljs-keyword">from</span> cv_bridge <span class="hljs-keyword">import</span> CvBridge                         <span class="hljs-comment"># ROS与OpenCV图像转换类</span><br><span class="hljs-keyword">import</span> cv2                                             <span class="hljs-comment"># Opencv图像处理库</span><br><span class="hljs-keyword">from</span> learning_interface.srv <span class="hljs-keyword">import</span> GetObjectPosition   <span class="hljs-comment"># 自定义的服务接口</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ImageSubscriber</span>(<span class="hljs-title class_ inherited__">Node</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, name</span>):<br>        <span class="hljs-built_in">super</span>().__init__(name)                                          <span class="hljs-comment"># ROS2节点父类初始化</span><br>        self.sub = self.create_subscription(<br>            Image, <span class="hljs-string">&#x27;image_raw&#x27;</span>, self.listener_callback, <span class="hljs-number">10</span>)             <span class="hljs-comment"># 创建订阅者对象（消息类型、话题名、订阅者回调函数、队列长度）</span><br>        self.cv_bridge = CvBridge()                                     <span class="hljs-comment"># 创建一个图像转换对象，用于OpenCV图像与ROS的图像消息的互相转换</span><br><br>        self.srv = self.create_service(GetObjectPosition,               <span class="hljs-comment"># 创建服务器对象（接口类型、服务名、服务器回调函数）</span><br>                                       <span class="hljs-string">&#x27;get_target_position&#x27;</span>,<br>                                       self.object_position_callback)    <br>        self.objectX = <span class="hljs-number">0</span><br>        self.objectY = <span class="hljs-number">0</span>            <br>                          <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">graying</span>(<span class="hljs-params">self, image</span>):<br>        height,width = image.shape[:<span class="hljs-number">2</span>]  <span class="hljs-comment"># 获取图像高、宽</span><br>        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)   <span class="hljs-comment"># 图像从BGR颜色模型转换为灰度模型</span><br>           <br>        <span class="hljs-comment"># 应用sobel算子通过计算图像的梯度来实现边缘检测</span><br>        sobelx = cv2.Sobel(gray,cv2.CV_64F,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,ksize=<span class="hljs-number">3</span>)<br>        sobely = cv2.Sobel(gray,cv2.CV_64F,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,ksize=<span class="hljs-number">3</span>)<br>        gradient_magnitude = cv2.magnitude(sobelx,sobely)<br>        _, thresh = cv2.threshold(gradient_magnitude,<span class="hljs-number">20</span>,<span class="hljs-number">255</span>,cv2.THRESH_BINARY)  <span class="hljs-comment"># 阈值处理</span><br>        cv2.imshow(<span class="hljs-string">&#x27;sobel edge detection&#x27;</span>,thresh)<br>        cv2.waitKey(<span class="hljs-number">5</span>)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">object_detect</span>(<span class="hljs-params">self, image</span>):<br>        kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(<span class="hljs-number">3</span>,<span class="hljs-number">3</span>))<br>		<span class="hljs-comment">#创建混合高斯模型用于背景建模</span><br>        fgbg = cv2.createBackgroundSubtractorMOG2()<br><br>        <span class="hljs-keyword">while</span>(<span class="hljs-literal">True</span>):<br>            fgmask = fgbg.apply(image)<br>    	    <span class="hljs-comment">#形态学开运算去噪点</span><br>            fgmask = cv2.morphologyEx(fgmask, cv2.MORPH_OPEN, kernel)<br>    	    <span class="hljs-comment">#寻找视频中的轮廓</span><br>            im, contours, hierarchy = cv2.findContours(fgmask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)<br><br>            <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> contours:<br>        	    <span class="hljs-comment">#计算各轮廓的周长</span><br>                perimeter = cv2.arcLength(c,<span class="hljs-literal">True</span>)<br>                <span class="hljs-keyword">if</span> perimeter &gt; <span class="hljs-number">188</span>:<br>            	    <span class="hljs-comment">#找到一个直矩形（不会旋转）</span><br>                    x,y,w,h = cv2.boundingRect(c)<br>            	    <span class="hljs-comment">#画出这个矩形</span><br>                    cv2.rectangle(frame,(x,y),(x+w,y+h),(<span class="hljs-number">0</span>,<span class="hljs-number">255</span>,<span class="hljs-number">0</span>),<span class="hljs-number">2</span>)<br>                    self.objectX = <span class="hljs-built_in">int</span>(x+w/<span class="hljs-number">2</span>)<br>                    self.objectY = <span class="hljs-built_in">int</span>(y+h/<span class="hljs-number">2</span>)<br><br>            cv2.imshow(<span class="hljs-string">&#x27;frame&#x27;</span>,frame)<br>            cv2.imshow(<span class="hljs-string">&#x27;fgmask&#x27;</span>, fgmask)<br>            k = cv2.waitKey(<span class="hljs-number">150</span>) &amp; <span class="hljs-number">0xff</span><br>            <span class="hljs-keyword">if</span> k == <span class="hljs-number">27</span>:<br>                <span class="hljs-keyword">break</span><br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">listener_callback</span>(<span class="hljs-params">self, data</span>):<br>        self.get_logger().info(<span class="hljs-string">&#x27;Receiving video frame&#x27;</span>)               <span class="hljs-comment"># 输出日志信息，提示已进入回调函数</span><br>        image = self.cv_bridge.imgmsg_to_cv2(data, <span class="hljs-string">&#x27;bgr8&#x27;</span>)            <span class="hljs-comment"># 将ROS的图像消息转化成OpenCV图像</span><br>        self.object_detect(image)                                     <br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">object_position_callback</span>(<span class="hljs-params">self, request, response</span>):            <span class="hljs-comment"># 创建回调函数，执行收到请求后对数据的处理</span><br>        <span class="hljs-keyword">if</span> request.get == <span class="hljs-literal">True</span>:<br>            response.x = self.objectX                                 <span class="hljs-comment"># 目标物体的XY坐标</span><br>            response.y = self.objectY<br>            self.get_logger().info(<span class="hljs-string">&#x27;Object position\nx: %d y: %d&#x27;</span> %<br>                                   (response.x, response.y))          <span class="hljs-comment"># 输出日志信息，提示已经反馈</span><br>        <span class="hljs-keyword">else</span>:<br>            response.x = <span class="hljs-number">0</span><br>            response.y = <span class="hljs-number">0</span><br>            self.get_logger().info(<span class="hljs-string">&#x27;Invalid command&#x27;</span>)                 <span class="hljs-comment"># 输出日志信息，提示已经反馈</span><br>        <span class="hljs-keyword">return</span> response<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>(<span class="hljs-params">args=<span class="hljs-literal">None</span></span>):                                 <span class="hljs-comment"># ROS2节点主入口main函数</span><br>    rclpy.init(args=args)                            <span class="hljs-comment"># ROS2 Python接口初始化</span><br>    node = ImageSubscriber(<span class="hljs-string">&quot;service_server&quot;</span>)         <span class="hljs-comment"># 创建ROS2节点对象并进行初始化</span><br>    rclpy.spin(node)                                 <span class="hljs-comment"># 循环等待ROS2退出</span><br>    node.destroy_node()                              <span class="hljs-comment"># 销毁节点对象</span><br>    rclpy.shutdown()                                 <span class="hljs-comment"># 关闭ROS2 Python接口</span><br></code></pre></td></tr></table></figure>
+
+
+<p>出现报错是因为cv版本与上述参考博客的版本不一</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">ValueError: not enough values to unpack (expected 3, got 2)<br></code></pre></td></tr></table></figure>
+
+<p>在OpenCV 4.x版本中，cv2.findContours 函数只返回两个值：contours 和 hierarchy。而在OpenCV 3.x版本中，它返回三个值：image, contours, 和 hierarchy</p>
+<h4 id="修正后的服务代码"><a href="#修正后的服务代码" class="headerlink" title="修正后的服务代码"></a>修正后的服务代码</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/env python3</span><br><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-keyword">import</span> rclpy                                           <span class="hljs-comment"># ROS2 Python接口库</span><br><span class="hljs-keyword">from</span> rclpy.node <span class="hljs-keyword">import</span> Node                            <span class="hljs-comment"># ROS2 节点类</span><br><span class="hljs-keyword">from</span> sensor_msgs.msg <span class="hljs-keyword">import</span> Image                      <span class="hljs-comment"># 图像消息类型</span><br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np                                     <span class="hljs-comment"># Python数值计算库</span><br><span class="hljs-keyword">from</span> cv_bridge <span class="hljs-keyword">import</span> CvBridge                         <span class="hljs-comment"># ROS与OpenCV图像转换类</span><br><span class="hljs-keyword">import</span> cv2                                             <span class="hljs-comment"># Opencv图像处理库</span><br><span class="hljs-keyword">from</span> learning_interface.srv <span class="hljs-keyword">import</span> GetObjectPosition   <span class="hljs-comment"># 自定义的服务接口</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ImageSubscriber</span>(<span class="hljs-title class_ inherited__">Node</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, name</span>):<br>        <span class="hljs-built_in">super</span>().__init__(name)                                          <span class="hljs-comment"># ROS2节点父类初始化</span><br>        self.sub = self.create_subscription(<br>            Image, <span class="hljs-string">&#x27;image_raw&#x27;</span>, self.listener_callback, <span class="hljs-number">10</span>)             <span class="hljs-comment"># 创建订阅者对象（消息类型、话题名、订阅者回调函数、队列长度）</span><br>        self.cv_bridge = CvBridge()                                     <span class="hljs-comment"># 创建一个图像转换对象，用于OpenCV图像与ROS的图像消息的互相转换</span><br><br>        self.srv = self.create_service(GetObjectPosition,               <span class="hljs-comment"># 创建服务器对象（接口类型、服务名、服务器回调函数）</span><br>                                       <span class="hljs-string">&#x27;get_target_position&#x27;</span>,<br>                                       self.object_position_callback)    <br>        self.objectX = <span class="hljs-number">0</span><br>        self.objectY = <span class="hljs-number">0</span>            <br>                          <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">graying</span>(<span class="hljs-params">self, image</span>):<br>        height, width = image.shape[:<span class="hljs-number">2</span>]  <span class="hljs-comment"># 获取图像高、宽</span><br>        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)   <span class="hljs-comment"># 图像从BGR颜色模型转换为灰度模型</span><br>           <br>        <span class="hljs-comment"># 应用sobel算子通过计算图像的梯度来实现边缘检测</span><br>        sobelx = cv2.Sobel(gray, cv2.CV_64F, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, ksize=<span class="hljs-number">3</span>)<br>        sobely = cv2.Sobel(gray, cv2.CV_64F, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, ksize=<span class="hljs-number">3</span>)<br>        gradient_magnitude = cv2.magnitude(sobelx, sobely)<br>        _, thresh = cv2.threshold(gradient_magnitude, <span class="hljs-number">20</span>, <span class="hljs-number">255</span>, cv2.THRESH_BINARY)  <span class="hljs-comment"># 阈值处理</span><br>        cv2.imshow(<span class="hljs-string">&#x27;sobel edge detection&#x27;</span>, thresh)<br>        cv2.waitKey(<span class="hljs-number">1</span>)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">object_detect</span>(<span class="hljs-params">self, image</span>):<br>        kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (<span class="hljs-number">3</span>, <span class="hljs-number">3</span>))<br>        <span class="hljs-comment"># 创建混合高斯模型用于背景建模</span><br>        fgbg = cv2.createBackgroundSubtractorMOG2()<br><br>        fgmask = fgbg.apply(image)<br>        <span class="hljs-comment"># 形态学开运算去噪点</span><br>        fgmask = cv2.morphologyEx(fgmask, cv2.MORPH_OPEN, kernel)<br>        <span class="hljs-comment"># 寻找视频中的轮廓</span><br>        contours, hierarchy = cv2.findContours(fgmask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)<br><br>        <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> contours:<br>            <span class="hljs-comment"># 计算各轮廓的周长</span><br>            perimeter = cv2.arcLength(c, <span class="hljs-literal">True</span>)<br>            <span class="hljs-keyword">if</span> perimeter &gt; <span class="hljs-number">2236.5</span>:   <span class="hljs-comment"># 这个参数需要根据设备和场景调整适配</span><br>                <span class="hljs-comment"># 找到一个直矩形（不会旋转）</span><br>                x, y, w, h = cv2.boundingRect(c)<br>                <span class="hljs-comment"># 画出这个矩形</span><br>                cv2.rectangle(image, (x, y), (x + w, y + h), (<span class="hljs-number">0</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0</span>), <span class="hljs-number">2</span>)<br>                self.objectX = <span class="hljs-built_in">int</span>(x + w / <span class="hljs-number">2</span>)<br>                self.objectY = <span class="hljs-built_in">int</span>(y + h / <span class="hljs-number">2</span>)<br><br>        cv2.imshow(<span class="hljs-string">&#x27;frame&#x27;</span>, image)<br>        cv2.imshow(<span class="hljs-string">&#x27;fgmask&#x27;</span>, fgmask)<br>        k = cv2.waitKey(<span class="hljs-number">1</span>) &amp; <span class="hljs-number">0xff</span><br>        <span class="hljs-keyword">if</span> k == <span class="hljs-number">27</span>:<br>            cv2.destroyAllWindows()<br>            rclpy.shutdown()<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">listener_callback</span>(<span class="hljs-params">self, data</span>):<br>        self.get_logger().info(<span class="hljs-string">&#x27;Receiving video frame&#x27;</span>)               <span class="hljs-comment"># 输出日志信息，提示已进入回调函数</span><br>        image = self.cv_bridge.imgmsg_to_cv2(data, <span class="hljs-string">&#x27;bgr8&#x27;</span>)            <span class="hljs-comment"># 将ROS的图像消息转化成OpenCV图像</span><br>        self.object_detect(image)                                     <br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">object_position_callback</span>(<span class="hljs-params">self, request, response</span>):            <span class="hljs-comment"># 创建回调函数，执行收到请求后对数据的处理</span><br>        <span class="hljs-keyword">if</span> request.get == <span class="hljs-literal">True</span>:<br>            response.x = self.objectX                                 <span class="hljs-comment"># 目标物体的XY坐标</span><br>            response.y = self.objectY<br>            self.get_logger().info(<span class="hljs-string">&#x27;Object position\nx: %d y: %d&#x27;</span> %<br>                                   (response.x, response.y))          <span class="hljs-comment"># 输出日志信息，提示已经反馈</span><br>        <span class="hljs-keyword">else</span>:<br>            response.x = <span class="hljs-number">0</span><br>            response.y = <span class="hljs-number">0</span><br>            self.get_logger().info(<span class="hljs-string">&#x27;Invalid command&#x27;</span>)                 <span class="hljs-comment"># 输出日志信息，提示已经反馈</span><br>        <span class="hljs-keyword">return</span> response<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>(<span class="hljs-params">args=<span class="hljs-literal">None</span></span>):                                 <span class="hljs-comment"># ROS2节点主入口main函数</span><br>    rclpy.init(args=args)                            <span class="hljs-comment"># ROS2 Python接口初始化</span><br>    node = ImageSubscriber(<span class="hljs-string">&quot;service_server&quot;</span>)         <span class="hljs-comment"># 创建ROS2节点对象并进行初始化</span><br>    rclpy.spin(node)                                 <span class="hljs-comment"># 循环等待ROS2退出</span><br>    node.destroy_node()                              <span class="hljs-comment"># 销毁节点对象</span><br>    rclpy.shutdown()                                 <span class="hljs-comment"># 关闭ROS2 Python接口</span><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    main()<br></code></pre></td></tr></table></figure>
+
+<p>效果并不好,换一个</p>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_57442556/article/details/141415970?fromshare=blogdetail&sharetype=blogdetail&sharerId=141415970&sharerefer=PC&sharesource=m0_74235619&sharefrom=from_link">https://blog.csdn.net/m0_57442556/article/details/141415970?fromshare=blogdetail&amp;sharetype=blogdetail&amp;sharerId=141415970&amp;sharerefer=PC&amp;sharesource=m0_74235619&amp;sharefrom=from_link</a></p>
+<h4 id="另一种思路的服务代码"><a href="#另一种思路的服务代码" class="headerlink" title="另一种思路的服务代码"></a>另一种思路的服务代码</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/env python3</span><br><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-keyword">import</span> rclpy                                           <span class="hljs-comment"># ROS2 Python接口库</span><br><span class="hljs-keyword">from</span> rclpy.node <span class="hljs-keyword">import</span> Node                            <span class="hljs-comment"># ROS2 节点类</span><br><span class="hljs-keyword">from</span> sensor_msgs.msg <span class="hljs-keyword">import</span> Image                      <span class="hljs-comment"># 图像消息类型</span><br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np                                     <span class="hljs-comment"># Python数值计算库</span><br><span class="hljs-keyword">from</span> cv_bridge <span class="hljs-keyword">import</span> CvBridge                         <span class="hljs-comment"># ROS与OpenCV图像转换类</span><br><span class="hljs-keyword">import</span> cv2                                             <span class="hljs-comment"># OpenCV图像处理库</span><br><span class="hljs-keyword">from</span> learning_interface.srv <span class="hljs-keyword">import</span> GetObjectPosition   <span class="hljs-comment"># 自定义的服务接口</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ImageSubscriber</span>(<span class="hljs-title class_ inherited__">Node</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, name</span>):<br>        <span class="hljs-built_in">super</span>().__init__(name)                                          <span class="hljs-comment"># ROS2节点父类初始化</span><br>        self.sub = self.create_subscription(<br>            Image, <span class="hljs-string">&#x27;image_raw&#x27;</span>, self.listener_callback, <span class="hljs-number">10</span>)             <span class="hljs-comment"># 创建订阅者对象（消息类型、话题名、订阅者回调函数、队列长度）</span><br>        self.cv_bridge = CvBridge()                                     <span class="hljs-comment"># 创建一个图像转换对象，用于OpenCV图像与ROS的图像消息的互相转换</span><br><br>        self.srv = self.create_service(GetObjectPosition,               <span class="hljs-comment"># 创建服务器对象（接口类型、服务名、服务器回调函数）</span><br>                                       <span class="hljs-string">&#x27;get_target_position&#x27;</span>,<br>                                       self.object_position_callback)    <br>        self.objectX = <span class="hljs-number">0</span><br>        self.objectY = <span class="hljs-number">0</span>            <br>                          <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">detect</span>(<span class="hljs-params">self, image, winStride, padding, scale, useMeanshiftGrouping</span>):<br>        hog = cv2.HOGDescriptor()   <span class="hljs-comment"># 初始化方向梯度直方图描述器</span><br>        hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())  <span class="hljs-comment"># 设置SVM为一个预先训练好的行人检测器</span><br>        (rects, weights) = hog.detectMultiScale(image,<br>                                                winStride=winStride,<br>                                                padding=padding,<br>                                                scale=scale,<br>                                                useMeanshiftGrouping=useMeanshiftGrouping)    <br>        <span class="hljs-keyword">for</span> (x, y, w, h) <span class="hljs-keyword">in</span> rects:  <br>            cv2.rectangle(image, (x, y), (x + w, y + h), (<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>), <span class="hljs-number">2</span>)<br>            self.objectX = <span class="hljs-built_in">int</span>(x + w / <span class="hljs-number">2</span>)<br>            self.objectY = <span class="hljs-built_in">int</span>(y + h / <span class="hljs-number">2</span>)<br>            <br>        cv2.imshow(<span class="hljs-string">&quot;Detected People&quot;</span>, image)   <span class="hljs-comment"># 显示检测结果</span><br>        cv2.waitKey(<span class="hljs-number">1</span>)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">listener_callback</span>(<span class="hljs-params">self, data</span>):<br>        self.get_logger().info(<span class="hljs-string">&#x27;Receiving video frame&#x27;</span>)            <span class="hljs-comment"># 输出日志信息，提示已进入回调函数</span><br>        image = self.cv_bridge.imgmsg_to_cv2(data, <span class="hljs-string">&#x27;bgr8&#x27;</span>)         <span class="hljs-comment"># 将ROS的图像消息转化成OpenCV图像</span><br>        winStride = (<span class="hljs-number">8</span>, <span class="hljs-number">8</span>)  <span class="hljs-comment"># 每次行移动8个像素点，列移动8个像素点</span><br>        padding = (<span class="hljs-number">2</span>, <span class="hljs-number">2</span>)    <span class="hljs-comment"># 边缘添加像素点 通常可取(8, 8) (16, 16) (24, 24) (32, 32)</span><br>        scale = <span class="hljs-number">1.05</span>        <span class="hljs-comment"># 构造金字塔结构采取的比例值</span><br>        useMeanshiftGrouping = <span class="hljs-literal">False</span>  <span class="hljs-comment"># 消除重叠</span><br>        self.detect(image, winStride, padding, scale, useMeanshiftGrouping)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">object_position_callback</span>(<span class="hljs-params">self, request, response</span>):            <span class="hljs-comment"># 创建回调函数，执行收到请求后对数据的处理</span><br>        <span class="hljs-keyword">if</span> request.get == <span class="hljs-literal">True</span>:<br>            response.x = self.objectX                                 <span class="hljs-comment"># 目标物体的XY坐标</span><br>            response.y = self.objectY<br>            self.get_logger().info(<span class="hljs-string">&#x27;Object position\nx: %d y: %d&#x27;</span> %<br>                                   (response.x, response.y))          <span class="hljs-comment"># 输出日志信息，提示已经反馈</span><br>        <span class="hljs-keyword">else</span>:<br>            response.x = <span class="hljs-number">0</span><br>            response.y = <span class="hljs-number">0</span><br>            self.get_logger().info(<span class="hljs-string">&#x27;Invalid command&#x27;</span>)                 <span class="hljs-comment"># 输出日志信息，提示已经反馈</span><br>        <span class="hljs-keyword">return</span> response<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>(<span class="hljs-params">args=<span class="hljs-literal">None</span></span>):                                 <span class="hljs-comment"># ROS2节点主入口main函数</span><br>    rclpy.init(args=args)                            <span class="hljs-comment"># ROS2 Python接口初始化</span><br>    node = ImageSubscriber(<span class="hljs-string">&quot;service_server&quot;</span>)         <span class="hljs-comment"># 创建ROS2节点对象并进行初始化</span><br>    rclpy.spin(node)                                 <span class="hljs-comment"># 循环等待ROS2退出</span><br>    node.destroy_node()                              <span class="hljs-comment"># 销毁节点对象</span><br>    cv2.destroyAllWindows()                          <span class="hljs-comment"># 关闭所有OpenCV窗口</span><br>    rclpy.shutdown()                                 <span class="hljs-comment"># 关闭ROS2 Python接口</span><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    main()<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/ROS/" class="category-chain-item">ROS</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>ROS实验报告二笔记</div>
+      <div>http://jrhu0048.github.io/2024/10/18/ros/ros-shi-yan-bao-gao-er/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>JR.HU</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年10月18日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2024年10月25日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/10/21/shu-zi-tu-xiang-chu-li/di-si-zhang-shu-zi-tu-xiang-ji-ben-yun-suan/" title="第四章：数字图像基本运算">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">第四章：数字图像基本运算</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/10/17/mercuryx1-diao-shi-shou-ce/" title="MercuryX1调试手册">
+                        <span class="hidden-mobile">MercuryX1调试手册</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'ENTER REPO HERE');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

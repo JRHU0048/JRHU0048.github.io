@@ -19,23 +19,30 @@
   <meta name="author" content="JR.HU">
   <meta name="keywords" content="">
   
-    <meta name="description" content="记录学习ROS的历程 涉及到的学习网站： b站古月居ROS21讲：https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1zt411G7Vn?p&#x3D;7&amp;spm_id_from&#x3D;pageDriver&amp;vd_source&#x3D;6a7595d8dfd01dbd88c8324012f0aaf0 鱼香ROS教程文档：fishros.com ROS2社区：fishros.org.cn 【">
+    <meta name="description" content="Optimization注意偏导和梯度的区别 梯度下降算法的缺点 梯度消失 saddle point 局部最优 local minimum 各参数尺度不一 different scale  GD with momentum (GDM)通过在梯度下降过程中加入一个“动量”项，该算法能够累积过去梯度的方向，从而帮助算法更快地穿越平坦区域，并减少振荡 更新梯度的公式： 1w_t &#x3D; w_&#123;t-">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ROS">
-<meta property="og:url" content="http://jrhu0048.github.io/2024/08/07/ros/index.html">
+<meta property="og:title" content="第八讲_Optimization">
+<meta property="og:url" content="http://jrhu0048.github.io/2024/10/25/ji-qi-xue-xi/di-ba-jiang-optimization/index.html">
 <meta property="og:site_name" content="CHARMMY">
-<meta property="og:description" content="记录学习ROS的历程 涉及到的学习网站： b站古月居ROS21讲：https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1zt411G7Vn?p&#x3D;7&amp;spm_id_from&#x3D;pageDriver&amp;vd_source&#x3D;6a7595d8dfd01dbd88c8324012f0aaf0 鱼香ROS教程文档：fishros.com ROS2社区：fishros.org.cn 【">
+<meta property="og:description" content="Optimization注意偏导和梯度的区别 梯度下降算法的缺点 梯度消失 saddle point 局部最优 local minimum 各参数尺度不一 different scale  GD with momentum (GDM)通过在梯度下降过程中加入一个“动量”项，该算法能够累积过去梯度的方向，从而帮助算法更快地穿越平坦区域，并减少振荡 更新梯度的公式： 1w_t &#x3D; w_&#123;t-">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-08-07T13:49:03.000Z">
-<meta property="article:modified_time" content="2024-10-14T12:04:55.217Z">
+<meta property="og:image" content="https://pic.imgdb.cn/item/671b0220d29ded1a8c9af208.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/671b7dc2d29ded1a8c1b192d.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/671b7f4cd29ded1a8c1d0aca.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/671b81a5d29ded1a8c1fa9a8.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/671b8374d29ded1a8c21b7b9.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/671b899dd29ded1a8c294dff.png">
+<meta property="article:published_time" content="2024-10-25T01:45:12.000Z">
+<meta property="article:modified_time" content="2024-10-25T12:16:49.533Z">
 <meta property="article:author" content="JR.HU">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/671b0220d29ded1a8c9af208.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>ROS - CHARMMY</title>
+  <title>第八讲_Optimization - CHARMMY</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +208,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="ROS"></span>
+            <span id="subtitle" data-typed-text="第八讲_Optimization"></span>
           
         </div>
 
@@ -212,8 +219,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-08-07 21:49" pubdate>
-          2024年8月7日 晚上
+        <time datetime="2024-10-25 09:45" pubdate>
+          2024年10月25日 上午
         </time>
       </span>
     
@@ -224,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.3k 字
+          666 字
         
       </span>
     
@@ -235,7 +242,7 @@
         
         
         
-          20 分钟
+          6 分钟
         
       </span>
     
@@ -272,112 +279,64 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">ROS</h1>
+            <h1 id="seo-header">第八讲_Optimization</h1>
             
             
               <div class="markdown-body">
                 
-                <p>记录学习ROS的历程</p>
-<p>涉及到的学习网站：</p>
-<p>b站古月居ROS21讲：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1zt411G7Vn?p=7&spm_id_from=pageDriver&vd_source=6a7595d8dfd01dbd88c8324012f0aaf0">https://www.bilibili.com/video/BV1zt411G7Vn?p=7&amp;spm_id_from=pageDriver&amp;vd_source=6a7595d8dfd01dbd88c8324012f0aaf0</a></p>
-<p>鱼香ROS教程文档：fishros.com</p>
-<p>ROS2社区：fishros.org.cn</p>
-<p>【Autolabor初级教程】ROS机器人入门<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Ci4y1L7ZZ/?spm_id_from=333.337.search-card.all.click&vd_source=4bec64424204f10ec2154c3469a097cf">https://www.bilibili.com/video/BV1Ci4y1L7ZZ/?spm_id_from=333.337.search-card.all.click&amp;vd_source=4bec64424204f10ec2154c3469a097cf</a></p>
-<p>待补充…</p>
-<hr>
-<h3 id="ROS2-指令"><a href="#ROS2-指令" class="headerlink" title="ROS2 指令"></a><code>ROS2</code> 指令</h3><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">colcon build</span><br></code></pre></td></tr></table></figure>
-<p>构建 ROS 工作空间，对工作空间中的所有包或者指定的包进行编译、链接等构建操作</p>
-<h3 id="ROS核心概念介绍"><a href="#ROS核心概念介绍" class="headerlink" title="ROS核心概念介绍"></a>ROS核心概念介绍</h3><p>ROS（Robot Operating System，机器人操作系统）是一个用于机器人的开源元操作系统。它提供了一系列的工具和库，帮助开发者更方便地创建机器人应用程序。以下是 ROS 的一些核心概念：</p>
-<p><strong>一、节点（Node）</strong></p>
+                <h2 id="Optimization"><a href="#Optimization" class="headerlink" title="Optimization"></a>Optimization</h2><p>注意偏导和梯度的区别</p>
+<h3 id="梯度下降算法的缺点"><a href="#梯度下降算法的缺点" class="headerlink" title="梯度下降算法的缺点"></a>梯度下降算法的缺点</h3><ul>
+<li>梯度消失 saddle point</li>
+<li>局部最优 local minimum</li>
+<li>各参数尺度不一 different scale</li>
+</ul>
+<h3 id="GD-with-momentum-GDM"><a href="#GD-with-momentum-GDM" class="headerlink" title="GD with momentum (GDM)"></a>GD with momentum (GDM)</h3><p>通过在梯度下降过程中加入一个“动量”项，该算法能够累积过去梯度的方向，从而帮助算法更快地<code>穿越平坦区域，并减少振荡</code></p>
+<p>更新梯度的公式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs math">w_t = w_&#123;t-1&#125; - \alpha V_&#123;t&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在原来设置了学习率的基础上，还丰富了下面的部分：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs math">V_&#123;t&#125; = \beta V_&#123;t-1&#125; + (1- \beta)\frac&#123;\partial J&#125;&#123;\partial w_t&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs math">\beta \in [0,1]<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs math">V_&#123;0&#125; = 0<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs math">\beta 通常取0.9<br></code></pre></td></tr></table></figure>
+<p>这样既能保存过去的梯度信息，也不至于产生过大的影响</p>
+<p><img src="https://pic.imgdb.cn/item/671b0220d29ded1a8c9af208.png" srcset="/img/loading.gif" lazyload></p>
+<p>指数滑动平均</p>
+<h3 id="AdaGrad-Adaptive-Gradient"><a href="#AdaGrad-Adaptive-Gradient" class="headerlink" title="AdaGrad (Adaptive Gradient)"></a>AdaGrad (Adaptive Gradient)</h3><p>AdaGrad算法通过自适应地调整学习率，使得学习率随着迭代次数的增加而减小，从而避免了梯度消失和梯度爆炸的问题</p>
+<p>公式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs math">W_&#123;t+1&#125; = W_&#123;t&#125; - \frac&#123;\alpha&#125;&#123;\sqrt&#123;S_&#123;t&#125;+\epsilon&#125;&#125;\frac&#123;\partial J&#125;&#123;\partial w_t&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs math">S_&#123;t&#125; = S_&#123;t-1&#125; + (\frac&#123;\partial J&#125;&#123;\partial w_t&#125;)^2<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs math">S_&#123;0&#125; = 0<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs math">\epsilon = 10^&#123;-7&#125;    作用：防止除 0<br></code></pre></td></tr></table></figure>
+
+<p>偏导可以间接表明下降坡度的大小</p>
 <ul>
-<li><strong>定义</strong>：节点是 ROS 中执行计算任务的基本单元，一个程序的一次运行实例就是一个节点。每个节点都可以完成特定的功能，比如一个节点可以控制机器人的移动，另一个节点可以处理传感器数据。</li>
-<li><strong>特点和作用</strong>：<ul>
-<li>节点之间相互独立，可以分别编写、编译和测试，提高了代码的可维护性和可扩展性。</li>
-<li>节点之间通过主题（Topic）、服务（Service）或参数服务器（Parameter Server）进行通信，降低了系统的耦合度，便于系统的功能扩展和修改。</li>
-<li>例如，在一个自动驾驶机器人系统中，可能有一个节点负责感知环境（如激光雷达数据处理节点），另一个节点负责路径规划，还有一个节点负责控制车辆的运动。这些节点可以独立开发和调试，只要它们遵循统一的通信协议，就可以协同工作。</li>
+<li>偏导大坡度大，需要设置一个较小的学习率</li>
+<li>偏导小坡度小，需要设置一个较大的学习率</li>
 </ul>
-</li>
-</ul>
-<p><strong>二、主题（Topic）</strong></p>
-<ul>
-<li><strong>定义</strong>：主题是节点之间发布（Publish）和订阅（Subscribe）消息的一种通信机制。一个主题就是一个消息通道，发布者将消息发送到主题上，订阅者从主题上接收消息。</li>
-<li><strong>特点和作用</strong>：<ul>
-<li>主题是一种异步通信方式，发布者和订阅者不需要直接知道对方的存在，只要它们关注的主题名称相同，就可以进行通信。</li>
-<li>主题支持一对多和多对多的通信模式，即一个主题可以有多个发布者和多个订阅者。这使得信息可以在多个节点之间共享，非常适合用于传感器数据的分发和处理结果的广播等场景。</li>
-<li>例如，在一个机器人视觉系统中，摄像头节点可以将采集到的图像数据作为消息发布到一个名为“&#x2F;camera&#x2F;image”的主题上，而多个图像处理节点可以同时订阅这个主题，获取图像数据进行不同的处理任务。</li>
-</ul>
-</li>
-</ul>
-<p><strong>三、消息（Message）</strong></p>
-<ul>
-<li><strong>定义</strong>：消息是节点之间通过主题进行通信的数据载体。它定义了一种特定的数据结构，包含了节点之间传递的具体信息。</li>
-<li><strong>特点和作用</strong>：<ul>
-<li>消息具有明确的数据类型和格式，ROS 支持多种标准数据类型（如整数、浮点数、字符串等），也允许用户自定义消息类型。</li>
-<li>消息的定义在.msg 文件中进行，通过编译系统生成相应的代码，供节点使用。这样可以确保节点之间的数据交互具有一致性和可读性。</li>
-<li>例如，一个激光雷达节点发布的消息可能包含激光雷达的扫描角度、距离等信息，这些信息按照特定的消息格式组织，订阅该消息的节点可以根据消息的定义正确地解析和处理数据。</li>
-</ul>
-</li>
-</ul>
-<p><strong>四、服务（Service）</strong></p>
-<ul>
-<li><strong>定义</strong>：服务是一种同步的请求-响应通信机制。一个服务由一对节点组成，一个节点提供服务（服务器），另一个节点请求服务（客户端）。</li>
-<li><strong>特点和作用</strong>：<ul>
-<li>服务是基于请求和响应的模式，客户端向服务器发送请求，服务器处理请求并返回响应。这种通信方式适用于需要获取特定结果或执行一次性任务的场景。</li>
-<li>服务的定义在.srv 文件中，包含请求和响应的数据结构。与主题不同，服务通常用于执行特定的操作，如获取机器人的当前状态、控制机器人执行某个动作等。</li>
-<li>例如，一个机器人系统中可能有一个提供“获取机器人位置”服务的节点，其他节点可以作为客户端向该服务发送请求，获取机器人的当前位置信息。</li>
-</ul>
-</li>
-</ul>
-<p><strong>五、包（Package）</strong></p>
-<ul>
-<li><strong>定义</strong>：包是 ROS 中组织代码和资源的基本单元。一个包可以包含 ROS 节点、消息、服务、配置文件、启动文件等。</li>
-<li><strong>特点和作用</strong>：<ul>
-<li>包将相关的功能和资源集中在一起，便于代码的管理、共享和复用。</li>
-<li>包具有一定的组织结构，通常包含 src（源代码）、include（头文件）、msg（消息定义文件）、srv（服务定义文件）、launch（启动文件）等目录。</li>
-<li>例如，一个机器人导航包可能包含路径规划节点、地图构建节点、导航相关的消息和服务定义文件，以及启动整个导航系统的启动文件。通过将这些功能封装在一个包中，可以方便地在不同的机器人项目中复用和扩展导航功能。</li>
-</ul>
-</li>
-</ul>
-<p><strong>六、工作空间（Workspace）</strong></p>
-<ul>
-<li><strong>定义</strong>：工作空间是开发 ROS 应用程序的一个环境，它包含一系列的 ROS 包。</li>
-<li><strong>特点和作用</strong>：<ul>
-<li>工作空间允许开发者同时管理多个 ROS 包，进行代码的编译、构建和测试。</li>
-<li>通常一个工作空间包含一个 src 目录（用于存放源代码）和一个 build 目录（用于存放编译过程中生成的中间文件）以及一个 devel 目录（用于存放可执行文件和库文件）。</li>
-<li>例如，开发者可以在一个工作空间中创建多个自己开发的 ROS 包，以及集成一些第三方的 ROS 包，通过设置环境变量，使 ROS 能够找到工作空间中的包和代码，进行开发和调试工作。</li>
-</ul>
-</li>
-</ul>
-<p><strong>七、参数服务器（Parameter Server）</strong></p>
-<ul>
-<li><strong>定义</strong>：参数服务器是一个存储 ROS 系统中参数的集中式数据库。节点可以在参数服务器上存储和获取参数值。</li>
-<li><strong>特点和作用</strong>：<ul>
-<li>参数服务器提供了一种全局共享参数的方式，方便节点之间共享配置信息和动态调整参数。</li>
-<li>参数可以是各种数据类型，如整数、浮点数、字符串、列表等。节点可以在运行时动态地修改参数值，其他相关节点可以及时获取到参数的变化。</li>
-<li>例如，在一个机器人系统中，可以在参数服务器上存储机器人的运动速度、传感器的配置参数等，不同的节点可以根据需要获取这些参数，并根据实际情况进行调整。</li>
-</ul>
-</li>
-</ul>
-<p><strong>八、动作（Action）</strong></p>
-<ul>
-<li><strong>定义</strong>：动作是一种扩展的通信机制，结合了主题和服务的特点，用于实现长时间运行、有反馈的任务。</li>
-<li><strong>特点和作用</strong>：<ul>
-<li>动作通常用于需要一段时间才能完成的任务，例如机器人的自主导航任务，任务执行过程中可以不断反馈任务的进度和状态信息。</li>
-<li>动作由一个动作服务器和一个或多个动作客户端组成。动作服务器负责执行任务，动作客户端可以发送任务请求并接收任务的反馈和结果。</li>
-<li>例如，一个机器人执行搬运任务，动作客户端发送搬运任务请求给动作服务器，动作服务器在执行任务过程中可以不断发布任务的进度（如已搬运的物品数量、剩余距离等），任务完成后返回最终的结果（如任务成功或失败的状态）。</li>
-</ul>
-</li>
-</ul>
-<p><strong>九、启动文件（Launch File）</strong></p>
-<ul>
-<li><strong>定义</strong>：启动文件是一种用于启动 ROS 节点和设置系统参数的配置文件。它使用 XML 格式编写，可以同时启动多个节点，并指定节点的参数和运行环境。</li>
-<li><strong>特点和作用</strong>：<ul>
-<li>启动文件简化了 ROS 系统的启动过程，避免了在命令行中逐个启动节点和设置参数的繁琐操作。</li>
-<li>可以在启动文件中设置节点的名称、主题名称、参数值等，还可以定义节点之间的通信关系和启动顺序。</li>
-<li>例如，在一个机器人系统的启动文件中，可以同时启动摄像头节点、图像处理节点、运动控制节点等，并设置它们之间的主题连接和参数配置，确保整个系统能够正确地协同工作。</li>
-</ul>
-</li>
-</ul>
+<p><img src="https://pic.imgdb.cn/item/671b7dc2d29ded1a8c1b192d.png" srcset="/img/loading.gif" lazyload></p>
+<p>但是会出现一个问题，S会越来越大，导致后面出现学不动的情况</p>
+<h3 id="RMSProp-Root-Mean-Square-Propagation"><a href="#RMSProp-Root-Mean-Square-Propagation" class="headerlink" title="RMSProp (Root Mean Square Propagation)"></a>RMSProp (Root Mean Square Propagation)</h3><p>本质是在 AdaGrad 基础上引入了指数滑动平均防止S越加越大的问题</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs math">W_&#123;t+1&#125; = W_&#123;t&#125; - \frac&#123;\alpha&#125;&#123;\sqrt&#123;S_&#123;t&#125;+\epsilon&#125;&#125;\frac&#123;\partial J&#125;&#123;\partial w_t&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs math">S_&#123;t&#125; = \beta S_&#123;t-1&#125; + (1-\beta)(\frac&#123;\partial J&#125;&#123;\partial w_t&#125;)^2<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/671b7f4cd29ded1a8c1d0aca.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="Adam-Adaptive-Moment-Estimation"><a href="#Adam-Adaptive-Moment-Estimation" class="headerlink" title="Adam (Adaptive Moment Estimation)"></a>Adam (Adaptive Moment Estimation)</h3><p>Adam算法通过引入两个指数滑动平均来修正AdaGrad算法中的学习率，从而避免了学习率过大的问题</p>
+<p><img src="https://pic.imgdb.cn/item/671b81a5d29ded1a8c1fa9a8.png" srcset="/img/loading.gif" lazyload></p>
+<p>公式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs math">W_&#123;t+1&#125; = W_&#123;t&#125; - \frac&#123;\alpha&#125;&#123;\sqrt&#123;\hat S_&#123;t&#125;&#125;+\epsilon&#125;\hat V_&#123;t&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs math">\hat V_&#123;t&#125; = \frac&#123;V_&#123;t&#125;&#125;&#123;1-\beta_1^t&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs math">\hat S_&#123;t&#125; = \frac&#123;S_&#123;t&#125;&#125;&#123;1-\beta_2^t&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs math">V_&#123;t&#125; = \beta_1 V_&#123;t-1&#125; + (1-\beta_1)\frac&#123;\partial J&#125;&#123;\partial w_t&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs math">S_&#123;t&#125; = \beta_2 S_&#123;t-1&#125; + (1-\beta_2)(\frac&#123;\partial J&#125;&#123;\partial w_t&#125;)^2<br></code></pre></td></tr></table></figure>
+
+<p>该算法能够解决一些存在的缺点，例如：V和S在刚开始迭代时会非常小，不利于算法更新</p>
+<p><img src="https://pic.imgdb.cn/item/671b8374d29ded1a8c21b7b9.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="随机梯度下降"><a href="#随机梯度下降" class="headerlink" title="随机梯度下降"></a>随机梯度下降</h3><p>内容可以看第二讲，已经记录过了</p>
+<h3 id="小批量梯度下降"><a href="#小批量梯度下降" class="headerlink" title="小批量梯度下降"></a>小批量梯度下降</h3><p>第二讲也有记录</p>
+<p><img src="https://pic.imgdb.cn/item/671b899dd29ded1a8c294dff.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
@@ -396,7 +355,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/ROS/" class="category-chain-item">ROS</a>
+  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="category-chain-item">机器学习</a>
   
   
 
@@ -416,8 +375,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>ROS</div>
-      <div>http://jrhu0048.github.io/2024/08/07/ros/</div>
+      <div>第八讲_Optimization</div>
+      <div>http://jrhu0048.github.io/2024/10/25/ji-qi-xue-xi/di-ba-jiang-optimization/</div>
     </div>
     <div class="license-meta">
       
@@ -429,13 +388,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年8月7日</div>
+          <div>2024年10月25日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年10月14日</div>
+          <div>2024年10月25日</div>
         </div>
       
       
@@ -466,9 +425,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/09/11/ji-qi-xue-xi/di-er-jiang-xian-xing-hui-gui/" title="第二讲_线性回归">
+                      <a href="/2024/10/25/ji-qi-xue-xi/di-jiu-jiang-convolutional-neural-networks/" title="第九讲_Convolutional neural networks">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">第二讲_线性回归</span>
+                        <span class="hidden-mobile">第九讲_Convolutional neural networks</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -476,8 +435,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/07/31/zhi-neng-you-hua-suan-fa-yi-chuan-suan-fa-ga/" title="智能优化算法---遗传算法（GA）">
-                        <span class="hidden-mobile">智能优化算法---遗传算法（GA）</span>
+                      <a href="/2024/10/25/shu-zi-tu-xiang-chu-li/di-san-zhang-bmp-wen-jian-de-du-qu-yu-xian-shi/" title="第三章：BMP文件的读取与显示">
+                        <span class="hidden-mobile">第三章：BMP文件的读取与显示</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -19,23 +19,26 @@
   <meta name="author" content="JR.HU">
   <meta name="keywords" content="">
   
-    <meta name="description" content="第二章：色彩模型RGB色彩模型CMYK模型画画需要的颜色：青黄紫白黑 颜色：青—C品红（紫色）—M黄色—Y黑色—K 显示设备是发光体，打印设备是反光体，刚好反着来 补色原理：红-青、绿-紫（洋红）、蓝-黄 橡皮泥中的红色和绿色混在一起，会得到黑色，因为全部颜色的光都被吸收了 打印机想要打印蓝色；因为蓝色与黄色互补，用青色（吸收红光）和洋红混合得到蓝（黄色的补色） 光的合成：红光+绿光&#x3D;黄">
+    <meta name="description" content="BMP文件的读取与显示常见的图像文件格式BMP（Bitmap位图）是一种与设备无关（DIB）的图像文件格式，是Windows环境中经常使用的一种位图格式。其特点是不进行压缩，包含的图像信息丰富，但由此导致了占用磁盘空间过大的缺点。 BMP在单机上非常流行，不受Internet网络欢迎。 采用的是RGB色彩系统。 GIF（.gif）文件GIF（Graphics Interchange Format）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第二章：色彩模型">
-<meta property="og:url" content="http://jrhu0048.github.io/2024/10/15/di-er-zhang-se-cai-mo-xing/index.html">
+<meta property="og:title" content="第三章：BMP文件的读取与显示">
+<meta property="og:url" content="http://jrhu0048.github.io/2024/10/25/shu-zi-tu-xiang-chu-li/di-san-zhang-bmp-wen-jian-de-du-qu-yu-xian-shi/index.html">
 <meta property="og:site_name" content="CHARMMY">
-<meta property="og:description" content="第二章：色彩模型RGB色彩模型CMYK模型画画需要的颜色：青黄紫白黑 颜色：青—C品红（紫色）—M黄色—Y黑色—K 显示设备是发光体，打印设备是反光体，刚好反着来 补色原理：红-青、绿-紫（洋红）、蓝-黄 橡皮泥中的红色和绿色混在一起，会得到黑色，因为全部颜色的光都被吸收了 打印机想要打印蓝色；因为蓝色与黄色互补，用青色（吸收红光）和洋红混合得到蓝（黄色的补色） 光的合成：红光+绿光&#x3D;黄">
+<meta property="og:description" content="BMP文件的读取与显示常见的图像文件格式BMP（Bitmap位图）是一种与设备无关（DIB）的图像文件格式，是Windows环境中经常使用的一种位图格式。其特点是不进行压缩，包含的图像信息丰富，但由此导致了占用磁盘空间过大的缺点。 BMP在单机上非常流行，不受Internet网络欢迎。 采用的是RGB色彩系统。 GIF（.gif）文件GIF（Graphics Interchange Format）">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-10-14T16:22:23.000Z">
-<meta property="article:modified_time" content="2024-10-15T07:01:18.858Z">
+<meta property="og:image" content="https://pic.imgdb.cn/item/671a7100d29ded1a8c40eb6f.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/671a77a8d29ded1a8c46d7bb.png">
+<meta property="article:published_time" content="2024-10-24T16:03:07.000Z">
+<meta property="article:modified_time" content="2024-10-24T17:05:36.195Z">
 <meta property="article:author" content="JR.HU">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/671a7100d29ded1a8c40eb6f.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>第二章：色彩模型 - CHARMMY</title>
+  <title>第三章：BMP文件的读取与显示 - CHARMMY</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +204,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="第二章：色彩模型"></span>
+            <span id="subtitle" data-typed-text="第三章：BMP文件的读取与显示"></span>
           
         </div>
 
@@ -212,8 +215,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-10-15 00:22" pubdate>
-          2024年10月15日 凌晨
+        <time datetime="2024-10-25 00:03" pubdate>
+          2024年10月25日 凌晨
         </time>
       </span>
     
@@ -224,7 +227,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          587 字
+          1.6k 字
         
       </span>
     
@@ -235,7 +238,7 @@
         
         
         
-          5 分钟
+          13 分钟
         
       </span>
     
@@ -272,60 +275,92 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">第二章：色彩模型</h1>
+            <h1 id="seo-header">第三章：BMP文件的读取与显示</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="第二章：色彩模型"><a href="#第二章：色彩模型" class="headerlink" title="第二章：色彩模型"></a>第二章：色彩模型</h2><h3 id="RGB色彩模型"><a href="#RGB色彩模型" class="headerlink" title="RGB色彩模型"></a>RGB色彩模型</h3><h3 id="CMYK模型"><a href="#CMYK模型" class="headerlink" title="CMYK模型"></a>CMYK模型</h3><p>画画需要的颜色：青黄紫白黑</p>
-<p>颜色：<br>青—C<br>品红（紫色）—M<br>黄色—Y<br>黑色—K</p>
-<p>显示设备是发光体，打印设备是反光体，刚好反着来</p>
-<p>补色原理：<code>红-青、绿-紫（洋红）、蓝-黄</code></p>
-<p>橡皮泥中的红色和绿色混在一起，会得到黑色，因为全部颜色的光都被吸收了</p>
-<p>打印机想要打印蓝色；因为蓝色与黄色互补，用青色（吸收红光）和洋红混合得到蓝（黄色的补色）</p>
-<p>光的合成：红光+绿光&#x3D;黄光，吸收黄光，得到蓝光</p>
-<h4 id="CMYK调色案例"><a href="#CMYK调色案例" class="headerlink" title="CMYK调色案例"></a>CMYK调色案例</h4><ul>
-<li>CMYK模型中，在青色通道涂黑（表示喷了很多青色油墨），结果是该区域变青</li>
-<li>在青色通道变白（表示不喷青色油墨），该区域会变红(青色的补色)</li>
-</ul>
-<h3 id="面向视觉感知的颜色模型"><a href="#面向视觉感知的颜色模型" class="headerlink" title="面向视觉感知的颜色模型"></a>面向视觉感知的颜色模型</h3><h4 id="HSI"><a href="#HSI" class="headerlink" title="HSI"></a>HSI</h4><p>亮度 H</p>
-<p>亮度表示某种颜色在人眼视觉上引起的明暗程度，它由光的强度（能量）决定：光的强亮越大，景物就越亮；光的强度越小，景物就越暗。</p>
-<p>对于灰度图象而言，亮度就是图像的灰度值。</p>
-<p>色调 S</p>
-<p>色调（色相）表示光的颜色，它由光的波长决定。例如自然界中的七色光就分别对应着不同的色调，每种色调分别对应着不同的波长。</p>
-<p>在通常的使用中，色调是由颜色名称标识的，比如红、橙或绿色。</p>
-<p>饱和度 I</p>
-<p>饱和度指颜色的纯度（鲜艳程度），它由主波长的纯光谱色与白光的比例决定，也就是说，夹杂白光的多少。越接近光谱色、白光比例越小，则饱和度越高，色彩越鲜艳醒目；距离光谱色越远、白光比例越大，饱和度越低，色彩越平淡晦暗，越不鲜艳。</p>
-<p>如对白光来讲，它的色饱和度为0（没有色彩），纯色的色饱和度是100%，指该彩色中不含白光。</p>
-<p>HSI 是最直观的色彩描述方法。用色调（Hue）、色饱和度（Saturation）和亮度（Intensity）来描述色彩。它与人类颜色视觉感知非常接近，但独立于设备（设备造不出来，仅存在于软件中）</p>
+                <h2 id="BMP文件的读取与显示"><a href="#BMP文件的读取与显示" class="headerlink" title="BMP文件的读取与显示"></a>BMP文件的读取与显示</h2><h3 id="常见的图像文件格式"><a href="#常见的图像文件格式" class="headerlink" title="常见的图像文件格式"></a>常见的图像文件格式</h3><h4 id="BMP（Bitmap位图）"><a href="#BMP（Bitmap位图）" class="headerlink" title="BMP（Bitmap位图）"></a>BMP（Bitmap位图）</h4><p>是一种<code>与设备无关</code>（DIB）的图像文件格式，是Windows环境中经常使用的一种位图格式。其特点是<code>不进行压缩</code>，包含的图像<code>信息丰富</code>，但由此导致了<code>占用磁盘空间过大</code>的缺点。</p>
+<p>BMP在单机上非常流行，不受Internet网络欢迎。</p>
+<p>采用的是RGB色彩系统。</p>
+<h4 id="GIF（-gif）文件"><a href="#GIF（-gif）文件" class="headerlink" title="GIF（.gif）文件"></a>GIF（.gif）文件</h4><p>GIF（Graphics Interchange Format）是美国联机服务商CompuServe针对当时网络传输带宽的限制开发的图像格式。其特点是<code>压缩比高，磁盘空间占用较少</code>，但<code>不能存储超过256色的图像</code>。</p>
+<p>在Internet上广泛应用：</p>
+<p>①它不仅可以存储单幅静止图像，也可以同时存储若干静止图像进而形成连续的动画；</p>
+<p>②指定透明区域；</p>
+<p>③渐显方式。</p>
+<p>采用的是RGB色彩系统。</p>
+<h4 id="JPEG（-jpg）文件"><a href="#JPEG（-jpg）文件" class="headerlink" title="JPEG（.jpg）文件"></a>JPEG（.jpg）文件</h4><p>JPEG（Joint Photographic Experts Group）是利用JPEG方法压缩的图像格式，<code>有损压缩</code>、压缩比非常高，但压缩&#x2F;解压缩<code>算法复杂</code>、存储和显示<code>速度慢</code>。可以处理24位真彩色，适用于处理大幅的图像。</p>
+<p>JPEG是<code>Internet中最受欢迎</code>的图像格式。</p>
+<p>采用的是YCbCr色彩系统。</p>
+<h4 id="TIFF（-tif）文件"><a href="#TIFF（-tif）文件" class="headerlink" title="TIFF（.tif）文件"></a>TIFF（.tif）文件</h4><p>TIFF（Tag Image File Format）是一种独立于操作系统和文件系统的格式，便于在软件间进行图像数据交换。<code>文件格式复杂</code>，记录的相关信息多（图层、通道信息、多幅图像）。</p>
+<p>该格式支持压缩；支持单色、256色、24位真彩色、32位色、48位色等多种色彩位；同时支持RGB、CMYK、YCbCr等多种色彩系统。 </p>
+<h3 id="BMP图像文件结构"><a href="#BMP图像文件结构" class="headerlink" title="BMP图像文件结构"></a>BMP图像文件结构</h3><p><img src="https://pic.imgdb.cn/item/671a7100d29ded1a8c40eb6f.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="BITMAPFILEHEADER结构—14字节"><a href="#BITMAPFILEHEADER结构—14字节" class="headerlink" title="BITMAPFILEHEADER结构—14字节"></a>BITMAPFILEHEADER结构—14字节</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">tagBITMAPFILEHEADER</span> &#123;<br>        WORD      bfType;              <span class="hljs-comment">//2个字节</span><br>        DWORD   bfSize;                <span class="hljs-comment">//4个字节</span><br>        WORD      bfReserved1;     <span class="hljs-comment">//2个字节</span><br>        WORD      bfReserved2;     <span class="hljs-comment">//2个字节</span><br>        DWORD   bfOffBits;          <span class="hljs-comment">//4个字节</span><br>&#125; BITMAPFILEHEADER; <br></code></pre></td></tr></table></figure>
+<p>这个结构的长度是固定的，为<code>14个字节</code>（WORD为无符号16位整数，DWORD为无符号32位整数），各个成员的说明如下：</p>
+<ol>
+<li><p>bfType：文件类型，为BM，即0x4D42，表示BMP文件。</p>
+</li>
+<li><p>bfSize：文件大小，以字节为单位。</p>
+</li>
+<li><p>bfReserved1：保留字，为0。</p>
+</li>
+<li><p>bfReserved2：保留字，为0。</p>
+</li>
+<li><p>bfOffBits：图像数据相对于文件头的偏移量，即位图数据的起始位置。即结构示意图中前三个部分的长度之和。</p>
+</li>
+</ol>
+<h4 id="BITMAPINFOHEADER结构—40字节"><a href="#BITMAPINFOHEADER结构—40字节" class="headerlink" title="BITMAPINFOHEADER结构—40字节"></a>BITMAPINFOHEADER结构—40字节</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">tagBITMAPINFOHEADER</span>&#123;<br>   DWORD  biSize; <br>   LONG      biWidth; <br>   LONG      biHeight; <br>   WORD     biPlanes; <br>   WORD     biBitCount;<br>   DWORD  biCompression; <br>   DWORD  biSizeImage; <br>   LONG      biXPelsPerMeter; <br>   LONG      biYPelsPerMeter; <br>   DWORD  biClrUsed; <br>   DWORD  biClrImportant; <br>&#125; BITMAPINFOHEADER; <br></code></pre></td></tr></table></figure>
 
+<p>这个结构的长度是固定的，为40个字节，各个成员的说明如下：</p>
+<ol>
+<li><p>biSize：指定结构大小，为40。</p>
+</li>
+<li><p>biWidth：指定图像的宽度，单位是像素。</p>
+</li>
+<li><p>biHeight：指定图像的高度，单位是像素。</p>
+</li>
+<li><p>biPlanes：必须是1，不用考虑。</p>
+</li>
+<li><p>biBitCount：指定表示颜色时要用到的位数，常用的值为1（黑白二色图）, 4（16色图）, 8（256色）, 24（真彩色图）。</p>
+</li>
+</ol>
+<p>biBitCount在实验中会经常使用到！！！</p>
+<ol start="6">
+<li><p>biCompression<br>  指定位图是否压缩。Windows位图可以采用压缩格式，但用的不多。我们只讨论的不压缩的情况，biCompression为BI_RGB（Windows定义好的常量） 。</p>
+</li>
+<li><p>biSizeImage<br>  位图数据占用的字节数，可以通过图像的高度、宽度、颜色深度计算出来。如果biCompression为BI_RGB，则该项可以为零。</p>
+</li>
+<li><p>biXPelsPerMeter<br>  指定目标设备的水平分辨率，单位是每米的像素个数。</p>
+</li>
+<li><p>biYPelsPerMeter<br>  指定目标设备的垂直分辨率，单位同上。</p>
+</li>
+<li><p>biClrUsed<br>  指定本图象实际用到的颜色数（决定调色板数组元素的个数），如果该值为零，则用到的颜色数为2的biBitCount次方。</p>
+</li>
+</ol>
+<p>biClrUsed在实验中也会经常使用到！！！</p>
+<p>11。 biClrImportant<br>  指定本图象中重要的颜色数，该值通常为零，即认为所有的颜色都是重要的。 </p>
+<h4 id="Palette结构"><a href="#Palette结构" class="headerlink" title="Palette结构"></a>Palette结构</h4><p>调色板实际上是一个数组，共有biClrUsed个元素（如果该值为零，则有2的biBitCount次方个元素）。数组中每个元素的类型是一个RGBQUAD结构，占4个字节，其定义如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">tagRGBQUAD</span> &#123; <br>    BYTE    rgbBlue;         <span class="hljs-comment">//该颜色的蓝色分量</span><br>    BYTE    rgbGreen;      <span class="hljs-comment">//该颜色的绿色分量</span><br>    BYTE    rgbRed;          <span class="hljs-comment">//该颜色的红色分量</span><br>    BYTE    rgbReserved; <span class="hljs-comment">//保留值，不考虑</span><br>&#125; RGBQUAD; <br></code></pre></td></tr></table></figure>
+
+<p>真彩色图，不需要调色板的，BITMAPINFOHEADER 后直接是位图数据</p>
+<h4 id="关于灰度图像的调色板"><a href="#关于灰度图像的调色板" class="headerlink" title="关于灰度图像的调色板"></a>关于灰度图像的调色板</h4><p>BMP格式的文件中并没有灰度图这个概念，但可以很容易地用BMP文件来表示灰度图。方法是用256色的调色板，不过这个调色板有些特殊，每一项的RGB都相同。RGB值从(0,0,0)、(1,1,1)一直到(255,255,255)。 (0,0,0)是全黑色， (255,255,255)是全白色。</p>
+<p>对于R&#x3D;G&#x3D;B的色彩，带入HSI色彩系统转换公式中可以看到只有亮度信息，饱和度分量都是0，即没有色彩信息。</p>
+<h4 id="实际的位图数据-ImageData"><a href="#实际的位图数据-ImageData" class="headerlink" title="实际的位图数据 ImageData"></a>实际的位图数据 ImageData</h4><p>对于用到调色板的位图，图象数据就是该像素颜色在调色板中的索引值，对于真彩色图，图像数据就是实际的R,G,B值。下面就2色，16色，256色位图和真彩色位图分别介绍</p>
+<p>2色位图，用1位就可以表示该像素的颜色（一般0表示黑，1表示白），<code>一个字节可以表示8个像素</code></p>
+<p>16色位图，用4位可以表示一个像素的颜色，所以<code>一个字节可以表示2个像素</code>,分为前4位和后4位</p>
+<p>256色位图，<code>一个字节表示1个像素</code></p>
+<p>真彩色图，<code>三个字节表示1个像素</code>,RGB分别占用一个字节</p>
+<h4 id="位图数据——需要注意的两点"><a href="#位图数据——需要注意的两点" class="headerlink" title="位图数据——需要注意的两点"></a>位图数据——需要注意的两点</h4><p>① 每一行的字节数必须是4的整倍数，如果不是，则需要补齐。</p>
+<p>② BMP文件的数据是<code>从下到上，从左到右</code>的。也就是说，从文件中最先读到的是图像最下面一行的左边第一个像素，然后是左边第二个像素。。。接下来是倒数第二行左边第一个像素，左边第二个像素。。。依次类推 ，最后得到的是最上面一行的最右一个像素。</p>
+<p><img src="https://pic.imgdb.cn/item/671a77a8d29ded1a8c46d7bb.png" srcset="/img/loading.gif" lazyload></p>
+<p>这个指针2怎么得到的没搞懂</p>
+<h3 id="BMP图像文件读写与显示"><a href="#BMP图像文件读写与显示" class="headerlink" title="BMP图像文件读写与显示"></a>BMP图像文件读写与显示</h3>
                 
               </div>
             
             <hr/>
             <div>
               <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" class="category-chain-item">数字图像处理</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
   
   
 </div>
@@ -336,8 +371,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>第二章：色彩模型</div>
-      <div>http://jrhu0048.github.io/2024/10/15/di-er-zhang-se-cai-mo-xing/</div>
+      <div>第三章：BMP文件的读取与显示</div>
+      <div>http://jrhu0048.github.io/2024/10/25/shu-zi-tu-xiang-chu-li/di-san-zhang-bmp-wen-jian-de-du-qu-yu-xian-shi/</div>
     </div>
     <div class="license-meta">
       
@@ -349,13 +384,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年10月15日</div>
+          <div>2024年10月25日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年10月15日</div>
+          <div>2024年10月25日</div>
         </div>
       
       
@@ -386,9 +421,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/10/15/shu-zi-tu-xiang-chu-li-shi-yan-1/" title="数字图像处理实验1">
+                      <a href="/2024/10/25/ji-qi-xue-xi/di-ba-jiang-optimization/" title="第八讲_Optimization">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">数字图像处理实验1</span>
+                        <span class="hidden-mobile">第八讲_Optimization</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -396,8 +431,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/10/14/ros-shi-yan-bao-gao-yi/" title="ROS实验报告一">
-                        <span class="hidden-mobile">ROS实验报告一</span>
+                      <a href="/2024/10/23/ji-qi-xue-xi/ji-qi-xue-xi-shi-yan-7/" title="机器学习实验7">
+                        <span class="hidden-mobile">机器学习实验7</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
