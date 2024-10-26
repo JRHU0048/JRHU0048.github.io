@@ -22,15 +22,17 @@
     <meta name="description" content="本次实验课实现了对于16色图像、256色图像、24位真彩图像的读取显示，以及灰度变换功能，对于不同深度的图像结构有了进一步的了解，部分代码展示如下，便于温习巩固 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数字图像处理实验1">
-<meta property="og:url" content="http://jrhu0048.github.io/2024/10/15/shu-zi-tu-xiang-chu-li-shi-yan-1/index.html">
+<meta property="og:url" content="http://jrhu0048.github.io/2024/10/15/shu-zi-tu-xiang-chu-li/shu-zi-tu-xiang-chu-li-shi-yan-1/index.html">
 <meta property="og:site_name" content="CHARMMY">
 <meta property="og:description" content="本次实验课实现了对于16色图像、256色图像、24位真彩图像的读取显示，以及灰度变换功能，对于不同深度的图像结构有了进一步的了解，部分代码展示如下，便于温习巩固 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/671c585ad29ded1a8cbeaef3.png">
 <meta property="article:published_time" content="2024-10-15T10:39:00.000Z">
-<meta property="article:modified_time" content="2024-10-15T11:13:17.771Z">
+<meta property="article:modified_time" content="2024-10-26T04:58:29.878Z">
 <meta property="article:author" content="JR.HU">
 <meta property="article:tag" content="实验课">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/671c585ad29ded1a8cbeaef3.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -225,7 +227,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          1.9k 字
         
       </span>
     
@@ -236,7 +238,7 @@
         
         
         
-          11 分钟
+          16 分钟
         
       </span>
     
@@ -281,6 +283,76 @@
                 <p>本次实验课实现了对于16色图像、256色图像、24位真彩图像的读取显示，以及灰度变换功能，对于不同深度的图像结构有了进一步的了解，部分代码展示如下，便于温习巩固</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;stdafx.h&quot;</span></span><br><br>BITMAPINFO* lpBitsInfo = <span class="hljs-literal">NULL</span>;<br><br>BOOL <span class="hljs-title function_">LoadBmpFile</span><span class="hljs-params">(<span class="hljs-type">char</span>* BmpFileName)</span><br>&#123;<br>	FILE* fp;<br>	<span class="hljs-keyword">if</span>(<span class="hljs-literal">NULL</span> == (fp = fopen(BmpFileName,<span class="hljs-string">&quot;rb&quot;</span>)))<br>		<span class="hljs-keyword">return</span> FALSE;<br><br>	BITMAPFILEHEADER bf;<br>	BITMAPINFOHEADER bi;<br><br>	fread(&amp;bf,<span class="hljs-number">14</span>,<span class="hljs-number">1</span>,fp);<br>	fread(&amp;bi,<span class="hljs-number">40</span>,<span class="hljs-number">1</span>,fp);<br><br>	DWORD NumColors;<br>	<span class="hljs-keyword">if</span> (bi.biClrUsed != <span class="hljs-number">0</span>)<br>		NumColors = bi.biClrUsed;<br>	<span class="hljs-keyword">else</span><br>	&#123;<br>		<span class="hljs-keyword">switch</span>(bi.biBitCount)  <span class="hljs-comment">//图像用到的颜色的位数</span><br>		&#123;<br>		<span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:  <span class="hljs-comment">// 表示二值图像</span><br>			NumColors = <span class="hljs-number">2</span>;<br>			<span class="hljs-keyword">break</span>;<br>		<span class="hljs-keyword">case</span> <span class="hljs-number">4</span>:  <span class="hljs-comment">// 表示16色</span><br>			NumColors = <span class="hljs-number">16</span>;<br>			<span class="hljs-keyword">break</span>;<br>		<span class="hljs-keyword">case</span> <span class="hljs-number">8</span>:  <span class="hljs-comment">// 256色</span><br>			NumColors = <span class="hljs-number">256</span>;<br>			<span class="hljs-keyword">break</span>;<br>		<span class="hljs-keyword">case</span> <span class="hljs-number">24</span>: <span class="hljs-comment">// 24位真彩</span><br>			NumColors = <span class="hljs-number">0</span>;<br>			<span class="hljs-keyword">break</span>;<br>		&#125;<br>	&#125;<br>	DWORD PalSize = NumColors * <span class="hljs-number">4</span>;  <span class="hljs-comment">//调色板的大小</span><br>	DWORD ImgSize = (bi.biWidth * bi.biBitCount + <span class="hljs-number">31</span> )/<span class="hljs-number">32</span> * <span class="hljs-number">4</span> * bi.biHeight; <br>	DWORD Size = <span class="hljs-number">40</span> + PalSize + ImgSize;   <span class="hljs-comment">//信息头+调色板+信息</span><br>	<span class="hljs-keyword">if</span> (<span class="hljs-literal">NULL</span> == (lpBitsInfo = (BITMAPINFO*)<span class="hljs-built_in">malloc</span>(Size)))<br>		<span class="hljs-keyword">return</span> FALSE;<br><br>	fseek(fp,<span class="hljs-number">14</span>,SEEK_SET);  <span class="hljs-comment">//确保指针指向信息头起始位置</span><br>	fread((<span class="hljs-type">char</span>*)lpBitsInfo,Size,<span class="hljs-number">1</span>,fp);<br><br>	lpBitsInfo-&gt;bmiHeader.biClrUsed = NumColors;<br><br>	<span class="hljs-keyword">return</span> TRUE;<br>&#125;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">Gray</span><span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-comment">// 获取原始图像的宽度</span><br>    <span class="hljs-type">int</span> w = lpBitsInfo-&gt;bmiHeader.biWidth;  <br>    <span class="hljs-comment">// 获取原始图像的高度</span><br>    <span class="hljs-type">int</span> h = lpBitsInfo-&gt;bmiHeader.biHeight;<br>    <span class="hljs-comment">// 计算原始图像每行的字节数，考虑到字节对齐</span><br>    <span class="hljs-type">int</span> LineBytes = (w * lpBitsInfo-&gt;bmiHeader.biBitCount + <span class="hljs-number">31</span> )/ <span class="hljs-number">32</span> * <span class="hljs-number">4</span>;<br>    <span class="hljs-comment">// 定位到原始图像的像素数据起始位置，跳过颜色表</span><br>    BYTE* lpBits = (BYTE*)&amp;lpBitsInfo-&gt;bmiColors[lpBitsInfo-&gt;bmiHeader.biClrUsed];<br><br>    <span class="hljs-comment">// 计算灰度图像每行需要的字节数，同样进行字节对齐</span><br>    <span class="hljs-type">int</span> LineBytes_gray = (w * <span class="hljs-number">8</span> + <span class="hljs-number">31</span>)/ <span class="hljs-number">32</span> * <span class="hljs-number">4</span>;  <br>    <span class="hljs-comment">// 为灰度图像分配内存空间，包括信息头、颜色表和像素数据</span><br>    BITMAPINFO* lpBitsInfo_gray = (BITMAPINFO*)<span class="hljs-built_in">malloc</span>(<span class="hljs-number">40</span> + <span class="hljs-number">1024</span> + LineBytes_gray * h);<br><br>    <span class="hljs-comment">// 复制原始图像的信息头到灰度图像的信息头</span><br>    <span class="hljs-built_in">memcpy</span>(lpBitsInfo_gray, lpBitsInfo, <span class="hljs-number">40</span>);      <br>    <span class="hljs-comment">// 设置灰度图像的位深度为 8，表示每个像素用一个字节表示，对应 256 种灰度值</span><br>    lpBitsInfo_gray-&gt;bmiHeader.biBitCount = <span class="hljs-number">8</span>;   <br>    <span class="hljs-comment">// 设置灰度图像的颜色表中颜色的数量为 256</span><br>    lpBitsInfo_gray-&gt;bmiHeader.biClrUsed = <span class="hljs-number">256</span>;  <br><br>    <span class="hljs-comment">// 初始化灰度图像的颜色表，每个颜色表项的红、绿、蓝值都相同，范围从 0 到 255</span><br>    <span class="hljs-type">int</span> i,j;<br>    <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">256</span>; i++)  <br>    &#123;<br>        lpBitsInfo_gray-&gt;bmiColors[i].rgbRed = i;<br>        lpBitsInfo_gray-&gt;bmiColors[i].rgbGreen = i;<br>        lpBitsInfo_gray-&gt;bmiColors[i].rgbBlue = i;<br>        lpBitsInfo_gray-&gt;bmiColors[i].rgbReserved = <span class="hljs-number">0</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// 定位到灰度图像的像素数据起始位置，跳过颜色表</span><br>    BYTE* lpBits_gray = (BYTE*)&amp;lpBitsInfo_gray-&gt;bmiColors[<span class="hljs-number">256</span>];<br><br>    <span class="hljs-comment">// 定义指向当前像素的指针</span><br>    BYTE *pixel;<br><br>    <span class="hljs-comment">// 根据原始图像的位深度进行不同的处理</span><br>    <span class="hljs-keyword">switch</span>(lpBitsInfo-&gt;bmiHeader.biBitCount)<br>    &#123;<br>    <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>:  <span class="hljs-comment">// 16 色图像灰度化</span><br>        <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>; i &lt; h; i++)<br>        &#123;<br>            <span class="hljs-keyword">for</span>(j = <span class="hljs-number">0</span>; j &lt; w; j++)	<br>            &#123;<br>                <span class="hljs-keyword">if</span>(j % <span class="hljs-number">2</span> == <span class="hljs-number">1</span>)   <span class="hljs-comment">// 如果当前列索引是奇数，表示当前字节的低 4 位</span><br>                &#123;<br>                    <span class="hljs-comment">// 定位到包含低 4 位像素值的字节位置</span><br>                    pixel = lpBits + LineBytes * (h - <span class="hljs-number">1</span> - i) + j / <span class="hljs-number">2</span>;<br>                    <span class="hljs-comment">// 获取当前字节的低 4 位</span><br>                    BYTE lowFourBits = *pixel &amp; <span class="hljs-number">0x0F</span>;<br>                    <span class="hljs-comment">// 根据低 4 位像素值在颜色表中找到对应的颜色，并获取红、绿、蓝值</span><br>                    <span class="hljs-type">int</span> R = lpBitsInfo-&gt;bmiColors[lowFourBits].rgbRed;<br>                    <span class="hljs-type">int</span> G = lpBitsInfo-&gt;bmiColors[lowFourBits].rgbGreen;<br>                    <span class="hljs-type">int</span> B = lpBitsInfo-&gt;bmiColors[lowFourBits].rgbBlue;<br>                    <span class="hljs-comment">// 计算红、绿、蓝值的平均值作为灰度值</span><br>                    <span class="hljs-type">int</span> avg = (R + B + G) / <span class="hljs-number">3</span>;<br>                    <span class="hljs-comment">// 定位到灰度图像当前像素位置</span><br>                    pixel = lpBits_gray + LineBytes_gray * (h - <span class="hljs-number">1</span> - i) + j;<br>                    <span class="hljs-comment">// 将计算得到的灰度值存储到灰度图像中</span><br>                    *pixel = avg;<br>                &#125;<br>                <span class="hljs-keyword">else</span>&#123;<br>                    <span class="hljs-comment">// 如果当前列索引是偶数，表示当前字节的高 4 位</span><br>                    <span class="hljs-comment">// 定位到包含高 4 位像素值的字节位置</span><br>                    pixel = lpBits + LineBytes * (h - <span class="hljs-number">1</span> - i) + j / <span class="hljs-number">2</span>;<br>                    <span class="hljs-comment">// 获取当前字节的高 4 位</span><br>                    BYTE highFourBits = *pixel &gt;&gt; <span class="hljs-number">4</span>;<br>                    <span class="hljs-comment">// 根据高 4 位像素值在颜色表中找到对应的颜色，并获取红、绿、蓝值</span><br>                    <span class="hljs-type">int</span> R = lpBitsInfo-&gt;bmiColors[highFourBits].rgbRed;<br>                    <span class="hljs-type">int</span> G = lpBitsInfo-&gt;bmiColors[highFourBits].rgbGreen;<br>                    <span class="hljs-type">int</span> B = lpBitsInfo-&gt;bmiColors[highFourBits].rgbBlue;<br>                    <span class="hljs-comment">// 计算红、绿、蓝值的平均值作为灰度值</span><br>                    <span class="hljs-type">int</span> avg = (R + B + G) / <span class="hljs-number">3</span>;<br>                    <span class="hljs-comment">// 定位到灰度图像当前像素位置</span><br>                    pixel = lpBits_gray + LineBytes_gray * (h - <span class="hljs-number">1</span> - i) + j;<br>                    <span class="hljs-comment">// 将计算得到的灰度值存储到灰度图像中</span><br>                    *pixel = avg;<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">break</span>;<br><br>    <span class="hljs-keyword">case</span> <span class="hljs-number">8</span>:  <span class="hljs-comment">// 256 色图像灰度化</span><br>        <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>; i &lt; h; i++)<br>        &#123;<br>            <span class="hljs-keyword">for</span>(j = <span class="hljs-number">0</span>; j &lt; w; j++)	<br>            &#123;<br>                <span class="hljs-comment">// 定位到原始图像当前像素位置</span><br>                pixel = lpBits + LineBytes * (h - <span class="hljs-number">1</span> - i) + j;<br>                <span class="hljs-comment">// 根据当前像素值在颜色表中找到对应的颜色，并获取红、绿、蓝值</span><br>                <span class="hljs-type">int</span> R = lpBitsInfo-&gt;bmiColors[*pixel].rgbRed;<br>                <span class="hljs-type">int</span> G = lpBitsInfo-&gt;bmiColors[*pixel].rgbGreen;<br>                <span class="hljs-type">int</span> B = lpBitsInfo-&gt;bmiColors[*pixel].rgbBlue;<br>                <span class="hljs-comment">// 计算红、绿、蓝值的平均值作为灰度值</span><br>                <span class="hljs-type">int</span> avg = (R + B + G) / <span class="hljs-number">3</span>;<br>                <span class="hljs-comment">// 定位到灰度图像当前像素位置</span><br>                pixel = lpBits_gray + LineBytes_gray * (h - <span class="hljs-number">1</span> - i) + j;<br>                <span class="hljs-comment">// 将计算得到的灰度值存储到灰度图像中</span><br>                *pixel = avg;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">break</span>;<br><br>    <span class="hljs-keyword">case</span> <span class="hljs-number">24</span>: <span class="hljs-comment">// 24 位真彩图像灰度化</span><br>        <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>; i &lt; h; i++)<br>        &#123;<br>            <span class="hljs-keyword">for</span>(j = <span class="hljs-number">0</span>; j &lt; w; j++)	<br>            &#123;<br>                <span class="hljs-comment">// 分别定位到当前像素的蓝、绿、红通道的位置</span><br>                BYTE *B = lpBits + LineBytes * (h - <span class="hljs-number">1</span> - i) + j * <span class="hljs-number">3</span>;<br>                BYTE *G = B + <span class="hljs-number">1</span>;<br>                BYTE *R = G + <span class="hljs-number">1</span>;<br>                <span class="hljs-comment">// 计算红、绿、蓝值的平均值作为灰度值</span><br>                <span class="hljs-type">int</span> avg = (*R + *B + *G)/<span class="hljs-number">3</span>;<br>                <span class="hljs-comment">// 定位到灰度图像当前像素位置</span><br>                pixel = lpBits_gray + LineBytes_gray * (h - <span class="hljs-number">1</span> - i) + j;<br>                <span class="hljs-comment">// 将计算得到的灰度值存储到灰度图像中</span><br>                *pixel = avg;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">break</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// 释放原始图像的内存空间</span><br>    <span class="hljs-built_in">free</span>(lpBitsInfo);<br>    <span class="hljs-comment">// 将灰度图像的信息结构体指针赋值给全局变量，替换原始图像的信息结构体指针</span><br>    lpBitsInfo = lpBitsInfo_gray;<br>&#125;<br></code></pre></td></tr></table></figure>
 
+<p>画程序的流程图或N-S图</p>
+<p>使用在线工具：<a target="_blank" rel="noopener" href="https://mermaid.nodejs.cn/intro/">https://mermaid.nodejs.cn/intro/</a></p>
+<pre><code class=" mermaid">graph TD
+A[开始] --&gt; B[打开位图文件]
+B --&gt; C&#123;文件打开成功？&#125;
+C -- 是 --&gt; D[读取位图文件头]
+D --&gt; E[读取位图信息头]
+E --&gt; F[确定颜色数量]
+F --&gt; G[计算调色板大小]
+G --&gt; H[计算图像大小]
+H --&gt; I[分配内存]
+I --&gt; J[读取位图信息]
+J --&gt; K[设置位图信息头中的颜色使用量]
+K --&gt; L[结束]
+C -- 否 --&gt; M[返回FALSE]
+</code></pre>
+
+<p><img src="https://pic.imgdb.cn/item/671c585ad29ded1a8cbeaef3.png" srcset="/img/loading.gif" lazyload></p>
+<pre><code class=" mermaid">graph TD
+A[开始] --&gt; B[获取位图宽度和高度]
+B --&gt; C[计算每行字节数]
+C --&gt; D[定位到像素数据]
+D --&gt; E[计算灰度图像每行字节数]
+E --&gt; F[分配灰度图像内存]
+F --&gt; G[复制位图信息头]
+G --&gt; H[设置灰度图像位深度]
+H --&gt; I[设置灰度图像颜色表大小]
+I --&gt; J[初始化灰度图像颜色表]
+J --&gt; K[定位到灰度图像像素数据]
+K --&gt; L&#123;根据位图位深度处理每个像素&#125;
+L --&gt;|4位图像| M[处理每个像素的高低4位]
+M --&gt; N[计算灰度值并存储]
+L --&gt;|8位图像| O[直接处理每个像素]
+O --&gt; P[计算灰度值并存储]
+L --&gt;|24位图像| Q[处理每个像素的RGB值]
+Q --&gt; R[计算灰度值并存储]
+N --&gt; S[释放原始位图内存]
+P --&gt; S
+R --&gt; S
+S --&gt; T[更新位图信息指针]
+T --&gt; U[结束]
+
+graph TD
+A[开始] --&gt; B&#123;位图信息为空？&#125;
+B -- 是 --&gt; C[返回]
+B -- 否 --&gt; D[获取位图宽度和高度]
+D --&gt; E[计算每行字节数]
+E --&gt; F[定位到像素数据]
+F --&gt; G&#123;坐标超出边界？&#125;
+G -- 是 --&gt; H[返回]
+G -- 否 --&gt; I&#123;根据位图位深度获取像素值&#125;
+I --&gt;|1位图像| J&#123;是前景点？&#125;
+J -- 是 --&gt; K[前景点]
+J -- 否 --&gt; L[背景点]
+I --&gt;|4位图像| M&#123;处理每个像素的高低4位&#125;
+M --&gt; N[获取RGB值并存储]
+I --&gt;|8位图像| O[直接处理每个像素]
+O --&gt; P&#123;是否为灰度值？&#125;
+P -- 是 --&gt; Q[存储灰度值]
+P -- 否 --&gt; R[获取RGB值并存储]
+I --&gt;|24位图像| S[处理每个像素的RGB值]
+S --&gt; T[获取RGB值并存储]
+K --&gt; U[将结果存储到字符串中]
+L --&gt; U
+N --&gt; U
+Q --&gt; U
+R --&gt; U
+T --&gt; U
+U --&gt; V[结束]
+</code></pre>
 
                 
               </div>
@@ -327,7 +399,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>数字图像处理实验1</div>
-      <div>http://jrhu0048.github.io/2024/10/15/shu-zi-tu-xiang-chu-li-shi-yan-1/</div>
+      <div>http://jrhu0048.github.io/2024/10/15/shu-zi-tu-xiang-chu-li/shu-zi-tu-xiang-chu-li-shi-yan-1/</div>
     </div>
     <div class="license-meta">
       
@@ -345,7 +417,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年10月15日</div>
+          <div>2024年10月26日</div>
         </div>
       
       

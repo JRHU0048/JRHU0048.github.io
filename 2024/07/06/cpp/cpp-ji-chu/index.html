@@ -22,7 +22,7 @@
     <meta name="description" content="参考连接： 学校课程23版https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1WG411d7ui&#x2F;?pop_share&#x3D;1&amp;vd_source&#x3D;2ea044642ac564524fdce3b964e1b2ae 课本教材https:&#x2F;&#x2F;github.com&#x2F;ShujiaHuang&#x2F;Cpp-Primer-Plus-6th  第一讲程序运行流程编译-运行（从硬盘到内存再一条一条给">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cpp基础">
-<meta property="og:url" content="http://jrhu0048.github.io/2024/07/06/cpp-ji-chu/index.html">
+<meta property="og:url" content="http://jrhu0048.github.io/2024/07/06/cpp/cpp-ji-chu/index.html">
 <meta property="og:site_name" content="CHARMMY">
 <meta property="og:description" content="参考连接： 学校课程23版https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1WG411d7ui&#x2F;?pop_share&#x3D;1&amp;vd_source&#x3D;2ea044642ac564524fdce3b964e1b2ae 课本教材https:&#x2F;&#x2F;github.com&#x2F;ShujiaHuang&#x2F;Cpp-Primer-Plus-6th  第一讲程序运行流程编译-运行（从硬盘到内存再一条一条给">
 <meta property="og:locale" content="zh_CN">
@@ -31,8 +31,9 @@
 <meta property="og:image" content="https://pic.imgdb.cn/item/670e32e9d29ded1a8c098769.png">
 <meta property="og:image" content="https://pic.imgdb.cn/item/670e32f4d29ded1a8c0994a8.png">
 <meta property="og:image" content="https://pic.imgdb.cn/item/670e32ffd29ded1a8c09a0b0.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/671c4c36d29ded1a8cb474f8.png">
 <meta property="article:published_time" content="2024-07-06T12:30:27.000Z">
-<meta property="article:modified_time" content="2024-10-24T11:50:13.030Z">
+<meta property="article:modified_time" content="2024-10-26T02:18:40.982Z">
 <meta property="article:author" content="JR.HU">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://pic.imgdb.cn/item/670e32ced29ded1a8c0966f1.png">
@@ -241,7 +242,7 @@
         
         
         
-          125 分钟
+          130 分钟
         
       </span>
     
@@ -458,7 +459,7 @@
 
 
 <h2 id="cpp视频看到了这里"><a href="#cpp视频看到了这里" class="headerlink" title="cpp视频看到了这里"></a>cpp视频看到了这里</h2><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1r841167xJ?t=5473.3">https://www.bilibili.com/video/BV1r841167xJ?t=5473.3</a></p>
-<h2 id="下面的内容来自黑马程序员视频"><a href="#下面的内容来自黑马程序员视频" class="headerlink" title="下面的内容来自黑马程序员视频"></a>下面的内容来自黑马程序员视频</h2><h3 id="程序设计的方法"><a href="#程序设计的方法" class="headerlink" title="程序设计的方法"></a>程序设计的方法</h3><ul>
+<h2 id="下面的内容来自黑马程序员视频以及一些其他途径看到的好的资料"><a href="#下面的内容来自黑马程序员视频以及一些其他途径看到的好的资料" class="headerlink" title="下面的内容来自黑马程序员视频以及一些其他途径看到的好的资料"></a>下面的内容来自黑马程序员视频以及一些其他途径看到的好的资料</h2><h3 id="程序设计的方法"><a href="#程序设计的方法" class="headerlink" title="程序设计的方法"></a>程序设计的方法</h3><ul>
 <li>结构化程序设计：顺序结构、选择结构、循环结构</li>
 <li>面向对象程序设计<ul>
 <li>什么是对象：对象在现实世界中是一个实体或一种事物的概念，不关心对象的内部结构以及实现方法，仅关心它的功能和使用方法</li>
@@ -632,6 +633,15 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-literal">true</span>  <span class="hljs-number">1</span><br><span class="hljs-literal">false</span> <span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
 
 <p>用数据类型<code>bool</code>来表示</p>
+<h3 id="字符函数库-cctype"><a href="#字符函数库-cctype" class="headerlink" title="字符函数库 cctype"></a>字符函数库 cctype</h3><p>C++ 从 C 语言继承了一个与字符相关的、非常方便的函数软件包， 它可以简化诸如确定字符是否为大写字母、数字、标点符号等工作，这 些函数的原型是在头文件cctype（老式的风格中为 ctype.h）中定义的。 例如，如果 ch 是一个字母，则 isalpha(ch) 函数返回一个非零值，否则返回 0。同样，如果 ch 是标点符号（如逗号或句号），函数 ispunct(ch) 将返回 true。（注意这些函数的返回类型为 int，而不是 bool， 但通常 bool 转换能够将它们视为bool 类型）</p>
+<ul>
+<li>isalpha() 用来检查字符是否为字母字符；</li>
+<li>isdigit() 用来测试字符是否为数字字符（0~9），如 3；</li>
+<li>isspace() 用来测试字符是否为空白，包括换行符、空格和制表符；</li>
+<li>ispunct() 用来测试字符是否为标点符号。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;cctype&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-type">char</span> a = <span class="hljs-string">&#x27;H&#x27;</span>;<br>	<span class="hljs-type">char</span> b = <span class="hljs-string">&#x27;3&#x27;</span>;<br>	<span class="hljs-type">char</span> c = <span class="hljs-string">&#x27; &#x27;</span>;<br>	<span class="hljs-type">char</span> d = <span class="hljs-string">&#x27;,&#x27;</span>;<br>	<span class="hljs-keyword">if</span> ((a &gt;= <span class="hljs-string">&#x27;a&#x27;</span> <span class="hljs-keyword">and</span> a &lt;= <span class="hljs-string">&#x27;z&#x27;</span>) <span class="hljs-built_in">or</span> (a &gt;= <span class="hljs-string">&#x27;A&#x27;</span> <span class="hljs-keyword">and</span> a &lt;= <span class="hljs-string">&#x27;Z&#x27;</span>)) <br>		cout &lt;&lt; <span class="hljs-string">&quot;是一个字符&quot;</span> &lt;&lt; endl;<br>	<span class="hljs-keyword">if</span> (<span class="hljs-built_in">isalpha</span>(a)) <br>		cout &lt;&lt; <span class="hljs-string">&quot;是一个字符too&quot;</span> &lt;&lt; endl;<br>	<span class="hljs-comment">//是一个字符</span><br>	<span class="hljs-comment">//是一个字符too</span><br>	<span class="hljs-keyword">if</span> (<span class="hljs-built_in">isdigit</span>(b))<br>		cout &lt;&lt; <span class="hljs-string">&quot;测试字符是一个数字&quot;</span> &lt;&lt; endl;<br>	<span class="hljs-keyword">if</span> (<span class="hljs-built_in">isspace</span>(c))<br>		cout&lt;&lt;<span class="hljs-string">&quot;测试字符是一个空白&quot;</span> &lt;&lt; endl;<br>	<span class="hljs-keyword">if</span> (<span class="hljs-built_in">ispunct</span>(d))<br>		cout&lt;&lt;<span class="hljs-string">&quot;测试字符是一个标点&quot;</span> &lt;&lt; endl;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><p>C++内置的运算符有：</p>
 <ul>
 <li>算数运算符</li>
@@ -665,10 +675,22 @@
 </ul>
 <p><strong>四、逻辑运算符</strong></p>
 <ul>
-<li><strong>逻辑与运算符（&amp;&amp;）</strong>： <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">bool</span> p = <span class="hljs-literal">true</span>;<br><span class="hljs-type">bool</span> q = <span class="hljs-literal">false</span>;<br><span class="hljs-type">bool</span> r = p &amp;&amp; q; <span class="hljs-comment">// r 为 false，因为只有当两个操作数都为 true 时，结果才为 true</span><br></code></pre></td></tr></table></figure></li>
-<li><strong>逻辑或运算符（||）</strong>： <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">bool</span> s = p || q; <span class="hljs-comment">// s 为 true，因为只要有一个操作数为 true，结果就为 true</span><br></code></pre></td></tr></table></figure></li>
-<li><strong>逻辑非运算符（!）</strong>： <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">bool</span> t =!p; <span class="hljs-comment">// t 为 false，因为!对操作数取反</span><br></code></pre></td></tr></table></figure></li>
+<li><p><strong>逻辑与运算符（&amp;&amp;）</strong>：</p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">bool</span> p = <span class="hljs-literal">true</span>;<br><span class="hljs-type">bool</span> q = <span class="hljs-literal">false</span>;<br><span class="hljs-type">bool</span> r = p &amp;&amp; q; <span class="hljs-comment">// r 为 false，因为只有当两个操作数都为 true 时，结果才为 true</span><br></code></pre></td></tr></table></figure></li>
+<li><p><strong>逻辑或运算符（||）</strong>：</p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">bool</span> s = p || q; <span class="hljs-comment">// s 为 true，因为只要有一个操作数为 true，结果就为 true</span><br></code></pre></td></tr></table></figure></li>
+<li><p><strong>逻辑非运算符（!）</strong>：</p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">bool</span> t =!p; <span class="hljs-comment">// t 为 false，因为!对操作数取反</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>其他表示方式</strong></p>
+</li>
 </ul>
+<p>并不是所有的键盘都提供了用作逻辑运算符的符号</p>
+<p>因此C++标准提供了另一种表示方式，如表所示，标识符and、or和not都是C++保留字，这意味着不能将它们用作变量名等。它们不是关键字，因为它们都是已有语言特性的另一种表示方式。另外，它们并不是C语言中的保 留字，但C语言程序可以将它们用作运算符，只要在程序中包含了头文件 iso646.h。</p>
+<p>C++不要求使用头文件<br><img src="https://pic.imgdb.cn/item/671c4c36d29ded1a8cb474f8.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-type">int</span> a = <span class="hljs-number">1</span>, b = <span class="hljs-number">2</span>;<br>	<span class="hljs-keyword">if</span> (a <span class="hljs-keyword">and</span> b)<br>		cout&lt;&lt;<span class="hljs-string">&quot;hhh&quot;</span> &lt;&lt; endl;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
 <p><strong>五、位运算符</strong></p>
 <ul>
 <li><strong>按位与运算符（&amp;）</strong>： <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> m = <span class="hljs-number">5</span>; <span class="hljs-comment">// 二进制为 0101</span><br><span class="hljs-type">int</span> n = <span class="hljs-number">3</span>; <span class="hljs-comment">// 二进制为 0011</span><br><span class="hljs-type">int</span> o = m &amp; n; <span class="hljs-comment">// 二进制 0101 &amp; 0011 = 0001，即 o 的值为 1</span><br></code></pre></td></tr></table></figure></li>
@@ -678,7 +700,7 @@
 <li><strong>右移运算符（&gt;&gt;）</strong>： <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> s = m &gt;&gt; <span class="hljs-number">1</span>; <span class="hljs-comment">// 5 的二进制 0101 右移一位变为 0010，s 的值为 2</span><br></code></pre></td></tr></table></figure></li>
 </ul>
 <p><strong>六、三目运算符（也称为条件运算符）</strong>：<br>   <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> u = (a &gt; b)? a : b; <span class="hljs-comment">// 如果 a 大于 b，u 的值为 a，否则为 b</span><br></code></pre></td></tr></table></figure></p>
-<h3 id="if逻辑判断语句"><a href="#if逻辑判断语句" class="headerlink" title="if逻辑判断语句"></a>if逻辑判断语句</h3><p>在 C++中，<code>if</code>语句是一种基本的控制流结构，用于根据条件执行不同的代码块。</p>
+<h3 id="if逻辑判断语句"><a href="#if逻辑判断语句" class="headerlink" title="if逻辑判断语句"></a>if逻辑判断语句</h3><p>在 C++中，<code>if</code>语句是一种基本的控制流结构，用于根据条件执行不同的代码块</p>
 <p><strong>1. 基本语法</strong></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">if</span> (condition) &#123;<br>    <span class="hljs-comment">// 如果条件为真（true）执行的代码块</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -686,11 +708,11 @@
 <p>例如：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> x = <span class="hljs-number">5</span>;<br><span class="hljs-keyword">if</span> (x &gt; <span class="hljs-number">3</span>) &#123;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;x 大于 3&quot;</span> &lt;&lt; std::endl;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>在这个例子中，因为<code>5</code>大于<code>3</code>，所以条件<code>x &gt; 3</code>为<code>true</code>，会执行输出语句。</p>
+<p>在这个例子中，因为<code>5</code>大于<code>3</code>，所以条件<code>x &gt; 3</code>为<code>true</code>，会执行输出语句</p>
 <p><strong>2. <code>if-else</code>结构</strong></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">if</span> (condition) &#123;<br>    <span class="hljs-comment">// 如果条件为真执行的代码块</span><br>&#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-comment">// 如果条件为假执行的代码块</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>当<code>condition</code>为<code>true</code>时执行<code>if</code>块中的代码，否则执行<code>else</code>块中的代码。</p>
+<p>当condition为true时执行if块中的代码，否则执行else块中的代码</p>
 <p>例如：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> y = <span class="hljs-number">2</span>;<br><span class="hljs-keyword">if</span> (y &gt; <span class="hljs-number">3</span>) &#123;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;y 大于 3&quot;</span> &lt;&lt; std::endl;<br>&#125; <span class="hljs-keyword">else</span> &#123;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;y 不大于 3&quot;</span> &lt;&lt; std::endl;<br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -897,7 +919,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>cpp基础</div>
-      <div>http://jrhu0048.github.io/2024/07/06/cpp-ji-chu/</div>
+      <div>http://jrhu0048.github.io/2024/07/06/cpp/cpp-ji-chu/</div>
     </div>
     <div class="license-meta">
       
@@ -915,7 +937,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年10月24日</div>
+          <div>2024年10月26日</div>
         </div>
       
       
@@ -946,7 +968,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/07/08/suan-fa-shua-ti-ji-lu/" title="算法刷题记录">
+                      <a href="/2024/07/08/python/suan-fa-shua-ti-ji-lu/" title="算法刷题记录">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">算法刷题记录</span>
                         <span class="visible-mobile">上一篇</span>
