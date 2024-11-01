@@ -1230,7 +1230,7 @@ i.iconfont {
   padding-bottom: 0.5rem;
 }
 .index-header {
-  color: var(--text-color);
+  color: #ff5722;
   font-size: 1.5rem;
   font-weight: bold;
   line-height: 1.4;
