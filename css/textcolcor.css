@@ -1,34 +1,13 @@
 /* 定义页脚文字的颜色 */
-/* .footer-content a,
-.footer-content i,
-.footer-content span {
-  color: #03fcf8; 
-} */
-
-/* 定义统计访问数据的颜色 */
-/* .statistics{
-  color: #03fcf8 ;
-} */
-
-
-/* 定义页脚文字的颜色 */
 .footer-content a,
 .footer-content i,
 .footer-content span {
-  background: linear-gradient(90deg, #4300fa); /* 渐变背景 */
-  -webkit-background-clip: text; /* 裁剪背景到文字 */
-  background-clip: text; /* 裁剪背景到文字 */
-  color: transparent; /* 文字颜色透明 */
-  -webkit-text-fill-color: transparent; /* 文字填充颜色透明 */
+  color: #5000fb; 
 }
 
 /* 定义统计访问数据的颜色 */
-.statistics {
-  background: linear-gradient(90deg, #4300fa); /* 渐变背景 */
-  -webkit-background-clip: text; /* 裁剪背景到文字 */
-  background-clip: text; /* 裁剪背景到文字 */
-  color: transparent; /* 文字颜色透明 */
-  -webkit-text-fill-color: transparent; 
+.statistics{
+  color: #5000fb ;
 }
 
 
