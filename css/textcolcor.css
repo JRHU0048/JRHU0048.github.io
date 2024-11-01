@@ -2,10 +2,10 @@
 .footer-content a,
 .footer-content i,
 .footer-content span {
-  color: #0099ff; 
+  color: #ff6a00;
 }
 
 /* 定义统计访问数据的颜色 */
 .statistics{
-  color: #0099ff ;
+  color: #ff6a00;
 }
