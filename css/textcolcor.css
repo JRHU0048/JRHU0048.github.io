@@ -31,6 +31,9 @@
   -webkit-text-fill-color: transparent; /* 文字填充颜色透明 */
 }
 
-.toc-list-item {
+.li.toc-list-item {
+  color: #ffffff;
+}
+.i.iconfont.icon-list {
   color: #ffffff;
 }
