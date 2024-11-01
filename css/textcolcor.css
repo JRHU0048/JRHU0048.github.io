@@ -15,7 +15,7 @@
 .footer-content a,
 .footer-content i,
 .footer-content span {
-  background: linear-gradient(90deg, #fd0a0a, #06f406); /* 渐变背景 */
+  background: linear-gradient(90deg, #4300fa); /* 渐变背景 */
   -webkit-background-clip: text; /* 裁剪背景到文字 */
   background-clip: text; /* 裁剪背景到文字 */
   color: transparent; /* 文字颜色透明 */
@@ -24,16 +24,17 @@
 
 /* 定义统计访问数据的颜色 */
 .statistics {
-  background: linear-gradient(90deg, #fd0a0a, #06f406); /* 渐变背景 */
+  background: linear-gradient(90deg, #4300fa); /* 渐变背景 */
   -webkit-background-clip: text; /* 裁剪背景到文字 */
   background-clip: text; /* 裁剪背景到文字 */
   color: transparent; /* 文字颜色透明 */
-  -webkit-text-fill-color: transparent; /* 文字填充颜色透明 */
+  -webkit-text-fill-color: transparent; 
 }
+
 
 .li.toc-list-item {
   color: #ffffff;
 }
-.i.iconfont.icon-list {
+.i.iconfont.icon-list span {
   color: #ffffff;
 }
