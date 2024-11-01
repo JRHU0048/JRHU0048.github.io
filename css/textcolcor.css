@@ -2,18 +2,10 @@
 .footer-content a,
 .footer-content i,
 .footer-content span {
-  color: #5000fb; 
+  color: #0099ff; 
 }
 
 /* 定义统计访问数据的颜色 */
 .statistics{
-  color: #5000fb ;
-}
-
-
-.li.toc-list-item {
-  color: #ffffff;
-}
-.i.iconfont.icon-list span {
-  color: #ffffff;
+  color: #0099ff ;
 }
