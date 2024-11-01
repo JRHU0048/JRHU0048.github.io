@@ -6,10 +6,11 @@
 }
 
 /* 定义统计数字的颜色 */
-footer .statistics .pv{
+.footer-statistics-pv_format{
   color: #03fcf8 ;
 }
 
-footer .statistics .uv {
+.footer-statistics-uv_format{
   color: #03fcf8 ;
 }
+
