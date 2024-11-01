@@ -2,10 +2,10 @@
 .footer-content a,
 .footer-content i,
 .footer-content span {
-  color: #03fcf8; /* 例如，设置为深灰色 */
+  color: #03fcf8; 
 }
 
 /* 定义统计数字的颜色 */
-.footer-statistics {
-  color: #03fcf8; /* 例如，设置为浅灰色 */
+.footer .footer-statistics span {
+  color: #03fcf8 !important;
 }
