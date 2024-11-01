@@ -5,15 +5,7 @@
   color: #03fcf8; 
 }
 
-/* 定义统计数字的颜色 */
-.footer-statistics-pv_format{
-  color: #03fcf8 ;
-}
-
-.footer-statistics-uv_format{
-  color: #03fcf8 ;
-}
-
-.slogan {
+/* 定义统计访问数据的颜色 */
+.statistics{
   color: #03fcf8 ;
 }
