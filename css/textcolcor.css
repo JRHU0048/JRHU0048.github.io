@@ -10,6 +10,7 @@
   color: #03fcf8 ;
 } */
 
+
 /* 定义页脚文字的颜色 */
 .footer-content a,
 .footer-content i,
@@ -28,4 +29,8 @@
   background-clip: text; /* 裁剪背景到文字 */
   color: transparent; /* 文字颜色透明 */
   -webkit-text-fill-color: transparent; /* 文字填充颜色透明 */
+}
+
+.toc-list-item{
+  color: #ffffff;
 }

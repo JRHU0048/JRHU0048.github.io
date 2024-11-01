@@ -1,3 +1,4 @@
+/*实现文章进入动画*/
 const cards = document.querySelectorAll('.index-card')
 if (cards.length) {
   document.querySelector('.row').setAttribute('style', 'overflow: hidden;')
@@ -28,3 +29,4 @@ if (cards.length) {
 
   document.addEventListener("scroll", throttle(handle, 100));
 }
+/*实现文章进入动画*/

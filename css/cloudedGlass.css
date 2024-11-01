@@ -1,4 +1,6 @@
+/*毛玻璃特效*/
 #board {
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
   }
+/*毛玻璃特效*/
