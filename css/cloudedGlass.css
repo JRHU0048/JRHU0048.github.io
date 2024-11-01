@@ -2,7 +2,7 @@
 #board {
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.5); /* 半透明背景色 */
+    background-color: rgba(255, 255, 255, 0.7); /* 半透明背景色 */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
@@ -13,8 +13,8 @@
 #toc {
   visibility: visible;
   backdrop-filter: blur(10px); /* 毛玻璃特效，模糊半径为10px */
-  -webkit-backdrop-filter: blur(10px); /* 为了兼容WebKit浏览器 */
-  background-color: rgba(255, 255, 255, 0.8); /* 半透明背景色 */
+  /* -webkit-backdrop-filter: blur(10px); 为了兼容WebKit浏览器 */
+  background-color: rgba(255, 255, 255, 0.5); /* 半透明背景色 */
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
