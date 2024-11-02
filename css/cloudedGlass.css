@@ -9,7 +9,7 @@
   }
 /*毛玻璃特效*/
 
-/*侧边毛玻璃特效*/
+/*侧边大纲毛玻璃特效*/
 #toc {
   visibility: visible;
   backdrop-filter: blur(5px); /* 毛玻璃特效，模糊半径为5px */
@@ -20,12 +20,11 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
 }
 
+/* 侧边分类列表毛玻璃特效 */
 .category-bar .category-list {
   max-height: 85vh;
   overflow-y: auto;
   overflow-x: hidden;
-
-  /* 添加毛玻璃效果 */
   backdrop-filter: blur(5px); /* 毛玻璃特效，模糊半径为5px */
   -webkit-backdrop-filter: blur(5px); /* 为了兼容WebKit浏览器 */
   background-color: rgba(255, 255, 255, 0.7); /* 半透明背景色 */
