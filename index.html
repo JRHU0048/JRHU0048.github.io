@@ -97,7 +97,9 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>CHARMMY</strong>
+      <!-- <strong>CHARMMY</strong> -->
+       <!-- 修改如下： -->
+      <strong class="navbar-title">CHARMMY</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -193,7 +195,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/desktop2.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/hei.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -212,6 +214,139 @@
         </div>
       
     </div>
+
+    
+      <div style="height:500px" id="bubbles"></div>
+      <script>
+        circleMagic();
+        function circleMagic(options) {
+            let width;
+            let height;
+            let canvas;
+            let ctx;
+            let animateHeader = true;
+            const circles = [];
+    
+            const settings = options || {
+                color: 'rgba(255,255,255,.3)',
+                radius: 10,
+                density: 0.1,
+                clearOffset: 0.7
+            }
+    
+            const container = document.getElementById('bubbles');
+            initContainer();
+            addListeners();
+    
+            function initContainer() {
+                width = container.offsetWidth;
+                height = container.offsetHeight - 120;
+    
+                initCanvas();
+                canvas = document.getElementById('homeTopCanvas');
+                canvas.width = width;
+                canvas.height = height;
+                canvas.style.position = 'absolute';
+                canvas.style.left = '0';
+                canvas.style.bottom = '0';
+                ctx = canvas.getContext('2d');
+    
+                for (let x = 0; x < width * settings.density; x++) {
+                    const c = new Circle();
+                    circles.push(c);
+                }
+                animate();
+            }
+    
+            function initCanvas() {
+                const canvasElement = document.createElement('canvas');
+                canvasElement.id = 'homeTopCanvas';
+                canvasElement.style.pointerEvents = 'none';
+                container.appendChild(canvasElement);
+                canvasElement.parentElement.style.overflow = 'hidden';
+            }
+    
+            function addListeners() {
+                window.addEventListener('scroll', scrollCheck, false);
+                window.addEventListener('resize', resize, false);
+            }
+    
+            function scrollCheck() {
+                if (document.body.scrollTop > height) {
+                    animateHeader = false;
+                } else {
+                    animateHeader = true;
+                }
+            }
+    
+            function resize() {
+                width = container.clientWidth;
+                height = container.clientHeight;
+                container.height = height + 'px';
+                canvas.width = width;
+                canvas.height = height;
+            }
+    
+            function animate() {
+                if (animateHeader) {
+                    ctx.clearRect(0, 0, width, height);
+                    for (const i in circles) {
+                        circles[i].draw();
+                    }
+                }
+                requestAnimationFrame(animate);
+            }
+    
+            function randomColor() {
+                const r = Math.floor(Math.random() * 255);
+                const g = Math.floor(Math.random() * 255);
+                const b = Math.floor(Math.random() * 255);
+                const alpha = Math.random().toPrecision(2);
+                return 'rgba(' + r + ', ' + g + ', ' + b + ', ' + alpha + ')';
+            }
+    
+            function Circle() {
+                const that = this;
+                (function () {
+                    that.pos = {};
+                    init();
+                })();
+                function init() {
+                    that.pos.x = Math.random() * width;
+                    that.pos.y = height + Math.random() * 100;
+                    that.alpha = 0.1 + Math.random() * settings.clearOffset;
+                    that.scale = 0.1 + Math.random() * 0.3;
+                    that.speed = Math.random();
+                    if (settings.color === 'random') {
+                        that.color = randomColor();
+                    } else {
+                        that.color = settings.color;
+                    }
+                }
+                this.draw = function () {
+                    if (that.alpha <= 0) {
+                        init();
+                    }
+                    that.pos.y -= that.speed;
+                    that.alpha -= 0.0005;
+                    ctx.beginPath();
+                    ctx.arc(
+                        that.pos.x,
+                        that.pos.y,
+                        that.scale * settings.radius,
+                        0,
+                        2 * Math.PI,
+                        false
+                    );
+                    ctx.fillStyle = that.color;
+                    ctx.fill();
+                    ctx.closePath();
+                }
+            }
+        }
+      </script>
+    
+    
   </div>
 </div>
 
@@ -318,7 +453,7 @@
       
       <a class="index-excerpt " href="/2024/10/26/ji-qi-xue-xi/di-shi-jiang-perceptron/" target="_self">
         <div>
-          写在前面感知机内容不多，老师只用了40min讲完，可以多看看博客笔记，也没有作业，这块不是重点 [1]https://luweikxy.gitbook.io/machine-learning-notes/perceptron[2]https://www.jiqizhixin.com/graph/technologies/f9849d6c-6262-4c1f-8f42-6d976be17161 Pe
+          写在前面 感知机内容不多，老师只用了40min讲完，可以多看看博客笔记，也没有作业，这块不是重点 [1]https://luweikxy.gitbook.io/machine-learning-notes/perceptron [2]https://www.jiqizhixin.com/graph/technologies/f9849d6c-6262-4c1f-8f42-6d976be171
         </div>
       </a>
 
@@ -378,7 +513,7 @@
       
       <a class="index-excerpt " href="/2024/10/25/ji-qi-xue-xi/di-jiu-jiang-convolutional-neural-networks/" target="_self">
         <div>
-          写在前面记录一下非常好的博客讲解： [1] CNN 卷积神经网络 https://dorianzi.github.io/2019/04/25/CNN/ 卷积神经网络  上述图片引自：https://dorianzi.github.io/2019/04/25/CNN/ 卷积神经网络是为了处理图片而生的分类任务 全连接神经网络与卷积神经网络 为什么选择 卷积层神经网络 而不用 全连接神经网络 卷积核的
+          写在前面 记录一下非常好的博客讲解： [1] CNN 卷积神经网络 https://dorianzi.github.io/2019/04/25/CNN/ 卷积神经网络   上述图片引自：https://dorianzi.github.io/2019/04/25/CNN/ 卷积神经网络是为了处理图片而生的分类任务  全连接神经网络与卷积神经网络  为什么选择 卷积层神经网络 而不
         </div>
       </a>
 
@@ -438,7 +573,7 @@
       
       <a class="index-excerpt " href="/2024/10/25/ji-qi-xue-xi/di-ba-jiang-optimization/" target="_self">
         <div>
-          Optimization注意偏导和梯度的区别： 这里讲模型的第四个部分：优化算法，相较于传统的梯度下降优化算法，有很多改进的版本，虽然没有跳脱出梯度下降的框架，但是在传统算法的基础上进行了改进优化，更加好用 梯度下降算法的缺点 梯度消失 saddle point 局部最优 local minimum 各参数尺度不一 different scale  GDM (GD with momentum)通过
+          Optimization 注意偏导和梯度的区别： 这里讲模型的第四个部分：优化算法，相较于传统的梯度下降优化算法，有很多改进的版本，虽然没有跳脱出梯度下降的框架，但是在传统算法的基础上进行了改进优化，更加好用 梯度下降算法的缺点  梯度消失 saddle point 局部最优 local minimum 各参数尺度不一 different scale  GDM (GD with
         </div>
       </a>
 
@@ -498,7 +633,7 @@
       
       <a class="index-excerpt " href="/2024/10/25/shu-zi-tu-xiang-chu-li/di-san-zhang-bmp-wen-jian-de-du-qu-yu-xian-shi/" target="_self">
         <div>
-          BMP文件的读取与显示常见的图像文件格式BMP（Bitmap位图）是一种与设备无关（DIB）的图像文件格式，是Windows环境中经常使用的一种位图格式。其特点是不进行压缩，包含的图像信息丰富，但由此导致了占用磁盘空间过大的缺点。 BMP在单机上非常流行，不受Internet网络欢迎。 采用的是RGB色彩系统。 GIF（.gif）文件GIF（Graphics Interchange Format）
+          BMP文件的读取与显示 常见的图像文件格式 BMP（Bitmap位图） 是一种与设备无关（DIB）的图像文件格式，是Windows环境中经常使用的一种位图格式。其特点是不进行压缩，包含的图像信息丰富，但由此导致了占用磁盘空间过大的缺点。 BMP在单机上非常流行，不受Internet网络欢迎。 采用的是RGB色彩系统。 GIF（.gif）文件 GIF（Graphics Intercha
         </div>
       </a>
 
@@ -558,7 +693,7 @@
       
       <a class="index-excerpt " href="/2024/10/23/ji-qi-xue-xi/ji-qi-xue-xi-shi-yan-7/" target="_self">
         <div>
-          本次实验需要实现一个简单的神经网络，并使用梯度下降法训练。 遇到了Xavier初始化,找到了一篇学习资料： https://blog.csdn.net/qq_67720621/article/details/138045784  networkBackward 函数需要对照课件好好学习一下 实验代码12345678910111213141516171819202122232425262728293
+          本次实验需要实现一个简单的神经网络，并使用梯度下降法训练。 遇到了Xavier初始化,找到了一篇学习资料： https://blog.csdn.net/qq_67720621/article/details/138045784  networkBackward 函数需要对照课件好好学习一下 实验代码 1234567891011121314151617181920212223242526
         </div>
       </a>
 
@@ -618,7 +753,7 @@
       
       <a class="index-excerpt " href="/2024/10/23/ji-qi-xue-xi/di-qi-jiang-shen-jing-wang-luo/" target="_self">
         <div>
-          Neural Network使用神经网络进行多分类  神经网络只改变了模型，使用很复杂的模型即可，其他方面都没有改变 神经元的概念线性神经元  神经网络本质上都是多元复合函数!!!!!，是对模型的改变 不加入激活函数的后果：无论多少层神经网络，最后得到的都是线性模型，学习能力比较差  完全体的神经网络模型如下：  常见的激活函数：  全连接神经网络：可以实现各种组合，模型复杂度高，学习能力强  一
+          Neural Network 使用神经网络进行多分类  神经网络只改变了模型，使用很复杂的模型即可，其他方面都没有改变 神经元的概念 线性神经元  神经网络本质上都是多元复合函数!!!!!，是对模型的改变 不加入激活函数的后果：无论多少层神经网络，最后得到的都是线性模型，学习能力比较差  完全体的神经网络模型如下：  常见的激活函数：  全连接神经网络：可以实现各种组合
         </div>
       </a>
 
@@ -678,7 +813,7 @@
       
       <a class="index-excerpt " href="/2024/10/21/shu-zi-tu-xiang-chu-li/di-si-zhang-shu-zi-tu-xiang-ji-ben-yun-suan/" target="_self">
         <div>
-          算数运算算数运算概述定义：对两幅输入的图像进行点对点的加、减、乘、除计算得到的输出图像，数学表达式为：  加法运算：输出图像 C 的像素值 C(x,y)&#x3D;A(x,y)+B(x,y) 减法运算：输出图像 C 的像素值 C(x,y)&#x3D;A(x,y)-B(x,y) 乘法运算：输出图像 C 的像素值 C(x,y)&#x3D;A(x,y)×B(x,y) 除法运算：输出图像 C 的像素值 C
+          算数运算 算数运算概述 定义：对两幅输入的图像进行点对点的加、减、乘、除计算得到的输出图像，数学表达式为：  加法运算：输出图像 C 的像素值 C(x,y)=A(x,y)+B(x,y) 减法运算：输出图像 C 的像素值 C(x,y)=A(x,y)-B(x,y) 乘法运算：输出图像 C 的像素值 C(x,y)=A(x,y)×B(x,y) 除法运算：输出图像 C 的像素值 C(x,y)=
         </div>
       </a>
 
@@ -738,7 +873,7 @@
       
       <a class="index-excerpt " href="/2024/10/18/ros/ros-shi-yan-bao-gao-er/" target="_self">
         <div>
-          Topic 与 Service关于ros中的服务通信机制，是一种同步通信，相较于话题通信，区别如下：  ROS学习笔记6~Topic(话题) 和Service(服务)的区别 话题通信适用于不断更新的数据传输相关的应用场景    对比项 发布&#x2F;订阅 请求&#x2F;响应    通信模式 发布者发布消息，订阅者接收消息，多对多关系 客户端向服务器发送请求，服务器返回响应，一对多关系（一个 S
+          Topic 与 Service 关于ros中的服务通信机制，是一种同步通信，相较于话题通信，区别如下：  ROS学习笔记6~Topic(话题) 和Service(服务)的区别 话题通信适用于不断更新的数据传输相关的应用场景     对比项 发布/订阅 请求/响应     通信模式 发布者发布消息，订阅者接收消息，多对多关系 客户端向服务器发送请求，服务器返回响
         </div>
       </a>
 
@@ -798,7 +933,7 @@
       
       <a class="index-excerpt " href="/2024/10/17/mercuryx1-diao-shi-shou-ce/" target="_self">
         <div>
-          参考链接： https://docs.elephantrobotics.com/docs/Mercury_X1_cn/7-ExamplesRobotsUsing/ 大象机器人ROS开发手册参考 https://docs.elephantrobotics.com/docs/gitbook/7-ApplicationBasePython/  基于python开发使用 http://github.com
+          参考链接：  https://docs.elephantrobotics.com/docs/Mercury_X1_cn/7-ExamplesRobotsUsing/ 大象机器人ROS开发手册参考 https://docs.elephantrobotics.com/docs/gitbook/7-ApplicationBasePython/ 基于python开发使用 http://gith
         </div>
       </a>
 
@@ -852,7 +987,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/10/16/ji-qi-xue-xi/ji-qi-xue-xi-shi-yan-6/" target="_self">
         <div>
-          本次实验需要构造一个简单的 softmax 分类模型，先复习一下基础知识  利用softmax进行预测，得到预测的分类结果  对于损失函数的定义如下： 对损失函数的定义需要重点关注！！！  有了损失函数和梯度就可以构建模型 12345def cost_gradient(W, X, Y, n):    G = (1 / n) * np.dot(X.T, predict(X, W) - Y)  # 计
+          本次实验需要构造一个简单的 softmax 分类模型，先复习一下基础知识  利用softmax进行预测，得到预测的分类结果  对于损失函数的定义如下： 对损失函数的定义需要重点关注！！！  有了损失函数和梯度就可以构建模型 12345def cost_gradient(W, X, Y, n):    G = (1 / n) * np.dot(X.T, predict(X, W)
         </div>
       </a>
 
@@ -906,7 +1041,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/10/15/ma-ti-ji-zhou-sai-1/" target="_self">
         <div>
-          第一题 使用cpp来实现 1234567891011121314151617181920212223242526#include &lt;iostream&gt;#include &lt;cmath&gt;#include &lt;complex&gt;#include &lt;iomanip&gt;int main() &#123;    int n;    std::cin &gt;&gt;
+          第一题  使用cpp来实现 1234567891011121314151617181920212223242526#include &lt;iostream&gt;#include &lt;cmath&gt;#include &lt;complex&gt;#include &lt;iomanip&gt;int main() &#123;    int n;    std::cin &gt;&
         </div>
       </a>
 

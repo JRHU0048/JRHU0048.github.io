@@ -97,7 +97,9 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>CHARMMY</strong>
+      <!-- <strong>CHARMMY</strong> -->
+       <!-- 修改如下： -->
+      <strong class="navbar-title">CHARMMY</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -193,7 +195,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/desktop2.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/hei.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -212,6 +214,139 @@
         </div>
       
     </div>
+
+    
+      <div style="height:500px" id="bubbles"></div>
+      <script>
+        circleMagic();
+        function circleMagic(options) {
+            let width;
+            let height;
+            let canvas;
+            let ctx;
+            let animateHeader = true;
+            const circles = [];
+    
+            const settings = options || {
+                color: 'rgba(255,255,255,.3)',
+                radius: 10,
+                density: 0.1,
+                clearOffset: 0.7
+            }
+    
+            const container = document.getElementById('bubbles');
+            initContainer();
+            addListeners();
+    
+            function initContainer() {
+                width = container.offsetWidth;
+                height = container.offsetHeight - 120;
+    
+                initCanvas();
+                canvas = document.getElementById('homeTopCanvas');
+                canvas.width = width;
+                canvas.height = height;
+                canvas.style.position = 'absolute';
+                canvas.style.left = '0';
+                canvas.style.bottom = '0';
+                ctx = canvas.getContext('2d');
+    
+                for (let x = 0; x < width * settings.density; x++) {
+                    const c = new Circle();
+                    circles.push(c);
+                }
+                animate();
+            }
+    
+            function initCanvas() {
+                const canvasElement = document.createElement('canvas');
+                canvasElement.id = 'homeTopCanvas';
+                canvasElement.style.pointerEvents = 'none';
+                container.appendChild(canvasElement);
+                canvasElement.parentElement.style.overflow = 'hidden';
+            }
+    
+            function addListeners() {
+                window.addEventListener('scroll', scrollCheck, false);
+                window.addEventListener('resize', resize, false);
+            }
+    
+            function scrollCheck() {
+                if (document.body.scrollTop > height) {
+                    animateHeader = false;
+                } else {
+                    animateHeader = true;
+                }
+            }
+    
+            function resize() {
+                width = container.clientWidth;
+                height = container.clientHeight;
+                container.height = height + 'px';
+                canvas.width = width;
+                canvas.height = height;
+            }
+    
+            function animate() {
+                if (animateHeader) {
+                    ctx.clearRect(0, 0, width, height);
+                    for (const i in circles) {
+                        circles[i].draw();
+                    }
+                }
+                requestAnimationFrame(animate);
+            }
+    
+            function randomColor() {
+                const r = Math.floor(Math.random() * 255);
+                const g = Math.floor(Math.random() * 255);
+                const b = Math.floor(Math.random() * 255);
+                const alpha = Math.random().toPrecision(2);
+                return 'rgba(' + r + ', ' + g + ', ' + b + ', ' + alpha + ')';
+            }
+    
+            function Circle() {
+                const that = this;
+                (function () {
+                    that.pos = {};
+                    init();
+                })();
+                function init() {
+                    that.pos.x = Math.random() * width;
+                    that.pos.y = height + Math.random() * 100;
+                    that.alpha = 0.1 + Math.random() * settings.clearOffset;
+                    that.scale = 0.1 + Math.random() * 0.3;
+                    that.speed = Math.random();
+                    if (settings.color === 'random') {
+                        that.color = randomColor();
+                    } else {
+                        that.color = settings.color;
+                    }
+                }
+                this.draw = function () {
+                    if (that.alpha <= 0) {
+                        init();
+                    }
+                    that.pos.y -= that.speed;
+                    that.alpha -= 0.0005;
+                    ctx.beginPath();
+                    ctx.arc(
+                        that.pos.x,
+                        that.pos.y,
+                        that.scale * settings.radius,
+                        0,
+                        2 * Math.PI,
+                        false
+                    );
+                    ctx.fillStyle = that.color;
+                    ctx.fill();
+                    ctx.closePath();
+                }
+            }
+        }
+      </script>
+    
+    
   </div>
 </div>
 
@@ -245,7 +380,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/03/04/ctf/wp-2021swpuctf-xin-sheng-sai-crypto-traditional/" target="_self">
         <div>
-          题目：西方的二进制数学的发明者莱布尼茨，从中国的八卦图当中受到启发，演绎并推论出了数学矩阵，最后创造的二进制数学。二进制数学的诞生为计算机的发明奠定了理论基础。而计算机现在改变了我们整个世界，改变了我们生活，而他的源头却是来自于八卦图。现在，给你一组由八卦图方位组成的密文，你能破解出其中的含义吗？ 震坤艮 震艮震 坤巽坤 坤巽震 震巽兑 震艮震 震离艮 震离艮 格式：NSSCTF{} 解题思路 根
+          题目： 西方的二进制数学的发明者莱布尼茨，从中国的八卦图当中受到启发，演绎并推论出了数学矩 阵， 最后创造的二进制数学。二进制数学的诞生为计算机的发明奠定了理论基础。而计算机现在改 变 了我们整个世界，改变了我们生活，而他的源头却是来自于八卦图。现在，给你一组由八卦图 方位 组成的密文，你能破解出其中的含义吗？ 震坤艮 震艮震 坤巽坤 坤巽震 震巽兑 震艮震 震离艮 震离艮 格式：N
         </div>
       </a>
 
@@ -299,7 +434,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/02/11/ctf/wei-na-gong-ji-zong-jie/" target="_self">
         <div>
-          维纳攻击wiener attack 是依靠连分数进行的攻击方式，适用于非常接近某一值（比如1）时，求一个比例关系(通常是e &#x2F; N &#x3D; 1)，在不同的题目中也会产生很多变式。 解题模板12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535
+          维纳攻击 wiener attack 是依靠连分数进行的攻击方式，适用于非常接近某一值（比如1）时，求一个比例关系(通常是e / N = 1)，在不同的题目中也会产生很多变式。 ### 解题模板 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535
         </div>
       </a>
 
@@ -360,7 +495,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2023/08/24/k-jun-zhi-ju-lei-suan-fa/" target="_self">
         <div>
-          一、介绍K-means聚类算法是先随机选取K个对象作为初始的聚类中心。然后计算每个对象与各个种子聚类中心之间的距离，把每个对象分配给距离它最近的聚类中心。聚类中心以及分配给它们的对象就代表一个聚类。每分配一个样本，聚类的聚类中心会根据聚类中现有的对象被重新计算。这个过程将不断重复直到满足某个终止条件。终止条件可以是没有（或最小数目）对象被重新分配给不同的聚类，没有（或最小数目）聚类中心再发生变化，
+          一、介绍 K-means聚类算法是先随机选取K个对象作为初始的聚类中心。然后计算每个对象与各个种子聚类中心之间的距离，把每个对象分配给距离它最近的聚类中心。聚类中心以及分配给它们的对象就代表一个聚类。每分配一个样本，聚类的聚类中心会根据聚类中现有的对象被重新计算。这个过程将不断重复直到满足某个终止条件。终止条件可以是没有（或最小数目）对象被重新分配给不同的聚类，没有（或最小数目）聚类中心再发生变
         </div>
       </a>
 
@@ -414,7 +549,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2022/08/30/hello-world/" target="_self">
         <div>
-          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
         </div>
       </a>
 

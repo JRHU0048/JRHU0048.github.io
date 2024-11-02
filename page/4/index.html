@@ -97,7 +97,9 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>CHARMMY</strong>
+      <!-- <strong>CHARMMY</strong> -->
+       <!-- 修改如下： -->
+      <strong class="navbar-title">CHARMMY</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -193,7 +195,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/desktop2.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/hei.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -212,6 +214,139 @@
         </div>
       
     </div>
+
+    
+      <div style="height:500px" id="bubbles"></div>
+      <script>
+        circleMagic();
+        function circleMagic(options) {
+            let width;
+            let height;
+            let canvas;
+            let ctx;
+            let animateHeader = true;
+            const circles = [];
+    
+            const settings = options || {
+                color: 'rgba(255,255,255,.3)',
+                radius: 10,
+                density: 0.1,
+                clearOffset: 0.7
+            }
+    
+            const container = document.getElementById('bubbles');
+            initContainer();
+            addListeners();
+    
+            function initContainer() {
+                width = container.offsetWidth;
+                height = container.offsetHeight - 120;
+    
+                initCanvas();
+                canvas = document.getElementById('homeTopCanvas');
+                canvas.width = width;
+                canvas.height = height;
+                canvas.style.position = 'absolute';
+                canvas.style.left = '0';
+                canvas.style.bottom = '0';
+                ctx = canvas.getContext('2d');
+    
+                for (let x = 0; x < width * settings.density; x++) {
+                    const c = new Circle();
+                    circles.push(c);
+                }
+                animate();
+            }
+    
+            function initCanvas() {
+                const canvasElement = document.createElement('canvas');
+                canvasElement.id = 'homeTopCanvas';
+                canvasElement.style.pointerEvents = 'none';
+                container.appendChild(canvasElement);
+                canvasElement.parentElement.style.overflow = 'hidden';
+            }
+    
+            function addListeners() {
+                window.addEventListener('scroll', scrollCheck, false);
+                window.addEventListener('resize', resize, false);
+            }
+    
+            function scrollCheck() {
+                if (document.body.scrollTop > height) {
+                    animateHeader = false;
+                } else {
+                    animateHeader = true;
+                }
+            }
+    
+            function resize() {
+                width = container.clientWidth;
+                height = container.clientHeight;
+                container.height = height + 'px';
+                canvas.width = width;
+                canvas.height = height;
+            }
+    
+            function animate() {
+                if (animateHeader) {
+                    ctx.clearRect(0, 0, width, height);
+                    for (const i in circles) {
+                        circles[i].draw();
+                    }
+                }
+                requestAnimationFrame(animate);
+            }
+    
+            function randomColor() {
+                const r = Math.floor(Math.random() * 255);
+                const g = Math.floor(Math.random() * 255);
+                const b = Math.floor(Math.random() * 255);
+                const alpha = Math.random().toPrecision(2);
+                return 'rgba(' + r + ', ' + g + ', ' + b + ', ' + alpha + ')';
+            }
+    
+            function Circle() {
+                const that = this;
+                (function () {
+                    that.pos = {};
+                    init();
+                })();
+                function init() {
+                    that.pos.x = Math.random() * width;
+                    that.pos.y = height + Math.random() * 100;
+                    that.alpha = 0.1 + Math.random() * settings.clearOffset;
+                    that.scale = 0.1 + Math.random() * 0.3;
+                    that.speed = Math.random();
+                    if (settings.color === 'random') {
+                        that.color = randomColor();
+                    } else {
+                        that.color = settings.color;
+                    }
+                }
+                this.draw = function () {
+                    if (that.alpha <= 0) {
+                        init();
+                    }
+                    that.pos.y -= that.speed;
+                    that.alpha -= 0.0005;
+                    ctx.beginPath();
+                    ctx.arc(
+                        that.pos.x,
+                        that.pos.y,
+                        that.scale * settings.radius,
+                        0,
+                        2 * Math.PI,
+                        false
+                    );
+                    ctx.fillStyle = that.color;
+                    ctx.fill();
+                    ctx.closePath();
+                }
+            }
+        }
+      </script>
+    
+    
   </div>
 </div>
 
@@ -245,7 +380,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/06/17/ren-gong-zhi-neng-yuan-li/ren-gong-zhi-neng-yuan-li-fu-xi-1/" target="_self">
         <div>
-          What is artificial intelligence?A (Short) History of AI 1940-1950: Early days1943: McCulloch &amp; Pitts: Boolean circuit model of brain1950: Turing’s “Computing Machinery and Intelligence” 1950—70: T
+          What is artificial intelligence? A (Short) History of AI 1940-1950: Early days 1943: McCulloch &amp; Pitts: Boolean circuit model of brain 1950: Turing's “Computing Machinery and Intelligence” 19
         </div>
       </a>
 
@@ -299,7 +434,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/05/02/lun-wen-fu-xian-0/" target="_self">
         <div>
-          参考论文https://arxiv.org/abs/1703.07015 https://paperswithcode.com/paper/modeling-long-and-short-term-temporal Abstract多变量时间序列预测是许多领域中重要的机器学习问题，包括太阳能发电量预测、电力消耗预测和交通拥堵情况预测。 这些实际应用中的时间数据通常涉及长期和短期模式的混合，传统方法
+          参考论文 https://arxiv.org/abs/1703.07015 https://paperswithcode.com/paper/modeling-long-and-short-term-temporal Abstract 多变量时间序列预测是许多领域中重要的机器学习问题，包括太阳能发电量预测、电力消耗预测和交通拥堵情况预测。 这些实际应用中的时间数据通常涉及长期和短期模式的
         </div>
       </a>
 
@@ -332,7 +467,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/05/01/hui-gui-xiao-bo-shen-jing-wang-luo/" target="_self">
         <div>
-          小波神经网络回归小波神经网络（Wavelet Neural Network, WNN）是一种利用小波变换作为激活函数的前馈神经网络。小波变换是一种数学方法，用于将信号分解为构成其的小波，这些小波可以捕捉信号的局部特征。在神经网络中，小波变换可以作为一种强有力的工具来处理和分析数据，尤其是在时间序列分析和信号处理领域。 小波神经网络回归是指使用小波神经网络对数据进行回归分析，以预测连续的输出值。这种
+          小波神经网络回归 小波神经网络（Wavelet Neural Network, WNN）是一种利用小波变换作为激活函数的前馈神经网络。小波变换是一种数学方法，用于将信号分解为构成其的小波，这些小波可以捕捉信号的局部特征。在神经网络中，小波变换可以作为一种强有力的工具来处理和分析数据，尤其是在时间序列分析和信号处理领域。 小波神经网络回归是指使用小波神经网络对数据进行回归分析，以预测连续的输出
         </div>
       </a>
 
@@ -386,7 +521,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/05/01/yuan-bao-zi-dong-ji/" target="_self">
         <div>
-          元胞自动机的一些基本特性： 离散空间：元胞自动机通常定义在一个规则的网格上，如一维、二维或三维的格子。  有限状态：每个元胞在任何给定时间都处于有限个状态中的一个，状态可以是二进制的（例如0和1）或具有更多可能值。  局部规则：元胞的状态更新基于局部规则，这些规则只依赖于元胞自身和其邻居的状态。  同步更新：在每个时间步，所有元胞的状态都是同时更新的。  初始条件：元胞自动机的初始状态对系统的长期
+          元胞自动机的一些基本特性：  离散空间：元胞自动机通常定义在一个规则的网格上，如一维、二维或三维的格子。 有限状态：每个元胞在任何给定时间都处于有限个状态中的一个，状态可以是二进制的（例如0和1）或具有更多可能值。 局部规则：元胞的状态更新基于局部规则，这些规则只依赖于元胞自身和其邻居的状态。 同步更新：在每个时间步，所有元胞的状态都是同时更新的。 初始条件：元胞自动机的初始状态对系统
         </div>
       </a>
 
@@ -440,7 +575,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/04/26/xi-yin-pai-chi-you-hua-suan-fa/" target="_self">
         <div>
-          论文参考Karol Cymerys, Mariusz Oszust,Attraction–Repulsion Optimization Algorithm for Global Optimization Problems,Swarm and Evolutionary Computation,Volume 84, 2024, 101459, https://doi.org/10.1016/j.swe
+          论文参考 Karol Cymerys, Mariusz Oszust,Attraction–Repulsion Optimization Algorithm for Global Optimization Problems,Swarm and Evolutionary Computation,Volume 84, 2024, 101459, https://doi.org/10.1016/
         </div>
       </a>
 
@@ -494,7 +629,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/04/26/ji-jie-you-hua-suan-fa/" target="_self">
         <div>
-          参考论文Emami, Hojjat. “Seasons Optimization Algorithm.” Engineering with Computers, vol. 38, no. 2, Springer Science and Business Media LLC, Aug. 2020, pp. 1845–65, doi:10.1007&#x2F;s00366-020-01133-5. 脚
+          参考论文 Emami, Hojjat. “Seasons Optimization Algorithm.” Engineering with Computers, vol. 38, no. 2, Springer Science and Business Media LLC, Aug. 2020, pp. 1845–65, doi:10.1007/s00366-020-01133-5. 脚
         </div>
       </a>
 
@@ -548,7 +683,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/04/25/matlab-zhi-tu/" target="_self">
         <div>
-          散点图1234567891011% 利用预测的新值绘制散点图% 导入数据 traditional_sales = [6561, 6899, 7264, 7372, 7595, 7882, 7992, 7513, 8157.1, 8341.8, 8530.7];new_energy_sales = [11.82, 21.8, 32.1, 56.8, 77.4, 122.8, 208.8, 240.9
+          散点图 1234567891011% 利用预测的新值绘制散点图% 导入数据 traditional_sales = [6561, 6899, 7264, 7372, 7595, 7882, 7992, 7513, 8157.1, 8341.8, 8530.7];new_energy_sales = [11.82, 21.8, 32.1, 56.8, 77.4, 122.8, 208.8, 240
         </div>
       </a>
 
@@ -581,7 +716,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/04/12/ctf/2024xctf4-1-5-1/" target="_self">
         <div>
-          签到题题目： 123456789101112131415161718192021222324252627282930313233343536373839404142from Crypto.Util.number import *from tqdm import *import gmpy2flag=b&#x27;XYCTF&#123;uuid&#125;&#x27;flag=bytes_to_lon
+          签到题 题目： 123456789101112131415161718192021222324252627282930313233343536373839404142from Crypto.Util.number import *from tqdm import *import gmpy2flag=b&#x27;XYCTF&#123;uuid&#125;&#x27;flag=bytes_to_
         </div>
       </a>
 
@@ -635,7 +770,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/04/10/python/pyecharts-hui-zhi-zhong-guo-di-tu/" target="_self">
         <div>
-          pyecharts库通过测试发现，安装0.1.9.4版本最为稳定 1pip install pyecharts==0.1.9.4  安装完成后，下面是一个简单的测试案例 12345678910111213141516171819202122232425262728293031323334353637383940414243444546from pyecharts import Mapprovinc
+          pyecharts库 通过测试发现，安装0.1.9.4版本最为稳定 1pip install pyecharts==0.1.9.4 安装完成后，下面是一个简单的测试案例 12345678910111213141516171819202122232425262728293031323334353637383940414243444546from pyecharts import Mappro
         </div>
       </a>
 
@@ -689,7 +824,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/04/08/biao-zhun-hua-gui-yi-hua-qu-zhong-xin-hua-bian-xi/" target="_self">
         <div>
-          标准化（Standardization）、归一化（Normalization）和去中心化（Centering）是数据预处理中常用的三种不同的缩放技术，它们都旨在调整数据的尺度，以便于进行后续的分析和机器学习任务。虽然这些术语有时被交替使用，但它们在数学上有着不同的含义和应用场景。 标准化（Standardization）标准化是将数据转换为具有特定均值和标准差的过程。通常，标准化会使得数据的均值变
+          标准化（Standardization）、归一化（Normalization）和去中心化（Centering）是数据预处理中常用的三种不同的缩放技术，它们都旨在调整数据的尺度，以便于进行后续的分析和机器学习任务。虽然这些术语有时被交替使用，但它们在数学上有着不同的含义和应用场景。 标准化（Standardization） 标准化是将数据转换为具有特定均值和标准差的过程。通常，标准化会使得数据的
         </div>
       </a>
 
@@ -743,7 +878,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/04/08/shu-ju-biao-zhun-hua-chu-li-yi-wen/" target="_self">
         <div>
-          标准化常使用的工具1.使用 sklearn 库中的 StandardScaler StandardScaler 是 scikit-learn 库中用于数据预处理的一个工具，它对每个特征进行标准化，使得特征的均值为0，标准差为1。这样做可以确保每个特征在PCA或其他算法中具有相同的重要性，因为算法通常对特征的尺度敏感。 StandardScaler 使用的公式如下： 对于每个特征中的每个数据点 x，
+          标准化常使用的工具 1.使用 sklearn 库中的 StandardScaler StandardScaler 是 scikit-learn 库中用于数据预处理的一个工具，它对每个特征进行标准化，使得特征的均值为0，标准差为1。这样做可以确保每个特征在PCA或其他算法中具有相同的重要性，因为算法通常对特征的尺度敏感。 StandardScaler 使用的公式如下： 对于每个特征中的每个
         </div>
       </a>
 
@@ -797,7 +932,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/04/08/zhu-cheng-fen-fen-xi/" target="_self">
         <div>
-          主成分能用来做什么聚类、回归、寻找变量之间的共线性关系！！！ 主成分分析的一般目的由两点组成：（参考王学民老师） （1）将多个有相关关系的变量压缩成少数几个不相关的主成分（综合变量），并保留绝大部分信息； （2）给出各主成分的具有实际背景和意义的解释 雷点在于！！！  多数论文以及博客使用主成分进行综合评价，王学民老师认为这是不对的，个人参考了一些这方面的研究后觉得王老师说的对。。。  因为个人理
+          主成分能用来做什么 聚类、回归、寻找变量之间的共线性关系！！！ 主成分分析的一般目的由两点组成：（参考王学民老师） （1）将多个有相关关系的变量压缩成少数几个不相关的主成分（综合变量），并保留绝大部分信息； （2）给出各主成分的具有实际背景和意义的解释 雷点在于！！！   多数论文以及博客使用主成分进行综合评价，王学民老师认为这是不对的，个人参考了一些这方面的研究后觉得王老师说的对。
         </div>
       </a>
 

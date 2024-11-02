@@ -19,12 +19,12 @@
   <meta name="author" content="JR.HU">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Informed Search Blind search vs. “warmer” “colder”Info about where goal is.Optimal solution, explore less of the tree.   Search HeuristicsA heuristic is:A function that estimates how close a state is">
+    <meta name="description" content="Informed Search   alt text  Blind search vs. “warmer” “colder” Info about where goal is. Optimal solution, explore less of the tree. Search Heuristics A heuristic is: A function that estimat">
 <meta property="og:type" content="article">
 <meta property="og:title" content="人工智能原理复习3">
 <meta property="og:url" content="http://jrhu0048.github.io/2024/06/18/ren-gong-zhi-neng-yuan-li/ren-gong-zhi-neng-yuan-li-fu-xi-3/index.html">
 <meta property="og:site_name" content="CHARMMY">
-<meta property="og:description" content="Informed Search Blind search vs. “warmer” “colder”Info about where goal is.Optimal solution, explore less of the tree.   Search HeuristicsA heuristic is:A function that estimates how close a state is">
+<meta property="og:description" content="Informed Search   alt text  Blind search vs. “warmer” “colder” Info about where goal is. Optimal solution, explore less of the tree. Search Heuristics A heuristic is: A function that estimat">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic.imgdb.cn/item/6670e7cfd9c307b7e97e7f48.png">
 <meta property="og:image" content="https://pic.imgdb.cn/item/66713192d9c307b7e9fe74bd.png">
@@ -140,7 +140,9 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>CHARMMY</strong>
+      <!-- <strong>CHARMMY</strong> -->
+       <!-- 修改如下： -->
+      <strong class="navbar-title">CHARMMY</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -236,7 +238,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/desktop2.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/hei.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -270,7 +272,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          574 字
+          567 字
         
       </span>
     
@@ -305,6 +307,9 @@
 
       
     </div>
+
+    
+    
   </div>
 </div>
 
@@ -332,101 +337,310 @@
             
               <div class="markdown-body">
                 
-                <h2 id="Informed-Search"><a href="#Informed-Search" class="headerlink" title="Informed Search"></a>Informed Search</h2><p><img src="https://pic.imgdb.cn/item/6670e7cfd9c307b7e97e7f48.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<p>Blind search vs. “warmer” “colder”<br>Info about where goal is.<br>Optimal solution, explore less of the tree.  </p>
-<h2 id="Search-Heuristics"><a href="#Search-Heuristics" class="headerlink" title="Search Heuristics"></a>Search Heuristics</h2><p>A heuristic is:<br>A function that estimates how close a state is to a goal<br>Designed for a particular search problem<br>Pathing?<br>Examples: Manhattan distance, Euclidean distance for pathing  </p>
-<p>Function takes a state, returns a number.<br>Not everyday term. Not “Look both ways before you cross the street”<br>How far I am? Could run search, but that defeats the purpose!<br>Not perfect, but something!  </p>
-<p><img src="https://pic.imgdb.cn/item/66713192d9c307b7e9fe74bd.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<p>A* expanded 8100 ; Path cost &#x3D; 33<br>UCS expanded 25263 . Path cost &#x3D; 33<br>Greedy expanded 10 . Path cost &#x3D; 41<br>[0, 7, 5, 3, 2, 1, 4, 6]<br>(7, 0, 5, 3, 2, 1, 4, 6)<br>(6, 4, 1, 2, 3, 5, 0, 7)<br>(3, 2, 1, 4, 6, 5, 0, 7)<br>(1, 2, 3, 4, 6, 5, 0, 7)<br>(5, 6, 4, 3, 2, 1, 0, 7)<br>(6, 5, 4, 3, 2, 1, 0, 7)<br>(0, 1, 2, 3, 4, 5, 6, 7)  </p>
-<p><img src="https://pic.imgdb.cn/item/667131dfd9c307b7e9fef781.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<p><img src="https://pic.imgdb.cn/item/66713250d9c307b7e9ffbd92.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+                <h2 id="informed-search">Informed Search</h2>
+<figure>
+<img src="https://pic.imgdb.cn/item/6670e7cfd9c307b7e97e7f48.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<p>Blind search vs. “warmer” “colder”<br />
+Info about where goal is.<br />
+Optimal solution, explore less of the tree.</p>
+<h2 id="search-heuristics">Search Heuristics</h2>
+<p>A heuristic is:<br />
+A function that estimates how close a state is to a goal<br />
+Designed for a particular search problem<br />
+Pathing?<br />
+Examples: Manhattan distance, Euclidean distance for pathing</p>
+<p>Function takes a state, returns a number.<br />
+Not everyday term. Not “Look both ways before you cross the
+street”<br />
+How far I am? Could run search, but that defeats the purpose!<br />
+Not perfect, but something!</p>
+<figure>
+<img src="https://pic.imgdb.cn/item/66713192d9c307b7e9fe74bd.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<p>A* expanded 8100 ; Path cost = 33<br />
+UCS expanded 25263 . Path cost = 33<br />
+Greedy expanded 10 . Path cost = 41<br />
+[0, 7, 5, 3, 2, 1, 4, 6]<br />
+(7, 0, 5, 3, 2, 1, 4, 6)<br />
+(6, 4, 1, 2, 3, 5, 0, 7)<br />
+(3, 2, 1, 4, 6, 5, 0, 7)<br />
+(1, 2, 3, 4, 6, 5, 0, 7)<br />
+(5, 6, 4, 3, 2, 1, 0, 7)<br />
+(6, 5, 4, 3, 2, 1, 0, 7)<br />
+(0, 1, 2, 3, 4, 5, 6, 7)</p>
+<figure>
+<img src="https://pic.imgdb.cn/item/667131dfd9c307b7e9fef781.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<figure>
+<img src="https://pic.imgdb.cn/item/66713250d9c307b7e9ffbd92.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
 <p>Expand the node that seems closest…</p>
-<p>Is it optimal?<br>No. Resulting path to Bucharest is not the shortest!</p>
-<p>Numbers of heuristic, since that’s what greedy cares about.<br>Got to Bucharest, but not by shortest path.<br>End up with some kind of goal, but not what you want. You get a smelly shoe instead of to the airport on time.</p>
-<p><img src="https://pic.imgdb.cn/item/667132d1d9c307b7e90095cd.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<p>Strategy: expand a node that you think is closest to a goal state  </p>
+<p>Is it optimal?<br />
+No. Resulting path to Bucharest is not the shortest!</p>
+<p>Numbers of heuristic, since that’s what greedy cares about.<br />
+Got to Bucharest, but not by shortest path.<br />
+End up with some kind of goal, but not what you want. You get a smelly
+shoe instead of to the airport on time.</p>
+<figure>
+<img src="https://pic.imgdb.cn/item/667132d1d9c307b7e90095cd.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<p>Strategy: expand a node that you think is closest to a goal state</p>
 <p>Heuristic: estimate of distance to nearest goal for each state</p>
-<p>A common case:<br>Best-first takes you straight to the (wrong) goal</p>
+<p>A common case:<br />
+Best-first takes you straight to the (wrong) goal</p>
 <p>Worst-case: like a badly-guided DFS</p>
-<h2 id="A-Search"><a href="#A-Search" class="headerlink" title="A* Search"></a>A* Search</h2><p><img src="https://pic.imgdb.cn/item/6671341ad9c307b7e902e385.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<p>What we’ve been building to. Cornerstone. Goes to the goal like greedy, but backtracks as needed.<br>When it works, it’s magic!</p>
-<p><img src="https://pic.imgdb.cn/item/66713463d9c307b7e9036089.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<h2 id="a-search">A* Search</h2>
+<figure>
+<img src="https://pic.imgdb.cn/item/6671341ad9c307b7e902e385.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<p>What we’ve been building to. Cornerstone. Goes to the goal like
+greedy, but backtracks as needed.<br />
+When it works, it’s magic!</p>
+<figure>
+<img src="https://pic.imgdb.cn/item/66713463d9c307b7e9036089.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
 <blockquote>
-<p>Uniform-cost orders by path cost, or backward cost  g(n)   </p>
+<p>Uniform-cost orders by path cost, or backward cost g(n)</p>
 </blockquote>
 <blockquote>
-<p>Greedy orders by goal proximity, or forward cost  h(n)</p>
+<p>Greedy orders by goal proximity, or forward cost h(n)</p>
 </blockquote>
-<p>A* Search orders by the sum: </p>
-<blockquote>
-<p>f(n) &#x3D; g(n) + h(n)</p>
-</blockquote>
-<p>UCS. Cumulative cost of arcs back to root. backward cost g(n).   Computed as you go as part of the fringe.   </p>
-<p>Greedy. Heuristic forward cost h(n). NOT cumulative. Just a function of the state.  </p>
-<p>What is A*. Sum of the two! Doesn’t go to c early cuz h is high (far from goal).  </p>
-<p>Doesn’t do a-&gt;e branch g is high (expensive). </p>
-<h2 id="When-should-A-terminate"><a href="#When-should-A-terminate" class="headerlink" title="When should A* terminate?"></a>When should A* terminate?</h2><p><img src="https://pic.imgdb.cn/item/6671359fd9c307b7e905950a.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<p>A* Search orders by the sum: &gt; f(n) = g(n) + h(n)</p>
+<p>UCS. Cumulative cost of arcs back to root. backward cost g(n).
+Computed as you go as part of the fringe.</p>
+<p>Greedy. Heuristic forward cost h(n). NOT cumulative. Just a function
+of the state.</p>
+<p>What is A*. Sum of the two! Doesn’t go to c early cuz h is high (far
+from goal).</p>
+<p>Doesn’t do a-&gt;e branch g is high (expensive).</p>
+<h2 id="when-should-a-terminate">When should A* terminate?</h2>
+<figure>
+<img src="https://pic.imgdb.cn/item/6671359fd9c307b7e905950a.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
 <blockquote>
 <p>No: only stop when we dequeue a goal</p>
 </blockquote>
-<p><img src="https://pic.imgdb.cn/item/667135ced9c307b7e905e8a7.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<p><img src="https://pic.imgdb.cn/item/667136c2d9c307b7e907a605.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<p>Inadmissible (pessimistic) heuristics break optimality by trapping good plans on the fringe</p>
-<p>Admissible (optimistic) heuristics slow down bad plans but never outweigh true costs</p>
-<p>If heuristic lies, and overestimates. Mistake.<br>Underestimate might reduce to UCS.</p>
-<p><img src="https://pic.imgdb.cn/item/66713722d9c307b7e90883f0.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<p>Coming up with admissible heuristics is most of what’s involved in using A* in practice.</p>
-<h2 id="Optimality-of-A-Tree-Search"><a href="#Optimality-of-A-Tree-Search" class="headerlink" title="Optimality of A* Tree Search"></a>Optimality of A* Tree Search</h2><p><img src="https://pic.imgdb.cn/item/66713781d9c307b7e90973dd.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<p><img src="https://pic.imgdb.cn/item/667137bad9c307b7e909dbe8.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<p><img src="https://pic.imgdb.cn/item/667138a1d9c307b7e90bb958.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<p><img src="https://pic.imgdb.cn/item/667139d0d9c307b7e90e39c0.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<p><img src="https://pic.imgdb.cn/item/667139efd9c307b7e90e77af.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<p><img src="https://pic.imgdb.cn/item/66713a14d9c307b7e90ebf80.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<p>UCS ragged based on cost.<br>A* narrows when near goal, heuristic  </p>
-<p><img src="https://pic.imgdb.cn/item/66713a36d9c307b7e90efa63.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<figure>
+<img src="https://pic.imgdb.cn/item/667135ced9c307b7e905e8a7.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<figure>
+<img src="https://pic.imgdb.cn/item/667136c2d9c307b7e907a605.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<p>Inadmissible (pessimistic) heuristics break optimality by trapping
+good plans on the fringe</p>
+<p>Admissible (optimistic) heuristics slow down bad plans but never
+outweigh true costs</p>
+<p>If heuristic lies, and overestimates. Mistake.<br />
+Underestimate might reduce to UCS.</p>
+<figure>
+<img src="https://pic.imgdb.cn/item/66713722d9c307b7e90883f0.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<p>Coming up with admissible heuristics is most of what’s involved in
+using A* in practice.</p>
+<h2 id="optimality-of-a-tree-search">Optimality of A* Tree Search</h2>
+<figure>
+<img src="https://pic.imgdb.cn/item/66713781d9c307b7e90973dd.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<figure>
+<img src="https://pic.imgdb.cn/item/667137bad9c307b7e909dbe8.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<figure>
+<img src="https://pic.imgdb.cn/item/667138a1d9c307b7e90bb958.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<figure>
+<img src="https://pic.imgdb.cn/item/667139d0d9c307b7e90e39c0.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<figure>
+<img src="https://pic.imgdb.cn/item/667139efd9c307b7e90e77af.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<figure>
+<img src="https://pic.imgdb.cn/item/66713a14d9c307b7e90ebf80.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<p>UCS ragged based on cost.<br />
+A* narrows when near goal, heuristic</p>
+<figure>
+<img src="https://pic.imgdb.cn/item/66713a36d9c307b7e90efa63.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
 <p>Uniform-cost expands equally in all “directions”</p>
-<p>A* expands mainly toward the goal, but does hedge its bets to ensure optimality</p>
-<p><img src="https://pic.imgdb.cn/item/66713a99d9c307b7e90fb03a.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<p>Change problem – same or easier. And cheaper.<br>Imagine a new direct road.<br>Walk through walls spell.<br>Inadmissible – a little bit suboptimal is okay.  </p>
-<p><img src="https://pic.imgdb.cn/item/66713c79d9c307b7e913d378.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<p><img src="https://pic.imgdb.cn/item/66713c9dd9c307b7e9141a33.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<p><img src="https://pic.imgdb.cn/item/66713fded9c307b7e91b91ac.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<p>Another relaxation, but “harder” than previous.<br>Lower bound.<br>Show it’s relaxed or prove.<br>At LEAST 18 away.<br>As heuristic gets close to the true cost, you do less search.</p>
-<p><img src="https://pic.imgdb.cn/item/66714004d9c307b7e91bd71a.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<p>Looks great. Each node launches search as hard as the original problem.<br>You’ll might see this in P1. Come up with great heuristic, makes solution slower.</p>
-<h2 id="Graph-Search"><a href="#Graph-Search" class="headerlink" title="Graph Search"></a>Graph Search</h2><p><img src="https://pic.imgdb.cn/item/66714071d9c307b7e91cb9ba.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<p><img src="https://pic.imgdb.cn/item/667140bbd9c307b7e91d612c.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<p>Failure to detect repeated states can cause exponentially more work.    </p>
-<p>Exponential unrolling. Generally what happens.<br>May need to consider both paths to B, but what’s underneath B is the same.<br>Should be able to save the work.  </p>
-<p><img src="https://pic.imgdb.cn/item/6671415fd9c307b7e91ebe25.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<p>Idea: never expand a state twice  </p>
-<p>How to implement:<br>Tree search + set of expanded states (“closed set”)<br>Expand the search tree node-by-node, but…<br>Before expanding a node, check to make sure its state has never been expanded before<br>If not new, skip it, if new add to closed set  </p>
-<p>Important: store the closed set as a set, not a list  </p>
-<p>Can graph search wreck completeness?  Why&#x2F;why not?  </p>
-<p>How about optimality?  </p>
-<p><img src="https://pic.imgdb.cn/item/667142d5d9c307b7e9219839.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<p><img src="https://pic.imgdb.cn/item/667142f3d9c307b7e921d40f.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<h2 id="A-Summary"><a href="#A-Summary" class="headerlink" title="A*: Summary"></a>A*: Summary</h2><p>A* uses both backward costs and (estimates of) forward costs</p>
-<p>A* is optimal with admissible &#x2F; consistent heuristics</p>
+<p>A* expands mainly toward the goal, but does hedge its bets to ensure
+optimality</p>
+<figure>
+<img src="https://pic.imgdb.cn/item/66713a99d9c307b7e90fb03a.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<p>Change problem – same or easier. And cheaper.<br />
+Imagine a new direct road.<br />
+Walk through walls spell.<br />
+Inadmissible – a little bit suboptimal is okay.</p>
+<figure>
+<img src="https://pic.imgdb.cn/item/66713c79d9c307b7e913d378.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<figure>
+<img src="https://pic.imgdb.cn/item/66713c9dd9c307b7e9141a33.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<figure>
+<img src="https://pic.imgdb.cn/item/66713fded9c307b7e91b91ac.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<p>Another relaxation, but “harder” than previous.<br />
+Lower bound.<br />
+Show it’s relaxed or prove.<br />
+At LEAST 18 away.<br />
+As heuristic gets close to the true cost, you do less search.</p>
+<figure>
+<img src="https://pic.imgdb.cn/item/66714004d9c307b7e91bd71a.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<p>Looks great. Each node launches search as hard as the original
+problem.<br />
+You’ll might see this in P1. Come up with great heuristic, makes
+solution slower.</p>
+<h2 id="graph-search">Graph Search</h2>
+<figure>
+<img src="https://pic.imgdb.cn/item/66714071d9c307b7e91cb9ba.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<figure>
+<img src="https://pic.imgdb.cn/item/667140bbd9c307b7e91d612c.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<p>Failure to detect repeated states can cause exponentially more
+work.</p>
+<p>Exponential unrolling. Generally what happens.<br />
+May need to consider both paths to B, but what’s underneath B is the
+same.<br />
+Should be able to save the work.</p>
+<figure>
+<img src="https://pic.imgdb.cn/item/6671415fd9c307b7e91ebe25.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<p>Idea: never expand a state twice</p>
+<p>How to implement:<br />
+Tree search + set of expanded states (“closed set”)<br />
+Expand the search tree node-by-node, but…<br />
+Before expanding a node, check to make sure its state has never been
+expanded before<br />
+If not new, skip it, if new add to closed set</p>
+<p>Important: store the closed set as a set, not a list</p>
+<p>Can graph search wreck completeness? Why/why not?</p>
+<p>How about optimality?</p>
+<figure>
+<img src="https://pic.imgdb.cn/item/667142d5d9c307b7e9219839.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<figure>
+<img src="https://pic.imgdb.cn/item/667142f3d9c307b7e921d40f.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<h2 id="a-summary">A*: Summary</h2>
+<p>A* uses both backward costs and (estimates of) forward costs</p>
+<p>A* is optimal with admissible / consistent heuristics</p>
 <p>Heuristic design is key: often use relaxed problems</p>
-<p><img src="https://pic.imgdb.cn/item/667143a9d9c307b7e922fa3e.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<p><img src="https://pic.imgdb.cn/item/667143f7d9c307b7e9238299.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<h2 id="Optimality-of-A-Graph-Search"><a href="#Optimality-of-A-Graph-Search" class="headerlink" title="Optimality of A* Graph Search"></a>Optimality of A* Graph Search</h2><p>Consider what A* does:  </p>
-<p>Expands nodes in increasing total f value (f-contours) Reminder: f(n) &#x3D; g(n) + h(n) &#x3D; cost to n + heuristic  </p>
-<p>Proof idea: the optimal goal(s) have the lowest f value, so it must get expanded first</p>
-<p>There’s a problem with this argument.  What are we assuming is true?</p>
-<p><img src="https://pic.imgdb.cn/item/66714499d9c307b7e924f49b.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<p>Proof:<br>New possible problem: some n on path to G* isn’t in queue when we need it, because some worse n’ for the same state dequeued and expanded first (disaster!)<br>Take the highest such n in tree<br>Let p be the ancestor of n that was on the queue when n’ was popped<br>f(p) &lt; f(n) because of consistency<br>f(n) &lt; f(n’) because n’ is suboptimal<br>p would have been expanded before n’<br>Contradiction!  </p>
-<p><img src="https://pic.imgdb.cn/item/667ae797d9c307b7e926bfdd.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<figure>
+<img src="https://pic.imgdb.cn/item/667143a9d9c307b7e922fa3e.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<figure>
+<img src="https://pic.imgdb.cn/item/667143f7d9c307b7e9238299.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<h2 id="optimality-of-a-graph-search">Optimality of A* Graph Search</h2>
+<p>Consider what A* does:</p>
+<p>Expands nodes in increasing total f value (f-contours) Reminder: f(n)
+= g(n) + h(n) = cost to n + heuristic</p>
+<p>Proof idea: the optimal goal(s) have the lowest f value, so it must
+get expanded first</p>
+<p>There’s a problem with this argument. What are we assuming is
+true?</p>
+<figure>
+<img src="https://pic.imgdb.cn/item/66714499d9c307b7e924f49b.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<p>Proof:<br />
+New possible problem: some n on path to G* isn’t in queue when we need
+it, because some worse n’ for the same state dequeued and expanded first
+(disaster!)<br />
+Take the highest such n in tree<br />
+Let p be the ancestor of n that was on the queue when n’ was
+popped<br />
+f(p) &lt; f(n) because of consistency<br />
+f(n) &lt; f(n’) because n’ is suboptimal<br />
+p would have been expanded before n’<br />
+Contradiction!</p>
+<figure>
+<img src="https://pic.imgdb.cn/item/667ae797d9c307b7e926bfdd.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
 <p><code>可接受性</code>与<code>一致性</code></p>
 <p>分别对应不同的h计算公式</p>
 <p>然而，<code>如果启发式函数不是可采纳的或一致的，A算法可能会找到次优路径</code>。在实际应用中，选择合适的启发式函数对于A算法的性能至关重要。如果启发式函数过于乐观，可能会导致搜索过程中忽略实际的最优路径。如果启发式函数<code>过于保守</code>，可能会导致搜索过程效率低下，尽管<code>最终仍然能够找到最优路径</code>。</p>
 <p>因此，要确保A*算法搜索的路径是最优的，需要选择一个既不过于乐观也不过于保守的启发式函数，这通常需要对特定问题的领域知识有深入的理解。</p>
-<p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/abcwoabcwo/article/details/139211597">https://blog.csdn.net/abcwoabcwo/article/details/139211597</a></p>
+<p>原文链接：https://blog.csdn.net/abcwoabcwo/article/details/139211597</p>
 <p>总结就是必须满足上市条件A*才是最优的！</p>
-<p><img src="https://pic.imgdb.cn/item/667ae866d9c307b7e92839b1.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<figure>
+<img src="https://pic.imgdb.cn/item/667ae866d9c307b7e92839b1.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
 <p>Combining UCS and Greedy</p>
-<p><img src="https://pic.imgdb.cn/item/667ae96ed9c307b7e92a7ec9.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<figure>
+<img src="https://pic.imgdb.cn/item/667ae96ed9c307b7e92a7ec9.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
 <p>上面很重要</p>
 <p>树搜索需要启发式是可接受的</p>
 <p>图搜索需要启发式是一致的</p>
@@ -863,9 +1077,9 @@
             tex    : {
               inlineMath: { '[+]': [['$', '$']] }
             },
-            loader : {
-              load: ['ui/lazy']
-            },
+            // loader : {
+            //   load: ['ui/lazy']
+            // },
             options: {
               renderActions: {
                 insertedScript: [200, () => {

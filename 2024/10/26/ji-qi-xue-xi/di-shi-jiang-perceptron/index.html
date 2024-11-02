@@ -19,12 +19,12 @@
   <meta name="author" content="JR.HU">
   <meta name="keywords" content="">
   
-    <meta name="description" content="写在前面感知机内容不多，老师只用了40min讲完，可以多看看博客笔记，也没有作业，这块不是重点 [1]https:&#x2F;&#x2F;luweikxy.gitbook.io&#x2F;machine-learning-notes&#x2F;perceptron[2]https:&#x2F;&#x2F;www.jiqizhixin.com&#x2F;graph&#x2F;technologies&#x2F;f9849d6c-6262-4c1f-8f42-6d976be17161 Pe">
+    <meta name="description" content="写在前面 感知机内容不多，老师只用了40min讲完，可以多看看博客笔记，也没有作业，这块不是重点 [1]https:&#x2F;&#x2F;luweikxy.gitbook.io&#x2F;machine-learning-notes&#x2F;perceptron [2]https:&#x2F;&#x2F;www.jiqizhixin.com&#x2F;graph&#x2F;technologies&#x2F;f9849d6c-6262-4c1f-8f42-6d976be171">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第十讲_perceptron">
 <meta property="og:url" content="http://jrhu0048.github.io/2024/10/26/ji-qi-xue-xi/di-shi-jiang-perceptron/index.html">
 <meta property="og:site_name" content="CHARMMY">
-<meta property="og:description" content="写在前面感知机内容不多，老师只用了40min讲完，可以多看看博客笔记，也没有作业，这块不是重点 [1]https:&#x2F;&#x2F;luweikxy.gitbook.io&#x2F;machine-learning-notes&#x2F;perceptron[2]https:&#x2F;&#x2F;www.jiqizhixin.com&#x2F;graph&#x2F;technologies&#x2F;f9849d6c-6262-4c1f-8f42-6d976be17161 Pe">
+<meta property="og:description" content="写在前面 感知机内容不多，老师只用了40min讲完，可以多看看博客笔记，也没有作业，这块不是重点 [1]https:&#x2F;&#x2F;luweikxy.gitbook.io&#x2F;machine-learning-notes&#x2F;perceptron [2]https:&#x2F;&#x2F;www.jiqizhixin.com&#x2F;graph&#x2F;technologies&#x2F;f9849d6c-6262-4c1f-8f42-6d976be171">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic.imgdb.cn/item/671d22b6d29ded1a8c7f77c1.jpg">
 <meta property="article:published_time" content="2024-10-26T10:43:18.000Z">
@@ -107,7 +107,9 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>CHARMMY</strong>
+      <!-- <strong>CHARMMY</strong> -->
+       <!-- 修改如下： -->
+      <strong class="navbar-title">CHARMMY</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -272,6 +274,9 @@
 
       
     </div>
+
+    
+    
   </div>
 </div>
 
@@ -299,17 +304,31 @@
             
               <div class="markdown-body">
                 
-                <h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>感知机内容不多，老师只用了40min讲完，可以多看看博客笔记，也没有作业，这块不是重点</p>
-<p>[1]<a target="_blank" rel="noopener" href="https://luweikxy.gitbook.io/machine-learning-notes/perceptron">https://luweikxy.gitbook.io/machine-learning-notes/perceptron</a><br>[2]<a target="_blank" rel="noopener" href="https://www.jiqizhixin.com/graph/technologies/f9849d6c-6262-4c1f-8f42-6d976be17161">https://www.jiqizhixin.com/graph/technologies/f9849d6c-6262-4c1f-8f42-6d976be17161</a></p>
-<h3 id="Perceptron介绍"><a href="#Perceptron介绍" class="headerlink" title="Perceptron介绍"></a>Perceptron介绍</h3><p>感知器是Frank Rosenblatt在1957年就职于Cornell航空实验室时所发明的一种人工神经网络。它可以被视为一种最简单形式的前馈神经网络，是一种二元线性分类器</p>
-<p>Frank Rosenblatt给出了相应的感知机学习算法，常用的有感知机学习、最小二乘法和梯度下降法。譬如，感知机利用梯度下降法对损失函数进行极小化，求出可将训练数据进行线性划分的分离超平面，从而求得感知机模型</p>
+                <h3 id="写在前面">写在前面</h3>
+<p>感知机内容不多，老师只用了40min讲完，可以多看看博客笔记，也没有作业，这块不是重点</p>
+<p>[1]https://luweikxy.gitbook.io/machine-learning-notes/perceptron
+[2]https://www.jiqizhixin.com/graph/technologies/f9849d6c-6262-4c1f-8f42-6d976be17161</p>
+<h3 id="perceptron介绍">Perceptron介绍</h3>
+<p>感知器是Frank
+Rosenblatt在1957年就职于Cornell航空实验室时所发明的一种人工神经网络。它可以被视为一种最简单形式的前馈神经网络，是一种二元线性分类器</p>
+<p>Frank
+Rosenblatt给出了相应的感知机学习算法，常用的有感知机学习、最小二乘法和梯度下降法。譬如，感知机利用梯度下降法对损失函数进行极小化，求出可将训练数据进行线性划分的分离超平面，从而求得感知机模型</p>
 <p>感知机主要的本质缺陷是它不能处理线性不可分问题</p>
-<p><a target="_blank" rel="noopener" href="https://www.jiqizhixin.com/graph/technologies/f9849d6c-6262-4c1f-8f42-6d976be17161">https://www.jiqizhixin.com/graph/technologies/f9849d6c-6262-4c1f-8f42-6d976be17161</a></p>
-<h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><p>感知机是一个分类算法，常用于二分类，用+1和-1来表示这两个类，因此数据与逻辑回归的数据一致，不过y的标签用+1和-1来区分，这是不同点</p>
-<h3 id="回归与分类的概念区分"><a href="#回归与分类的概念区分" class="headerlink" title="回归与分类的概念区分"></a>回归与分类的概念区分</h3><p><img src="https://pic.imgdb.cn/item/671cc999d29ded1a8c29e914.png" srcset="/img/loading.gif" lazyload><br>回归的结果是连续的，分类的结果是离散的</p>
-<h3 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h3><h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>只考虑误分类点，感知机的学习策略是在假设空间中选取使损失函数最小的模型参数w、b，即感知机模型<br><img src="https://pic.imgdb.cn/item/671ce157d29ded1a8c470d18.png" srcset="/img/loading.gif" lazyload><br><img src="https://pic.imgdb.cn/item/671ce35bd29ded1a8c4922dd.png" srcset="/img/loading.gif" lazyload></p>
+<p>https://www.jiqizhixin.com/graph/technologies/f9849d6c-6262-4c1f-8f42-6d976be17161</p>
+<h3 id="数据">数据</h3>
+<p>感知机是一个分类算法，常用于二分类，用+1和-1来表示这两个类，因此数据与逻辑回归的数据一致，不过y的标签用+1和-1来区分，这是不同点</p>
+<h3 id="回归与分类的概念区分">回归与分类的概念区分</h3>
+<p><img src="https://pic.imgdb.cn/item/671cc999d29ded1a8c29e914.png" srcset="/img/loading.gif" lazyload />
+回归的结果是连续的，分类的结果是离散的</p>
+<h3 id="模型">模型</h3>
+<h3 id="损失函数">损失函数</h3>
+<p>只考虑误分类点，感知机的学习策略是在假设空间中选取使损失函数最小的模型参数w、b，即感知机模型
+<img src="https://pic.imgdb.cn/item/671ce157d29ded1a8c470d18.png" srcset="/img/loading.gif" lazyload />
+<img src="https://pic.imgdb.cn/item/671ce35bd29ded1a8c4922dd.png" srcset="/img/loading.gif" lazyload /></p>
 <p>由于每次更新只考虑一个样本，因此只需要计算损失函数即可，用不到代价函数</p>
-<h3 id="SUMMARY"><a href="#SUMMARY" class="headerlink" title="SUMMARY"></a>SUMMARY</h3><p><img src="https://pic.imgdb.cn/item/671ce7c1d29ded1a8c4c9ae0.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="summary">SUMMARY</h3>
+<p><img
+src="https://pic.imgdb.cn/item/671ce7c1d29ded1a8c4c9ae0.png" srcset="/img/loading.gif" lazyload /></p>
 
                 
               </div>
@@ -742,9 +761,9 @@
             tex    : {
               inlineMath: { '[+]': [['$', '$']] }
             },
-            loader : {
-              load: ['ui/lazy']
-            },
+            // loader : {
+            //   load: ['ui/lazy']
+            // },
             options: {
               renderActions: {
                 insertedScript: [200, () => {

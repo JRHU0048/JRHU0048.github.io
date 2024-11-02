@@ -97,7 +97,9 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>CHARMMY</strong>
+      <!-- <strong>CHARMMY</strong> -->
+       <!-- 修改如下： -->
+      <strong class="navbar-title">CHARMMY</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -193,7 +195,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/desktop2.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/hei.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -212,6 +214,139 @@
         </div>
       
     </div>
+
+    
+      <div style="height:500px" id="bubbles"></div>
+      <script>
+        circleMagic();
+        function circleMagic(options) {
+            let width;
+            let height;
+            let canvas;
+            let ctx;
+            let animateHeader = true;
+            const circles = [];
+    
+            const settings = options || {
+                color: 'rgba(255,255,255,.3)',
+                radius: 10,
+                density: 0.1,
+                clearOffset: 0.7
+            }
+    
+            const container = document.getElementById('bubbles');
+            initContainer();
+            addListeners();
+    
+            function initContainer() {
+                width = container.offsetWidth;
+                height = container.offsetHeight - 120;
+    
+                initCanvas();
+                canvas = document.getElementById('homeTopCanvas');
+                canvas.width = width;
+                canvas.height = height;
+                canvas.style.position = 'absolute';
+                canvas.style.left = '0';
+                canvas.style.bottom = '0';
+                ctx = canvas.getContext('2d');
+    
+                for (let x = 0; x < width * settings.density; x++) {
+                    const c = new Circle();
+                    circles.push(c);
+                }
+                animate();
+            }
+    
+            function initCanvas() {
+                const canvasElement = document.createElement('canvas');
+                canvasElement.id = 'homeTopCanvas';
+                canvasElement.style.pointerEvents = 'none';
+                container.appendChild(canvasElement);
+                canvasElement.parentElement.style.overflow = 'hidden';
+            }
+    
+            function addListeners() {
+                window.addEventListener('scroll', scrollCheck, false);
+                window.addEventListener('resize', resize, false);
+            }
+    
+            function scrollCheck() {
+                if (document.body.scrollTop > height) {
+                    animateHeader = false;
+                } else {
+                    animateHeader = true;
+                }
+            }
+    
+            function resize() {
+                width = container.clientWidth;
+                height = container.clientHeight;
+                container.height = height + 'px';
+                canvas.width = width;
+                canvas.height = height;
+            }
+    
+            function animate() {
+                if (animateHeader) {
+                    ctx.clearRect(0, 0, width, height);
+                    for (const i in circles) {
+                        circles[i].draw();
+                    }
+                }
+                requestAnimationFrame(animate);
+            }
+    
+            function randomColor() {
+                const r = Math.floor(Math.random() * 255);
+                const g = Math.floor(Math.random() * 255);
+                const b = Math.floor(Math.random() * 255);
+                const alpha = Math.random().toPrecision(2);
+                return 'rgba(' + r + ', ' + g + ', ' + b + ', ' + alpha + ')';
+            }
+    
+            function Circle() {
+                const that = this;
+                (function () {
+                    that.pos = {};
+                    init();
+                })();
+                function init() {
+                    that.pos.x = Math.random() * width;
+                    that.pos.y = height + Math.random() * 100;
+                    that.alpha = 0.1 + Math.random() * settings.clearOffset;
+                    that.scale = 0.1 + Math.random() * 0.3;
+                    that.speed = Math.random();
+                    if (settings.color === 'random') {
+                        that.color = randomColor();
+                    } else {
+                        that.color = settings.color;
+                    }
+                }
+                this.draw = function () {
+                    if (that.alpha <= 0) {
+                        init();
+                    }
+                    that.pos.y -= that.speed;
+                    that.alpha -= 0.0005;
+                    ctx.beginPath();
+                    ctx.arc(
+                        that.pos.x,
+                        that.pos.y,
+                        that.scale * settings.radius,
+                        0,
+                        2 * Math.PI,
+                        false
+                    );
+                    ctx.fillStyle = that.color;
+                    ctx.fill();
+                    ctx.closePath();
+                }
+            }
+        }
+      </script>
+    
+    
   </div>
 </div>
 
@@ -245,7 +380,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/03/26/ctf/wp-2024nkctf-crypto-ezmath/" target="_self">
         <div>
-          题目123456789101112131415161718192021222324from Crypto.Util.number import *from secret import flagm1, m2 = bytes_to_long(flag[:len(flag)//2]), bytes_to_long(flag[len(flag)//2:])p, q, r, s = [getStrongPr
+          题目 123456789101112131415161718192021222324from Crypto.Util.number import *from secret import flagm1, m2 = bytes_to_long(flag[:len(flag)//2]), bytes_to_long(flag[len(flag)//2:])p, q, r, s = [getStrong
         </div>
       </a>
 
@@ -299,7 +434,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/03/20/cpp/codingnote/" target="_self">
         <div>
-          备赛蓝桥杯时做的一些题目，记录一下 next_permutation()在C++中，std::next_permutation 是一个标准库函数，用于生成序列的下一个排列。这个函数定义在头文件 &lt;algorithm&gt; 中，可以用于遍历一个序列的所有可能的排列。 std::next_permutation 函数的基本用法如下： 12345678910111213#include &lt;
+          备赛蓝桥杯时做的一些题目，记录一下 next_permutation() 在C++中，std::next_permutation 是一个标准库函数，用于生成序列的下一个排列。这个函数定义在头文件 &lt;algorithm&gt; 中，可以用于遍历一个序列的所有可能的排列。 std::next_permutation 函数的基本用法如下： 12345678910111213#incl
         </div>
       </a>
 
@@ -353,7 +488,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/03/18/ctf/2024-vctf-crypto-kuang-biao/" target="_self">
         <div>
-          题目123456789101112131415161718192021import osfrom secrets import flagfrom Crypto.Util.number import *from Crypto.Cipher import AESm = 8800751370242424370206649084959681730482783954700764152643359778880
+          题目 123456789101112131415161718192021import osfrom secrets import flagfrom Crypto.Util.number import *from Crypto.Cipher import AESm = 88007513702424243702066490849596817304827839547007641526433597788
         </div>
       </a>
 
@@ -414,7 +549,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/03/11/python/gmpy2-ku-de-chang-yong-han-shu-zong-jie/" target="_self">
         <div>
-          gmpy212345678910import gmpy2gmpy2.mpz(n)                # 初始化一个大整数gmpy2.mpfr(x)               # 初始化一个高精度浮点数xd = gmpy2.invert(e, n)      # 求逆元，de = 1 mod n  模反元素C = gmpy2.powmod(M, e, n)   # 幂取模，结果是 C
+          gmpy2 12345678910import gmpy2gmpy2.mpz(n)                # 初始化一个大整数gmpy2.mpfr(x)               # 初始化一个高精度浮点数xd = gmpy2.invert(e, n)      # 求逆元，de = 1 mod n  模反元素C = gmpy2.powmod(M, e, n)   # 幂取模，结果是
         </div>
       </a>
 
@@ -468,7 +603,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/03/10/ctf/wp-2024hscctf-crypto-star-chasing-diary/" target="_self">
         <div>
-          题目123456789101112131415161718192021222324252627282930313233343536&quot;&quot;&quot;小肖在学习的过程中,了解到了一种填充图片的算法,兴奋的她用它和RSA加密了偶像的照片,但是在传输的过程中丢失了一部分加密算法,你能帮她补全,并解出来偶像的照片吗?&quot;&quot;&quot;from PIL import Im
+          题目 123456789101112131415161718192021222324252627282930313233343536&quot;&quot;&quot;小肖在学习的过程中,了解到了一种填充图片的算法,兴奋的她用它和RSA加密了偶像的照片,但是在传输的过程中丢失了一部分加密算法,你能帮她补全,并解出来偶像的照片吗?&quot;&quot;&quot;from PIL import
         </div>
       </a>
 
@@ -522,7 +657,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/03/10/ctf/wp-2024hscctf-crypto-mixed/" target="_self">
         <div>
-          题目12345678910111213141516171819202122232425262728293031import libnumfrom flag import flagfrom Crypto.Util.number import *m = libnum.s2n(flag)e = 65537q = getPrime(1024)q1 = getPrime(1024)p = getPrime(
+          题目 12345678910111213141516171819202122232425262728293031import libnumfrom flag import flagfrom Crypto.Util.number import *m = libnum.s2n(flag)e = 65537q = getPrime(1024)q1 = getPrime(1024)p = getPrim
         </div>
       </a>
 
@@ -576,7 +711,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/03/10/ctf/wp-2024hscctf-crypto-sing-in/" target="_self">
         <div>
-          题目123456789101112131415161718192021from Crypto.Util.number import *from random import *from gmpy2 import *flag = &#x27;HSCCTF&#123;66666666666666666666666666666666666&#125;&#x27;m = bytes_to_long(flag
+          题目 123456789101112131415161718192021from Crypto.Util.number import *from random import *from gmpy2 import *flag = &#x27;HSCCTF&#123;66666666666666666666666666666666666&#125;&#x27;m = bytes_to_long(fl
         </div>
       </a>
 
@@ -630,7 +765,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/03/09/ctf/wp-2024pearlctf-crypto-3spies/" target="_self">
         <div>
-          题目一个加密脚本: encrypt.py 123456789101112131415161718192021222324252627282930#!/usr/bin/env python3from Crypto.Util.number import getPrime, bytes_to_longwith open(&#x27;flag.txt&#x27;, &#x27;rb&#x27;) as f
+          题目 一个加密脚本: encrypt.py 123456789101112131415161718192021222324252627282930#!/usr/bin/env python3from Crypto.Util.number import getPrime, bytes_to_longwith open(&#x27;flag.txt&#x27;, &#x27;rb&#x27;) as
         </div>
       </a>
 
@@ -684,7 +819,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/03/09/ctf/wp-2024hscctf-crypto-real-sign-in/" target="_self">
         <div>
-          题目12345678910111213141516171819202122232425262728293031323334353637383940from Crypto.Util.number import *from gmpy2 import *flag = &#x27;HSCCTF&#123;*************************&#125;&#x27;m = bytes_to_l
+          题目 12345678910111213141516171819202122232425262728293031323334353637383940from Crypto.Util.number import *from gmpy2 import *flag = &#x27;HSCCTF&#123;*************************&#125;&#x27;m = bytes_to
         </div>
       </a>
 
@@ -738,7 +873,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/03/09/ctf/wp-2024hscctf-crypto-funny/" target="_self">
         <div>
-          题目1234567891011from Crypto.Util.number import *from gmpy2 import *p = 1627858721743596752497831640628357323459243890844363792736407789751577427319257708507686114456632938183775129585728892845205290864
+          题目 1234567891011from Crypto.Util.number import *from gmpy2 import *p = 16278587217435967524978316406283573234592438908443637927364077897515774273192577085076861144566329381837751295857288928452052908
         </div>
       </a>
 
@@ -792,7 +927,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/03/07/python/python-zhong-stylecloud-bao-de-shi-yong/" target="_self">
         <div>
-          stylecloud介绍stylecloud是一款比较好用的python包，常用于数据可视化操作，具体的介绍看看别人写的吧 https://mp.weixin.qq.com/s/B23uDxzLUa_45uDh2R9Vlw https://cloud.tencent.com/developer/article/1699651 蒙版图片参考网址：https://fontawesome.com/lic
+          stylecloud介绍 stylecloud是一款比较好用的python包，常用于数据可视化操作，具体的介绍看看别人写的吧 https://mp.weixin.qq.com/s/B23uDxzLUa_45uDh2R9Vlw https://cloud.tencent.com/developer/article/1699651 蒙版图片参考网址：https://fontawesome.co
         </div>
       </a>
 

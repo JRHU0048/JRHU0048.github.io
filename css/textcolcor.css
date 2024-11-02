@@ -9,3 +9,19 @@
 .statistics{
   color: #ffffff;
 }
+
+
+.banner-text {
+  color: #0cf39e;
+  max-width: calc(960px - 6rem);
+  width: 80%;
+  overflow-wrap: break-word;
+  text-shadow: 0 0 10px #0cf39e, 0 0 20px #0cf39e, 0 0 40px #0cf39e, 0 0 80px #0cf39e, 0 0 160px #0cf39e;
+  animation: animate 5s linear infinite;
+}
+
+@keyframes animate {
+  to {
+      filter: hue-rotate(360deg);
+  }
+}

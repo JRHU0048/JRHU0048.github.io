@@ -19,12 +19,12 @@
   <meta name="author" content="JR.HU">
   <meta name="keywords" content="">
   
-    <meta name="description" content="pyecharts库通过测试发现，安装0.1.9.4版本最为稳定 1pip install pyecharts&#x3D;&#x3D;0.1.9.4  安装完成后，下面是一个简单的测试案例 12345678910111213141516171819202122232425262728293031323334353637383940414243444546from pyecharts import Mapprovinc">
+    <meta name="description" content="pyecharts库 通过测试发现，安装0.1.9.4版本最为稳定 1pip install pyecharts&#x3D;&#x3D;0.1.9.4 安装完成后，下面是一个简单的测试案例 12345678910111213141516171819202122232425262728293031323334353637383940414243444546from pyecharts import Mappro">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pyecharts绘制中国地图">
 <meta property="og:url" content="http://jrhu0048.github.io/2024/04/10/python/pyecharts-hui-zhi-zhong-guo-di-tu/index.html">
 <meta property="og:site_name" content="CHARMMY">
-<meta property="og:description" content="pyecharts库通过测试发现，安装0.1.9.4版本最为稳定 1pip install pyecharts&#x3D;&#x3D;0.1.9.4  安装完成后，下面是一个简单的测试案例 12345678910111213141516171819202122232425262728293031323334353637383940414243444546from pyecharts import Mapprovinc">
+<meta property="og:description" content="pyecharts库 通过测试发现，安装0.1.9.4版本最为稳定 1pip install pyecharts&#x3D;&#x3D;0.1.9.4 安装完成后，下面是一个简单的测试案例 12345678910111213141516171819202122232425262728293031323334353637383940414243444546from pyecharts import Mappro">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic.imgdb.cn/item/6616ab5468eb9357130f74dd.png">
 <meta property="og:image" content="https://pic.imgdb.cn/item/6616ac1f68eb935713101e1f.png">
@@ -110,7 +110,9 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>CHARMMY</strong>
+      <!-- <strong>CHARMMY</strong> -->
+       <!-- 修改如下： -->
+      <strong class="navbar-title">CHARMMY</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -206,7 +208,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/desktop2.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/hei.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -240,7 +242,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          405 字
+          408 字
         
       </span>
     
@@ -275,6 +277,9 @@
 
       
     </div>
+
+    
+    
   </div>
 </div>
 
@@ -302,20 +307,35 @@
             
               <div class="markdown-body">
                 
-                <h2 id="pyecharts库"><a href="#pyecharts库" class="headerlink" title="pyecharts库"></a>pyecharts库</h2><p>通过测试发现，安装0.1.9.4版本最为稳定</p>
+                <h2 id="pyecharts库">pyecharts库</h2>
+<p>通过测试发现，安装0.1.9.4版本最为稳定</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">pip install pyecharts==<span class="hljs-number">0.1</span><span class="hljs-number">.9</span><span class="hljs-number">.4</span><br></code></pre></td></tr></table></figure>
-
 <p>安装完成后，下面是一个简单的测试案例</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> pyecharts <span class="hljs-keyword">import</span> Map<br><br>province_distribution  = &#123;<br>    <span class="hljs-string">&quot;北京&quot;</span>: <span class="hljs-number">3.923916945</span>,<br>    <span class="hljs-string">&quot;天津&quot;</span>: <span class="hljs-number">1.974557674</span>,<br>    <span class="hljs-string">&quot;河北&quot;</span>: <span class="hljs-number">0.031448024</span>,<br>    <span class="hljs-string">&quot;山西&quot;</span>: -<span class="hljs-number">0.243928321</span>,<br>    <span class="hljs-string">&quot;内蒙古&quot;</span>: <span class="hljs-number">0.285642805</span>,<br>    <span class="hljs-string">&quot;辽宁&quot;</span>: -<span class="hljs-number">0.012222464</span>,<br>    <span class="hljs-string">&quot;吉林&quot;</span>: <span class="hljs-number">0.037753234</span>,<br>    <span class="hljs-string">&quot;黑龙江&quot;</span>: -<span class="hljs-number">0.098705912</span>,<br>    <span class="hljs-string">&quot;上海&quot;</span>: <span class="hljs-number">2.498539306</span>,<br>    <span class="hljs-string">&quot;江苏&quot;</span>: <span class="hljs-number">0.367988799</span>,<br>    <span class="hljs-string">&quot;浙江&quot;</span>: <span class="hljs-number">0.889074231</span>,<br>    <span class="hljs-string">&quot;安徽&quot;</span>: -<span class="hljs-number">0.6519182</span>,<br>    <span class="hljs-string">&quot;福建&quot;</span>: -<span class="hljs-number">0.202640638</span>,<br>    <span class="hljs-string">&quot;江西&quot;</span>: -<span class="hljs-number">0.968214234</span>,<br>    <span class="hljs-string">&quot;山东&quot;</span>: <span class="hljs-number">0.355384584</span>,<br>    <span class="hljs-string">&quot;河南&quot;</span>: -<span class="hljs-number">0.99580695</span>,<br>    <span class="hljs-string">&quot;湖北&quot;</span>: -<span class="hljs-number">0.264681358</span>,<br>    <span class="hljs-string">&quot;湖南&quot;</span>: -<span class="hljs-number">1.012688352</span>,<br>    <span class="hljs-string">&quot;广东&quot;</span>: <span class="hljs-number">0.574760013</span>,<br>    <span class="hljs-string">&quot;广西&quot;</span>: -<span class="hljs-number">0.830955316</span>,<br>    <span class="hljs-string">&quot;海南&quot;</span>: <span class="hljs-number">0.149846753</span>,<br>    <span class="hljs-string">&quot;重庆&quot;</span>: -<span class="hljs-number">0.431589086</span>,<br>    <span class="hljs-string">&quot;四川&quot;</span>: -<span class="hljs-number">0.717277576</span>,<br>    <span class="hljs-string">&quot;贵州&quot;</span>: -<span class="hljs-number">1.400394406</span>,<br>    <span class="hljs-string">&quot;云南&quot;</span>: -<span class="hljs-number">1.016323672</span>,<br>    <span class="hljs-string">&quot;西藏&quot;</span>: -<span class="hljs-number">0.146483877</span>,<br>    <span class="hljs-string">&quot;陕西&quot;</span>: -<span class="hljs-number">0.202472393</span>,<br>    <span class="hljs-string">&quot;甘肃&quot;</span>: -<span class="hljs-number">0.976863652</span>,<br>    <span class="hljs-string">&quot;青海&quot;</span>: -<span class="hljs-number">0.352463859</span>,<br>    <span class="hljs-string">&quot;宁夏&quot;</span>: -<span class="hljs-number">0.001899423</span>,<br>    <span class="hljs-string">&quot;新疆&quot;</span>: -<span class="hljs-number">0.561382676</span><br>&#125;<br>provice = <span class="hljs-built_in">list</span>(province_distribution.keys())<br>num = <span class="hljs-built_in">list</span>(province_distribution.values())<br><br>chinaMap = Map(width=<span class="hljs-number">1200</span>, height=<span class="hljs-number">600</span>)<br>chinaMap.add(name=<span class="hljs-string">&quot;医疗水平综合得分&quot;</span>,<br>             attr=provice,<br>             value=num,<br>             visual_range=[-<span class="hljs-number">1.1</span>, <span class="hljs-number">1.5</span>],<br>             maptype=<span class="hljs-string">&#x27;china&#x27;</span>,<br>             is_visualmap=<span class="hljs-literal">True</span>)<br>chinaMap.render(path=<span class="hljs-string">&quot;中国地图.html&quot;</span>)<br></code></pre></td></tr></table></figure>
-
-<p>运行，会在同一目录下得到一个’中国地图.html’的文件，通过浏览器打开，可以得到如下的交互式地图</p>
-<p><img src="https://pic.imgdb.cn/item/6616ab5468eb9357130f74dd.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<p>但是发现得到的地图无法自动显示各个省份的名称，因此可以使用<code>notepad++</code>打开’中国地图.html’，在一千九百多行的位置找到</p>
-<p><img src="https://pic.imgdb.cn/item/6616ac1f68eb935713101e1f.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<p>运行，会在同一目录下得到一个'中国地图.html'的文件，通过浏览器打开，可以得到如下的交互式地图</p>
+<figure>
+<img src="https://pic.imgdb.cn/item/6616ab5468eb9357130f74dd.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<p>但是发现得到的地图无法自动显示各个省份的名称，因此可以使用<code>notepad++</code>打开'中国地图.html'，在一千九百多行的位置找到</p>
+<figure>
+<img src="https://pic.imgdb.cn/item/6616ac1f68eb935713101e1f.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
 <p>添加如下内容并保存</p>
-<p><img src="https://pic.imgdb.cn/item/6616ad3f68eb935713117bef.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<figure>
+<img src="https://pic.imgdb.cn/item/6616ad3f68eb935713117bef.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
 <p>最终就可以得到带有省份名称的中国地图，可以下载保存</p>
-<p><img src="https://pic.imgdb.cn/item/66169f6568eb935713011b92.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<figure>
+<img src="https://pic.imgdb.cn/item/66169f6568eb935713011b92.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
 
                 
               </div>
@@ -748,9 +768,9 @@
             tex    : {
               inlineMath: { '[+]': [['$', '$']] }
             },
-            loader : {
-              load: ['ui/lazy']
-            },
+            // loader : {
+            //   load: ['ui/lazy']
+            // },
             options: {
               renderActions: {
                 insertedScript: [200, () => {

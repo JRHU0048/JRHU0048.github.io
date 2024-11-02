@@ -106,7 +106,9 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>CHARMMY</strong>
+      <!-- <strong>CHARMMY</strong> -->
+       <!-- 修改如下： -->
+      <strong class="navbar-title">CHARMMY</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -202,7 +204,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/desktop2.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/hei.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -271,6 +273,9 @@
 
       
     </div>
+
+    
+    
   </div>
 </div>
 
@@ -298,10 +303,10 @@
             
               <div class="markdown-body">
                 
-                <p>1、</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs ruby">word_freq = &#123;&#125;<br><span class="hljs-keyword">for</span> word <span class="hljs-keyword">in</span> <span class="hljs-symbol">words:</span><br>    <span class="hljs-keyword">if</span> word <span class="hljs-keyword">in</span> <span class="hljs-symbol">word_freq:</span><br>        word_freq[word] += <span class="hljs-number">1</span><br>    <span class="hljs-symbol">else:</span><br>        word_freq[word] = <span class="hljs-number">1</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(word_freq):<br>    print(word)<br>    print(word_freq[word])<br><br><span class="hljs-title class_">TypeError</span>: <span class="hljs-string">&#x27;dict&#x27;</span> object cannot be interpreted as an integer<br>类型错误<span class="hljs-symbol">:<span class="hljs-string">&#x27;dict&#x27;</span></span>对象不能被解释为整数<br></code></pre></td></tr></table></figure>
-<p>在打印字典的键值对时出现上述错误，首先是word没有参与循环，其次range(word_freq)使用错误</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs ruby">word_freq = &#123;&#125;<br><span class="hljs-keyword">for</span> word <span class="hljs-keyword">in</span> <span class="hljs-symbol">words:</span><br>    <span class="hljs-keyword">if</span> word <span class="hljs-keyword">in</span> <span class="hljs-symbol">word_freq:</span><br>        word_freq[word] += <span class="hljs-number">1</span><br>    <span class="hljs-symbol">else:</span><br>        word_freq[word] = <span class="hljs-number">1</span><br><span class="hljs-keyword">for</span> word, freq <span class="hljs-keyword">in</span> word_freq.items():<br>    print(word,word_freq[word])<br></code></pre></td></tr></table></figure>
+                <p>1、 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs ruby">word_freq = &#123;&#125;<br><span class="hljs-keyword">for</span> word <span class="hljs-keyword">in</span> <span class="hljs-symbol">words:</span><br>    <span class="hljs-keyword">if</span> word <span class="hljs-keyword">in</span> <span class="hljs-symbol">word_freq:</span><br>        word_freq[word] += <span class="hljs-number">1</span><br>    <span class="hljs-symbol">else:</span><br>        word_freq[word] = <span class="hljs-number">1</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(word_freq):<br>    print(word)<br>    print(word_freq[word])<br><br><span class="hljs-title class_">TypeError</span>: <span class="hljs-string">&#x27;dict&#x27;</span> object cannot be interpreted as an integer<br>类型错误<span class="hljs-symbol">:<span class="hljs-string">&#x27;dict&#x27;</span></span>对象不能被解释为整数<br></code></pre></td></tr></table></figure>
+在打印字典的键值对时出现上述错误，首先是word没有参与循环，其次range(word_freq)使用错误
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs ruby">word_freq = &#123;&#125;<br><span class="hljs-keyword">for</span> word <span class="hljs-keyword">in</span> <span class="hljs-symbol">words:</span><br>    <span class="hljs-keyword">if</span> word <span class="hljs-keyword">in</span> <span class="hljs-symbol">word_freq:</span><br>        word_freq[word] += <span class="hljs-number">1</span><br>    <span class="hljs-symbol">else:</span><br>        word_freq[word] = <span class="hljs-number">1</span><br><span class="hljs-keyword">for</span> word, freq <span class="hljs-keyword">in</span> word_freq.items():<br>    print(word,word_freq[word])<br></code></pre></td></tr></table></figure></p>
+
                 
               </div>
             
@@ -740,9 +745,9 @@
             tex    : {
               inlineMath: { '[+]': [['$', '$']] }
             },
-            loader : {
-              load: ['ui/lazy']
-            },
+            // loader : {
+            //   load: ['ui/lazy']
+            // },
             options: {
               renderActions: {
                 insertedScript: [200, () => {

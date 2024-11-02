@@ -19,12 +19,12 @@
   <meta name="author" content="JR.HU">
   <meta name="keywords" content="">
   
-    <meta name="description" content="写在前面记录一下非常好的博客讲解： [1] CNN 卷积神经网络 https:&#x2F;&#x2F;dorianzi.github.io&#x2F;2019&#x2F;04&#x2F;25&#x2F;CNN&#x2F; 卷积神经网络  上述图片引自：https:&#x2F;&#x2F;dorianzi.github.io&#x2F;2019&#x2F;04&#x2F;25&#x2F;CNN&#x2F; 卷积神经网络是为了处理图片而生的分类任务 全连接神经网络与卷积神经网络 为什么选择 卷积层神经网络 而不用 全连接神经网络 卷积核的">
+    <meta name="description" content="写在前面 记录一下非常好的博客讲解： [1] CNN 卷积神经网络 https:&#x2F;&#x2F;dorianzi.github.io&#x2F;2019&#x2F;04&#x2F;25&#x2F;CNN&#x2F; 卷积神经网络   上述图片引自：https:&#x2F;&#x2F;dorianzi.github.io&#x2F;2019&#x2F;04&#x2F;25&#x2F;CNN&#x2F; 卷积神经网络是为了处理图片而生的分类任务  全连接神经网络与卷积神经网络  为什么选择 卷积层神经网络 而不">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第九讲_Convolutional neural networks">
 <meta property="og:url" content="http://jrhu0048.github.io/2024/10/25/ji-qi-xue-xi/di-jiu-jiang-convolutional-neural-networks/index.html">
 <meta property="og:site_name" content="CHARMMY">
-<meta property="og:description" content="写在前面记录一下非常好的博客讲解： [1] CNN 卷积神经网络 https:&#x2F;&#x2F;dorianzi.github.io&#x2F;2019&#x2F;04&#x2F;25&#x2F;CNN&#x2F; 卷积神经网络  上述图片引自：https:&#x2F;&#x2F;dorianzi.github.io&#x2F;2019&#x2F;04&#x2F;25&#x2F;CNN&#x2F; 卷积神经网络是为了处理图片而生的分类任务 全连接神经网络与卷积神经网络 为什么选择 卷积层神经网络 而不用 全连接神经网络 卷积核的">
+<meta property="og:description" content="写在前面 记录一下非常好的博客讲解： [1] CNN 卷积神经网络 https:&#x2F;&#x2F;dorianzi.github.io&#x2F;2019&#x2F;04&#x2F;25&#x2F;CNN&#x2F; 卷积神经网络   上述图片引自：https:&#x2F;&#x2F;dorianzi.github.io&#x2F;2019&#x2F;04&#x2F;25&#x2F;CNN&#x2F; 卷积神经网络是为了处理图片而生的分类任务  全连接神经网络与卷积神经网络  为什么选择 卷积层神经网络 而不">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic.imgdb.cn/item/6719eb2bd29ded1a8cb61503.jpg">
 <meta property="article:published_time" content="2024-10-25T12:17:54.000Z">
@@ -107,7 +107,9 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>CHARMMY</strong>
+      <!-- <strong>CHARMMY</strong> -->
+       <!-- 修改如下： -->
+      <strong class="navbar-title">CHARMMY</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -272,6 +274,9 @@
 
       
     </div>
+
+    
+    
   </div>
 </div>
 
@@ -299,63 +304,88 @@
             
               <div class="markdown-body">
                 
-                <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>记录一下非常好的博客讲解：</p>
-<p>[1] CNN 卷积神经网络 <a target="_blank" rel="noopener" href="https://dorianzi.github.io/2019/04/25/CNN/">https://dorianzi.github.io/2019/04/25/CNN/</a></p>
-<h2 id="卷积神经网络"><a href="#卷积神经网络" class="headerlink" title="卷积神经网络"></a>卷积神经网络</h2><p><img src="https://dorianzi.github.io/uploads/cnn_1.gif" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://dorianzi.github.io/uploads/cnn_2.gif" srcset="/img/loading.gif" lazyload></p>
-<p>上述图片引自：<a target="_blank" rel="noopener" href="https://dorianzi.github.io/2019/04/25/CNN/">https://dorianzi.github.io/2019/04/25/CNN/</a></p>
-<p>卷积神经网络是为了处理图片而生的分类任务<br><img src="https://pic.imgdb.cn/item/671b8d08d29ded1a8c2cce31.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="全连接神经网络与卷积神经网络"><a href="#全连接神经网络与卷积神经网络" class="headerlink" title="全连接神经网络与卷积神经网络"></a>全连接神经网络与卷积神经网络</h3><p><img src="https://pic.imgdb.cn/item/671b8fadd29ded1a8c2fa727.png" srcset="/img/loading.gif" lazyload></p>
-<p>为什么选择 卷积层神经网络 而不用 全连接神经网络<br><img src="https://pic.imgdb.cn/item/671b9456d29ded1a8c33c16c.png" srcset="/img/loading.gif" lazyload></p>
+                <h2 id="写在前面">写在前面</h2>
+<p>记录一下非常好的博客讲解：</p>
+<p>[1] CNN 卷积神经网络 https://dorianzi.github.io/2019/04/25/CNN/</p>
+<h2 id="卷积神经网络">卷积神经网络</h2>
+<p><img src="https://dorianzi.github.io/uploads/cnn_1.gif" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://dorianzi.github.io/uploads/cnn_2.gif" srcset="/img/loading.gif" lazyload /></p>
+<p>上述图片引自：https://dorianzi.github.io/2019/04/25/CNN/</p>
+<p>卷积神经网络是为了处理图片而生的分类任务 <img
+src="https://pic.imgdb.cn/item/671b8d08d29ded1a8c2cce31.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="全连接神经网络与卷积神经网络">全连接神经网络与卷积神经网络</h3>
+<p><img
+src="https://pic.imgdb.cn/item/671b8fadd29ded1a8c2fa727.png" srcset="/img/loading.gif" lazyload /></p>
+<p>为什么选择 卷积层神经网络 而不用 全连接神经网络 <img
+src="https://pic.imgdb.cn/item/671b9456d29ded1a8c33c16c.png" srcset="/img/loading.gif" lazyload /></p>
 <p>卷积核的作用：减少了计算量、减少参数</p>
-<h4 id="卷积神经网络一般使用的激活函数为Relu，为什么？"><a href="#卷积神经网络一般使用的激活函数为Relu，为什么？" class="headerlink" title="卷积神经网络一般使用的激活函数为Relu，为什么？"></a>卷积神经网络一般使用的激活函数为Relu，为什么？</h4><p>ReLU（Rectified Linear Unit）函数的数学表达式非常简单，定义如下：</p>
+<h4
+id="卷积神经网络一般使用的激活函数为relu为什么">卷积神经网络一般使用的激活函数为Relu，为什么？</h4>
+<p>ReLU（Rectified Linear Unit）函数的数学表达式非常简单，定义如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs math">f(x) = \max(0, x) <br></code></pre></td></tr></table></figure>
 <p>这个表达式的含义是：</p>
 <ul>
-<li><p>当输入 ( x ) 大于0时，输出就是 ( x ) 本身；</p>
-</li>
-<li><p>当输入 ( x ) 小于或等于0时，输出为0。</p>
-</li>
+<li><p>当输入 ( x ) 大于0时，输出就是 ( x ) 本身；</p></li>
+<li><p>当输入 ( x ) 小于或等于0时，输出为0。</p></li>
 <li><p>计算效率：</p>
 <ul>
 <li>ReLU函数计算非常高效，因为它仅仅是将所有负值设为零，保留正值不变。这种操作在硬件上实现起来非常快，不需要复杂的数学运算如指数或除法，这对于训练深层网络尤其重要，因为可以显著减少训练时间和资源消耗。</li>
-</ul>
-</li>
+</ul></li>
 <li><p>缓解梯度消失问题：</p>
 <ul>
 <li>在深度网络中，当使用像Sigmoid或tanh这样的激活函数时，容易遇到梯度消失的问题，即随着网络层数增加，反向传播时梯度逐渐减小到接近于零，导致底层权重难以有效更新。ReLU函数由于其导数在正区间内恒等于1，可以有效地缓解这一问题，促进梯度的有效传播。</li>
-</ul>
-</li>
+</ul></li>
 <li><p>稀疏激活：</p>
 <ul>
 <li>ReLU可以使一部分神经元输出为零，这意味着模型会自动忽略一些不重要的特征，从而实现一种形式的内部特征选择，有助于提高模型的泛化能力，并且使模型更加紧凑。</li>
-</ul>
-</li>
+</ul></li>
 <li><p>生物学合理性：</p>
 <ul>
 <li>从生物学的角度来看，神经元要么活跃要么不活跃，这种二元行为与ReLU函数的行为相似，因此ReLU也符合大脑神经元工作的某些假设。</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<p>从全连接的角度理解卷积神经网络：稀疏的全连接神经网络<br><img src="https://pic.imgdb.cn/item/671b9af4d29ded1a8c39fa2f.png" srcset="/img/loading.gif" lazyload></p>
-<p>根据卷积核以及输入图片的大小判断输出图片大小的公式：<br><img src="https://pic.imgdb.cn/item/671b9d2dd29ded1a8c3bdc8d.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://pic.imgdb.cn/item/671b9cc6d29ded1a8c3b8a66.png" srcset="/img/loading.gif" lazyload></p>
-<p>计算量的大小比较：<br><img src="https://pic.imgdb.cn/item/671b9f81d29ded1a8c3def5b.png" srcset="/img/loading.gif" lazyload><br><img src="https://pic.imgdb.cn/item/671ba02ed29ded1a8c3e8e70.png" srcset="/img/loading.gif" lazyload></p>
-<h4 id="利用卷积神经网络实现边缘检测"><a href="#利用卷积神经网络实现边缘检测" class="headerlink" title="利用卷积神经网络实现边缘检测"></a>利用卷积神经网络实现边缘检测</h4><p><img src="https://pic.imgdb.cn/item/671ba2b2d29ded1a8c40cd56.png" srcset="/img/loading.gif" lazyload></p>
+<p>从全连接的角度理解卷积神经网络：稀疏的全连接神经网络 <img
+src="https://pic.imgdb.cn/item/671b9af4d29ded1a8c39fa2f.png" srcset="/img/loading.gif" lazyload /></p>
+<p>根据卷积核以及输入图片的大小判断输出图片大小的公式： <img
+src="https://pic.imgdb.cn/item/671b9d2dd29ded1a8c3bdc8d.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img
+src="https://pic.imgdb.cn/item/671b9cc6d29ded1a8c3b8a66.png" srcset="/img/loading.gif" lazyload /></p>
+<p>计算量的大小比较： <img
+src="https://pic.imgdb.cn/item/671b9f81d29ded1a8c3def5b.png" srcset="/img/loading.gif" lazyload /> <img
+src="https://pic.imgdb.cn/item/671ba02ed29ded1a8c3e8e70.png" srcset="/img/loading.gif" lazyload /></p>
+<h4 id="利用卷积神经网络实现边缘检测">利用卷积神经网络实现边缘检测</h4>
+<p><img
+src="https://pic.imgdb.cn/item/671ba2b2d29ded1a8c40cd56.png" srcset="/img/loading.gif" lazyload /></p>
 <p>有点类似在ROS2实验课上做的边缘检测算法，原理都差不多</p>
-<p>卷积是能够提取特征的<br><img src="https://pic.imgdb.cn/item/671bab11d29ded1a8c482604.png" srcset="/img/loading.gif" lazyload></p>
-<p>为了丢掉不必要的信息，引入池化层的概念：<br><img src="https://pic.imgdb.cn/item/671bacacd29ded1a8c49af53.png" srcset="/img/loading.gif" lazyload></p>
+<p>卷积是能够提取特征的 <img
+src="https://pic.imgdb.cn/item/671bab11d29ded1a8c482604.png" srcset="/img/loading.gif" lazyload /></p>
+<p>为了丢掉不必要的信息，引入池化层的概念： <img
+src="https://pic.imgdb.cn/item/671bacacd29ded1a8c49af53.png" srcset="/img/loading.gif" lazyload /></p>
 <p>经验：最大池化比平均池化效果会好一点</p>
-<p>卷积神经网络帮助我们提取特征，进行分类工作，可以理解为特征提取器<br><img src="https://pic.imgdb.cn/item/671bb3bfd29ded1a8c502c2e.png" srcset="/img/loading.gif" lazyload></p>
-<p>卷积神经网络的损失函数同前面学过的交叉熵损失函数<br><img src="https://pic.imgdb.cn/item/671bb49bd29ded1a8c50ffdd.png" srcset="/img/loading.gif" lazyload></p>
+<p>卷积神经网络帮助我们提取特征，进行分类工作，可以理解为特征提取器 <img
+src="https://pic.imgdb.cn/item/671bb3bfd29ded1a8c502c2e.png" srcset="/img/loading.gif" lazyload /></p>
+<p>卷积神经网络的损失函数同前面学过的交叉熵损失函数 <img
+src="https://pic.imgdb.cn/item/671bb49bd29ded1a8c50ffdd.png" srcset="/img/loading.gif" lazyload /></p>
 <p>卷积神经网络反向传播</p>
 <p>先后经过：softmax、池化层、relu、卷积层:</p>
-<p>(1)softmax<br><img src="https://pic.imgdb.cn/item/671bbf44d29ded1a8c5a0c8d.png" srcset="/img/loading.gif" lazyload><br><img src="https://pic.imgdb.cn/item/671bbf67d29ded1a8c5a2b7a.png" srcset="/img/loading.gif" lazyload><br>(2)池化层<br><img src="https://pic.imgdb.cn/item/671bbfdbd29ded1a8c5a8a71.png" srcset="/img/loading.gif" lazyload><br>(3)relu<br><img src="https://pic.imgdb.cn/item/671bc0e2d29ded1a8c5be4b4.png" srcset="/img/loading.gif" lazyload><br>(4)卷积层，卷积层的反向传播有点复杂<br><img src="https://pic.imgdb.cn/item/671c8faad29ded1a8cea6549.png" srcset="/img/loading.gif" lazyload><br>卷积层反向传播的规律<br><img src="https://pic.imgdb.cn/item/671c9178d29ded1a8cec5bcf.png" srcset="/img/loading.gif" lazyload></p>
+<p>(1)softmax <img
+src="https://pic.imgdb.cn/item/671bbf44d29ded1a8c5a0c8d.png" srcset="/img/loading.gif" lazyload /> <img
+src="https://pic.imgdb.cn/item/671bbf67d29ded1a8c5a2b7a.png" srcset="/img/loading.gif" lazyload />
+(2)池化层 <img
+src="https://pic.imgdb.cn/item/671bbfdbd29ded1a8c5a8a71.png" srcset="/img/loading.gif" lazyload /> (3)relu
+<img src="https://pic.imgdb.cn/item/671bc0e2d29ded1a8c5be4b4.png" srcset="/img/loading.gif" lazyload />
+(4)卷积层，卷积层的反向传播有点复杂 <img
+src="https://pic.imgdb.cn/item/671c8faad29ded1a8cea6549.png" srcset="/img/loading.gif" lazyload />
+卷积层反向传播的规律 <img
+src="https://pic.imgdb.cn/item/671c9178d29ded1a8cec5bcf.png" srcset="/img/loading.gif" lazyload /></p>
 <p>多层CNN的卷积结构</p>
-<p>卷积核的通道数需要与输入的通道数相匹配，输出的通道数与卷积核的个数相匹配<br><img src="https://pic.imgdb.cn/item/671c9755d29ded1a8cf23bba.png" srcset="/img/loading.gif" lazyload></p>
+<p>卷积核的通道数需要与输入的通道数相匹配，输出的通道数与卷积核的个数相匹配
+<img src="https://pic.imgdb.cn/item/671c9755d29ded1a8cf23bba.png" srcset="/img/loading.gif" lazyload /></p>
 <p>这里的偏置结构有点问题，应该是有三层的结构，与输出的结构一模一样，与输出对应</p>
 <p>当遇到多通道卷积网络时，需要考虑稍微多一点点内容</p>
-<h3 id="img2col"><a href="#img2col" class="headerlink" title="img2col"></a>img2col</h3><p><img src="https://pic.imgdb.cn/item/671cc5a5d29ded1a8c252ffe.png" srcset="/img/loading.gif" lazyload><br><img src="https://pic.imgdb.cn/item/671cc5b9d29ded1a8c25449c.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="img2col">img2col</h3>
+<p><img src="https://pic.imgdb.cn/item/671cc5a5d29ded1a8c252ffe.png" srcset="/img/loading.gif" lazyload />
+<img src="https://pic.imgdb.cn/item/671cc5b9d29ded1a8c25449c.png" srcset="/img/loading.gif" lazyload /></p>
 <p>第一种结构的优化相对会更好一点，各有优劣</p>
 
                 
@@ -789,9 +819,9 @@
             tex    : {
               inlineMath: { '[+]': [['$', '$']] }
             },
-            loader : {
-              load: ['ui/lazy']
-            },
+            // loader : {
+            //   load: ['ui/lazy']
+            // },
             options: {
               renderActions: {
                 insertedScript: [200, () => {

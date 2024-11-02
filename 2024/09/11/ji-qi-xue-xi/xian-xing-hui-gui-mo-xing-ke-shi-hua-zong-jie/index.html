@@ -19,12 +19,12 @@
   <meta name="author" content="JR.HU">
   <meta name="keywords" content="">
   
-    <meta name="description" content="近期课堂上学习了线性回归模型，同时也读到了很好的一篇文章，尝试对于里面的部分内容进行复现说明，简单总结，附上链接：https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;qAzbL3YY30X7W9NkL9hb0A线性趋势线图 线性趋势线图用于可视化数据集中自变量和因变量之间的线性关系，以及线性回归模型拟合的效果  反映线性关系 反映拟合效果  123456789101112131415161718">
+    <meta name="description" content="近期课堂上学习了线性回归模型，同时也读到了很好的一篇文章，尝试对于里面的部分内容进行复现说明，简单总结，附上链接：https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;qAzbL3YY30X7W9NkL9hb0A 线性趋势线图   alt text  线性趋势线图用于可视化数据集中自变量和因变量之间的线性关系，以及线性回归模型拟合的效果  反映线性关系 反映拟合效果  123">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线性回归模型中的常见图表">
 <meta property="og:url" content="http://jrhu0048.github.io/2024/09/11/ji-qi-xue-xi/xian-xing-hui-gui-mo-xing-ke-shi-hua-zong-jie/index.html">
 <meta property="og:site_name" content="CHARMMY">
-<meta property="og:description" content="近期课堂上学习了线性回归模型，同时也读到了很好的一篇文章，尝试对于里面的部分内容进行复现说明，简单总结，附上链接：https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;qAzbL3YY30X7W9NkL9hb0A线性趋势线图 线性趋势线图用于可视化数据集中自变量和因变量之间的线性关系，以及线性回归模型拟合的效果  反映线性关系 反映拟合效果  123456789101112131415161718">
+<meta property="og:description" content="近期课堂上学习了线性回归模型，同时也读到了很好的一篇文章，尝试对于里面的部分内容进行复现说明，简单总结，附上链接：https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;qAzbL3YY30X7W9NkL9hb0A 线性趋势线图   alt text  线性趋势线图用于可视化数据集中自变量和因变量之间的线性关系，以及线性回归模型拟合的效果  反映线性关系 反映拟合效果  123">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic.imgdb.cn/item/66e19db9d9c307b7e93db595.png">
 <meta property="og:image" content="https://pic.imgdb.cn/item/66e1a945d9c307b7e95272a9.png">
@@ -110,7 +110,9 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>CHARMMY</strong>
+      <!-- <strong>CHARMMY</strong> -->
+       <!-- 修改如下： -->
+      <strong class="navbar-title">CHARMMY</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -206,7 +208,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/desktop2.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/hei.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -275,6 +277,9 @@
 
       
     </div>
+
+    
+    
   </div>
 </div>
 
@@ -302,37 +307,56 @@
             
               <div class="markdown-body">
                 
-                <h2 id="近期课堂上学习了线性回归模型，同时也读到了很好的一篇文章，尝试对于里面的部分内容进行复现说明，简单总结，附上链接：https-mp-weixin-qq-com-s-qAzbL3YY30X7W9NkL9hb0A"><a href="#近期课堂上学习了线性回归模型，同时也读到了很好的一篇文章，尝试对于里面的部分内容进行复现说明，简单总结，附上链接：https-mp-weixin-qq-com-s-qAzbL3YY30X7W9NkL9hb0A" class="headerlink" title="近期课堂上学习了线性回归模型，同时也读到了很好的一篇文章，尝试对于里面的部分内容进行复现说明，简单总结，附上链接：https://mp.weixin.qq.com/s/qAzbL3YY30X7W9NkL9hb0A"></a>近期课堂上学习了线性回归模型，同时也读到了很好的一篇文章，尝试对于里面的部分内容进行复现说明，简单总结，附上链接：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/qAzbL3YY30X7W9NkL9hb0A">https://mp.weixin.qq.com/s/qAzbL3YY30X7W9NkL9hb0A</a></h2><h3 id="线性趋势线图"><a href="#线性趋势线图" class="headerlink" title="线性趋势线图"></a>线性趋势线图</h3><p><img src="https://pic.imgdb.cn/item/66e19db9d9c307b7e93db595.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+                <h2
+id="近期课堂上学习了线性回归模型同时也读到了很好的一篇文章尝试对于里面的部分内容进行复现说明简单总结附上链接httpsmp.weixin.qq.comsqazbl3yy30x7w9nkl9hb0a">近期课堂上学习了线性回归模型，同时也读到了很好的一篇文章，尝试对于里面的部分内容进行复现说明，简单总结，附上链接：https://mp.weixin.qq.com/s/qAzbL3YY30X7W9NkL9hb0A</h2>
+<h3 id="线性趋势线图">线性趋势线图</h3>
+<figure>
+<img src="https://pic.imgdb.cn/item/66e19db9d9c307b7e93db595.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
 <p>线性趋势线图用于可视化数据集中自变量和因变量之间的线性关系，以及线性回归模型拟合的效果</p>
 <ul>
 <li>反映线性关系</li>
 <li>反映拟合效果</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sklearn.datasets <span class="hljs-keyword">import</span> load_diabetes<br><span class="hljs-comment"># 导入数据集</span><br>diabetes = load_diabetes() <br>X = diabetes.data[:, <span class="hljs-number">2</span>] <span class="hljs-comment"># 设第三个变量为X</span><br>y = diabetes.target  <br><br><span class="hljs-comment"># 利用公式实现线性回归算法拟合</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">linear_regression</span>(<span class="hljs-params">X,y</span>):<br>    X_mean = <span class="hljs-built_in">sum</span>(X)/<span class="hljs-built_in">len</span>(X)<br>    y_mean = <span class="hljs-built_in">sum</span>(y)/<span class="hljs-built_in">len</span>(y)<br><br>    <span class="hljs-comment"># 求解斜率和截距</span><br>    numerator = <span class="hljs-built_in">sum</span>((X-X_mean) * (y-y_mean))<br>    denominator = <span class="hljs-built_in">sum</span>((X-X_mean)**<span class="hljs-number">2</span>)<br>    slope = numerator / denominator  <span class="hljs-comment"># 斜率</span><br>    intercept = y_mean - slope * X_mean  <span class="hljs-comment"># 截距</span><br><br>    <span class="hljs-keyword">return</span> slope, intercept<br><br>slope,intercept  = linear_regression(X,y)<br><br><span class="hljs-keyword">import</span> seaborn <span class="hljs-keyword">as</span> sns<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><br>sns.regplot(x=X,y=y,color=<span class="hljs-string">&#x27;red&#x27;</span>,scatter_kws=&#123;<span class="hljs-string">&#x27;color&#x27;</span>:<span class="hljs-string">&#x27;blue&#x27;</span>,<span class="hljs-string">&#x27;s&#x27;</span>:<span class="hljs-number">10</span>&#125;)  <span class="hljs-comment"># 设置 ci = None，不显示置信区间</span><br><span class="hljs-comment"># scatter_kws和line_kws分别用于设置数据点和趋势线的颜色等属性</span><br>plt.xlabel(<span class="hljs-string">&#x27;X&#x27;</span>)<br>plt.ylabel(<span class="hljs-string">&#x27;y&#x27;</span>)<br>plt.title(<span class="hljs-string">&#x27;Linear trend line plot&#x27;</span>)<br>plt.show()<br></code></pre></td></tr></table></figure>
-
-
-<h3 id="残差图"><a href="#残差图" class="headerlink" title="残差图"></a>残差图</h3><p><img src="https://pic.imgdb.cn/item/66e1a945d9c307b7e95272a9.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<h3 id="残差图">残差图</h3>
+<figure>
+<img src="https://pic.imgdb.cn/item/66e1a945d9c307b7e95272a9.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
 <p>残差图：残差是预测值和真实值之间的差值，残差图是残差和自变量之间的散点图，残差图可以反映线性回归模型的拟合效果，如果残差图没有集中，说明模型可能存在偏差，需要调整模型参数。</p>
 <ul>
 <li>在理想情况下，残差应该随机地分布在横轴上，没有明显的模式</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sklearn.datasets <span class="hljs-keyword">import</span> load_diabetes<br><span class="hljs-comment"># 导入数据集</span><br>diabetes = load_diabetes() <br>X = diabetes.data[:, <span class="hljs-number">2</span>] <span class="hljs-comment"># 设第三个变量为X</span><br>y = diabetes.target  <br><br><span class="hljs-comment"># 利用公式实现线性回归算法拟合</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">linear_regression</span>(<span class="hljs-params">X,y</span>):<br>    X_mean = <span class="hljs-built_in">sum</span>(X)/<span class="hljs-built_in">len</span>(X)<br>    y_mean = <span class="hljs-built_in">sum</span>(y)/<span class="hljs-built_in">len</span>(y)<br><br>    <span class="hljs-comment"># 求解斜率和截距</span><br>    numerator = <span class="hljs-built_in">sum</span>((X-X_mean) * (y-y_mean))<br>    denominator = <span class="hljs-built_in">sum</span>((X-X_mean)**<span class="hljs-number">2</span>)<br>    slope = numerator / denominator  <span class="hljs-comment"># 斜率</span><br>    intercept = y_mean - slope * X_mean  <span class="hljs-comment"># 截距</span><br><br>    <span class="hljs-keyword">return</span> slope, intercept<br><br><span class="hljs-comment"># 获取回归直线的斜率和截距</span><br>slope,intercept  = linear_regression(X,y)<br><br><span class="hljs-comment"># 计算预测值</span><br>y_pred = slope * X + intercept<br><br><span class="hljs-comment"># 计算残差</span><br>residuals = y - y_pred<br><br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><br><span class="hljs-comment"># 绘制残差图</span><br>plt.scatter(X, residuals, color=<span class="hljs-string">&#x27;blue&#x27;</span>)<br>plt.axhline(y=<span class="hljs-number">0</span>, color=<span class="hljs-string">&#x27;red&#x27;</span>, linestyle=<span class="hljs-string">&#x27;--&#x27;</span>) <span class="hljs-comment"># 添加水平参考线</span><br>plt.xlabel(<span class="hljs-string">&#x27;X label&#x27;</span>)<br>plt.ylabel(<span class="hljs-string">&#x27;Residuals&#x27;</span>)<br>plt.title(<span class="hljs-string">&#x27;Residual plot&#x27;</span>)<br>plt.show()<br></code></pre></td></tr></table></figure>
-
-<h3 id="正态概率图"><a href="#正态概率图" class="headerlink" title="正态概率图"></a>正态概率图</h3><p><img src="https://pic.imgdb.cn/item/66e1ac75d9c307b7e958973f.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<p>正态概率图（Normal probability plot）是一种用于检验数据是否符合正态分布的图表</p>
+<h3 id="正态概率图">正态概率图</h3>
+<figure>
+<img src="https://pic.imgdb.cn/item/66e1ac75d9c307b7e958973f.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<p>正态概率图（Normal probability
+plot）是一种用于检验数据是否符合正态分布的图表</p>
 <ul>
 <li>这里检验模型的残差是否符合正态分布</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 部分代码同上...</span><br><br><span class="hljs-keyword">import</span> scipy.stats <span class="hljs-keyword">as</span> stats<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><br><span class="hljs-comment"># 计算残差</span><br>residuals = y - y_pred<br><br><span class="hljs-comment"># 绘制正态概率图</span><br>stats.probplot(residuals, dist=<span class="hljs-string">&quot;norm&quot;</span>, plot=plt)<br>plt.xlabel(<span class="hljs-string">&#x27;Theoretical quantiles&#x27;</span>)<br>plt.ylabel(<span class="hljs-string">&#x27;Ordered residuals&#x27;</span>)<br>plt.title(<span class="hljs-string">&#x27;Normal probability plot&#x27;</span>)<br>plt.show()<br></code></pre></td></tr></table></figure>
-
-<h3 id="学习曲线"><a href="#学习曲线" class="headerlink" title="学习曲线"></a>学习曲线</h3><p><img src="https://pic.imgdb.cn/item/66e1b11ed9c307b7e96297c2.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<p>学习曲线（Learning curve）是一种展示模型在训练集和验证集上表现随训练样本数量变化的图表。它通常将训练集和验证集的误差（如均方误差）或准确率作为纵轴，训练样本数量作为横轴，可以帮助我们分析模型的<code>拟合情况</code>和<code>泛化能力</code>。</p>
+<h3 id="学习曲线">学习曲线</h3>
+<figure>
+<img src="https://pic.imgdb.cn/item/66e1b11ed9c307b7e96297c2.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
+<p>学习曲线（Learning
+curve）是一种展示模型在训练集和验证集上表现随训练样本数量变化的图表。它通常将训练集和验证集的误差（如均方误差）或准确率作为纵轴，训练样本数量作为横轴，可以帮助我们分析模型的<code>拟合情况</code>和<code>泛化能力</code>。</p>
 <p><code>在线性回归中，学习曲线可以帮助我们判断模型是否过拟合或欠拟合</code>。 当模型在训练集上表现良好但在验证集上表现较差时，可能存在过拟合；而当模型在两个集合上表现都较差时，可能存在欠拟合。通过观察学习曲线，可以调整模型的复杂度或者增加训练样本数量来改善模型的表现。</p>
 <ul>
 <li>学习曲线可以帮助我们分析模型在不同训练样本数量下的表现，进而判断模型是否过拟合或欠拟合</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sklearn.datasets <span class="hljs-keyword">import</span> load_diabetes<br><span class="hljs-keyword">from</span> sklearn.linear_model <span class="hljs-keyword">import</span> LinearRegression<br><span class="hljs-keyword">from</span> sklearn.model_selection <span class="hljs-keyword">import</span> learning_curve<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-comment"># 加载数据</span><br>diabetes = load_diabetes()<br>X = diabetes.data[:,<span class="hljs-number">2</span>] <span class="hljs-comment"># 选择一个特征</span><br>y = diabetes.target<br><br><span class="hljs-comment"># 创建线性回归模型并训练</span><br>model = LinearRegression()<br><br><span class="hljs-comment"># 计算学习曲线</span><br>train_sizes,train_scores,valid_scores = learning_curve(model,X[:,np.newaxis],y,train_sizes=[<span class="hljs-number">50</span>,<span class="hljs-number">100</span>,<span class="hljs-number">200</span>,<span class="hljs-number">300</span>],cv=<span class="hljs-number">5</span>)  <span class="hljs-comment"># 训练样本数量为50、100、200、300</span><br>  <br><span class="hljs-comment"># 计算训练集和验证集的平均误差</span><br>train_mean=np.mean(train_scores,axis=<span class="hljs-number">1</span>)<br>train_std=np.std(train_scores,axis=<span class="hljs-number">1</span>)<br>valid_mean=np.mean(valid_scores,axis=<span class="hljs-number">1</span>)<br>valid_std=np.std(valid_scores,axis=<span class="hljs-number">1</span>)<br><br><span class="hljs-comment"># 绘制学习曲线</span><br>plt.figure()<br>plt.title(<span class="hljs-string">&quot;Learning Curve&quot;</span>)<br>plt.xlabel(<span class="hljs-string">&quot;Training examples&quot;</span>)<br>plt.ylabel(<span class="hljs-string">&quot;Score&quot;</span>)<br>plt.grid()  <span class="hljs-comment"># 显示网格</span><br>plt.fill_between(train_sizes,train_mean-train_std,train_mean+train_std,alpha=<span class="hljs-number">0.1</span>,color=<span class="hljs-string">&quot;r&quot;</span>)  <span class="hljs-comment"># 填充训练集的误差</span><br>plt.fill_between(train_sizes,valid_mean-valid_std,valid_mean+valid_std,alpha=<span class="hljs-number">0.1</span>,color=<span class="hljs-string">&quot;g&quot;</span>)  <span class="hljs-comment"># 填充验证集的误差</span><br>plt.plot(train_sizes,train_mean,<span class="hljs-string">&quot;o-&quot;</span>,color=<span class="hljs-string">&quot;r&quot;</span>,label=<span class="hljs-string">&quot;Training score&quot;</span>)  <span class="hljs-comment"># 绘制训练集的得分</span><br>plt.plot(train_sizes,valid_mean,<span class="hljs-string">&quot;o-&quot;</span>,color=<span class="hljs-string">&quot;g&quot;</span>,label=<span class="hljs-string">&quot;Cross-validation score&quot;</span>)  <span class="hljs-comment"># 绘制验证集的得分(使用交叉验证)</span><br>plt.legend(loc=<span class="hljs-string">&quot;best&quot;</span>)  <span class="hljs-comment"># 显示图例</span><br>plt.show()  <span class="hljs-comment"># 显示图</span><br></code></pre></td></tr></table></figure>
-
 <p>还有一些感觉用处不大就不详细学习了，日后有需要再看</p>
 
                 
@@ -766,9 +790,9 @@
             tex    : {
               inlineMath: { '[+]': [['$', '$']] }
             },
-            loader : {
-              load: ['ui/lazy']
-            },
+            // loader : {
+            //   load: ['ui/lazy']
+            // },
             options: {
               renderActions: {
                 insertedScript: [200, () => {

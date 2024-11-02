@@ -97,7 +97,9 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>CHARMMY</strong>
+      <!-- <strong>CHARMMY</strong> -->
+       <!-- 修改如下： -->
+      <strong class="navbar-title">CHARMMY</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -193,7 +195,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/desktop2.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/hei.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -212,6 +214,139 @@
         </div>
       
     </div>
+
+    
+      <div style="height:500px" id="bubbles"></div>
+      <script>
+        circleMagic();
+        function circleMagic(options) {
+            let width;
+            let height;
+            let canvas;
+            let ctx;
+            let animateHeader = true;
+            const circles = [];
+    
+            const settings = options || {
+                color: 'rgba(255,255,255,.3)',
+                radius: 10,
+                density: 0.1,
+                clearOffset: 0.7
+            }
+    
+            const container = document.getElementById('bubbles');
+            initContainer();
+            addListeners();
+    
+            function initContainer() {
+                width = container.offsetWidth;
+                height = container.offsetHeight - 120;
+    
+                initCanvas();
+                canvas = document.getElementById('homeTopCanvas');
+                canvas.width = width;
+                canvas.height = height;
+                canvas.style.position = 'absolute';
+                canvas.style.left = '0';
+                canvas.style.bottom = '0';
+                ctx = canvas.getContext('2d');
+    
+                for (let x = 0; x < width * settings.density; x++) {
+                    const c = new Circle();
+                    circles.push(c);
+                }
+                animate();
+            }
+    
+            function initCanvas() {
+                const canvasElement = document.createElement('canvas');
+                canvasElement.id = 'homeTopCanvas';
+                canvasElement.style.pointerEvents = 'none';
+                container.appendChild(canvasElement);
+                canvasElement.parentElement.style.overflow = 'hidden';
+            }
+    
+            function addListeners() {
+                window.addEventListener('scroll', scrollCheck, false);
+                window.addEventListener('resize', resize, false);
+            }
+    
+            function scrollCheck() {
+                if (document.body.scrollTop > height) {
+                    animateHeader = false;
+                } else {
+                    animateHeader = true;
+                }
+            }
+    
+            function resize() {
+                width = container.clientWidth;
+                height = container.clientHeight;
+                container.height = height + 'px';
+                canvas.width = width;
+                canvas.height = height;
+            }
+    
+            function animate() {
+                if (animateHeader) {
+                    ctx.clearRect(0, 0, width, height);
+                    for (const i in circles) {
+                        circles[i].draw();
+                    }
+                }
+                requestAnimationFrame(animate);
+            }
+    
+            function randomColor() {
+                const r = Math.floor(Math.random() * 255);
+                const g = Math.floor(Math.random() * 255);
+                const b = Math.floor(Math.random() * 255);
+                const alpha = Math.random().toPrecision(2);
+                return 'rgba(' + r + ', ' + g + ', ' + b + ', ' + alpha + ')';
+            }
+    
+            function Circle() {
+                const that = this;
+                (function () {
+                    that.pos = {};
+                    init();
+                })();
+                function init() {
+                    that.pos.x = Math.random() * width;
+                    that.pos.y = height + Math.random() * 100;
+                    that.alpha = 0.1 + Math.random() * settings.clearOffset;
+                    that.scale = 0.1 + Math.random() * 0.3;
+                    that.speed = Math.random();
+                    if (settings.color === 'random') {
+                        that.color = randomColor();
+                    } else {
+                        that.color = settings.color;
+                    }
+                }
+                this.draw = function () {
+                    if (that.alpha <= 0) {
+                        init();
+                    }
+                    that.pos.y -= that.speed;
+                    that.alpha -= 0.0005;
+                    ctx.beginPath();
+                    ctx.arc(
+                        that.pos.x,
+                        that.pos.y,
+                        that.scale * settings.radius,
+                        0,
+                        2 * Math.PI,
+                        false
+                    );
+                    ctx.fillStyle = that.color;
+                    ctx.fill();
+                    ctx.closePath();
+                }
+            }
+        }
+      </script>
+    
+    
   </div>
 </div>
 
@@ -245,7 +380,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/10/15/shu-zi-tu-xiang-chu-li/shu-zi-tu-xiang-chu-li-shi-yan-1/" target="_self">
         <div>
-          本次实验课实现了对于16色图像、256色图像、24位真彩图像的读取显示，以及灰度变换功能，对于不同深度的图像结构有了进一步的了解，部分代码展示如下，便于温习巩固 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364
+          本次实验课实现了对于16色图像、256色图像、24位真彩图像的读取显示，以及灰度变换功能，对于不同深度的图像结构有了进一步的了解，部分代码展示如下，便于温习巩固 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636
         </div>
       </a>
 
@@ -306,7 +441,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/10/15/shu-zi-tu-xiang-chu-li/di-er-zhang-se-cai-mo-xing/" target="_self">
         <div>
-          第二章：色彩模型RGB色彩模型CMYK模型画画需要的颜色：青黄紫白黑 颜色：青—C品红（紫色）—M黄色—Y黑色—K 显示设备是发光体，打印设备是反光体，刚好反着来 补色原理：红-青、绿-紫（洋红）、蓝-黄 橡皮泥中的红色和绿色混在一起，会得到黑色，因为全部颜色的光都被吸收了 打印机想要打印蓝色；因为蓝色与黄色互补，用青色（吸收红光）和洋红混合得到蓝（黄色的补色） 光的合成：红光+绿光&#x3D;黄
+          第二章：色彩模型 RGB色彩模型 CMYK模型 画画需要的颜色：青黄紫白黑 颜色： 青---C 品红（紫色）---M 黄色---Y 黑色---K 显示设备是发光体，打印设备是反光体，刚好反着来 补色原理：红-青、绿-紫（洋红）、蓝-黄 橡皮泥中的红色和绿色混在一起，会得到黑色，因为全部颜色的光都被吸收了 打印机想要打印蓝色；因为蓝色与黄色互补，用青色（吸收红光）和洋红混合得到蓝（黄
         </div>
       </a>
 
@@ -360,7 +495,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/10/14/ros/ros-shi-yan-bao-gao-yi/" target="_self">
         <div>
-          ROS实验一记录实验一要求实现一个复杂的话题（topics）通信，（若无法实现要求一，可使用本地图片）。实验报告需提交PDF，文件命名方式：学号+专业姓名+实验1。提交日期&#x2F;方式：10.25号通过机房电脑系统提交。 要求一：需实现Ubuntu调用笔记本摄像头。 要求二：需实时对拍摄得的图片进行图像处理（灰度化，边缘检测，方式不限）。 要求三：提交的报告需附关键功能代码，以及处理前后的图片
+          ROS实验一记录 实验一要求 实现一个复杂的话题（topics）通信，（若无法实现要求一，可使用本地图片）。实验报告需提交PDF，文件命名方式：学号+专业姓名+实验1。提交日期/方式：10.25号通过机房电脑系统提交。 要求一：需实现Ubuntu调用笔记本摄像头。 要求二：需实时对拍摄得的图片进行图像处理（灰度化，边缘检测，方式不限）。 要求三：提交的报告需附关键功能代码，以及处理前后的
         </div>
       </a>
 
@@ -414,7 +549,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/10/10/ji-qi-xue-xi/ji-qi-xue-xi-shi-yan-5/" target="_self">
         <div>
-          首先尝试使用粒子群算法求解正则项的系数 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394
+          首先尝试使用粒子群算法求解正则项的系数 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293
         </div>
       </a>
 
@@ -468,7 +603,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/10/09/ji-qi-xue-xi/di-liu-jiang-zheng-ze-hua/" target="_self">
         <div>
-          第六讲：Regularization 正则化回顾模型过拟合的原因：  模型过于复杂，参数多，可能性多 训练集、测试集数据量太少，无法完全覆盖所有情况  L^2 正则化正则化（Regularization）   还是需要调参 L^1 正则化 L1正则化做特征选择   计算L1正则的偏导   正则化的作用是防止模型过拟合，通过对模型的参数进行约束，使得模型更加简单和稳定 正则化可能使得一些原本可能较大
+          第六讲：Regularization 正则化 回顾模型过拟合的原因： - 模型过于复杂，参数多，可能性多 - 训练集、测试集数据量太少，无法完全覆盖所有情况 L^2 正则化 正则化（Regularization）   还是需要调参 L^1 正则化  L1正则化做特征选择   计算L1正则的偏导   正则化的作用是防止模型过拟合，通过对模型的参数进行约束，使得模型更加
         </div>
       </a>
 
@@ -522,7 +657,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/09/25/ji-qi-xue-xi/di-wu-jiang-duo-fen-lei-hui-gui/" target="_self">
         <div>
-          多分类问题Softmax regression  如手写字体识别等 数据x可以多维，一个y（不同的类用不同的数值表示） 首先需要将y的标签转换为one-hot向量 123456789101112import torch# 创建原始张量y = torch.tensor([0, 1, 2])# 创建一个全零的 one - hot 编码张量y_onehot = torch.zeros(len(y), 3
+          多分类问题 Softmax regression 如手写字体识别等 数据 x可以多维，一个y（不同的类用不同的数值表示） 首先需要将y的标签转换为one-hot向量 123456789101112import torch# 创建原始张量y = torch.tensor([0, 1, 2])# 创建一个全零的 one - hot 编码张量y_onehot = torch.zeros(le
         </div>
       </a>
 
@@ -576,7 +711,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/09/20/ji-qi-xue-xi/di-si-jiang-mo-xing-xuan-ze/" target="_self">
         <div>
-          十折交叉验证的概念一般实验中不会做这么多折，一般5折或者3折交叉验证 偏差和方差  偏差：模型预测值与真实值之间的误差，越小越好。 方差：模型预测值与真实值之间的方差，越小越好。  欠拟合 使用更加复杂的模型 增加更多的维度（特征）  过拟合 收集更多的数据可以优化 降低模型复杂度 regularization  正则化  面对欠拟合和过拟合问题，对应的解决策略对于过拟合的问题： 从数据的角度：增
+          十折交叉验证的概念 一般实验中不会做这么多折，一般5折或者3折交叉验证 偏差和方差   alt text   偏差：模型预测值与真实值之间的误差，越小越好。 方差：模型预测值与真实值之间的方差，越小越好。  欠拟合  使用更加复杂的模型 增加更多的维度（特征）  过拟合  收集更多的数据可以优化 降低模型复杂度 regularization 正则化  面
         </div>
       </a>
 
@@ -630,7 +765,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/09/18/ji-qi-xue-xi/di-san-jiang-luo-ji-hui-gui/" target="_self">
         <div>
-          逻辑回归参考链接：机器学习：逻辑回归 逻辑回归是一个分类算法 对于分类问题的分类：  二分类 多分类  逻辑回归是一个简单的二分类问题 分类和回归的区别：  分类的结果取值只有两个 0 或 1  回归的结果取值可以是全体实数  数据可以有多个维度（特征），和线性回归类似 模型使用的是线性模型： 基础模型：  $z&#x3D;W^TX+b$  sigmoid function:也叫激活函数  $si
+          逻辑回归 参考链接：机器学习：逻辑回归 逻辑回归是一个分类算法 对于分类问题的分类： - 二分类 - 多分类 逻辑回归是一个简单的二分类问题 分类和回归的区别： - 分类的结果取值只有两个 0 或 1 - 回归的结果取值可以是全体实数 数据 可以有多个维度（特征），和线性回归类似 模型 使用的是线性模型： 基础模型：  \(z=W^TX+b\)  sigmoid fu
         </div>
       </a>
 
@@ -684,7 +819,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/09/11/ji-qi-xue-xi/xian-xing-hui-gui-mo-xing-ke-shi-hua-zong-jie/" target="_self">
         <div>
-          近期课堂上学习了线性回归模型，同时也读到了很好的一篇文章，尝试对于里面的部分内容进行复现说明，简单总结，附上链接：https://mp.weixin.qq.com/s/qAzbL3YY30X7W9NkL9hb0A线性趋势线图 线性趋势线图用于可视化数据集中自变量和因变量之间的线性关系，以及线性回归模型拟合的效果  反映线性关系 反映拟合效果  123456789101112131415161718
+          近期课堂上学习了线性回归模型，同时也读到了很好的一篇文章，尝试对于里面的部分内容进行复现说明，简单总结，附上链接：https://mp.weixin.qq.com/s/qAzbL3YY30X7W9NkL9hb0A 线性趋势线图   alt text  线性趋势线图用于可视化数据集中自变量和因变量之间的线性关系，以及线性回归模型拟合的效果  反映线性关系 反映拟合效果  123
         </div>
       </a>
 
@@ -738,7 +873,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/09/11/ji-qi-xue-xi/di-er-jiang-xian-xing-hui-gui/" target="_self">
         <div>
-          线性回归模型  linear regression第一步：数据集 dataset  维度–&gt;自变量的个数   维度大于等于三，统一叫超平面，公式上很直观 第二步：parameters  参数–&gt;权重和常数项   第三步：损失函数 loss function –&gt; MSE  均方误差   损失函数其实就是复合函数 均方误差（Mean Squared Error，MSE）是一种常用的
+          线性回归模型 linear regression 第一步：数据集 dataset 维度--&gt;自变量的个数 维度大于等于三，统一叫超平面，公式上很直观 第二步：parameters 参数--&gt;权重和常数项 第三步：损失函数 loss function --&gt; MSE 均方误差 损失函数其实就是复合函数 均方误差（Mean Squared Error，MSE）是一种常
         </div>
       </a>
 
@@ -792,7 +927,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/08/07/ros/ros/" target="_self">
         <div>
-          记录学习ROS的历程 涉及到的学习网站： b站古月居ROS21讲：https://www.bilibili.com/video/BV1zt411G7Vn?p=7&amp;spm_id_from=pageDriver&amp;vd_source=6a7595d8dfd01dbd88c8324012f0aaf0 鱼香ROS教程文档：fishros.com ROS2社区：fishros.org.cn 【
+          记录学习ROS的历程 涉及到的学习网站： b站古月居ROS21讲：https://www.bilibili.com/video/BV1zt411G7Vn?p=7&amp;spm_id_from=pageDriver&amp;vd_source=6a7595d8dfd01dbd88c8324012f0aaf0 鱼香ROS教程文档：fishros.com ROS2社区：fishros.org.
         </div>
       </a>
 
@@ -846,7 +981,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/07/31/zhi-neng-you-hua-suan-fa-yi-chuan-suan-fa-ga/" target="_self">
         <div>
-          说明基础内容源自 智能优化算法及其MATLAB实例（第二版）源程序 源程序为 matlab 代码，笔者在此基础上将 matlab 代码转化为 python 代码实现 一、标准遗传算法求函数极值GA21.m12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535
+          说明 基础内容源自 智能优化算法及其MATLAB实例（第二版）源程序 源程序为 matlab 代码，笔者在此基础上将 matlab 代码转化为 python 代码实现 一、标准遗传算法求函数极值 GA21.m 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484
         </div>
       </a>
 

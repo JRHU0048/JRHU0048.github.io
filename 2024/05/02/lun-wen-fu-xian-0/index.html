@@ -19,15 +19,14 @@
   <meta name="author" content="JR.HU">
   <meta name="keywords" content="">
   
-    <meta name="description" content="参考论文https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1703.07015 https:&#x2F;&#x2F;paperswithcode.com&#x2F;paper&#x2F;modeling-long-and-short-term-temporal Abstract多变量时间序列预测是许多领域中重要的机器学习问题，包括太阳能发电量预测、电力消耗预测和交通拥堵情况预测。 这些实际应用中的时间数据通常涉及长期和短期模式的混合，传统方法">
+    <meta name="description" content="参考论文 https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1703.07015 https:&#x2F;&#x2F;paperswithcode.com&#x2F;paper&#x2F;modeling-long-and-short-term-temporal Abstract 多变量时间序列预测是许多领域中重要的机器学习问题，包括太阳能发电量预测、电力消耗预测和交通拥堵情况预测。 这些实际应用中的时间数据通常涉及长期和短期模式的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用深度神经网络建模长期和短期时间模式">
 <meta property="og:url" content="http://jrhu0048.github.io/2024/05/02/lun-wen-fu-xian-0/index.html">
 <meta property="og:site_name" content="CHARMMY">
-<meta property="og:description" content="参考论文https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1703.07015 https:&#x2F;&#x2F;paperswithcode.com&#x2F;paper&#x2F;modeling-long-and-short-term-temporal Abstract多变量时间序列预测是许多领域中重要的机器学习问题，包括太阳能发电量预测、电力消耗预测和交通拥堵情况预测。 这些实际应用中的时间数据通常涉及长期和短期模式的混合，传统方法">
+<meta property="og:description" content="参考论文 https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1703.07015 https:&#x2F;&#x2F;paperswithcode.com&#x2F;paper&#x2F;modeling-long-and-short-term-temporal Abstract 多变量时间序列预测是许多领域中重要的机器学习问题，包括太阳能发电量预测、电力消耗预测和交通拥堵情况预测。 这些实际应用中的时间数据通常涉及长期和短期模式的">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic.imgdb.cn/item/66332d720ea9cb14033fce79.png">
-<meta property="og:image" content="https://pic.imgdb.cn/item/66332f680ea9cb140344cd4c.png">
 <meta property="article:published_time" content="2024-05-02T05:37:22.000Z">
 <meta property="article:modified_time" content="2024-05-02T08:09:51.851Z">
 <meta property="article:author" content="JR.HU">
@@ -108,7 +107,9 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>CHARMMY</strong>
+      <!-- <strong>CHARMMY</strong> -->
+       <!-- 修改如下： -->
+      <strong class="navbar-title">CHARMMY</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -204,7 +205,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/desktop2.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/hei.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -273,6 +274,9 @@
 
       
     </div>
+
+    
+    
   </div>
 </div>
 
@@ -300,18 +304,41 @@
             
               <div class="markdown-body">
                 
-                <h2 id="参考论文"><a href="#参考论文" class="headerlink" title="参考论文"></a>参考论文</h2><p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1703.07015">https://arxiv.org/abs/1703.07015</a></p>
-<p><a target="_blank" rel="noopener" href="https://paperswithcode.com/paper/modeling-long-and-short-term-temporal">https://paperswithcode.com/paper/modeling-long-and-short-term-temporal</a></p>
-<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>多变量时间序列预测是许多领域中重要的机器学习问题，包括太阳能发电量预测、电力消耗预测和交通拥堵情况预测。 这些实际应用中的时间数据通常涉及长期和短期模式的混合，传统方法如自回归模型和高斯过程可能会失败。 在本文中，我们提出了一种新颖的深度学习框架，即长期和短期时间序列网络（LSTNet），以解决这个开放性挑战。 LSTNet使用卷积神经网络（CNN）和循环神经网络（RNN）提取变量之间的短期局部依赖模式，并发现时间序列趋势的长期模式。 此外，我们利用传统的自回归模型来解决神经网络模型的尺度不敏感问题。 在对具有复杂重复模式的实际数据进行评估时，LSTNet相对于几种最先进的基准方法取得了显著的性能改进。</p>
-<h2 id="部分内容"><a href="#部分内容" class="headerlink" title="部分内容"></a>部分内容</h2><p><strong>1</strong> 多变量时间序列预测通常面临一个重大的研究挑战，即如何捕获和利用多个变量之间的动态依赖关系。具体而言，实际应用通常需要短期和长期重复模式的混合</p>
-<p><strong>2</strong> 深度神经网络在相关领域得到了深入研究，并对各种问题的解决方案产生了非凡的影响。例如，递归神经网络（RNN）模型在最近的自然语言处理（NLP）研究中变得最受欢迎。特别是RNN的两种变体，即长短期记忆（LSTM）和门控循环单元（GRU），显著提高了机器翻译、语音识别和其他NLP任务中的最新性能，因为它们可以根据输入文档中单词之间的长期和短期依赖关系有效地捕获单词的含义。在计算机视觉领域，卷积神经网络（CNN）模型成功地从输入图像中提取了不同粒度级别的局部和移位不变特征（有时称为“shapelets”），显示出了出色的性能。</p>
-<p><strong>3</strong> 深度神经网络也被研究用于时间序列预测，即使用过去观测到的时间序列来预测前瞻性视界中的未知时间序列的任务——视界越大，问题越难。这方面的工作范围很广，如朴素RNN模型和混合模型到使用ARIMA模型和多层感知器（MLP），以及将普通RNN和动态玻尔兹曼机组合的方法。</p>
-<p><strong>4</strong> 本文中，我们提出了一个为多变量时间序列预测而设计的深度学习框架，即长期和短期时间序列网络（LSTNet），如下图所示。它利用卷积层的优势来发现多维输入变量之间的局部依赖模式，并利用循环层来捕获复杂的长期依赖关系。这是一种新的循环结构，即循环跳跃，旨在捕获非常长期的依赖模式，并使优化更容易，因为它利用了输入时间序列信号的周期性。最后，LSTNet将传统的自回归线性模型与非线性神经网络部分并行，使得非线性深度学习模型在违反尺度变化的时间序列中更具鲁棒性。</p>
-<p><img src="https://pic.imgdb.cn/item/66332d720ea9cb14033fce79.png" srcset="/img/loading.gif" lazyload alt="alt text"><br><img src="https://pic.imgdb.cn/item/66332f680ea9cb140344cd4c.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<p><strong>5</strong> 最突出的单变量时间序列模型之一是自回归综合移动平均线模型（ARIMA）。ARIMA模型的流行是由于其统计特性以及模型选择过程中著名的Box-Jenkins方法。ARIMA模型不仅适应各种指数平滑技术，而且足够灵活，可以包含其他类型的时间序列模型，包括自回归（AR）、移动平均线（MA）和自回归移动平均线（ARMA）。然而，由于计算成本高，ARIMA模型（包括其用于模拟长期时间依赖关系的变体），很少用于高维多变量时间序列预测。</p>
-<p><strong>6</strong> 在多变量时间序列中，向量自回归（VAR）可以说是使用最广泛的模型，因为它很简单。VAR 模型自然地将 AR 模型扩展到多变量设置，这忽略了输出变量之间的依赖关系。近年来，各种VAR模型都取得了重大进展，包括用于重尾时间序列的椭圆VAR模型和用于更好地解释高维变量之间依赖关系的结构化VAR模型等。然而，VAR的模型容量在时间窗口大小上呈线性增长，在变量数量上呈二次增长。这意味着，在处理长期时间模式时，继承的大模型容易出现过拟合。为了缓解这个问题，有学者提出将原来的高维信号简化为低维的隐式表示，然后应用VAR进行预测，并有多种正则化选择。</p>
-<p><strong>7</strong> 时间序列预测问题也可以被视为具有时变参数的标准回归问题。因此，将具有不同损失函数和正则化项的各种回归模型应用于时间序列预测任务也就不足为奇了。例如，线性支持向量回归 （SVR）使用控制预测误差阈值的超参数ε基于回归损失学习最大边际超平面。岭回归是另一个例子，可以通过将 ε 设置为零来从 SVR 模型中恢复。</p>
-<p><strong>8</strong> 高斯过程 （GP） 是一种非参数方法，用于对连续函数域上的分布进行建模。这与由参数化函数类定义的模型形成鲜明对比。GP可以应用于多变量时间序列预测任务，并且可以用作贝叶斯推理中函数空间的先验。（看不懂就先放一下…会懂的…）</p>
+                <h2 id="参考论文">参考论文</h2>
+<p>https://arxiv.org/abs/1703.07015</p>
+<p>https://paperswithcode.com/paper/modeling-long-and-short-term-temporal</p>
+<h2 id="abstract">Abstract</h2>
+<p>多变量时间序列预测是许多领域中重要的机器学习问题，包括太阳能发电量预测、电力消耗预测和交通拥堵情况预测。
+这些实际应用中的时间数据通常涉及长期和短期模式的混合，传统方法如自回归模型和高斯过程可能会失败。
+在本文中，我们提出了一种新颖的深度学习框架，即长期和短期时间序列网络（LSTNet），以解决这个开放性挑战。
+LSTNet使用卷积神经网络（CNN）和循环神经网络（RNN）提取变量之间的短期局部依赖模式，并发现时间序列趋势的长期模式。
+此外，我们利用传统的自回归模型来解决神经网络模型的尺度不敏感问题。
+在对具有复杂重复模式的实际数据进行评估时，LSTNet相对于几种最先进的基准方法取得了显著的性能改进。</p>
+<h2 id="部分内容">部分内容</h2>
+<p><strong>1</strong>
+多变量时间序列预测通常面临一个重大的研究挑战，即如何捕获和利用多个变量之间的动态依赖关系。具体而言，实际应用通常需要短期和长期重复模式的混合</p>
+<p><strong>2</strong>
+深度神经网络在相关领域得到了深入研究，并对各种问题的解决方案产生了非凡的影响。例如，递归神经网络（RNN）模型在最近的自然语言处理（NLP）研究中变得最受欢迎。特别是RNN的两种变体，即长短期记忆（LSTM）和门控循环单元（GRU），显著提高了机器翻译、语音识别和其他NLP任务中的最新性能，因为它们可以根据输入文档中单词之间的长期和短期依赖关系有效地捕获单词的含义。在计算机视觉领域，卷积神经网络（CNN）模型成功地从输入图像中提取了不同粒度级别的局部和移位不变特征（有时称为“shapelets”），显示出了出色的性能。</p>
+<p><strong>3</strong>
+深度神经网络也被研究用于时间序列预测，即使用过去观测到的时间序列来预测前瞻性视界中的未知时间序列的任务——视界越大，问题越难。这方面的工作范围很广，如朴素RNN模型和混合模型到使用ARIMA模型和多层感知器（MLP），以及将普通RNN和动态玻尔兹曼机组合的方法。</p>
+<p><strong>4</strong>
+本文中，我们提出了一个为多变量时间序列预测而设计的深度学习框架，即长期和短期时间序列网络（LSTNet），如下图所示。它利用卷积层的优势来发现多维输入变量之间的局部依赖模式，并利用循环层来捕获复杂的长期依赖关系。这是一种新的循环结构，即循环跳跃，旨在捕获非常长期的依赖模式，并使优化更容易，因为它利用了输入时间序列信号的周期性。最后，LSTNet将传统的自回归线性模型与非线性神经网络部分并行，使得非线性深度学习模型在违反尺度变化的时间序列中更具鲁棒性。</p>
+<p><img src="https://pic.imgdb.cn/item/66332d720ea9cb14033fce79.png" srcset="/img/loading.gif" lazyload
+alt="alt text" /> <img
+src="https://pic.imgdb.cn/item/66332f680ea9cb140344cd4c.png" srcset="/img/loading.gif" lazyload
+alt="alt text" /></p>
+<p><strong>5</strong>
+最突出的单变量时间序列模型之一是自回归综合移动平均线模型（ARIMA）。ARIMA模型的流行是由于其统计特性以及模型选择过程中著名的Box-Jenkins方法。ARIMA模型不仅适应各种指数平滑技术，而且足够灵活，可以包含其他类型的时间序列模型，包括自回归（AR）、移动平均线（MA）和自回归移动平均线（ARMA）。然而，由于计算成本高，ARIMA模型（包括其用于模拟长期时间依赖关系的变体），很少用于高维多变量时间序列预测。</p>
+<p><strong>6</strong>
+在多变量时间序列中，向量自回归（VAR）可以说是使用最广泛的模型，因为它很简单。VAR
+模型自然地将 AR
+模型扩展到多变量设置，这忽略了输出变量之间的依赖关系。近年来，各种VAR模型都取得了重大进展，包括用于重尾时间序列的椭圆VAR模型和用于更好地解释高维变量之间依赖关系的结构化VAR模型等。然而，VAR的模型容量在时间窗口大小上呈线性增长，在变量数量上呈二次增长。这意味着，在处理长期时间模式时，继承的大模型容易出现过拟合。为了缓解这个问题，有学者提出将原来的高维信号简化为低维的隐式表示，然后应用VAR进行预测，并有多种正则化选择。</p>
+<p><strong>7</strong>
+时间序列预测问题也可以被视为具有时变参数的标准回归问题。因此，将具有不同损失函数和正则化项的各种回归模型应用于时间序列预测任务也就不足为奇了。例如，线性支持向量回归
+（SVR）使用控制预测误差阈值的超参数ε基于回归损失学习最大边际超平面。岭回归是另一个例子，可以通过将
+ε 设置为零来从 SVR 模型中恢复。</p>
+<p><strong>8</strong> 高斯过程 （GP）
+是一种非参数方法，用于对连续函数域上的分布进行建模。这与由参数化函数类定义的模型形成鲜明对比。GP可以应用于多变量时间序列预测任务，并且可以用作贝叶斯推理中函数空间的先验。（看不懂就先放一下...会懂的...）</p>
 
                 
               </div>
@@ -723,9 +750,9 @@
             tex    : {
               inlineMath: { '[+]': [['$', '$']] }
             },
-            loader : {
-              load: ['ui/lazy']
-            },
+            // loader : {
+            //   load: ['ui/lazy']
+            // },
             options: {
               renderActions: {
                 insertedScript: [200, () => {
