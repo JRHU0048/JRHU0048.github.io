@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>第十三讲-Decision_Tree</title>
+    <link href="/2024/11/03/ji-qi-xue-xi/di-shi-san-jiang-decision-tree/"/>
+    <url>/2024/11/03/ji-qi-xue-xi/di-shi-san-jiang-decision-tree/</url>
+    
+    <content type="html"><![CDATA[<h2 id="数据">数据</h2><p>Decision Tree 适合用来处理离散数据，解决分类问题</p><h2 id="模型">模型</h2><p><imgsrc="https://pic.imgdb.cn/item/6726de4ed29ded1a8c2c895e.png" /></p><p>Decision Tree 的本质可以理解为if else 语句</p><h2 id="损失函数">损失函数</h2><p><imgsrc="https://pic.imgdb.cn/item/6726e2f4d29ded1a8c2f8135.png" /></p><p>这里的log表示以2为底的对数</p><p>熵的定义：Surprise的期望---概率乘以对应概率的Surprise</p><p><imgsrc="https://pic.imgdb.cn/item/6726e7dcd29ded1a8c3334db.png" /></p><h3 id="information-gaint-信息增益">Information Gaint 信息增益</h3><p>信息增益作为损失函数，用来衡量一个特征对目标变量的影响</p><p><imgsrc="https://pic.imgdb.cn/item/67272ef5d29ded1a8c689b17.png" /></p><p>对于所有的指标，选择信息增益最大的作为最优特征，作为第一步的分类标准，类似下面这样，这就是ID3算法的递归过程</p><p><imgsrc="https://pic.imgdb.cn/item/67272fb2d29ded1a8c693705.png" /></p><h3 id="information-gain-ratio-信息增益比">Information Gain Ratio信息增益比</h3><p>通过信息增益发现算法倾向于选择取值结果比较多的特征，但是很多时候这种情况（比如遇到连续的数据）并非最优解，因此利用信息增益做损失函数存在一些问题，同时ID3不支持剪枝</p><p>优化算法：C4.5</p><ul><li><p>Information gain ration is indroduced to solve the problem ofID3</p></li><li><p>It supports pruning</p></li></ul><p>重新定义损失函数： <imgsrc="https://pic.imgdb.cn/item/672732b8d29ded1a8c6b929f.png" /></p><h2 id="优化算法">优化算法</h2><p>因为是离散的数据，无法使用梯度下降，因此这里采用贪心算法来实现优化</p><ol type="1"><li><p>随机选择一个特征，计算这个特征的所有可能取值，计算每个取值对应的信息增益，选择最大的信息增益（熵最小）作为最优特征</p></li><li><p>递归的构建决策树，直到满足停止条件，比如所有的数据属于同一类，或者所有的特征已经用完，或者满足停止条件</p></li></ol><p>熵用来评价一组数据的不确定性</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>机器学习</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>随笔</title>
     <link href="/2024/11/02/sui-bi/sui-bi/"/>
     <url>/2024/11/02/sui-bi/sui-bi/</url>
@@ -48,7 +67,7 @@
   
   
   <entry>
-    <title>第十讲_perceptron</title>
+    <title>第十讲_Perceptron</title>
     <link href="/2024/10/26/ji-qi-xue-xi/di-shi-jiang-perceptron/"/>
     <url>/2024/10/26/ji-qi-xue-xi/di-shi-jiang-perceptron/</url>
     
@@ -751,7 +770,7 @@
   
   
   <entry>
-    <title>回归———小波神经网络</title>
+    <title>回归—小波神经网络</title>
     <link href="/2024/05/01/hui-gui-xiao-bo-shen-jing-wang-luo/"/>
     <url>/2024/05/01/hui-gui-xiao-bo-shen-jing-wang-luo/</url>
     
