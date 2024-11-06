@@ -19,25 +19,25 @@
   <meta name="author" content="JR.HU">
   <meta name="keywords" content="">
   
-    <meta name="description" content="写在前面 记录一下非常好的博客讲解： [1] CNN 卷积神经网络 https:&#x2F;&#x2F;dorianzi.github.io&#x2F;2019&#x2F;04&#x2F;25&#x2F;CNN&#x2F; 卷积神经网络   上述图片引自：https:&#x2F;&#x2F;dorianzi.github.io&#x2F;2019&#x2F;04&#x2F;25&#x2F;CNN&#x2F; 卷积神经网络是为了处理图片而生的分类任务  全连接神经网络与卷积神经网络  为什么选择 卷积层神经网络 而不">
+    <meta name="description" content="加密内容">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第九讲_Convolutional neural networks">
-<meta property="og:url" content="http://jrhu0048.github.io/2024/10/25/ji-qi-xue-xi/di-jiu-jiang-convolutional-neural-networks/index.html">
+<meta property="og:title" content="文献阅读-2024.11.7">
+<meta property="og:url" content="http://jrhu0048.github.io/2024/11/06/wen-xian-yue-du/wen-xian-yue-du/index.html">
 <meta property="og:site_name" content="CHARMMY">
-<meta property="og:description" content="写在前面 记录一下非常好的博客讲解： [1] CNN 卷积神经网络 https:&#x2F;&#x2F;dorianzi.github.io&#x2F;2019&#x2F;04&#x2F;25&#x2F;CNN&#x2F; 卷积神经网络   上述图片引自：https:&#x2F;&#x2F;dorianzi.github.io&#x2F;2019&#x2F;04&#x2F;25&#x2F;CNN&#x2F; 卷积神经网络是为了处理图片而生的分类任务  全连接神经网络与卷积神经网络  为什么选择 卷积层神经网络 而不">
+<meta property="og:description" content="加密内容">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://pic.imgdb.cn/item/6719eb2bd29ded1a8cb61503.jpg">
-<meta property="article:published_time" content="2024-10-25T12:17:54.000Z">
-<meta property="article:modified_time" content="2024-11-06T16:46:46.683Z">
+<meta property="og:image" content="https://pic.imgdb.cn/item/671b8d20d29ded1a8c2cfc5b.jpg">
+<meta property="article:published_time" content="2024-11-06T06:25:15.000Z">
+<meta property="article:modified_time" content="2024-11-06T16:52:28.922Z">
 <meta property="article:author" content="JR.HU">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://pic.imgdb.cn/item/6719eb2bd29ded1a8cb61503.jpg">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/671b8d20d29ded1a8c2cfc5b.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>第九讲_Convolutional neural networks - CHARMMY</title>
+  <title>文献阅读-2024.11.7 - CHARMMY</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -203,7 +203,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="第九讲_Convolutional neural networks"></span>
+            <span id="subtitle" data-typed-text="文献阅读-2024.11.7"></span>
           
         </div>
 
@@ -219,8 +219,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-10-25 20:17" pubdate>
-          2024年10月25日 晚上
+        <time datetime="2024-11-06 14:25" pubdate>
+          2024年11月6日 下午
         </time>
       </span>
     
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          916 字
+          396 字
         
       </span>
     
@@ -242,7 +242,7 @@
         
         
         
-          8 分钟
+          4 分钟
         
       </span>
     
@@ -284,6 +284,21 @@
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
       
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+</div>
+
+
+  </aside>
+
 
     </div>
 
@@ -291,122 +306,29 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">第九讲_Convolutional neural networks</h1>
+            <h1 id="seo-header">文献阅读-2024.11.7</h1>
             
             
-              <div class="markdown-body">
-                
-                <h2 id="写在前面">写在前面</h2>
-<p>记录一下非常好的博客讲解：</p>
-<p>[1] CNN 卷积神经网络 https://dorianzi.github.io/2019/04/25/CNN/</p>
-<h2 id="卷积神经网络">卷积神经网络</h2>
-<p><img src="https://dorianzi.github.io/uploads/cnn_1.gif" srcset="/img/loading.gif" lazyload /></p>
-<p><img src="https://dorianzi.github.io/uploads/cnn_2.gif" srcset="/img/loading.gif" lazyload /></p>
-<p>上述图片引自：https://dorianzi.github.io/2019/04/25/CNN/</p>
-<p>卷积神经网络是为了处理图片而生的分类任务 <img
-src="https://pic.imgdb.cn/item/671b8d08d29ded1a8c2cce31.png" srcset="/img/loading.gif" lazyload /></p>
-<h3 id="全连接神经网络与卷积神经网络">全连接神经网络与卷积神经网络</h3>
-<p><img
-src="https://pic.imgdb.cn/item/671b8fadd29ded1a8c2fa727.png" srcset="/img/loading.gif" lazyload /></p>
-<p>为什么选择 卷积层神经网络 而不用 全连接神经网络 <img
-src="https://pic.imgdb.cn/item/671b9456d29ded1a8c33c16c.png" srcset="/img/loading.gif" lazyload /></p>
-<p>卷积核的作用：减少了计算量、减少参数</p>
-<h4
-id="卷积神经网络一般使用的激活函数为relu为什么">卷积神经网络一般使用的激活函数为Relu，为什么？</h4>
-<p>ReLU（Rectified Linear Unit）函数的数学表达式非常简单，定义如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs math">f(x) = \max(0, x) <br></code></pre></td></tr></table></figure>
-<p>这个表达式的含义是：</p>
-<ul>
-<li><p>当输入 ( x ) 大于0时，输出就是 ( x ) 本身；</p></li>
-<li><p>当输入 ( x ) 小于或等于0时，输出为0。</p></li>
-<li><p>计算效率：</p>
-<ul>
-<li>ReLU函数计算非常高效，因为它仅仅是将所有负值设为零，保留正值不变。这种操作在硬件上实现起来非常快，不需要复杂的数学运算如指数或除法，这对于训练深层网络尤其重要，因为可以显著减少训练时间和资源消耗。</li>
-</ul></li>
-<li><p>缓解梯度消失问题：</p>
-<ul>
-<li>在深度网络中，当使用像Sigmoid或tanh这样的激活函数时，容易遇到梯度消失的问题，即随着网络层数增加，反向传播时梯度逐渐减小到接近于零，导致底层权重难以有效更新。ReLU函数由于其导数在正区间内恒等于1，可以有效地缓解这一问题，促进梯度的有效传播。</li>
-</ul></li>
-<li><p>稀疏激活：</p>
-<ul>
-<li>ReLU可以使一部分神经元输出为零，这意味着模型会自动忽略一些不重要的特征，从而实现一种形式的内部特征选择，有助于提高模型的泛化能力，并且使模型更加紧凑。</li>
-</ul></li>
-<li><p>生物学合理性：</p>
-<ul>
-<li>从生物学的角度来看，神经元要么活跃要么不活跃，这种二元行为与ReLU函数的行为相似，因此ReLU也符合大脑神经元工作的某些假设。</li>
-</ul></li>
-</ul>
-<p>从全连接的角度理解卷积神经网络：稀疏的全连接神经网络 <img
-src="https://pic.imgdb.cn/item/671b9af4d29ded1a8c39fa2f.png" srcset="/img/loading.gif" lazyload /></p>
-<p>根据卷积核以及输入图片的大小判断输出图片大小的公式： <img
-src="https://pic.imgdb.cn/item/671b9d2dd29ded1a8c3bdc8d.png" srcset="/img/loading.gif" lazyload /></p>
-<p><img
-src="https://pic.imgdb.cn/item/671b9cc6d29ded1a8c3b8a66.png" srcset="/img/loading.gif" lazyload /></p>
-<p>计算量的大小比较： <img
-src="https://pic.imgdb.cn/item/671b9f81d29ded1a8c3def5b.png" srcset="/img/loading.gif" lazyload /> <img
-src="https://pic.imgdb.cn/item/671ba02ed29ded1a8c3e8e70.png" srcset="/img/loading.gif" lazyload /></p>
-<h4 id="利用卷积神经网络实现边缘检测">利用卷积神经网络实现边缘检测</h4>
-<p><img
-src="https://pic.imgdb.cn/item/671ba2b2d29ded1a8c40cd56.png" srcset="/img/loading.gif" lazyload /></p>
-<p>有点类似在ROS2实验课上做的边缘检测算法，原理都差不多</p>
-<p>卷积是能够提取特征的 <img
-src="https://pic.imgdb.cn/item/671bab11d29ded1a8c482604.png" srcset="/img/loading.gif" lazyload /></p>
-<p>为了丢掉不必要的信息，引入池化层的概念： <img
-src="https://pic.imgdb.cn/item/671bacacd29ded1a8c49af53.png" srcset="/img/loading.gif" lazyload /></p>
-<p>经验：最大池化比平均池化效果会好一点</p>
-<p>卷积神经网络帮助我们提取特征，进行分类工作，可以理解为特征提取器 <img
-src="https://pic.imgdb.cn/item/671bb3bfd29ded1a8c502c2e.png" srcset="/img/loading.gif" lazyload /></p>
-<p>卷积神经网络的损失函数同前面学过的交叉熵损失函数 <img
-src="https://pic.imgdb.cn/item/671bb49bd29ded1a8c50ffdd.png" srcset="/img/loading.gif" lazyload /></p>
-<p>卷积神经网络反向传播</p>
-<p>先后经过：softmax、池化层、relu、卷积层:</p>
-<p>(1)softmax <img
-src="https://pic.imgdb.cn/item/671bbf44d29ded1a8c5a0c8d.png" srcset="/img/loading.gif" lazyload /> <img
-src="https://pic.imgdb.cn/item/671bbf67d29ded1a8c5a2b7a.png" srcset="/img/loading.gif" lazyload />
-(2)池化层 <img
-src="https://pic.imgdb.cn/item/671bbfdbd29ded1a8c5a8a71.png" srcset="/img/loading.gif" lazyload /> (3)relu
-<img src="https://pic.imgdb.cn/item/671bc0e2d29ded1a8c5be4b4.png" srcset="/img/loading.gif" lazyload />
-(4)卷积层，卷积层的反向传播有点复杂 <img
-src="https://pic.imgdb.cn/item/671c8faad29ded1a8cea6549.png" srcset="/img/loading.gif" lazyload />
-卷积层反向传播的规律 <img
-src="https://pic.imgdb.cn/item/671c9178d29ded1a8cec5bcf.png" srcset="/img/loading.gif" lazyload /></p>
-<p>多层CNN的卷积结构</p>
-<p>卷积核的通道数需要与输入的通道数相匹配，输出的通道数与卷积核的个数相匹配
-<img src="https://pic.imgdb.cn/item/671c9755d29ded1a8cf23bba.png" srcset="/img/loading.gif" lazyload /></p>
-<p>这里的偏置结构有点问题，应该是有三层的结构，与输出的结构一模一样，与输出对应</p>
-<p>当遇到多通道卷积网络时，需要考虑稍微多一点点内容</p>
-<h3 id="img2col">img2col</h3>
-<p><img src="https://pic.imgdb.cn/item/671cc5a5d29ded1a8c252ffe.png" srcset="/img/loading.gif" lazyload />
-<img src="https://pic.imgdb.cn/item/671cc5b9d29ded1a8c25449c.png" srcset="/img/loading.gif" lazyload /></p>
-<p>第一种结构的优化相对会更好一点，各有优劣</p>
+              
+              <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="❌哒咩！投喂错误❌" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="0632bd6a8355d7a4d70d2eb13e677802b243dc9fc1618ade4e490648514e6526">ed8cdec598ed5e6063726501ec5f9e107a72861de2cba6559d7b79f974b8275fb82233ae0ffca50f5a569ee84b44aa01ce16f2df4d032aca5bf21c9fc1a626f3fde509f6c83f4482dfb7439a7a588e18eda24df1a347953a6c5fdc15e880024164b4b2a9c2cfc1fe01639af3117721956f16c124990826cc1c8cfb2c60ec3bb439b58d1c581e92d8a1324702e241282f8f0f6bc4aa19a229aa50f3834ec35477fb2a8dd88ff98ee9f8246b2a91d04ccea2fbcb5932ee2dcf099eda0228c5ff7667d1004d40c1c1eccf742cf8f3114210fa072113f2e23f101845704c9a58343eaf8469ffa20fd5b5cd5671ba99f4b3bd627508c6721951cea57c8335c9be954b397a6e770798b4d4c5846479b23f7d6da818f812a8bc637fcdc727e743f31f157cf16d5e73b6b17fc3c7049e5dc73157b7d778c8e3f5f93bbb6a7feb0488eb47d23d8bf43c2624a8a45b764674a46feb0bfba69ad3a9357e3dffd50e72638c9057c0e5862ba03e27846234ac3707fcaf030152c35a972d764bf8d4b8d189c671f5437b4bb7d69054174a511418fd74a333fe6629123f2244fdfd3c8c4c63c9db835f3153b3722eed5dac1b59822bfa053c25b6b6c6ab1e388ea6743a860bf806e46e1802a55ca6d9764c0391ac0ebec32659734b1a07dd9d24d614f86ab0d8fbeccabb1502e7af10ce255f5507d3475c3aa9b2912c14695cb0ba6bf0a9a281db533ed46ab054d1512734b8adf670af71afc6733c872223da1d5427e3095e207390a81e90b37ae5b8b4e6803e32861fa3331fd50f8dc9d8379ba7c5a264e41ae158b40eae7c3874fd945922d166268fc9068a39a8d5754e718738ecec2ec2b1e611d238ab6b83ed69be1152c8f429f9aa95bdbce54e875688aa51c504c8bc812f1387a55ad180d2959999d8818775adea8fb2528756ee51e654c01967b47b088fc0032d1ddf0e8dcc75ccb73122ab7d7a31459f9340e5906ac7cda75d29c3998020e3e89f23ade5210d5a165864ae7daf814e7f1973f9f2b2013ddeb9f28cbf2fb85e5a7823bcc062f2af2b3c1edd2dc48eaefde965cc0dcb5214ff14a5f2dd7520cd5b3048dea2a06c3c3d07c59a70377b1298376cf6a20a91d60196c0c574d548517930443231fdb396706a8ac23ff24bfdff7e219d05733fd21a528783464cd95a3d8d9998632a37fd1e2bb3f4c8f63e15b9967af7fc02946ce927efe61cf7221c7d0c4e7c820bac2f1373f96f03845cf1af43295f187a3cfff24786c2aa77a5f367a179ccefb78140abc6b83b8cc4ebea4eed94ff1ecb2b74798d374261638590c36703a2287eae61bdf389239333c02f3bec367d3bd6f510674841b2dd1d5b8fdeca8297761317572962d10d9018fb05c629f8be950d20d02f4356f5fb7d0444e00359816b9b9665fa7e1beab41cb2b07214bb413183fa33b9a76758c3383acab95fed6f5dfe8540262cfdcb70b260c7256d1986b5c61f187a3bb965c43cf88a02ec88c7942c56a272345d5e76265eb7fe29eebe341d95a935357882396920af8772ed856f95042f4c97be7c2b896f4fbb3832b9329ea080b4646011d902a5b1194c32a2987b9f81c41493e0ce49b86646f9372ac53a59c1104da22ad0c77185d2c055664324bc1e8052d2729d2321f83c575fc3e6990f2755168646531d285d772c8fc53707cc59bdbc88289f77db8cafe65cbc732ab0b022e061c2d83d6939702ca1d71cf01c0eecb86b577e53fd598f3228750152d0f6c1f3456062334afa59e9f759e46f46929162e9eeddf97adc09e564f78597316f6cfe284e12422a19cc00b2216d568baeb4af9bbfda431b193527698e5a07d68724b566597c81ff09fe91f6ee42d07892d9c1c9ac361f9cddee0abae04454627210bc79665e9d8844baaffe76c92c4ed90713ca1c56fac9c77fa867f76cab3bad68a6c11ba93e00f8c9b4cb2cfc85a4140c1348a79816c229bc833990249de804a0005e2faaadb0d9770e361fe8ecd63b43f4ac9d089b37d74652ebcfba3021f01af3e3374b5d0dfb8750d1f0510cd87dd2a5099f751c26c237731ec15fb6fbbf41457ecbd36bbacf58b11d3845f713bdfe9be42e40de4ae41022ecde5ccd72969c12a220f2771f52721d60bca002d72403c0eac8144e69faa8219b882d3a78cb716eee34a471a2666d05fb906ce45e0a4565c0923a098975d3302aab24485f85a7d23473eaf7b756a7507ab59675520a2842ac91fe2df2d02b211bdb9f63367aad9d25dc756dede5b1235180ed6e563037b8de590b74ebde2aebacbe314bbb08297186c3aaa38060722528a1439500241623880a08ffefc2bb0f49b28ab9aa8c9565bc2365d6da07382b5de98fb9d743736f71516bbb37c00f19ef2a740a7d4ea122ae82cd9c6d19f544e1c353d541460868a75a2163ed5da18c4862299b77ac3b1b9a018a757fe97eccef59c1d8fca6eea21be584b327a4d1d6f274d6771da0fb215f46a152bf6d44976d5fe0a7cdd8ff7e929e985a233a4078468a118d66ba9a2a12384381b188b69fca6e86b93e69c50c3ee214355701a495a43b838ae54d108e8e6ef61af1bd6486ff776c39b5c2b80f5ab34ca50eb2e37c1654c72a245b3f24d0151910877f08249be8a27994dae29af476d0a4f4361884deea09ed4084e1003076d5b691213f4de831d8b36b8d3176fb47055036de54df1e14199e5d6abbe442c2c426</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">请投喂我密码</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+              
 
-                
-              </div>
+              
             
             <hr/>
             <div>
               <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="category-chain-item">机器学习</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
   
   
 </div>
@@ -417,8 +339,8 @@ src="https://pic.imgdb.cn/item/671c9178d29ded1a8cec5bcf.png" srcset="/img/loadin
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>第九讲_Convolutional neural networks</div>
-      <div>http://jrhu0048.github.io/2024/10/25/ji-qi-xue-xi/di-jiu-jiang-convolutional-neural-networks/</div>
+      <div>文献阅读-2024.11.7</div>
+      <div>http://jrhu0048.github.io/2024/11/06/wen-xian-yue-du/wen-xian-yue-du/</div>
     </div>
     <div class="license-meta">
       
@@ -430,7 +352,7 @@ src="https://pic.imgdb.cn/item/671c9178d29ded1a8cec5bcf.png" srcset="/img/loadin
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年10月25日</div>
+          <div>2024年11月6日</div>
         </div>
       
       
@@ -467,18 +389,12 @@ src="https://pic.imgdb.cn/item/671c9178d29ded1a8cec5bcf.png" srcset="/img/loadin
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/10/26/ji-qi-xue-xi/di-shi-jiang-perceptron/" title="第十讲_Perceptron">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">第十讲_Perceptron</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/10/25/ji-qi-xue-xi/di-ba-jiang-optimization/" title="第八讲_Optimization">
-                        <span class="hidden-mobile">第八讲_Optimization</span>
+                      <a href="/2024/11/03/ji-qi-xue-xi/di-shi-san-jiang-decision-tree/" title="第十三讲-Decision_Tree">
+                        <span class="hidden-mobile">第十三讲-Decision_Tree</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -685,6 +601,23 @@ src="https://pic.imgdb.cn/item/671c9178d29ded1a8cec5bcf.png" srcset="/img/loadin
   
 
 
+
+
+  
+  <script defer>
+    if (document.getElementById('hbePass') || document.querySelector('hbe-prefix')) {
+      Fluid.utils.waitElementLoaded('hbe-prefix', function() {
+        var hbePrefix = document.querySelector('hbe-prefix');
+        hbePrefix.parentElement.classList.add('markdown-body');
+        Fluid.utils.retry(function() {
+          if (Fluid.boot && Fluid.boot.refresh) {
+            Fluid.boot.refresh();
+            return true;
+          }
+        }, 100, 10);
+      })
+    }
+  </script>
 
 
   
