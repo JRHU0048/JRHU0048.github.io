@@ -1,0 +1,935 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" >
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/hui.png">
+  <link rel="icon" href="/img/hui.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="JR.HU">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="实验三：利用action实现小海龟的运动 任务：利用action机制实现小海龟的360°转圈运动 一、实验原理(介绍算法或实验思路) 1、实验思路介绍 本实验的主要目的是利用ros2中的action机制实现小海龟的360°转圈运动，具体实现思路： （1）动作客户端：  客户端节点首先初始化ROS2环境，并创建一个动作客户端对象。 客户端发送一个包含使能标志的动作目标消息，告诉服务器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ROS实验报告三">
+<meta property="og:url" content="http://jrhu0048.github.io/2024/11/09/ros/ros-shi-yan-bao-gao-san/index.html">
+<meta property="og:site_name" content="CHARMMY">
+<meta property="og:description" content="实验三：利用action实现小海龟的运动 任务：利用action机制实现小海龟的360°转圈运动 一、实验原理(介绍算法或实验思路) 1、实验思路介绍 本实验的主要目的是利用ros2中的action机制实现小海龟的360°转圈运动，具体实现思路： （1）动作客户端：  客户端节点首先初始化ROS2环境，并创建一个动作客户端对象。 客户端发送一个包含使能标志的动作目标消息，告诉服务器">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/67235564d29ded1a8c3cf10c.jpg">
+<meta property="article:published_time" content="2024-11-09T06:43:29.000Z">
+<meta property="article:modified_time" content="2024-11-09T07:07:39.593Z">
+<meta property="article:author" content="JR.HU">
+<meta property="article:tag" content="实验报告">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/67235564d29ded1a8c3cf10c.jpg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>ROS实验报告三 - CHARMMY</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/scrollAnimation.css">
+<link rel="stylesheet" href="/css/textcolcor.css">
+<link rel="stylesheet" href="/css/cloudedGlass.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jrhu0048.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":60,"cursorChar":"⭐","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"❡"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2023-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body><!-- hexo injector body_begin start --><div id="web_bg"></div><!-- hexo injector body_begin end -->
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <!-- <strong>CHARMMY</strong> -->
+       <!-- 修改如下： -->
+      <strong class="navbar-title">CHARMMY</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/hei.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="ROS实验报告三"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        JR.HU
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-11-09 14:43" pubdate>
+          2024年11月9日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          14 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+
+    
+    
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="ROS"
+        id="heading-05665b7826ff460887094429e8a32116" role="tab" data-toggle="collapse" href="#collapse-05665b7826ff460887094429e8a32116"
+        aria-expanded="true"
+      >
+        ROS
+        <span class="list-group-count">(5)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-05665b7826ff460887094429e8a32116"
+           role="tabpanel" aria-labelledby="heading-05665b7826ff460887094429e8a32116">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2024/10/17/mercuryx1-diao-shi-shou-ce/" title="MercuryX1调试手册"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">MercuryX1调试手册</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/07/ros/ros/" title="ROS"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">ROS</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/10/14/ros/ros-shi-yan-bao-gao-yi/" title="ROS实验报告一"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">ROS实验报告一</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/11/09/ros/ros-shi-yan-bao-gao-san/" title="ROS实验报告三"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">ROS实验报告三</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/10/18/ros/ros-shi-yan-bao-gao-er/" title="ROS实验报告二"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">ROS实验报告二</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">ROS实验报告三</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1
+id="实验三利用action实现小海龟的运动">实验三：利用action实现小海龟的运动</h1>
+<h2
+id="任务利用action机制实现小海龟的360转圈运动">任务：利用action机制实现小海龟的360°转圈运动</h2>
+<h3
+id="一实验原理介绍算法或实验思路">一、实验原理(介绍算法或实验思路)</h3>
+<h4 id="实验思路介绍">1、实验思路介绍</h4>
+<p>本实验的主要目的是利用ros2中的action机制实现小海龟的360°转圈运动，具体实现思路：</p>
+<h5 id="动作客户端">（1）动作客户端：</h5>
+<ul>
+<li>客户端节点首先初始化ROS2环境，并创建一个动作客户端对象。</li>
+<li>客户端发送一个包含使能标志的动作目标消息，告诉服务器开始执行360°转圈运动。</li>
+<li>客户端等待服务器的响应，并在接收到响应后继续等待最终结果。</li>
+<li>客户端订阅小海龟的位置信息，并在回调函数中输出当前海龟的位置。</li>
+</ul>
+<h5 id="动作服务器">（2）动作服务器：</h5>
+<ul>
+<li>服务器节点初始化ROS2环境，并创建一个动作服务器对象。</li>
+<li>服务器接收到客户端的动作目标后，开始控制小海龟进行360°转圈运动。</li>
+<li>服务器设置小海龟的线速度和角速度，并在一个循环中持续发布速度消息，直到完成360°的圆周运动。</li>
+<li>运动完成后，服务器停止发布速度消息，并向客户端返回成功结果。</li>
+</ul>
+<h3 id="二实验步骤附上必要图片">二、实验步骤(附上必要图片)</h3>
+<h4 id="终端启动小海龟">1、终端启动小海龟</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ros2 run turtlesim turtlesim_node  <br></code></pre></td></tr></table></figure>
+<p><img
+src="https://pic.imgdb.cn/item/672f0741d29ded1a8c357e65.png" srcset="/img/loading.gif" lazyload /></p>
+<h4 id="创建功能包">2、创建功能包</h4>
+<p><img
+src="https://pic.imgdb.cn/item/672f074fd29ded1a8c358b45.png" srcset="/img/loading.gif" lazyload /></p>
+<h4 id="创建编写源文件">3、创建编写源文件</h4>
+<p><img
+src="https://pic.imgdb.cn/item/672f0761d29ded1a8c359c6f.png" srcset="/img/loading.gif" lazyload /></p>
+<h4 id="配置编译文件">4、配置编译文件</h4>
+<p><img
+src="https://pic.imgdb.cn/item/672f077bd29ded1a8c35b536.png" srcset="/img/loading.gif" lazyload /></p>
+<h4 id="编译">5、编译</h4>
+<p><img
+src="https://pic.imgdb.cn/item/672f078dd29ded1a8c35c469.png" srcset="/img/loading.gif" lazyload /></p>
+<h4 id="运行客户端以及服务器节点">6、运行客户端以及服务器节点</h4>
+<p><img
+src="https://pic.imgdb.cn/item/672f07aad29ded1a8c35e70d.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="三实验结果分析附上必要图片">三、实验结果+分析(附上必要图片)</h3>
+<h4 id="实验过程及结果展示">1、实验过程及结果展示</h4>
+<p><img src="https://pic.imgdb.cn/item/672f0825d29ded1a8c364f21.png" srcset="/img/loading.gif" lazyload />
+<img src="https://pic.imgdb.cn/item/672f0866d29ded1a8c368441.png" srcset="/img/loading.gif" lazyload /></p>
+<h4 id="实验过程分析">2、实验过程分析</h4>
+<p>（1）启动turtlesim节点：</p>
+<ul>
+<li>成功启动turtlesim节点后，屏幕上显示了一个小海龟。</li>
+</ul>
+<p>（2）启动动作服务器节点：</p>
+<ul>
+<li>成功启动动作服务器节点后，终端输出“Moving
+circle...”信息，表示服务器已准备好接收动作目标。</li>
+</ul>
+<p>（3）启动动作客户端节点：</p>
+<ul>
+<li>成功启动动作客户端节点后，客户端发送动作目标，并等待服务器响应。客户端订阅小海龟的位置信息，并在回调函数中输出当前海龟的位置。</li>
+</ul>
+<p>（4）小海龟运动：</p>
+<ul>
+<li>小海龟开始按照设定的线速度和角速度进行360°转圈运动。运动过程中，客户端不断输出小海龟的位置信息，确认运动状态。</li>
+</ul>
+<p>（5）运动完成：</p>
+<ul>
+<li>小海龟完成360°转圈运动后，服务器停止发布速度消息，并向客户端返回成功结果。客户端输出最终结果和小海龟的最终位置。</li>
+</ul>
+<h4 id="实验结果分析">3、实验结果分析</h4>
+<p>（1）运动轨迹：</p>
+<p>小海龟按照预期完成了360°的圆周运动，轨迹呈圆形，没有明显的偏移或误差，这表明设置的线速度和角速度是合理的，能够有效控制小海龟的运动。</p>
+<p>（2）反馈机制：</p>
+<p>客户端订阅小海龟的位置信息，并在回调函数中实时输出当前位置。这种实时反馈机制有助于监控小海龟的运动状态，确保运动过程的稳定性和准确性。</p>
+<h3 id="四关键功能代码">四、关键功能代码</h3>
+<h4 id="action_client.py">1、action_client.py</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/env python3</span><br><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-keyword">import</span> rclpy                              <span class="hljs-comment"># ROS2 Python接口库</span><br><span class="hljs-keyword">from</span> rclpy.node <span class="hljs-keyword">import</span> Node               <span class="hljs-comment"># ROS2 节点类</span><br><span class="hljs-keyword">from</span> rclpy.action <span class="hljs-keyword">import</span> ActionClient     <span class="hljs-comment"># ROS2 动作客户端类</span><br><span class="hljs-keyword">from</span> learning_interface.action <span class="hljs-keyword">import</span> MoveCircle  <span class="hljs-comment"># 自定义的圆周运动接口</span><br><span class="hljs-keyword">from</span> turtlesim.msg <span class="hljs-keyword">import</span> Pose            <span class="hljs-comment"># 导入海龟位置消息</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MoveCircleActionClient</span>(<span class="hljs-title class_ inherited__">Node</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, name</span>):<br>        <span class="hljs-built_in">super</span>().__init__(name)            <span class="hljs-comment"># ROS2节点父类初始化</span><br>        self._action_client = ActionClient(  <span class="hljs-comment"># 创建动作客户端（接口类型、动作名）</span><br>            self, MoveCircle, <span class="hljs-string">&#x27;move_circle&#x27;</span>)<br>        self.pose_subscription = self.create_subscription(  <span class="hljs-comment"># 创建订阅者，订阅海龟位置</span><br>            Pose, <span class="hljs-string">&#x27;/turtle1/pose&#x27;</span>, self.pose_callback, <span class="hljs-number">10</span>)<br>        self.current_pose = <span class="hljs-literal">None</span>          <span class="hljs-comment"># 初始化当前海龟位置</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">send_goal</span>(<span class="hljs-params">self, enable</span>):          <span class="hljs-comment"># 创建一个发送动作目标的函数</span><br>        goal_msg = MoveCircle.Goal()      <span class="hljs-comment"># 创建一个动作目标的消息</span><br>        goal_msg.enable = enable          <span class="hljs-comment"># 设置动作目标为使能，希望机器人开始运动</span><br><br>        self._action_client.wait_for_server()  <span class="hljs-comment"># 等待动作的服务器端启动</span><br>        self._send_goal_future = self._action_client.send_goal_async(  <span class="hljs-comment"># 异步方式发送动作的目标</span><br>            goal_msg)  <span class="hljs-comment"># 动作目标</span><br><br>        self._send_goal_future.add_done_callback(self.goal_response_callback)  <span class="hljs-comment"># 设置一个服务器收到目标之后反馈时的回调函数</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">goal_response_callback</span>(<span class="hljs-params">self, future</span>):  <span class="hljs-comment"># 创建一个服务器收到目标之后反馈时的回调函数</span><br>        goal_handle = future.result()          <span class="hljs-comment"># 接收动作的结果</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> goal_handle.accepted:           <span class="hljs-comment"># 如果动作被拒绝执行</span><br>            self.get_logger().info(<span class="hljs-string">&#x27;Goal rejected :(&#x27;</span>)<br>            <span class="hljs-keyword">return</span><br><br>        self.get_logger().info(<span class="hljs-string">&#x27;Goal accepted :)&#x27;</span>)  <span class="hljs-comment"># 动作被顺利执行</span><br><br>        self._get_result_future = goal_handle.get_result_async()  <span class="hljs-comment"># 异步获取动作最终执行的结果反馈</span><br>        self._get_result_future.add_done_callback(self.get_result_callback)  <span class="hljs-comment"># 设置一个收到最终结果的回调函数</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">get_result_callback</span>(<span class="hljs-params">self, future</span>):  <span class="hljs-comment"># 创建一个收到最终结果的回调函数</span><br>        result = future.result().result     <span class="hljs-comment"># 读取动作执行的结果</span><br>        self.get_logger().info(<span class="hljs-string">&#x27;Result: &#123;%d&#125;&#x27;</span> % result.finish)  <span class="hljs-comment"># 日志输出执行结果</span><br>        <span class="hljs-keyword">if</span> self.current_pose:<br>            self.get_logger().info(<span class="hljs-string">&#x27;Final Pose: x=%f, y=%f, theta=%f&#x27;</span> % (self.current_pose.x, self.current_pose.y, self.current_pose.theta))<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">pose_callback</span>(<span class="hljs-params">self, msg</span>):  <span class="hljs-comment"># 创建处理海龟中间位置消息的回调函数</span><br>        self.current_pose = msg    <span class="hljs-comment"># 更新当前海龟位置</span><br>        self.get_logger().info(<span class="hljs-string">&#x27;Pose updated: x=%f, y=%f, theta=%f&#x27;</span> % (msg.x, msg.y, msg.theta))<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>(<span class="hljs-params">args=<span class="hljs-literal">None</span></span>):  <span class="hljs-comment"># ROS2节点主入口main函数</span><br>    rclpy.init(args=args)  <span class="hljs-comment"># ROS2 Python接口初始化</span><br>    node = MoveCircleActionClient(<span class="hljs-string">&quot;action_move_client&quot;</span>)  <span class="hljs-comment"># 创建ROS2节点对象并进行初始化</span><br>    node.send_goal(<span class="hljs-literal">True</span>)  <span class="hljs-comment"># 发送动作目标</span><br>    rclpy.spin(node)  <span class="hljs-comment"># 循环等待ROS2退出</span><br>    node.destroy_node()  <span class="hljs-comment"># 销毁节点对象</span><br>    rclpy.shutdown()  <span class="hljs-comment"># 关闭ROS2 Python接口</span><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    main()<br></code></pre></td></tr></table></figure>
+<h4 id="action_server.py">2、action_server.py</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/env python3</span><br><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-keyword">import</span> time<br><span class="hljs-keyword">import</span> rclpy                              <span class="hljs-comment"># ROS2 Python接口库</span><br><span class="hljs-keyword">from</span> rclpy.node <span class="hljs-keyword">import</span> Node               <span class="hljs-comment"># ROS2 节点类</span><br><span class="hljs-keyword">from</span> rclpy.action <span class="hljs-keyword">import</span> ActionServer     <span class="hljs-comment"># ROS2 动作服务器类</span><br><span class="hljs-keyword">from</span> learning_interface.action <span class="hljs-keyword">import</span> MoveCircle  <span class="hljs-comment"># 自定义的圆周运动接口</span><br><span class="hljs-keyword">from</span> geometry_msgs.msg <span class="hljs-keyword">import</span> Twist        <span class="hljs-comment"># 导入速度消息</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MoveCircleActionServer</span>(<span class="hljs-title class_ inherited__">Node</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, name</span>):<br>        <span class="hljs-built_in">super</span>().__init__(name)            <span class="hljs-comment"># ROS2节点父类初始化</span><br>        self._action_server = ActionServer(  <span class="hljs-comment"># 创建动作服务器（接口类型、动作名、回调函数）</span><br>            self,<br>            MoveCircle,<br>            <span class="hljs-string">&#x27;move_circle&#x27;</span>,<br>            self.execute_callback)<br>        self.publisher_ = self.create_publisher(Twist, <span class="hljs-string">&#x27;/turtle1/cmd_vel&#x27;</span>, <span class="hljs-number">10</span>)  <span class="hljs-comment"># 创建速度发布者</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">execute_callback</span>(<span class="hljs-params">self, goal_handle</span>):  <span class="hljs-comment"># 执行收到动作目标之后的处理函数</span><br>        self.get_logger().info(<span class="hljs-string">&#x27;Moving circle...&#x27;</span>)<br>        twist = Twist()                       <span class="hljs-comment"># 创建速度消息</span><br><br>        <span class="hljs-comment"># 设置线速度和角速度</span><br>        twist.linear.x = <span class="hljs-number">1.0</span><br>        twist.angular.z = <span class="hljs-number">1.0</span><br><br>        start_time = self.get_clock().now().nanoseconds / <span class="hljs-number">1e9</span>  <span class="hljs-comment"># 获取当前时间（秒）</span><br>        duration = <span class="hljs-number">6.28</span>  <span class="hljs-comment"># 360度大约需要6.28秒（2π秒）</span><br><br>        <span class="hljs-keyword">while</span> (self.get_clock().now().nanoseconds / <span class="hljs-number">1e9</span> - start_time) &lt; duration:<br>            self.publisher_.publish(twist)  <span class="hljs-comment"># 发布速度消息</span><br>            time.sleep(<span class="hljs-number">0.1</span>)  <span class="hljs-comment"># 每0.1秒发布一次速度消息</span><br><br>        twist.linear.x = <span class="hljs-number">0.0</span><br>        twist.angular.z = <span class="hljs-number">0.0</span><br>        self.publisher_.publish(twist)  <span class="hljs-comment"># 停止海龟</span><br><br>        goal_handle.succeed()  <span class="hljs-comment"># 动作执行成功</span><br>        result = MoveCircle.Result()  <span class="hljs-comment"># 创建结果消息</span><br>        result.finish = <span class="hljs-literal">True</span><br>        <span class="hljs-keyword">return</span> result  <span class="hljs-comment"># 反馈最终动作执行的结果</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>(<span class="hljs-params">args=<span class="hljs-literal">None</span></span>):  <span class="hljs-comment"># ROS2节点主入口main函数</span><br>    rclpy.init(args=args)  <span class="hljs-comment"># ROS2 Python接口初始化</span><br>    node = MoveCircleActionServer(<span class="hljs-string">&quot;action_move_server&quot;</span>)  <span class="hljs-comment"># 创建ROS2节点对象并进行初始化</span><br>    rclpy.spin(node)  <span class="hljs-comment"># 循环等待ROS2退出</span><br>    node.destroy_node()  <span class="hljs-comment"># 销毁节点对象</span><br>    rclpy.shutdown()  <span class="hljs-comment"># 关闭ROS2 Python接口</span><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    main()<br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/ROS/" class="category-chain-item">ROS</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/" class="print-no-link">#实验报告</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>ROS实验报告三</div>
+      <div>http://jrhu0048.github.io/2024/11/09/ros/ros-shi-yan-bao-gao-san/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>JR.HU</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年11月9日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2024年11月9日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/11/06/wen-xian-yue-du/wen-xian-yue-du/" title="文献阅读-2024.11.7">
+                        <span class="hidden-mobile">文献阅读-2024.11.7</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"JRHU0048/comments_of_fluid","repo-id":"R_kgDONI1MlA","category":"Announcements","category-id":"DIC_kwDONI1MlM4Cj4Fj","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> <span><br></span>	
+<span>总访客&nbsp<span id="busuanzi_value_site_uv"></span>&nbsp人 &nbsp</span> <span>访问总量&nbsp<span id="busuanzi_value_site_pv"></span>&nbsp次</span> </div> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            // loader : {
+            //   load: ['ui/lazy']
+            // },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/scrollAnimation.js"></script>
+<script src="/js/star.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script src="/js/backgroundize.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"superSample":2,"width":200,"height":300,"position":"left","hOffset":0,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":0.5},"log":false});</script></body>
+</html>
