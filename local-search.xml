@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>随笔</title>
+    <link href="/2024/11/25/sui-bi/"/>
+    <url>/2024/11/25/sui-bi/</url>
+    
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="❌哒咩！投喂错误❌" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="9be67fba17b8a9f82b4c5490b2a615785f2725f06e86aced1aad945699a7d886">53f1270e529fa4987cfa890269a9062a7bfa82f634ca5dd30b2d2d2bd1a17d0e338bdb8e129f6c619f143de62db85682cb497198826ece92a30cfbb94d1ece4b03284f65a6ba7c941f34a0ca1495aa458727f4d97d01a1d8329307ab0e4a52539eefa2212ab901542f498a6700dd2787f3c1c100bc98343d9ae63edc1fca16f1764d0ecd017260f26ae601df25312ac1b438f7e516a14a4b90b643ec31598106</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">请投喂我密码</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    
+    
+    <categories>
+      
+      <category>随笔</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Contrastive Learning for Unpaired Image-to-Image Translation</title>
     <link href="/2024/11/15/wen-xian-yue-du/wen-xian-yue-du-2/"/>
     <url>/2024/11/15/wen-xian-yue-du/wen-xian-yue-du-2/</url>
