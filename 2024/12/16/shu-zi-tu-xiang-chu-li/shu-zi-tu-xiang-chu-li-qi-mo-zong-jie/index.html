@@ -19,15 +19,15 @@
   <meta name="author" content="JR.HU">
   <meta name="keywords" content="">
   
-    <meta name="description" content="第一讲---前言+概述 理解 - 什么是数字图像 - 数字图像和物理图像的区别 - 图像和图形的区别 数字图像的定义： - 数字图像是指物理图像的连续信号值被离散化后，由被称作像素的小块区域组成的二维矩阵。将物理图像行列划分后，每个小块区域称为像素（Pixel）。每个像素包括两个属性：位置和色彩（或亮度） 图像的数字化（概念是重点） - 由一幅物理图像（信号值连续）获取一幅满足需求的数">
+    <meta name="description" content="第一讲---前言+概述 理解  什么是数字图像 数字图像和物理图像的区别 图像和图形的区别  数字图像的定义：  数字图像是指物理图像的连续信号值被离散化后，由被称作像素的小块区域组成的二维矩阵。将物理图像行列划分后，每个小块区域称为像素（Pixel）。每个像素包括两个属性：位置和色彩（或亮度）  图像的数字化（概念是重点）  由一幅物理图像（信号值连续）获取一幅满足需求">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数字图像处理期末总结">
 <meta property="og:url" content="http://jrhu0048.github.io/2024/12/16/shu-zi-tu-xiang-chu-li/shu-zi-tu-xiang-chu-li-qi-mo-zong-jie/index.html">
 <meta property="og:site_name" content="CHARMMY">
-<meta property="og:description" content="第一讲---前言+概述 理解 - 什么是数字图像 - 数字图像和物理图像的区别 - 图像和图形的区别 数字图像的定义： - 数字图像是指物理图像的连续信号值被离散化后，由被称作像素的小块区域组成的二维矩阵。将物理图像行列划分后，每个小块区域称为像素（Pixel）。每个像素包括两个属性：位置和色彩（或亮度） 图像的数字化（概念是重点） - 由一幅物理图像（信号值连续）获取一幅满足需求的数">
+<meta property="og:description" content="第一讲---前言+概述 理解  什么是数字图像 数字图像和物理图像的区别 图像和图形的区别  数字图像的定义：  数字图像是指物理图像的连续信号值被离散化后，由被称作像素的小块区域组成的二维矩阵。将物理图像行列划分后，每个小块区域称为像素（Pixel）。每个像素包括两个属性：位置和色彩（或亮度）  图像的数字化（概念是重点）  由一幅物理图像（信号值连续）获取一幅满足需求">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-12-16T00:22:21.000Z">
-<meta property="article:modified_time" content="2024-12-20T10:06:07.948Z">
+<meta property="article:modified_time" content="2024-12-25T01:53:06.039Z">
 <meta property="article:author" content="JR.HU">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -383,34 +383,59 @@
               <div class="markdown-body">
                 
                 <h2 id="第一讲---前言概述">第一讲---前言+概述</h2>
-<p>理解 - 什么是数字图像 - 数字图像和物理图像的区别 -
-图像和图形的区别</p>
-<p>数字图像的定义： -
-数字图像是指物理图像的连续信号值被离散化后，由被称作像素的小块区域组成的二维矩阵。将物理图像行列划分后，每个小块区域称为像素（Pixel）。每个像素包括两个属性：位置和色彩（或亮度）</p>
-<p>图像的数字化（概念是重点） -
-由一幅物理图像（信号值连续）获取一幅满足需求的数字图像的离散化过程称为图像数字化。这里涉及到两个重要的概念：采样与量化
-- 采样和量化的概念</p>
-<p>图像和图形的区别 - <img
-src="https://pic.imgdb.cn/item/675f7428d0e0a243d4e4427a.png" srcset="/img/loading.gif" lazyload /></p>
-<p>图像工程的三个层次（这个我感觉也听重要的） -
-图像处理、图像分析、图像理解 -
-图像处理着重强调图像到图像之间进行的变换。对图像进行各种加工以改善图像的视觉效果并为自动识别打基础，或对图像进行压缩编码以减少对其所需存储空间或传输时间的要求。
--
-图像分析是对图像中感兴趣的目标进行检测和测量，以获得它们的客观信息从而建立对图像的描述。图像分析是一个从图像到数据的过程，这里数据可以是对目标特征检测的结果或是基于测量的符号表示。
--
-图像理解的重点是在图像分析的基础上，借助知识、经验等进一步研究图像中各目标的性质和他们之间的相互联系，并得出对图像内容含义的理解以及对原来客观场景的解释，从而指导和规划行动。
-- <img
-src="https://pic.imgdb.cn/item/675f74a2d0e0a243d4e4428a.png" srcset="/img/loading.gif" lazyload /></p>
+<p>理解</p>
+<ul>
+<li>什么是数字图像</li>
+<li>数字图像和物理图像的区别</li>
+<li>图像和图形的区别</li>
+</ul>
+<p>数字图像的定义：</p>
+<ul>
+<li>数字图像是指物理图像的连续信号值被离散化后，由被称作像素的小块区域组成的二维矩阵。将物理图像行列划分后，每个小块区域称为像素（Pixel）。每个像素包括两个属性：位置和色彩（或亮度）</li>
+</ul>
+<p>图像的数字化（概念是重点）</p>
+<ul>
+<li>由一幅物理图像（信号值连续）获取一幅满足需求的数字图像的离散化过程称为图像数字化。这里涉及到两个重要的概念：采样与量化</li>
+<li>采样和量化的概念</li>
+</ul>
+<p>图像和图形的区别</p>
+<ul>
+<li><img
+src="https://pic.imgdb.cn/item/675f7428d0e0a243d4e4427a.png" srcset="/img/loading.gif" lazyload /></li>
+</ul>
+<p>图像工程的三个层次（这个我感觉也听重要的）</p>
+<ul>
+<li>图像处理、图像分析、图像理解</li>
+<li>图像处理着重强调图像到图像之间进行的变换。对图像进行各种加工以改善图像的视觉效果并为自动识别打基础，或对图像进行压缩编码以减少对其所需存储空间或传输时间的要求。</li>
+<li>图像分析是对图像中感兴趣的目标进行检测和测量，以获得它们的客观信息从而建立对图像的描述。图像分析是一个从图像到数据的过程，这里数据可以是对目标特征检测的结果或是基于测量的符号表示。</li>
+<li>图像理解的重点是在图像分析的基础上，借助知识、经验等进一步研究图像中各目标的性质和他们之间的相互联系，并得出对图像内容含义的理解以及对原来客观场景的解释，从而指导和规划行动。</li>
+<li><img
+src="https://pic.imgdb.cn/item/675f74a2d0e0a243d4e4428a.png" srcset="/img/loading.gif" lazyload /></li>
+</ul>
 <h2 id="第二讲---色彩模型">第二讲---色彩模型</h2>
 <p>色彩模型是为了描述和重现图像的色彩</p>
-<p>分为 - 面向设备的色彩模型 - RGB - CMYK - 面向色彩感知的色彩模型 - HSI
-- LAB</p>
+<p>分为</p>
+<ul>
+<li>面向设备的色彩模型
+<ul>
+<li>RGB</li>
+<li>CMYK</li>
+</ul></li>
+<li>面向色彩感知的色彩模型
+<ul>
+<li>HSI</li>
+<li>LAB</li>
+</ul></li>
+</ul>
 <p>需要知道上述四种色彩模型中的每个字母代表什么含义（颜色）</p>
 <p>然后就是理解发光体和反光体的概念，RGB 利用的是发光体的原理，CMYK
-利用的是反光体的原理，二者刚刚好是互补的，一个是电视机，一个是打印机 -
-类似出题可能为：利用发光体的原理，将黄色和蓝色融合得到什么颜色？在反光体的原理下呢？</p>
+利用的是反光体的原理，二者刚刚好是互补的，一个是电视机，一个是打印机</p>
+<ul>
+<li>类似出题可能为：利用发光体的原理，将黄色和蓝色融合得到什么颜色？在反光体的原理下呢？</li>
+</ul>
 <p>讲 HSI 和 LAB
 的那节课去答辩翘了，听了网课，感觉没啥东西，如果有后面再补充吧</p>
+<p>jepg 文件使用到的色彩模型为：YCbCr !!!</p>
 <h2 id="第三讲---bmp文件的读取与显示">第三讲---BMP文件的读取与显示</h2>
 <p>这讲主要是与实验课关系比较大，需要知道BMP文件的大概结构即可，具体如下：</p>
 <p>一个完整的BMP文件由
@@ -423,24 +448,33 @@ src="https://pic.imgdb.cn/item/675f76fcd0e0a243d4e442ad.png" srcset="/img/loadin
 <h3 id="信息头">信息头</h3>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">tagBITMAPINFOHEADER</span>&#123;<br>   DWORD  biSize; <br>   LONG      biWidth; <br>   LONG      biHeight; <br>   WORD     biPlanes; <br>   WORD     biBitCount;<br>   DWORD  biCompression; <br>   DWORD  biSizeImage; <br>   LONG      biXPelsPerMeter; <br>   LONG      biYPelsPerMeter; <br>   DWORD  biClrUsed; <br>   DWORD  biClrImportant; <br>&#125; BITMAPINFOHEADER; <br></code></pre></td></tr></table></figure>
 <p>信息头长度固定为40字节（也会考！！！）</p>
-<p>信息头里需要记住的几个字段有： -
-biWidth：指定图像的宽度，单位是像素。 -
-biHeight：指定图像的高度，单位是像素。 - biBitCount:
-指定表示颜色时要用到的位数，常用的值为1（黑白二色图）, 4（16色图）,
-8（256色）, 24（真彩色图） - biClrUsed:
+<p>信息头里需要记住的几个字段有：</p>
+<ul>
+<li>biWidth：指定图像的宽度，单位是像素。</li>
+<li>biHeight：指定图像的高度，单位是像素。</li>
+<li>biBitCount: 指定表示颜色时要用到的位数，常用的值为1（黑白二色图）,
+4（16色图）, 8（256色）, 24（真彩色图）</li>
+<li>biClrUsed:
 指定本图象实际用到的颜色数（决定调色板数组元素的个数），如果该值为零，则用到的颜色数为2的
-biBitCount 次方</p>
+biBitCount 次方</li>
+</ul>
 <p>biClrUsed 与 biBitCount
 结合起来会让你计算，提供这两个值，计算整幅图像用到的颜色数</p>
 <h3 id="调色板">调色板</h3>
-<p>对于调色板的概念要知道，我的理解为：调色板就是数据结构中的哈希表，一种高效的数据存储结构
-- 注意24位真彩图像不需要使用到调色板</p>
+<p>对于调色板的概念要知道，我的理解为：调色板就是数据结构中的哈希表，一种高效的数据存储结构</p>
+<ul>
+<li>注意24位真彩图像不需要使用到调色板</li>
+</ul>
 <p>调色板长度为4字节</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">tagRGBQUAD</span> &#123; <br>    BYTE    rgbBlue;         <span class="hljs-comment">//该颜色的蓝色分量</span><br>    BYTE    rgbGreen;      <span class="hljs-comment">//该颜色的绿色分量</span><br>    BYTE    rgbRed;          <span class="hljs-comment">//该颜色的红色分量</span><br>    BYTE    rgbReserved; <span class="hljs-comment">//保留值，不考虑</span><br>&#125; RGBQUAD; <br></code></pre></td></tr></table></figure>
 <h3 id="实际的位图数据">实际的位图数据</h3>
-<p>课上用到的几种位图数据 - 2色位图（黑白），一个字节表示8个像素点 -
-16色，一个字节表示两个像素点 - 256色，一个字节表示一个像素点 -
-真彩图，三个字节表示一个像素点</p>
+<p>课上用到的几种位图数据</p>
+<ul>
+<li>2色位图（黑白），一个字节表示8个像素点</li>
+<li>16色，一个字节表示两个像素点</li>
+<li>256色，一个字节表示一个像素点</li>
+<li>真彩图，三个字节表示一个像素点</li>
+</ul>
 <p>可能会让你算内存大小，所以要知道各个图像一个像素点所占的字节数</p>
 <h4 id="关于位图数据需要注意的点">关于位图数据需要注意的点</h4>
 <p>1、每一行的字节数必须是4的整倍数，如果不是，则需要补齐</p>
@@ -486,6 +520,7 @@ src="https://pic.imgdb.cn/item/675fd3d4d0e0a243d4e48a24.png" srcset="/img/loadin
 <p>TODO：直方图规定化课上老师讲了大概，没说怎么考，期末讲了再补充</p>
 <h2 id="第五讲---傅里叶变换">第五讲---傅里叶变换</h2>
 <p>了解频域和空域的基本概念</p>
+<p>...</p>
 
                 
               </div>
@@ -543,7 +578,7 @@ src="https://pic.imgdb.cn/item/675fd3d4d0e0a243d4e48a24.png" srcset="/img/loadin
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年12月20日</div>
+          <div>2024年12月25日</div>
         </div>
       
       
