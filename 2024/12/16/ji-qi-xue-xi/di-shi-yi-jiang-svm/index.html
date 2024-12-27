@@ -19,23 +19,25 @@
   <meta name="author" content="JR.HU">
   <meta name="keywords" content="">
   
-    <meta name="description" content="支持向量机---最大化间隔问题 找到分离各类数据点的最好的分界线（面），能够实现最大间隔 每类中最近的点叫支持向量 非支持向量到决策面的距离都是大于决策向量的">
+    <meta name="description" content="支持向量机---最大化间隔问题 支持向量机也是一个分类模型 目的是找到分离各类数据点的最好的分界线（面），能够实现最大间隔（相对于支持向量来说）  每类中最近的点叫支持向量 非支持向量到决策面的距离都大于决策向量    下面是一个例题，和课后作业的内容很像:    考试需要掌握的内容： 支持向量机中的核技巧（The Kernel Trick）  面对非线性数据，使">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第11讲-SVM">
-<meta property="og:url" content="http://jrhu0048.github.io/2024/12/16/ji-qi-xue-xi/di-11-jiang-svm/index.html">
+<meta property="og:title" content="第十一讲-SVM">
+<meta property="og:url" content="http://jrhu0048.github.io/2024/12/16/ji-qi-xue-xi/di-shi-yi-jiang-svm/index.html">
 <meta property="og:site_name" content="CHARMMY">
-<meta property="og:description" content="支持向量机---最大化间隔问题 找到分离各类数据点的最好的分界线（面），能够实现最大间隔 每类中最近的点叫支持向量 非支持向量到决策面的距离都是大于决策向量的">
+<meta property="og:description" content="支持向量机---最大化间隔问题 支持向量机也是一个分类模型 目的是找到分离各类数据点的最好的分界线（面），能够实现最大间隔（相对于支持向量来说）  每类中最近的点叫支持向量 非支持向量到决策面的距离都大于决策向量    下面是一个例题，和课后作业的内容很像:    考试需要掌握的内容： 支持向量机中的核技巧（The Kernel Trick）  面对非线性数据，使">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/676e555ad0e0a243d4eb4594.png">
 <meta property="article:published_time" content="2024-12-16T08:52:22.000Z">
-<meta property="article:modified_time" content="2024-12-21T16:09:41.508Z">
+<meta property="article:modified_time" content="2024-12-27T07:21:35.166Z">
 <meta property="article:author" content="JR.HU">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/676e555ad0e0a243d4eb4594.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>第11讲-SVM - CHARMMY</title>
+  <title>第十一讲-SVM - CHARMMY</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +203,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="第11讲-SVM"></span>
+            <span id="subtitle" data-typed-text="第十一讲-SVM"></span>
           
         </div>
 
@@ -229,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          70 字
+          232 字
         
       </span>
     
@@ -240,7 +242,7 @@
         
         
         
-          1 分钟
+          2 分钟
         
       </span>
     
@@ -352,15 +354,6 @@
     
       
       
-        <a href="/2024/12/16/ji-qi-xue-xi/di-11-jiang-svm/" title="第11讲-SVM"
-           class="list-group-item list-group-item-action
-           active">
-          <span class="category-post">第11讲-SVM</span>
-        </a>
-      
-    
-      
-      
         <a href="/2024/10/23/ji-qi-xue-xi/di-qi-jiang-shen-jing-wang-luo/" title="第七讲_神经网络"
            class="list-group-item list-group-item-action
            ">
@@ -406,6 +399,15 @@
     
       
       
+        <a href="/2024/10/25/ji-qi-xue-xi/di-ba-jiang-optimization/" title="第八讲_Optimization"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">第八讲_Optimization</span>
+        </a>
+      
+    
+      
+      
         <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="list-group-item list-group-item-action">
           <span class="category-post">More...</span>
         </a>
@@ -428,15 +430,53 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">第11讲-SVM</h1>
+            <h1 id="seo-header">第十一讲-SVM</h1>
             
             
               <div class="markdown-body">
                 
                 <h2 id="支持向量机---最大化间隔问题">支持向量机---最大化间隔问题</h2>
-<p>找到分离各类数据点的最好的分界线（面），能够实现最大间隔</p>
-<p>每类中最近的点叫支持向量</p>
-<p>非支持向量到决策面的距离都是大于决策向量的</p>
+<p>支持向量机也是一个分类模型</p>
+<p>目的是找到分离各类数据点的最好的分界线（面），能够实现最大间隔（相对于支持向量来说）</p>
+<ul>
+<li>每类中最近的点叫支持向量</li>
+<li>非支持向量到决策面的距离都大于决策向量</li>
+</ul>
+<p><img src="https://pic.imgdb.cn/item/676e1234d0e0a243d4eb1ee7.png" srcset="/img/loading.gif" lazyload />
+<img src="https://pic.imgdb.cn/item/676e1248d0e0a243d4eb1eee.png" srcset="/img/loading.gif" lazyload /></p>
+<p>下面是一个例题，和课后作业的内容很像:</p>
+<p><img
+src="https://pic.imgdb.cn/item/676e14b2d0e0a243d4eb1fbd.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img
+src="https://pic.imgdb.cn/item/676e1507d0e0a243d4eb1fcc.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img
+src="https://pic.imgdb.cn/item/676e1738d0e0a243d4eb2080.png" srcset="/img/loading.gif" lazyload /></p>
+<h2 id="考试需要掌握的内容">考试需要掌握的内容：</h2>
+<h3 id="支持向量机中的核技巧the-kernel-trick">支持向量机中的核技巧（The
+Kernel Trick）</h3>
+<p><img
+src="https://pic.imgdb.cn/item/676e1112d0e0a243d4eb1e18.png" srcset="/img/loading.gif" lazyload /></p>
+<p>面对非线性数据，使用复杂的模型把低维的样本映射到高维中，以此来实现线性可分</p>
+<p><img
+src="https://pic.imgdb.cn/item/676e1158d0e0a243d4eb1e5d.png" srcset="/img/loading.gif" lazyload /></p>
+<p>结论：如果数据映射的维度越高，就越有可能实现线性可分！</p>
+<ul>
+<li>The more dimension ϕ(x) has, the more likely ϕ(x) is linearly
+separable！</li>
+</ul>
+<p>如果将 x 映射到无穷维，那么一定可以实现线性可分！</p>
+<p><img
+src="https://pic.imgdb.cn/item/676e1165d0e0a243d4eb1e8d.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="soft-margin-svm-and-hard-margin-svm">soft margin SVM and hard
+margin SVM</h3>
+<p>硬间隔SVM对于噪声过于敏感</p>
+<p>软间隔SVM</p>
+<p>Hinge loss</p>
+<figure>
+<img src="https://pic.imgdb.cn/item/676e1e4fd0e0a243d4eb22a5.png" srcset="/img/loading.gif" lazyload
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
+</figure>
 
                 
               </div>
@@ -475,8 +515,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>第11讲-SVM</div>
-      <div>http://jrhu0048.github.io/2024/12/16/ji-qi-xue-xi/di-11-jiang-svm/</div>
+      <div>第十一讲-SVM</div>
+      <div>http://jrhu0048.github.io/2024/12/16/ji-qi-xue-xi/di-shi-yi-jiang-svm/</div>
     </div>
     <div class="license-meta">
       
@@ -494,7 +534,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年12月22日</div>
+          <div>2024年12月27日</div>
         </div>
       
       

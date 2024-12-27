@@ -19,16 +19,16 @@
   <meta name="author" content="JR.HU">
   <meta name="keywords" content="">
   
-    <meta name="description" content="写在前面 记录一下非常好的博客讲解： [1] CNN 卷积神经网络 https:&#x2F;&#x2F;dorianzi.github.io&#x2F;2019&#x2F;04&#x2F;25&#x2F;CNN&#x2F; 卷积神经网络   上述图片引自：https:&#x2F;&#x2F;dorianzi.github.io&#x2F;2019&#x2F;04&#x2F;25&#x2F;CNN&#x2F; 卷积神经网络是为了处理图片而生的分类任务  全连接神经网络与卷积神经网络  为什么选择 卷积层神经网络 而不">
+    <meta name="description" content="写在前面 记录一下非常好的博客讲解： [1] CNN 卷积神经网络 https:&#x2F;&#x2F;dorianzi.github.io&#x2F;2019&#x2F;04&#x2F;25&#x2F;CNN&#x2F; 卷积神经网络   上述图片引自：https:&#x2F;&#x2F;dorianzi.github.io&#x2F;2019&#x2F;04&#x2F;25&#x2F;CNN&#x2F; 卷积神经网络是为了处理图片而生的分类任务  全连接神经网络与卷积神经网络 从卷积的角度理解全连接，从全连接的角">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第九讲_Convolutional neural networks">
 <meta property="og:url" content="http://jrhu0048.github.io/2024/10/25/ji-qi-xue-xi/di-jiu-jiang-convolutional-neural-networks/index.html">
 <meta property="og:site_name" content="CHARMMY">
-<meta property="og:description" content="写在前面 记录一下非常好的博客讲解： [1] CNN 卷积神经网络 https:&#x2F;&#x2F;dorianzi.github.io&#x2F;2019&#x2F;04&#x2F;25&#x2F;CNN&#x2F; 卷积神经网络   上述图片引自：https:&#x2F;&#x2F;dorianzi.github.io&#x2F;2019&#x2F;04&#x2F;25&#x2F;CNN&#x2F; 卷积神经网络是为了处理图片而生的分类任务  全连接神经网络与卷积神经网络  为什么选择 卷积层神经网络 而不">
+<meta property="og:description" content="写在前面 记录一下非常好的博客讲解： [1] CNN 卷积神经网络 https:&#x2F;&#x2F;dorianzi.github.io&#x2F;2019&#x2F;04&#x2F;25&#x2F;CNN&#x2F; 卷积神经网络   上述图片引自：https:&#x2F;&#x2F;dorianzi.github.io&#x2F;2019&#x2F;04&#x2F;25&#x2F;CNN&#x2F; 卷积神经网络是为了处理图片而生的分类任务  全连接神经网络与卷积神经网络 从卷积的角度理解全连接，从全连接的角">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic.imgdb.cn/item/6719eb2bd29ded1a8cb61503.jpg">
 <meta property="article:published_time" content="2024-10-25T12:17:54.000Z">
-<meta property="article:modified_time" content="2024-11-06T16:46:46.683Z">
+<meta property="article:modified_time" content="2024-12-26T10:15:32.056Z">
 <meta property="article:author" content="JR.HU">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://pic.imgdb.cn/item/6719eb2bd29ded1a8cb61503.jpg">
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          916 字
+          1.1k 字
         
       </span>
     
@@ -242,7 +242,7 @@
         
         
         
-          8 分钟
+          10 分钟
         
       </span>
     
@@ -306,13 +306,20 @@
 <p>卷积神经网络是为了处理图片而生的分类任务 <img
 src="https://pic.imgdb.cn/item/671b8d08d29ded1a8c2cce31.png" srcset="/img/loading.gif" lazyload /></p>
 <h3 id="全连接神经网络与卷积神经网络">全连接神经网络与卷积神经网络</h3>
+<p>从卷积的角度理解全连接，从全连接的角度理解卷积</p>
 <p><img
 src="https://pic.imgdb.cn/item/671b8fadd29ded1a8c2fa727.png" srcset="/img/loading.gif" lazyload /></p>
-<p>为什么选择 卷积层神经网络 而不用 全连接神经网络 <img
+<p>为什么选择 卷积层神经网络 而不用 全连接神经网络</p>
+<p><img
 src="https://pic.imgdb.cn/item/671b9456d29ded1a8c33c16c.png" srcset="/img/loading.gif" lazyload /></p>
-<p>卷积核的作用：减少了计算量、减少参数</p>
+<p>卷积核的作用（优点）：①减少了计算量；②减少参数</p>
+<p>对于卷积神经网络来说，计算一个输出涉及到的输入数量只与卷积核的大小有关；
+对于全连接神经网络来说，计算一个输出需要所有的输出参与计算，大大增大了计算量</p>
 <h4
-id="卷积神经网络一般使用的激活函数为relu为什么">卷积神经网络一般使用的激活函数为Relu，为什么？</h4>
+id="卷积神经网络一般使用的激活函数为-relu为什么">卷积神经网络一般使用的激活函数为
+Relu，为什么？</h4>
+<p>卷积神经网络使用的激活函数为 relu，前面学过的神经网络使用的激活函数为
+sigmoid，最后一层使用了sotfmax</p>
 <p>ReLU（Rectified Linear Unit）函数的数学表达式非常简单，定义如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs math">f(x) = \max(0, x) <br></code></pre></td></tr></table></figure>
 <p>这个表达式的含义是：</p>
@@ -336,12 +343,14 @@ id="卷积神经网络一般使用的激活函数为relu为什么">卷积神经�
 <li>从生物学的角度来看，神经元要么活跃要么不活跃，这种二元行为与ReLU函数的行为相似，因此ReLU也符合大脑神经元工作的某些假设。</li>
 </ul></li>
 </ul>
-<p>从全连接的角度理解卷积神经网络：稀疏的全连接神经网络 <img
+<p>从全连接的角度理解卷积神经网络：稀疏的全连接神经网络：</p>
+<p>不管是全连接神经网络还是卷积神经网络，本质上都是多元复合函数！ <img
 src="https://pic.imgdb.cn/item/671b9af4d29ded1a8c39fa2f.png" srcset="/img/loading.gif" lazyload /></p>
 <p>根据卷积核以及输入图片的大小判断输出图片大小的公式： <img
 src="https://pic.imgdb.cn/item/671b9d2dd29ded1a8c3bdc8d.png" srcset="/img/loading.gif" lazyload /></p>
-<p><img
-src="https://pic.imgdb.cn/item/671b9cc6d29ded1a8c3b8a66.png" srcset="/img/loading.gif" lazyload /></p>
+<p>Padding 操作：</p>
+<p>卷积操作会导致输出图片的大小发生变化，所以需要padding操作：让输入尺寸与输出尺寸保持一致
+<img src="https://pic.imgdb.cn/item/671b9cc6d29ded1a8c3b8a66.png" srcset="/img/loading.gif" lazyload /></p>
 <p>计算量的大小比较： <img
 src="https://pic.imgdb.cn/item/671b9f81d29ded1a8c3def5b.png" srcset="/img/loading.gif" lazyload /> <img
 src="https://pic.imgdb.cn/item/671ba02ed29ded1a8c3e8e70.png" srcset="/img/loading.gif" lazyload /></p>
@@ -436,7 +445,7 @@ src="https://pic.imgdb.cn/item/671c9178d29ded1a8cec5bcf.png" srcset="/img/loadin
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年11月7日</div>
+          <div>2024年12月26日</div>
         </div>
       
       
