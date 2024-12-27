@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>第十二讲 ensemble learning</title>
+      <link href="/2024/12/27/ji-qi-xue-xi/di-shi-er-jiang-ensemble-learning/"/>
+      <url>/2024/12/27/ji-qi-xue-xi/di-shi-er-jiang-ensemble-learning/</url>
+      
+        <content type="html"><![CDATA[<h2 id="ensemble-learning">Ensemble learning</h2><h3 id="bagging">bagging</h3><p>bagging 主要实现的效果是降低模型的高方差</p><p>类似并行决策模型</p><p><imgsrc="https://pic.imgdb.cn/item/676e6a82d0e0a243d4eb71fc.png" /></p><p>Bagging is ineffective when the model is too simple with a smallnumber of parameters</p><h3 id="boosting">boosting</h3><p>boosting 主要实现的效果是降低模型的高偏差</p><p>类似串行决策模型</p><p>Boosting trains weak learners one after one to solve the problem stepby step</p><h3 id="adaboost">AdaBoost</h3><p>AdaBoost (Adaptive Boosting) is a famous boosting approach</p><p><imgsrc="https://pic.imgdb.cn/item/676e6d36d0e0a243d4eb7a38.png" /></p><p><imgsrc="https://pic.imgdb.cn/item/676e6e5fd0e0a243d4eb7ee0.png" /></p><p><imgsrc="https://pic.imgdb.cn/item/676e7279d0e0a243d4eb8c76.png" /></p><p><imgsrc="https://pic.imgdb.cn/item/676e85fcd0e0a243d4ebb165.png" /></p><p><imgsrc="https://pic.imgdb.cn/item/676e860bd0e0a243d4ebb177.png" /></p><p><imgsrc="https://pic.imgdb.cn/item/676e8629d0e0a243d4ebb19c.png" /></p><p><imgsrc="https://pic.imgdb.cn/item/676e8635d0e0a243d4ebb1b0.png" /></p><p>adaboost有个例题，需要看一下，熟悉计算过程：</p><ul><li>对于每个弱学习器，先计算错误率</li><li>根据错误率计算模型权重 α</li><li>根据模型权重 α 计算各个参数的权重</li><li>循环</li></ul><p>集成学习总结：bagging 和 boosting</p><p><imgsrc="https://pic.imgdb.cn/item/676e8e11d0e0a243d4ebbde9.png" /></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>第十一讲-SVM</title>
       <link href="/2024/12/16/ji-qi-xue-xi/di-shi-yi-jiang-svm/"/>
       <url>/2024/12/16/ji-qi-xue-xi/di-shi-yi-jiang-svm/</url>

@@ -19,25 +19,25 @@
   <meta name="author" content="JR.HU">
   <meta name="keywords" content="">
   
-    <meta name="description" content="支持向量机---最大化间隔问题 支持向量机也是一个分类模型 目的是找到分离各类数据点的最好的分界线（面），能够实现最大间隔（相对于支持向量来说）  每类中最近的点叫支持向量 非支持向量到决策面的距离都大于决策向量    下面是一个例题，和课后作业的内容很像:    考试需要掌握的内容： 支持向量机中的核技巧（The Kernel Trick）  面对非线性数据，使">
+    <meta name="description" content="Ensemble learning bagging bagging 主要实现的效果是降低模型的高方差 类似并行决策模型  Bagging is ineffective when the model is too simple with a small number of parameters boosting boosting 主要实现的效果是降低模型的高偏差 类似串行决策模型">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第十一讲-SVM">
-<meta property="og:url" content="http://jrhu0048.github.io/2024/12/16/ji-qi-xue-xi/di-shi-yi-jiang-svm/index.html">
+<meta property="og:title" content="第十二讲 ensemble learning">
+<meta property="og:url" content="http://jrhu0048.github.io/2024/12/27/ji-qi-xue-xi/di-shi-er-jiang-ensemble-learning/index.html">
 <meta property="og:site_name" content="CHARMMY">
-<meta property="og:description" content="支持向量机---最大化间隔问题 支持向量机也是一个分类模型 目的是找到分离各类数据点的最好的分界线（面），能够实现最大间隔（相对于支持向量来说）  每类中最近的点叫支持向量 非支持向量到决策面的距离都大于决策向量    下面是一个例题，和课后作业的内容很像:    考试需要掌握的内容： 支持向量机中的核技巧（The Kernel Trick）  面对非线性数据，使">
+<meta property="og:description" content="Ensemble learning bagging bagging 主要实现的效果是降低模型的高方差 类似并行决策模型  Bagging is ineffective when the model is too simple with a small number of parameters boosting boosting 主要实现的效果是降低模型的高偏差 类似串行决策模型">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://pic.imgdb.cn/item/676e555ad0e0a243d4eb4594.png">
-<meta property="article:published_time" content="2024-12-16T08:52:22.000Z">
-<meta property="article:modified_time" content="2024-12-27T07:21:35.166Z">
+<meta property="og:image" content="https://pic.imgdb.cn/item/676e66fbd0e0a243d4eb67ea.png">
+<meta property="article:published_time" content="2024-12-27T08:34:39.000Z">
+<meta property="article:modified_time" content="2024-12-27T11:26:00.093Z">
 <meta property="article:author" content="JR.HU">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://pic.imgdb.cn/item/676e555ad0e0a243d4eb4594.png">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/676e66fbd0e0a243d4eb67ea.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>第十一讲-SVM - CHARMMY</title>
+  <title>第十二讲 ensemble learning - CHARMMY</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -203,7 +203,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="第十一讲-SVM"></span>
+            <span id="subtitle" data-typed-text="第十二讲 ensemble learning"></span>
           
         </div>
 
@@ -219,8 +219,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-12-16 16:52" pubdate>
-          2024年12月16日 下午
+        <time datetime="2024-12-27 16:34" pubdate>
+          2024年12月27日 下午
         </time>
       </span>
     
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          232 字
+          117 字
         
       </span>
     
@@ -242,7 +242,7 @@
         
         
         
-          2 分钟
+          1 分钟
         
       </span>
     
@@ -294,130 +294,6 @@
 <div class="category-list">
   
   
-    
-    
-    
-    <div class="category row nomargin-x">
-      <a class="category-item 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="机器学习"
-        id="heading-61bb1751fd355596e307767d1927c855" role="tab" data-toggle="collapse" href="#collapse-61bb1751fd355596e307767d1927c855"
-        aria-expanded="true"
-      >
-        机器学习
-        <span class="list-group-count">(16)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse show" id="collapse-61bb1751fd355596e307767d1927c855"
-           role="tabpanel" aria-labelledby="heading-61bb1751fd355596e307767d1927c855">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/2024/05/01/hui-gui-xiao-bo-shen-jing-wang-luo/" title="回归—小波神经网络"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">回归—小波神经网络</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/10/10/ji-qi-xue-xi/ji-qi-xue-xi-shi-yan-5/" title="机器学习实验5"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">机器学习实验5</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/10/16/ji-qi-xue-xi/ji-qi-xue-xi-shi-yan-6/" title="机器学习实验6"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">机器学习实验6</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/10/23/ji-qi-xue-xi/ji-qi-xue-xi-shi-yan-7/" title="机器学习实验7"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">机器学习实验7</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/10/23/ji-qi-xue-xi/di-qi-jiang-shen-jing-wang-luo/" title="第七讲_神经网络"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">第七讲_神经网络</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/09/18/ji-qi-xue-xi/di-san-jiang-luo-ji-hui-gui/" title="第三讲_逻辑回归"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">第三讲_逻辑回归</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/10/25/ji-qi-xue-xi/di-jiu-jiang-convolutional-neural-networks/" title="第九讲_Convolutional neural networks"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">第九讲_Convolutional neural networks</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/09/11/ji-qi-xue-xi/di-er-jiang-xian-xing-hui-gui/" title="第二讲_线性回归"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">第二讲_线性回归</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/09/25/ji-qi-xue-xi/di-wu-jiang-duo-fen-lei-hui-gui/" title="第五讲_多分类回归"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">第五讲_多分类回归</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/10/25/ji-qi-xue-xi/di-ba-jiang-optimization/" title="第八讲_Optimization"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">第八讲_Optimization</span>
-        </a>
-      
-    
-      
-      
-        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="list-group-item list-group-item-action">
-          <span class="category-post">More...</span>
-        </a>
-        
-  </div>
-
-        
-      </div>
-    </div>
-  
 </div>
 
 
@@ -430,53 +306,50 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">第十一讲-SVM</h1>
+            <h1 id="seo-header">第十二讲 ensemble learning</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="支持向量机---最大化间隔问题">支持向量机---最大化间隔问题</h2>
-<p>支持向量机也是一个分类模型</p>
-<p>目的是找到分离各类数据点的最好的分界线（面），能够实现最大间隔（相对于支持向量来说）</p>
+                <h2 id="ensemble-learning">Ensemble learning</h2>
+<h3 id="bagging">bagging</h3>
+<p>bagging 主要实现的效果是降低模型的高方差</p>
+<p>类似并行决策模型</p>
+<p><img
+src="https://pic.imgdb.cn/item/676e6a82d0e0a243d4eb71fc.png" srcset="/img/loading.gif" lazyload /></p>
+<p>Bagging is ineffective when the model is too simple with a small
+number of parameters</p>
+<h3 id="boosting">boosting</h3>
+<p>boosting 主要实现的效果是降低模型的高偏差</p>
+<p>类似串行决策模型</p>
+<p>Boosting trains weak learners one after one to solve the problem step
+by step</p>
+<h3 id="adaboost">AdaBoost</h3>
+<p>AdaBoost (Adaptive Boosting) is a famous boosting approach</p>
+<p><img
+src="https://pic.imgdb.cn/item/676e6d36d0e0a243d4eb7a38.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img
+src="https://pic.imgdb.cn/item/676e6e5fd0e0a243d4eb7ee0.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img
+src="https://pic.imgdb.cn/item/676e7279d0e0a243d4eb8c76.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img
+src="https://pic.imgdb.cn/item/676e85fcd0e0a243d4ebb165.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img
+src="https://pic.imgdb.cn/item/676e860bd0e0a243d4ebb177.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img
+src="https://pic.imgdb.cn/item/676e8629d0e0a243d4ebb19c.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img
+src="https://pic.imgdb.cn/item/676e8635d0e0a243d4ebb1b0.png" srcset="/img/loading.gif" lazyload /></p>
+<p>adaboost有个例题，需要看一下，熟悉计算过程：</p>
 <ul>
-<li>每类中最近的点叫支持向量</li>
-<li>非支持向量到决策面的距离都大于决策向量</li>
+<li>对于每个弱学习器，先计算错误率</li>
+<li>根据错误率计算模型权重 α</li>
+<li>根据模型权重 α 计算各个参数的权重</li>
+<li>循环</li>
 </ul>
-<p><img src="https://pic.imgdb.cn/item/676e1234d0e0a243d4eb1ee7.png" srcset="/img/loading.gif" lazyload />
-<img src="https://pic.imgdb.cn/item/676e1248d0e0a243d4eb1eee.png" srcset="/img/loading.gif" lazyload /></p>
-<p>下面是一个例题，和课后作业的内容很像:</p>
+<p>集成学习总结：bagging 和 boosting</p>
 <p><img
-src="https://pic.imgdb.cn/item/676e14b2d0e0a243d4eb1fbd.png" srcset="/img/loading.gif" lazyload /></p>
-<p><img
-src="https://pic.imgdb.cn/item/676e1507d0e0a243d4eb1fcc.png" srcset="/img/loading.gif" lazyload /></p>
-<p><img
-src="https://pic.imgdb.cn/item/676e1738d0e0a243d4eb2080.png" srcset="/img/loading.gif" lazyload /></p>
-<h2 id="考试需要掌握的内容">考试需要掌握的内容：</h2>
-<h3 id="支持向量机中的核技巧the-kernel-trick">支持向量机中的核技巧（The
-Kernel Trick）</h3>
-<p><img
-src="https://pic.imgdb.cn/item/676e1112d0e0a243d4eb1e18.png" srcset="/img/loading.gif" lazyload /></p>
-<p>面对非线性数据，使用复杂的模型把低维的样本映射到高维中，以此来实现线性可分</p>
-<p><img
-src="https://pic.imgdb.cn/item/676e1158d0e0a243d4eb1e5d.png" srcset="/img/loading.gif" lazyload /></p>
-<p>结论：如果数据映射的维度越高，就越有可能实现线性可分！</p>
-<ul>
-<li>The more dimension ϕ(x) has, the more likely ϕ(x) is linearly
-separable！</li>
-</ul>
-<p>如果将 x 映射到无穷维，那么一定可以实现线性可分！</p>
-<p><img
-src="https://pic.imgdb.cn/item/676e1165d0e0a243d4eb1e8d.png" srcset="/img/loading.gif" lazyload /></p>
-<h3 id="soft-margin-svm-and-hard-margin-svm">soft margin SVM and hard
-margin SVM</h3>
-<p>硬间隔SVM对于噪声过于敏感</p>
-<p>软间隔SVM</p>
-<p>Hinge loss</p>
-<figure>
-<img src="https://pic.imgdb.cn/item/676e1e4fd0e0a243d4eb22a5.png" srcset="/img/loading.gif" lazyload
-alt="alt text" />
-<figcaption aria-hidden="true">alt text</figcaption>
-</figure>
+src="https://pic.imgdb.cn/item/676e8e11d0e0a243d4ebbde9.png" srcset="/img/loading.gif" lazyload /></p>
 
                 
               </div>
@@ -484,27 +357,6 @@ alt="alt text" />
             <hr/>
             <div>
               <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="category-chain-item">机器学习</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
   
   
 </div>
@@ -515,8 +367,8 @@ alt="alt text" />
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>第十一讲-SVM</div>
-      <div>http://jrhu0048.github.io/2024/12/16/ji-qi-xue-xi/di-shi-yi-jiang-svm/</div>
+      <div>第十二讲 ensemble learning</div>
+      <div>http://jrhu0048.github.io/2024/12/27/ji-qi-xue-xi/di-shi-er-jiang-ensemble-learning/</div>
     </div>
     <div class="license-meta">
       
@@ -528,7 +380,7 @@ alt="alt text" />
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年12月16日</div>
+          <div>2024年12月27日</div>
         </div>
       
       
@@ -565,18 +417,12 @@ alt="alt text" />
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/12/27/ji-qi-xue-xi/di-shi-er-jiang-ensemble-learning/" title="第十二讲 ensemble learning">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">第十二讲 ensemble learning</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/12/16/shu-zi-tu-xiang-chu-li/shu-zi-tu-xiang-chu-li-qi-mo-zong-jie/" title="数字图像处理期末总结">
-                        <span class="hidden-mobile">数字图像处理期末总结</span>
+                      <a href="/2024/12/16/ji-qi-xue-xi/di-shi-yi-jiang-svm/" title="第十一讲-SVM">
+                        <span class="hidden-mobile">第十一讲-SVM</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
