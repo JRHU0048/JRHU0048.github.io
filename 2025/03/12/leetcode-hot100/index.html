@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic1.imgdb.cn/item/67d195d388c538a9b5bc2941.png">
 <meta property="article:published_time" content="2025-03-12T09:21:41.000Z">
-<meta property="article:modified_time" content="2025-03-12T14:11:07.981Z">
+<meta property="article:modified_time" content="2025-03-12T14:55:27.736Z">
 <meta property="article:author" content="JR.HU">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://pic1.imgdb.cn/item/67d195d388c538a9b5bc2941.png">
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          546 字
+          747 字
         
       </span>
     
@@ -242,7 +242,7 @@
         
         
         
-          5 分钟
+          7 分钟
         
       </span>
     
@@ -400,6 +400,46 @@ array.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">moveZeroes</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-literal">None</span>:<br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        Do not return anything, modify nums in-place instead.</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        count = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> nums:<br>            <span class="hljs-keyword">if</span> i == <span class="hljs-number">0</span>:<br>                count += <span class="hljs-number">1</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(nums)):<br>            <span class="hljs-keyword">if</span> nums[i] != <span class="hljs-number">0</span>:<br>                <span class="hljs-keyword">continue</span><br>            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i+<span class="hljs-number">1</span>, <span class="hljs-built_in">len</span>(nums)):<br>                <span class="hljs-keyword">if</span> nums[j] != <span class="hljs-number">0</span>:<br>                    nums[i] = nums[j]<br>                    i += <span class="hljs-number">1</span> <br>        <span class="hljs-keyword">for</span> z <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(nums)-count, <span class="hljs-built_in">len</span>(nums)):<br>            nums[z] = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">return</span> nums<br></code></pre></td></tr></table></figure>
 <h2 id="answer-2-1">Answer 2:</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">moveZeroes</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-literal">None</span>:<br>        i0 = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(nums)):<br>            <span class="hljs-keyword">if</span> nums[i]:<br>                nums[i], nums[i0] = nums[i0], nums[i]<br>                i0 += <span class="hljs-number">1</span><br><span class="hljs-comment"># by：灵茶山艾府</span><br></code></pre></td></tr></table></figure>
+<h1 id="container-with-most-water">11. Container With Most Water</h1>
+<p>You are given an integer array <code>height</code> of length
+<code>n</code>. There are <code>n</code> vertical lines drawn such that
+the two endpoints of the <code>i</code>th line are <code>(i, 0)</code>
+and <code>(i, height[i])</code>.</p>
+<p>Find two lines that together with the x - axis form a container, such
+that the container contains the most water.</p>
+<p>Return the maximum amount of water a container can store.</p>
+<p>Notice that you may not slant the container.</p>
+<h2 id="example-1-1">Example 1:</h2>
+<p><img
+src="https://pic1.imgdb.cn/item/67d1966888c538a9b5bc296a.png" srcset="/img/loading.gif" lazyload /></p>
+<p><strong>Input</strong>: <code>height = [1,8,6,2,5,4,8,3,7]</code>
+<strong>Output</strong>: <code>49</code> <strong>Explanation</strong>:
+The above vertical lines are represented by the array
+<code>[1,8,6,2,5,4,8,3,7]</code>. In this case, the maximum area of
+water (the blue - shaded section) that the container can hold is
+<code>49</code>.</p>
+<h2 id="example-2-1">Example 2</h2>
+<p><strong>Input</strong>: <code>height = [1,1]</code>
+<strong>Output</strong>: <code>1</code></p>
+<h2 id="answer-1-2">Answer 1:</h2>
+<p>Brute-force search，NONONO <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">maxArea</span>(<span class="hljs-params">self, height: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:<br>        maxarea = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(height)):<br>            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i+<span class="hljs-number">1</span>, <span class="hljs-built_in">len</span>(height)):<br>                maxarea = <span class="hljs-built_in">max</span>(maxarea, (j-i)* <span class="hljs-built_in">min</span>(height[j],height[i]))<br>        <span class="hljs-keyword">return</span> maxarea<br></code></pre></td></tr></table></figure></p>
+<h2 id="answer-2-2">Answer 2:</h2>
+<p>Great !!! <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">maxArea</span>(<span class="hljs-params">self, height: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:<br>        i , j, maxarea = <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(height)-<span class="hljs-number">1</span>, <span class="hljs-number">0</span><br>        <span class="hljs-keyword">while</span> i &lt; j:<br>            <span class="hljs-keyword">if</span> height[i] &lt; height[j]:<br>                maxarea = <span class="hljs-built_in">max</span>(maxarea, (j-i) * height[i])<br>                i += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>:<br>                maxarea = <span class="hljs-built_in">max</span>(maxarea, (j-i) * height[j])<br>                j -= <span class="hljs-number">1</span><br>        <span class="hljs-keyword">return</span> maxarea<br></code></pre></td></tr></table></figure></p>
+<h1 id="sum">15. 3Sum</h1>
+<p>Given an integer array nums, return all the triplets [nums[i],
+nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] +
+nums[j] + nums[k] == 0.</p>
+<p>Notice that the solution set must not contain duplicate triplets.</p>
+<h2 id="example-1-2">Example 1:</h2>
+<p><strong>Input</strong>: nums = [-1,0,1,2,-1,-4]
+<strong>Output</strong>: [[-1,-1,2],[-1,0,1]]
+<strong>Explanation</strong>: nums[0] + nums[1] + nums[2] = (-1) + 0 + 1
+= 0. nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0. nums[0] + nums[3] +
+nums[4] = (-1) + 2 + (-1) = 0. The distinct triplets are [-1,0,1] and
+[-1,-1,2]. Notice that the order of the output and the order of the
+triplets does not matter.</p>
+<h2 id="answer-3">Answer:</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><br></code></pre></td></tr></table></figure>
 
                 
               </div>
