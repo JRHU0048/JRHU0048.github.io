@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic1.imgdb.cn/item/67d195d388c538a9b5bc2941.png">
 <meta property="article:published_time" content="2025-03-12T09:21:41.000Z">
-<meta property="article:modified_time" content="2025-03-13T03:08:41.322Z">
+<meta property="article:modified_time" content="2025-03-13T04:44:55.827Z">
 <meta property="article:author" content="JR.HU">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://pic1.imgdb.cn/item/67d195d388c538a9b5bc2941.png">
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          1.6k 字
         
       </span>
     
@@ -242,7 +242,7 @@
         
         
         
-          9 分钟
+          14 分钟
         
       </span>
     
@@ -435,10 +435,10 @@ nums[j] + nums[k] == 0.</p>
 <p><strong>Input</strong>: nums = [-1,0,1,2,-1,-4]</p>
 <p><strong>Output</strong>: [[-1,-1,2],[-1,0,1]]</p>
 <p><strong>Explanation</strong>: nums[0] + nums[1] + nums[2] = (-1) + 0
-+ 1 = 0.</p>
-<p>nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.</p>
-<p>nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.</p>
-<p>The distinct triplets are [-1,0,1] and [-1,-1,2].</p>
++ 1 = 0.<br />
+nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.<br />
+nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.<br />
+The distinct triplets are [-1,0,1] and [-1,-1,2].</p>
 <p>Notice that the order of the output and the order of the triplets
 does not matter.</p>
 <h2 id="answer-3">Answer:</h2>
@@ -487,7 +487,46 @@ The substring with start index = 1 is "ba", which is an anagram of
 "ab".<br />
 The substring with start index = 2 is "ab", which is an anagram of
 "ab".</p>
-<h2 id="answer-5">Answer:</h2>
+<p>考察点是滑动窗口，与前一题有点像</p>
+<h2 id="answer-1-3">Answer 1:</h2>
+<p>能够通过大部分样例的解法，比较笨 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">findAnagrams</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span>, p: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]:<br>        result = []<br>        length = <span class="hljs-built_in">len</span>(p)<br>        p = <span class="hljs-string">&quot;&quot;</span>.join(<span class="hljs-built_in">sorted</span>(p))<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(s)-length+<span class="hljs-number">1</span>):<br>            string = <span class="hljs-string">&quot;&quot;</span><br>            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(length):<br>                string += s[i+j]<br>            string = <span class="hljs-string">&quot;&quot;</span>.join(<span class="hljs-built_in">sorted</span>(string))<br>            <span class="hljs-keyword">if</span> string == p:<br>                result.append(i)<br>        <span class="hljs-keyword">return</span> result<br></code></pre></td></tr></table></figure></p>
+<h2 id="answer-2-3">Answer 2:</h2>
+<p>采用了定长滑动窗口的解法 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">findAnagrams</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span>, p: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]:<br>        result = []<br>        length = <span class="hljs-built_in">len</span>(p)<br>        cnt_p = Counter(p) <span class="hljs-comment"># Counter 用于统计可哈希对象的出现次数</span><br>        cnt_s = Counter()<br>        <span class="hljs-keyword">for</span> right, c <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(s):<br>            cnt_s[c]+=<span class="hljs-number">1</span><br>            left = right - length + <span class="hljs-number">1</span><br>            <span class="hljs-keyword">if</span> left &lt; <span class="hljs-number">0</span>:<br>                <span class="hljs-keyword">continue</span><br>            <span class="hljs-keyword">if</span> cnt_s == cnt_p:<br>                result.append(left)<br>            cnt_s[s[left]] -= <span class="hljs-number">1</span>  <span class="hljs-comment"># 因为定长滑动窗口，所以需要把左边的元素减掉</span><br>        <span class="hljs-keyword">return</span> result<br></code></pre></td></tr></table></figure></p>
+<h2 id="answer-3-1">Answer 3:</h2>
+<p>采用不定长滑动窗口，思路参考：by 灵茶山艾府</p>
+<p>枚举子串 <code>s'</code> 的右端点，如果发现 <code>s'</code>
+其中一种字母的出现次数<strong>大于</strong> <code>p</code>
+的这种字母的出现次数，则右移 <code>s'</code> 的左端点。如果发现
+<code>s'</code> 的长度等于 <code>p</code> 的长度，则说明 <code>s'</code>
+的每种字母的出现次数，和 <code>p</code> 的每种字母的出现次数都相同，那么
+<code>s'</code> 是 <code>p</code> 的异位词。</p>
+<p><strong>证明</strong>：内层循环结束后，<code>s'</code>
+的每种字母的出现次数，都小于等于 <code>p</code>
+的每种字母的出现次数。如果 <code>s'</code> 的其中一种字母的出现次数比
+<code>p</code> 的小，那么 <code>s'</code> 的长度必然小于 <code>p</code>
+的长度。所以只要 <code>s'</code> 的长度等于 <code>p</code>
+的长度，就说明 <code>s'</code> 的每种字母的出现次数，和 <code>p</code>
+的每种字母的出现次数都相同，<code>s'</code> 是 <code>p</code>
+的异位词，把 <code>s'</code> 左端点下标加入答案。</p>
+<p>代码实现时，可以把 <code>cntS</code> 和 <code>cntP</code> 合并成一个
+<code>cnt</code>： - 对于 <code>p</code> 的字母 <code>c</code>，把
+<code>cnt[p]</code> 加一。 - 对于 <code>s'</code> 的字母
+<code>c</code>，把 <code>cnt[c]</code> 减一。 - 如果
+<code>cnt[c] &lt; 0</code>，说明窗口中的字母 <code>c</code> 的个数比
+<code>p</code> 的多，右移左端点。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">findAnagrams</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span>, p: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]:<br>        result = []<br>        length = <span class="hljs-built_in">len</span>(p)<br>        cnt_p = Counter(p)<br>        cnt_s = Counter()<br>        left = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> right, c <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(s):<br>            cnt_s[c]+=<span class="hljs-number">1</span><br>            <span class="hljs-keyword">while</span> cnt_s[c] &gt; cnt_p[c]:<br>                cnt_s[s[left]] -= <span class="hljs-number">1</span><br>                left += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">if</span> right - left + <span class="hljs-number">1</span> == length:<br>                result.append(left)<br>        <span class="hljs-keyword">return</span> result<br></code></pre></td></tr></table></figure>
+<h1 id="subarray-sum-equals-k">560. Subarray Sum Equals K</h1>
+<p>Given an array of integers nums and an integer k, return the total
+number of subarrays whose sum equals to k.</p>
+<p>A subarray is a contiguous non-empty sequence of elements within an
+array.</p>
+<h2 id="example-1-5">Example 1:</h2>
+<p><strong>Input</strong>: nums = [1,1,1], k = 2<br />
+<strong>Output</strong>: 2</p>
+<h2 id="example-2-4">Example 2:</h2>
+<p><strong>Input</strong>: nums = [1,2,3], k = 3<br />
+<strong>Output</strong>: 2</p>
+<h2 id="answer-1-4">Answer 1:</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><br></code></pre></td></tr></table></figure>
 
                 
