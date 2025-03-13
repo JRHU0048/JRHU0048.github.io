@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic1.imgdb.cn/item/67d195d388c538a9b5bc2941.png">
 <meta property="article:published_time" content="2025-03-12T09:21:41.000Z">
-<meta property="article:modified_time" content="2025-03-13T02:33:46.828Z">
+<meta property="article:modified_time" content="2025-03-13T03:08:41.322Z">
 <meta property="article:author" content="JR.HU">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://pic1.imgdb.cn/item/67d195d388c538a9b5bc2941.png">
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          913 字
+          1k 字
         
       </span>
     
@@ -242,7 +242,7 @@
         
         
         
-          8 分钟
+          9 分钟
         
       </span>
     
@@ -457,7 +457,38 @@ Substring Without Repeating Characters</h1>
 <p><strong>Output</strong>: 1</p>
 <p><strong>Explanation</strong>: The answer is "b", with the length of
 1.</p>
+<h2 id="example-3">Example 3:</h2>
+<p><strong>Input</strong>: s = "pwwkew"</p>
+<p><strong>Output</strong>: 3</p>
+<p><strong>Explanation</strong>: The answer is "wke", with the length of
+3.</p>
+<p>Notice that the answer must be a substring, "pwke" is a subsequence
+and not a substring.</p>
 <h2 id="answer-4">Answer:</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">lengthOfLongestSubstring</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        result = left = <span class="hljs-number">0</span><br>        count  = defaultdict(<span class="hljs-built_in">int</span>) <span class="hljs-comment"># 使用 defaultdict(int) 不需要预先检查键是否存在</span><br>        <span class="hljs-keyword">for</span> right, c <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(s):<br>            count[c]+=<span class="hljs-number">1</span><br>            <span class="hljs-keyword">while</span> count[c]&gt;<span class="hljs-number">1</span>:<br>                count[s[left]]-=<span class="hljs-number">1</span><br>                left+=<span class="hljs-number">1</span><br>            result = <span class="hljs-built_in">max</span>(result, right - left +<span class="hljs-number">1</span>)<br>        <span class="hljs-keyword">return</span> result<br></code></pre></td></tr></table></figure>
+<h1 id="find-all-anagrams-in-a-string">438. Find All Anagrams in a
+String</h1>
+<p>Given two strings s and p, return an array of all the start indices
+of p's anagrams in s. You may return the answer in any order.</p>
+<h2 id="example-1-4">Example 1:</h2>
+<p><strong>Input</strong>: s = "cbaebabacd", p = "abc"</p>
+<p><strong>Output</strong>: [0,6]</p>
+<p><strong>Explanation</strong>: The substring with start index = 0 is
+"cba", which is an anagram of "abc".<br />
+The substring with start index = 6 is "bac", which is an anagram of
+"abc".</p>
+<h2 id="example-2-3">Example 2:</h2>
+<p><strong>Input</strong>: s = "abab", p = "ab"</p>
+<p><strong>Output</strong>: [0,1,2]</p>
+<p><strong>Explanation</strong>:</p>
+<p>The substring with start index = 0 is "ab", which is an anagram of
+"ab".<br />
+The substring with start index = 1 is "ba", which is an anagram of
+"ab".<br />
+The substring with start index = 2 is "ab", which is an anagram of
+"ab".</p>
+<h2 id="answer-5">Answer:</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><br></code></pre></td></tr></table></figure>
 
                 
               </div>
