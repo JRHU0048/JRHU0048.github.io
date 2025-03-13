@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic1.imgdb.cn/item/67d195d388c538a9b5bc2941.png">
 <meta property="article:published_time" content="2025-03-12T09:21:41.000Z">
-<meta property="article:modified_time" content="2025-03-12T14:55:27.736Z">
+<meta property="article:modified_time" content="2025-03-13T02:24:17.232Z">
 <meta property="article:author" content="JR.HU">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://pic1.imgdb.cn/item/67d195d388c538a9b5bc2941.png">
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          747 字
+          886 字
         
       </span>
     
@@ -242,7 +242,7 @@
         
         
         
-          7 分钟
+          8 分钟
         
       </span>
     
@@ -439,7 +439,7 @@ nums[4] = (-1) + 2 + (-1) = 0. The distinct triplets are [-1,0,1] and
 [-1,-1,2]. Notice that the order of the output and the order of the
 triplets does not matter.</p>
 <h2 id="answer-3">Answer:</h2>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">threeSum</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]]:<br>        result = []<br>        nums = <span class="hljs-built_in">sorted</span>(nums)<br>        i = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(nums)-<span class="hljs-number">2</span>):<br>            <span class="hljs-keyword">if</span> i &gt; <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> nums[i] == nums[i-<span class="hljs-number">1</span>]:  <span class="hljs-comment"># i 是可以跳过重复数字的</span><br>                <span class="hljs-keyword">continue</span><br>            <span class="hljs-keyword">if</span> nums[i] + nums[i+<span class="hljs-number">1</span>] + nums[i+<span class="hljs-number">2</span>] &gt; <span class="hljs-number">0</span>: <span class="hljs-comment"># 优化1</span><br>                <span class="hljs-keyword">break</span><br>            <span class="hljs-keyword">if</span> nums[i] + nums[-<span class="hljs-number">1</span>] + nums[-<span class="hljs-number">2</span>] &lt; <span class="hljs-number">0</span>: <span class="hljs-comment"># 优化2</span><br>                <span class="hljs-keyword">continue</span><br>            k = i + <span class="hljs-number">1</span><br>            j = <span class="hljs-built_in">len</span>(nums)-<span class="hljs-number">1</span><br>            <span class="hljs-keyword">while</span> k &lt; j:  <span class="hljs-comment"># 剩下的问题是两数和</span><br>                <span class="hljs-keyword">if</span> nums[i] + nums[k] + nums[j] &lt; <span class="hljs-number">0</span>:<br>                    k += <span class="hljs-number">1</span><br>                <span class="hljs-keyword">elif</span> nums[i] + nums[k] + nums[j] &gt; <span class="hljs-number">0</span>:<br>                    j -= <span class="hljs-number">1</span><br>                <span class="hljs-keyword">else</span>:<br>                    result.append([nums[i], nums[k], nums[j]])<br>                    j -= <span class="hljs-number">1</span><br>                    <span class="hljs-keyword">while</span> k &lt; j <span class="hljs-keyword">and</span> nums[j] == nums[j+<span class="hljs-number">1</span>]:  <span class="hljs-comment"># j k 排除重复数字时，都是和考虑过的数字比较！！！</span><br>                        j -= <span class="hljs-number">1</span><br>                    k += <span class="hljs-number">1</span><br>                    <span class="hljs-keyword">while</span> k &lt; j <span class="hljs-keyword">and</span> nums[k] == nums[k-<span class="hljs-number">1</span>]:<br>                        k += <span class="hljs-number">1</span><br>        <span class="hljs-keyword">return</span> result<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -497,7 +497,7 @@ triplets does not matter.</p>
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年3月12日</div>
+          <div>2025年3月13日</div>
         </div>
       
       
