@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic1.imgdb.cn/item/67d195d388c538a9b5bc2941.png">
 <meta property="article:published_time" content="2025-03-12T09:21:41.000Z">
-<meta property="article:modified_time" content="2025-03-13T05:07:52.839Z">
+<meta property="article:modified_time" content="2025-03-13T08:06:55.425Z">
 <meta property="article:author" content="JR.HU">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://pic1.imgdb.cn/item/67d195d388c538a9b5bc2941.png">
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.7k 字
+          2k 字
         
       </span>
     
@@ -242,7 +242,7 @@
         
         
         
-          15 分钟
+          17 分钟
         
       </span>
     
@@ -528,9 +528,51 @@ array.<br />
 <h2 id="example-2-4">Example 2:</h2>
 <p><strong>Input</strong>: nums = [1,2,3], k = 3<br />
 <strong>Output</strong>: 2</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ada">问：为什么这题不适合用滑动窗口做？<br>答：滑动窗口需要满足单调性，当右端点元素进入窗口时，窗口元素和是不能减少的。本题 nums 包含负数，当负数进入窗口时，窗口左端点反而要向左移动，导致算法复杂度不是线性的。<br><span class="hljs-comment">---by：灵茶山艾府</span><br></code></pre></td></tr></table></figure>
+<p>在解决本题之前，需要练习前缀和模板题303!!!</p>
 <h2 id="answer-1-4">Answer 1:</h2>
 <p>前缀和问题，使用前缀和字典记录前缀和的出现次数，然后遍历数组，计算当前前缀和减去目标值k的差值在字典中出现的次数，累加到结果中。
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">subarraySum</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>], k: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        prefix_sum = &#123;<span class="hljs-number">0</span>: <span class="hljs-number">1</span>&#125;  <span class="hljs-comment"># 前缀和字典，初始值为前缀和为0出现1次</span><br>        current_sum = <span class="hljs-number">0</span><br>        count = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> nums:<br>            current_sum += num<br>            <span class="hljs-keyword">if</span> current_sum - k <span class="hljs-keyword">in</span> prefix_sum:<br>                count += prefix_sum[current_sum - k]<br>            prefix_sum[current_sum] = prefix_sum.get(current_sum, <span class="hljs-number">0</span>) + <span class="hljs-number">1</span><br>        <span class="hljs-keyword">return</span> count<br></code></pre></td></tr></table></figure></p>
+<h2 id="answer-2-4">Answer 2:</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">subarraySum</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>], k: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        fsum = [<span class="hljs-number">0</span>] * (<span class="hljs-built_in">len</span>(nums) + <span class="hljs-number">1</span>)<br>        ans = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> index, n <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(nums):<br>            fsum[index+<span class="hljs-number">1</span>] = fsum[index] + n<br>        cnt = defaultdict(<span class="hljs-built_in">int</span>)<br>        <span class="hljs-keyword">for</span> s <span class="hljs-keyword">in</span> fsum:<br>            ans += cnt[s-k]<br>            cnt[s] += <span class="hljs-number">1</span><br>        <span class="hljs-keyword">return</span> ans<br></code></pre></td></tr></table></figure>
+<h2 id="answer-3-2">Answer 3:</h2>
+<p>还可以优化成一次遍历即可实现： <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">subarraySum</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>], k: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        fsum = [<span class="hljs-number">0</span>] * (<span class="hljs-built_in">len</span>(nums) + <span class="hljs-number">1</span>)<br>        ans = <span class="hljs-number">0</span><br>        cnt = defaultdict(<span class="hljs-built_in">int</span>)<br>        cnt[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span><br>        s = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> n <span class="hljs-keyword">in</span> nums:<br>            s += n<br>            ans += cnt[s-k]<br>            cnt[s] += <span class="hljs-number">1</span><br>        <span class="hljs-keyword">return</span> ans<br></code></pre></td></tr></table></figure></p>
+<h1 id="range-sum-query---immutable">303. Range Sum Query -
+Immutable</h1>
+<p>Given an integer array <code>nums</code>, handle multiple queries of
+the following type:</p>
+<ol type="1">
+<li>Calculate the <strong>sum</strong> of the elements of
+<code>nums</code> between indices <code>left</code> and
+<code>right</code> <strong>inclusive</strong> where
+<code>left &lt;= right</code>.</li>
+</ol>
+<p>Implement the <code>NumArray</code> class:</p>
+<ul>
+<li><code>NumArray(int[] nums)</code> Initializes the object with the
+integer array <code>nums</code>.</li>
+<li><code>int sumRange(int left, int right)</code> Returns the
+<strong>sum</strong> of the elements of <code>nums</code> between
+indices <code>left</code> and <code>right</code>
+<strong>inclusive</strong> (i.e.
+<code>nums[left] + nums[left + 1] + ... + nums[right]</code>).</li>
+</ul>
+<h2 id="example-1-6">Example 1:</h2>
+<p><strong>Input</strong><br />
+["NumArray", "sumRange", "sumRange", "sumRange"] [[-2, 0, 3, -5, 2, -1],
+[0, 2], [2, 5], [0, 5]]</p>
+<p><strong>Output</strong><br />
+[null, 1, -1, -3]</p>
+<p><strong>Explanation</strong><br />
+NumArray numArray = new NumArray([-2, 0, 3, -5, 2, -1]);<br />
+numArray.sumRange(0, 2); // return (-2) + 0 + 3 = 1<br />
+numArray.sumRange(2, 5); // return 3 + (-5) + 2 + (-1) = -1<br />
+numArray.sumRange(0, 5); // return (-2) + 0 + 3 + (-5) + 2 + (-1) =
+-3</p>
+<p>303连题目都看不懂。。。绝了。。。</p>
+<h2 id="answer-1-5">Answer 1:</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">NumArray</span>:<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>):<br>        self.fsum = [<span class="hljs-number">0</span>] * (<span class="hljs-built_in">len</span>(nums) + <span class="hljs-number">1</span>)<br>        <span class="hljs-keyword">for</span> i, n <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(nums):<br>            self.fsum[i+<span class="hljs-number">1</span>] = self.fsum[i] + n<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">sumRange</span>(<span class="hljs-params">self, left: <span class="hljs-built_in">int</span>, right: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        <span class="hljs-keyword">return</span> self.fsum[right+<span class="hljs-number">1</span>] - self.fsum[left]<br><br><span class="hljs-comment"># Your NumArray object will be instantiated and called as such:</span><br><span class="hljs-comment"># obj = NumArray(nums)</span><br><span class="hljs-comment"># param_1 = obj.sumRange(left,right)</span><br></code></pre></td></tr></table></figure>
+<p>303做完再回去看560应该就能看懂了</p>
 
                 
               </div>
