@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic1.imgdb.cn/item/67d195d388c538a9b5bc2941.png">
 <meta property="article:published_time" content="2025-03-12T09:21:41.000Z">
-<meta property="article:modified_time" content="2025-03-17T03:17:23.422Z">
+<meta property="article:modified_time" content="2025-03-17T08:34:55.924Z">
 <meta property="article:author" content="JR.HU">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://pic1.imgdb.cn/item/67d195d388c538a9b5bc2941.png">
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.8k 字
+          3.7k 字
         
       </span>
     
@@ -242,7 +242,7 @@
         
         
         
-          24 分钟
+          31 分钟
         
       </span>
     
@@ -650,6 +650,75 @@ src="https://pic1.imgdb.cn/item/67d7851f88c538a9b5bf75f6.png" srcset="/img/loadi
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">setZeroes</span>(<span class="hljs-params">self, matrix: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]]</span>) -&gt; <span class="hljs-literal">None</span>:<br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        Do not return anything, modify matrix in-place instead.</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        m = <span class="hljs-built_in">len</span>(matrix)<br>        n = <span class="hljs-built_in">len</span>(matrix[<span class="hljs-number">0</span>])<br>        temp = [<span class="hljs-number">0</span>]*(m*n)<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m):<br>            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>                <span class="hljs-keyword">if</span> matrix[i][j] == <span class="hljs-number">0</span>:<br>                    temp[i*n+j] = <span class="hljs-number">1</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m*n):<br>            <span class="hljs-keyword">if</span> temp[i] == <span class="hljs-number">1</span>:<br>                M = <span class="hljs-built_in">int</span>(i / n)<br>                N = <span class="hljs-built_in">int</span>(i % n)<br>                <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>                    matrix[M][j] = <span class="hljs-number">0</span><br>                <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m):<br>                    matrix[k][N] = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">return</span> matrix<br></code></pre></td></tr></table></figure></p>
 <h2 id="answer-2-6">Answer 2:</h2>
 <p>官方解法，可读性要更强一点 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">setZeroes</span>(<span class="hljs-params">self, matrix: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]]</span>) -&gt; <span class="hljs-literal">None</span>:<br>        m, n = <span class="hljs-built_in">len</span>(matrix), <span class="hljs-built_in">len</span>(matrix[<span class="hljs-number">0</span>])<br>        row, col = [<span class="hljs-literal">False</span>] * m, [<span class="hljs-literal">False</span>] * n<br><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m):<br>            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>                <span class="hljs-keyword">if</span> matrix[i][j] == <span class="hljs-number">0</span>:<br>                    row[i] = col[j] = <span class="hljs-literal">True</span><br>        <br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m):<br>            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>                <span class="hljs-keyword">if</span> row[i] <span class="hljs-keyword">or</span> col[j]:<br>                    matrix[i][j] = <span class="hljs-number">0</span><br>作者：力扣官方题解<br></code></pre></td></tr></table></figure></p>
+<h1 id="p1047-noip-2005-普及组-校门外的树">P1047 [NOIP 2005 普及组]
+校门外的树</h1>
+<h2 id="题目描述">题目描述</h2>
+<p>某校大门外长度为 <span class="math inline">\(l\)</span>
+的马路上有一排树，每两棵相邻的树之间的间隔都是 <span
+class="math inline">\(1\)</span>
+米。我们可以把马路看成一个数轴，马路的一端在数轴 <span
+class="math inline">\(0\)</span> 的位置，另一端在 <span
+class="math inline">\(l\)</span> 的位置；数轴上的每个整数点，即 <span
+class="math inline">\(0,1,2,\dots,l\)</span>，都种有一棵树。</p>
+<p>由于马路上有一些区域要用来建地铁。这些区域用它们在数轴上的起始点和终止点表示。已知任一区域的起始点和终止点的坐标都是整数，区域之间可能有重合的部分。现在要把这些区域中的树（包括区域端点处的两棵树）移走。你的任务是计算将这些树都移走后，马路上还有多少棵树。</p>
+<h2 id="输入格式">输入格式</h2>
+<p>第一行有两个整数，分别表示马路的长度 <span
+class="math inline">\(l\)</span> 和区域的数目 <span
+class="math inline">\(m\)</span>。</p>
+<p>接下来 <span class="math inline">\(m\)</span> 行，每行两个整数 <span
+class="math inline">\(u,
+v\)</span>，表示一个区域的起始点和终止点的坐标。</p>
+<h2 id="输出格式">输出格式</h2>
+<p>输出一行一个整数，表示将这些树都移走后，马路上剩余的树木数量。</p>
+<h2 id="输入输出样例-1">输入输出样例 #1</h2>
+<h3 id="输入-1">输入 #1</h3>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">500 </span><span class="hljs-number">3</span><br><span class="hljs-symbol">150 </span><span class="hljs-number">300</span><br><span class="hljs-symbol">100 </span><span class="hljs-number">200</span><br><span class="hljs-symbol">470 </span><span class="hljs-number">471</span><br></code></pre></td></tr></table></figure>
+<h3 id="输出-1">输出 #1</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">298<br></code></pre></td></tr></table></figure>
+<h2 id="说明提示">说明/提示</h2>
+<p><strong>【数据范围】</strong></p>
+<ul>
+<li>对于 <span class="math inline">\(20\%\)</span>
+的数据，保证区域之间没有重合的部分。</li>
+<li>对于 <span class="math inline">\(100\%\)</span> 的数据，保证 <span
+class="math inline">\(1 \leq l \leq 10^4\)</span>，<span
+class="math inline">\(1 \leq m \leq 100\)</span>，<span
+class="math inline">\(0 \leq u \leq v \leq l\)</span>。</li>
+</ul>
+<p><strong>【题目来源】</strong></p>
+<p>NOIP 2005 普及组第二题</p>
+<h2 id="answer-1-11">Answer 1:</h2>
+<p>第一遍，将路上的所有树打上标记，表示这个点没有被访问过。<br />
+第二遍，读入区间的头和尾，从这个区间的头开始循环，到尾结束，标记为访问过。
+第三遍，顺序访问路上的树，只要没访问过，计数加1，这样就求出了路上所有还存在的树的数目。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python">l,m = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>,<span class="hljs-built_in">input</span>().split()))<br>ans = [<span class="hljs-number">1</span>] * (l+<span class="hljs-number">1</span>)<br><span class="hljs-comment"># a = b = 0</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m):<br>    a,b = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))<br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(a, b + <span class="hljs-number">1</span>):<br>        ans[j] = <span class="hljs-number">0</span><br>result = <span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(l+<span class="hljs-number">1</span>):<br>    result += ans[i]<br><span class="hljs-built_in">print</span>(result)<br></code></pre></td></tr></table></figure>
+<h1 id="p1085-noip-2004-普及组-不高兴的津津">P1085 [NOIP 2004 普及组]
+不高兴的津津</h1>
+<h2 id="题目描述-1">题目描述</h2>
+<p>津津上初中了。妈妈认为津津应该更加用功学习，所以津津除了上学之外，还要参加妈妈为她报名的各科复习班。另外每周妈妈还会送她去学习朗诵、舞蹈和钢琴。但是津津如果一天上课超过八个小时就会不高兴，而且上得越久就会越不高兴。假设津津不会因为其它事不高兴，并且她的不高兴不会持续到第二天。请你帮忙检查一下津津下周的日程安排，看看下周她会不会不高兴；如果会的话，哪天最不高兴。</p>
+<h2 id="输入格式-1">输入格式</h2>
+<p>输入包括 <span class="math inline">\(7\)</span>
+行数据，分别表示周一到周日的日程安排。每行包括两个小于 <span
+class="math inline">\(10\)</span>
+的非负整数，用空格隔开，分别表示津津在学校上课的时间和妈妈安排她上课的时间。</p>
+<h2 id="输出格式-1">输出格式</h2>
+<p>一个数字。如果不会不高兴则输出 <span
+class="math inline">\(0\)</span>，如果会则输出最不高兴的是周几（用 <span
+class="math inline">\(1, 2, 3, 4, 5, 6, 7\)</span>
+分别表示周一，周二，周三，周四，周五，周六，周日）。如果有两天或两天以上不高兴的程度相当，则输出时间最靠前的一天。</p>
+<h2 id="输入输出样例-1-1">输入输出样例 #1</h2>
+<h3 id="输入-1-1">输入 #1</h3>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">5 </span><span class="hljs-number">3</span><br><span class="hljs-symbol">6 </span><span class="hljs-number">2</span><br><span class="hljs-symbol">7 </span><span class="hljs-number">2</span><br><span class="hljs-symbol">5 </span><span class="hljs-number">3</span><br><span class="hljs-symbol">5 </span><span class="hljs-number">4</span><br><span class="hljs-symbol">0 </span><span class="hljs-number">4</span><br><span class="hljs-symbol">0 </span><span class="hljs-number">6</span><br></code></pre></td></tr></table></figure>
+<h3 id="输出-1-1">输出 #1</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">3<br></code></pre></td></tr></table></figure>
+<h2 id="说明提示-1">说明/提示</h2>
+<p>NOIP2004 普及组第 1 题</p>
+<ul>
+<li>2021-10-27：增加一组 hack 数据</li>
+<li>2022-06-05：又增加一组 hack 数据</li>
+</ul>
+<h2 id="answer-1-12">Answer 1:</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python">ans = <span class="hljs-number">0</span><br><span class="hljs-built_in">id</span> = <span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">7</span>):<br>    a, b = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))<br>    <span class="hljs-keyword">if</span> a+b &gt; <span class="hljs-number">8</span>:<br>        <span class="hljs-keyword">if</span> ans &lt; a+b:<br>            ans = a+b<br>            <span class="hljs-built_in">id</span> = i<br><span class="hljs-keyword">if</span> ans != <span class="hljs-number">0</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-built_in">id</span>+<span class="hljs-number">1</span>)<br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;0&quot;</span>)<br></code></pre></td></tr></table></figure>
 
                 
               </div>
