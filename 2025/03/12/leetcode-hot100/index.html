@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic1.imgdb.cn/item/67d195d388c538a9b5bc2941.png">
 <meta property="article:published_time" content="2025-03-12T09:21:41.000Z">
-<meta property="article:modified_time" content="2025-03-17T08:34:55.924Z">
+<meta property="article:modified_time" content="2025-03-17T14:06:09.200Z">
 <meta property="article:author" content="JR.HU">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://pic1.imgdb.cn/item/67d195d388c538a9b5bc2941.png">
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.7k 字
+          4.6k 字
         
       </span>
     
@@ -242,7 +242,7 @@
         
         
         
-          31 分钟
+          38 分钟
         
       </span>
     
@@ -719,6 +719,90 @@ class="math inline">\(1, 2, 3, 4, 5, 6, 7\)</span>
 </ul>
 <h2 id="answer-1-12">Answer 1:</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python">ans = <span class="hljs-number">0</span><br><span class="hljs-built_in">id</span> = <span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">7</span>):<br>    a, b = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))<br>    <span class="hljs-keyword">if</span> a+b &gt; <span class="hljs-number">8</span>:<br>        <span class="hljs-keyword">if</span> ans &lt; a+b:<br>            ans = a+b<br>            <span class="hljs-built_in">id</span> = i<br><span class="hljs-keyword">if</span> ans != <span class="hljs-number">0</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-built_in">id</span>+<span class="hljs-number">1</span>)<br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;0&quot;</span>)<br></code></pre></td></tr></table></figure>
+<h1 id="p1089-noip-2004-提高组-津津的储蓄计划">P1089 [NOIP 2004 提高组]
+津津的储蓄计划</h1>
+<h2 id="题目描述-2">题目描述</h2>
+<p>津津的零花钱一直都是自己管理。每个月的月初妈妈给津津 <span
+class="math inline">\(300\)</span>
+元钱，津津会预算这个月的花销，并且总能做到实际花销和预算的相同。</p>
+<p>为了让津津学习如何储蓄，妈妈提出，津津可以随时把整百的钱存在她那里，到了年末她会加上
+<span class="math inline">\(20\%\)</span>
+还给津津。因此津津制定了一个储蓄计划：每个月的月初，在得到妈妈给的零花钱后，如果她预计到这个月的月末手中还会有多于
+<span class="math inline">\(100\)</span> 元或恰好 <span
+class="math inline">\(100\)</span>
+元，她就会把整百的钱存在妈妈那里，剩余的钱留在自己手中。</p>
+<p>例如 <span class="math inline">\(11\)</span>月初津津手中还有 <span
+class="math inline">\(83\)</span> 元，妈妈给了津津 <span
+class="math inline">\(300\)</span> 元。津津预计<span
+class="math inline">\(11\)</span>月的花销是 <span
+class="math inline">\(180\)</span> 元，那么她就会在妈妈那里存 <span
+class="math inline">\(200\)</span> 元，自己留下 <span
+class="math inline">\(183\)</span> 元。到了 <span
+class="math inline">\(11\)</span> 月月末，津津手中会剩下 <span
+class="math inline">\(3\)</span> 元钱。</p>
+<p>津津发现这个储蓄计划的主要风险是，存在妈妈那里的钱在年末之前不能取出。有可能在某个月的月初，津津手中的钱加上这个月妈妈给的钱，不够这个月的原定预算。如果出现这种情况，津津将不得不在这个月省吃俭用，压缩预算。</p>
+<p>现在请你根据 <span class="math inline">\(2004\)</span> 年 <span
+class="math inline">\(1\)</span> 月到 <span
+class="math inline">\(12\)</span>
+月每个月津津的预算，判断会不会出现这种情况。如果不会，计算到 <span
+class="math inline">\(2004\)</span> 年年末，妈妈将津津平常存的钱加上
+<span class="math inline">\(20\%\)</span>
+还给津津之后，津津手中会有多少钱。</p>
+<h2 id="输入格式-2">输入格式</h2>
+<p><span class="math inline">\(12\)</span> 行数据，每行包含一个小于
+<span class="math inline">\(350\)</span> 的非负整数，分别表示 <span
+class="math inline">\(1\)</span> 月到 <span
+class="math inline">\(12\)</span> 月津津的预算。</p>
+<h2 id="输出格式-2">输出格式</h2>
+<p>一个整数。如果储蓄计划实施过程中出现某个月钱不够用的情况，输出 <span
+class="math inline">\(-X\)</span>，<span
+class="math inline">\(X\)</span> 表示出现这种情况的第一个月；否则输出到
+<span class="math inline">\(2004\)</span> 年年末津津手中会有多少钱。</p>
+<p>注意，洛谷不需要进行文件输入输出，而是标准输入输出。</p>
+<h2 id="输入输出样例-1-2">输入输出样例 #1</h2>
+<h3 id="输入-1-2">输入 #1</h3>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-number">290</span><br><span class="hljs-number">230</span><br><span class="hljs-number">280</span><br><span class="hljs-number">200</span><br><span class="hljs-number">300</span><br><span class="hljs-number">170</span><br><span class="hljs-number">340</span><br><span class="hljs-symbol">50 </span><br><span class="hljs-symbol">90 </span><br><span class="hljs-symbol">80 </span><br><span class="hljs-number">200</span><br><span class="hljs-number">60</span><br></code></pre></td></tr></table></figure>
+<h3 id="输出-1-2">输出 #1</h3>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs diff"><span class="hljs-deletion">-7</span><br></code></pre></td></tr></table></figure>
+<h2 id="输入输出样例-2">输入输出样例 #2</h2>
+<h3 id="输入-2">输入 #2</h3>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">290 </span><br><span class="hljs-symbol">230 </span><br><span class="hljs-symbol">280 </span><br><span class="hljs-symbol">200 </span><br><span class="hljs-symbol">300 </span><br><span class="hljs-symbol">170 </span><br><span class="hljs-symbol">330 </span><br><span class="hljs-symbol">50 </span><br><span class="hljs-symbol">90 </span><br><span class="hljs-symbol">80 </span><br><span class="hljs-symbol">200 </span><br><span class="hljs-number">60</span><br></code></pre></td></tr></table></figure>
+<h3 id="输出-2">输出 #2</h3>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-number">1580</span><br></code></pre></td></tr></table></figure>
+<h2 id="answer-1-13">Answer 1:</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python">money = <span class="hljs-number">0</span><br>save = <span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">12</span>):<br>    a = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())<br>    money += <span class="hljs-number">300</span><br>    money -= a<br>    <span class="hljs-keyword">if</span> money &gt;= <span class="hljs-number">100</span>:<br>        save += ((money) // <span class="hljs-number">100</span>) * <span class="hljs-number">100</span><br>        money -= ((money) // <span class="hljs-number">100</span>) * <span class="hljs-number">100</span><br>    <span class="hljs-keyword">elif</span> money &lt; <span class="hljs-number">0</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;-<span class="hljs-subst">&#123;i+<span class="hljs-number">1</span>&#125;</span>&quot;</span>)<br>        <span class="hljs-keyword">break</span><br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-built_in">int</span>(save * <span class="hljs-number">1.2</span> + money))<br></code></pre></td></tr></table></figure>
+<h1 id="p1150-peter-的烟">P1150 Peter 的烟</h1>
+<h2 id="题目背景">题目背景</h2>
+<p><strong>温馨提醒：吸烟有害健康，请勿尝试吸烟！</strong></p>
+<h2 id="题目描述-3">题目描述</h2>
+<p>Peter 有 <span class="math inline">\(n\)</span>
+根烟，他每吸完一根烟就把烟蒂保存起来，<span
+class="math inline">\(k\)</span>（<span
+class="math inline">\(k&gt;1\)</span>）个烟蒂可以换一个新的烟，那么
+Peter 最终能吸到多少根烟呢？</p>
+<p>与某些脑筋急转弯不同的是，Peter
+并不能从异次元借到烟蒂，抽完后再还回去。</p>
+<h2 id="输入格式-3">输入格式</h2>
+<p>每组测试数据一行包括两个整数 <span class="math inline">\(n,
+k\)</span>（<span class="math inline">\(1 &lt; n, k \le
+10^8\)</span>）。</p>
+<h2 id="输出格式-3">输出格式</h2>
+<p>对于每组测试数据，输出一行包括一个整数表示最终烟的根数。</p>
+<h2 id="输入输出样例-1-3">输入输出样例 #1</h2>
+<h3 id="输入-1-3">输入 #1</h3>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">4 </span><span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
+<h3 id="输出-1-3">输出 #1</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">5<br></code></pre></td></tr></table></figure>
+<h2 id="输入输出样例-2-1">输入输出样例 #2</h2>
+<h3 id="输入-2-1">输入 #2</h3>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">10 </span><span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
+<h3 id="输出-2-1">输出 #2</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">14<br></code></pre></td></tr></table></figure>
+<h2 id="说明提示-2">说明/提示</h2>
+<p>对于 <span class="math inline">\(100\%\)</span> 的数据，<span
+class="math inline">\(1&lt;n, k \le 10^8\)</span>。</p>
+<h2 id="answer-1-14">Answer 1:</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python">n,k = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>,<span class="hljs-built_in">input</span>().split()))<br>ans = n<br><span class="hljs-keyword">if</span> k &gt; n:<br>    <span class="hljs-built_in">print</span>(n)<br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-keyword">while</span>(n&gt;=k):<br>        exchanged = n // k <br>        ans += exchanged<br>        n  = n % k + exchanged<br>    <span class="hljs-built_in">print</span>(ans)<br></code></pre></td></tr></table></figure>
 
                 
               </div>
