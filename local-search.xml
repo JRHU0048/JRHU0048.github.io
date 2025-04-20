@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Beyond Narrative Description: Generating Poetry from Images by Multi-Adversarial Training</title>
+    <link href="/2025/04/20/wen-xian-yue-du/beyond-narrative-description-generating-poetry-from-imagesby-multi-adversarial-training/"/>
+    <url>/2025/04/20/wen-xian-yue-du/beyond-narrative-description-generating-poetry-from-imagesby-multi-adversarial-training/</url>
+    
+    <content type="html"><![CDATA[<p>“Beyond Narrative Description: Generating Poetry from Images byMulti-Adversarial Training”由Bei Liu、Makoto P. Kato等人撰写。2018年bestpaper。</p><p>该论文提出了一种全新的方法，通过多对抗训练，<strong>从图像生成英文自由诗</strong>。此方法结合深度耦合视觉-诗歌嵌入模型与基于RNN的对抗训练，利用多判别器为策略梯度提供奖励，以实现从图像到诗歌的端到端生成。</p><ol type="1"><li><p><strong>研究背景与挑战</strong></p><ul><li><p><strong>跨模态问题</strong>：与从主题生成诗歌不同，从图像生成诗歌是跨模态问题。直接从图像提取关键词或字幕作为诗歌生成的种子会丢失大量信息，尤其是对诗歌生成很重要的诗意线索。</p></li><li><p><strong>主观任务特性</strong>：相比图像字幕和段落生成，从图像生成诗歌更主观。一幅图像可以从多个方面与多首诗歌相关，而图像字幕/段落更侧重于描述图像中的事实，结果较为相似。</p></li><li><p><strong>诗歌形式与风格差异</strong>：诗歌句子的形式和风格与叙述性句子不同。该研究聚焦于自由诗，虽不要求格律、押韵等传统诗歌技巧，但诗歌仍需具备一定的诗意结构和语言风格，即“诗意性”。</p></li></ul></li><li><p><strong>相关工作</strong></p><ul><li><p><strong>诗歌生成</strong>：传统方法包括基于模板和语法、约束优化下的生成式总结以及统计机器翻译模型。深度学习方法兴起后，RNN被广泛用于诗歌生成。以往工作主要关注诗歌的风格和节奏，近期研究引入主题作为诗歌生成条件，而该研究旨在解决视觉场景启发的诗歌生成问题。</p></li><li><p><strong>图像描述</strong>：图像字幕最初被视为检索问题，后发展出模板填充、结合CNN和RNN等方法，近期GAN也被应用于图像字幕生成。图像段落生成主要关注区域检测和句子的层次结构。但图像字幕和段落生成旨在描述图像事实，与诗歌生成在语言形式和要求上不同。</p></li></ul></li><li><p><strong>研究方法</strong></p><ul><li><p><strong>深度耦合视觉 -诗歌嵌入</strong>：旨在学习一个嵌入空间，使图像和诗歌能投影到同一空间，通过最小化成对排序损失，使图像-诗歌对的嵌入特征点积相似度更高。利用三个CNN分别提取图像中物体、场景和情感方面的特征，并通过多标签数据集微调CNN模型。</p></li><li><p><strong>诗歌生成器作为智能体</strong>：采用传统的CNN -RNN模型作为诗歌生成器，使用GRU作为诗歌解码器。通过策略梯度最大化期望奖励来优化模型参数，同时引入基线减少梯度估计方差。</p></li><li><p><strong>判别器作为奖励</strong>：提出多模态判别器和诗歌风格判别器。多模态判别器用于判断生成的诗歌与输入图像的相关性，诗歌风格判别器用于引导生成的诗歌具有诗意性。两者分类结果的线性组合作为策略梯度的奖励函数。</p></li><li><p><strong>多对抗训练</strong>：生成器旨在生成能欺骗判别器的诗歌以获得高奖励，判别器则用于区分生成诗歌与真实诗歌。通过策略梯度和蒙特卡罗采样，基于多个判别器的期望奖励更新生成器。</p></li><li><p><strong>策略梯度与奖励机制概述</strong>:策略梯度是强化学习中的一种优化算法，它通过最大化期望奖励来更新智能体（在本研究中即诗歌生成器）的策略。简单来说，策略梯度算法会根据智能体在环境中的行为所获得的奖励，来调整智能体的行为策略，使得智能体在未来能够获得更高的奖励。在诗歌生成任务中，奖励的设计至关重要，它直接引导着生成器生成符合要求的诗歌。</p></li></ul></li><li><p><strong>实验</strong></p><ul><li><p><strong>数据集</strong>：收集了MultiM - Poem（图像 -诗歌对数据集）和UniM -Poem（大型诗歌语料库），并基于嵌入模型扩展得到MultiM - Poem(Ex)。对数据集进行了严格的筛选和预处理。</p></li><li><p><strong>对比方法</strong>：与Show and tell (1CNN)、Show and tell(3CNNs)、SeqGAN、Regions -Hierarchical四种基线模型对比，同时对自身模型在有无判别器、不同判别器组合的情况下进行实验。</p></li><li><p><strong>自动评估指标</strong>：采用BLEU、新颖性和相关性三个指标，并计算综合得分。BLEU衡量生成诗歌与真实诗歌的相似程度；新颖性衡量生成诗歌中不常见单词或短语的比例；相关性通过深度耦合视觉- 诗歌嵌入模型计算图像与诗歌的相关性。</p></li><li><p><strong>人工评估</strong>：在Amazon MechanicalTurk上进行，包括评估视觉 -诗歌嵌入模型有效性、对比不同方法生成诗歌的多个方面、进行图灵测试等任务，并邀请了专业人士参与。</p></li><li><p><strong>实验结果</strong>：在自动评估和人工评估中，该研究提出的模型在大多数指标上优于基线模型。图灵测试表明，生成的诗歌能让普通注释者和专家产生混淆，证明了模型的有效性。</p></li></ul></li><li><p><strong>研究结论</strong>：提出了一种新的从图像生成诗歌的方法，通过结合深度耦合视觉-诗歌嵌入模型和基于RNN的多对抗训练，利用多判别器为策略梯度提供奖励。引入了新的数据集，实验证明了嵌入模型和诗歌生成模型的有效性。</p></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>文献阅读</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>论文</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>FEDERATED ADVERSARIAL DOMAIN ADAPTATION</title>
     <link href="/2025/04/20/wen-xian-yue-du/federated-adversarial-domain-adaptation/"/>
     <url>/2025/04/20/wen-xian-yue-du/federated-adversarial-domain-adaptation/</url>
