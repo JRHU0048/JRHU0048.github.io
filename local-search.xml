@@ -20,7 +20,7 @@
     
     <tags>
       
-      <tag>洛谷</tag>
+      <tag>算法</tag>
       
     </tags>
     
@@ -45,7 +45,7 @@
     
     <tags>
       
-      <tag>模板题</tag>
+      <tag>算法</tag>
       
     </tags>
     
@@ -70,7 +70,7 @@
     
     <tags>
       
-      <tag>Leetcode</tag>
+      <tag>算法</tag>
       
     </tags>
     
@@ -136,9 +136,9 @@
   
   
   <entry>
-    <title>随笔</title>
-    <link href="/2024/11/25/sui-bi/"/>
-    <url>/2024/11/25/sui-bi/</url>
+    <title>随笔2</title>
+    <link href="/2024/11/25/sui-bi/sui-bi-2/"/>
+    <url>/2024/11/25/sui-bi/sui-bi-2/</url>
     
     <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="❌哒咩！投喂错误❌" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="9be67fba17b8a9f82b4c5490b2a615785f2725f06e86aced1aad945699a7d886">53f1270e529fa4987cfa890269a9062a7bfa82f634ca5dd30b2d2d2bd1a17d0e338bdb8e129f6c619f143de62db85682cb497198826ece92a30cfbb94d1ece4b03284f65a6ba7c941f34a0ca1495aa458727f4d97d01a1d8329307ab0e4a52539eefa2212ab901542f498a6700dd2787f3c1c100bc98343d9ae63edc1fca16f1764d0ecd017260f26ae601df25312ac1b438f7e516a14a4b90b643ec31598106</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">请投喂我密码</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
     
@@ -149,6 +149,12 @@
       
     </categories>
     
+    
+    <tags>
+      
+      <tag>随笔</tag>
+      
+    </tags>
     
   </entry>
   
@@ -168,6 +174,12 @@
       
     </categories>
     
+    
+    <tags>
+      
+      <tag>论文</tag>
+      
+    </tags>
     
   </entry>
   
@@ -207,6 +219,12 @@
     </categories>
     
     
+    <tags>
+      
+      <tag>论文</tag>
+      
+    </tags>
+    
   </entry>
   
   
@@ -231,9 +249,9 @@
   
   
   <entry>
-    <title>随笔</title>
-    <link href="/2024/11/02/sui-bi/sui-bi/"/>
-    <url>/2024/11/02/sui-bi/sui-bi/</url>
+    <title>随笔1</title>
+    <link href="/2024/11/02/sui-bi/sui-bi-1/"/>
+    <url>/2024/11/02/sui-bi/sui-bi-1/</url>
     
     <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="❌哒咩！投喂错误❌" data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="a1c8b927896d4bca612a1ec2c4698228107204405fa6d120653d2692a397795e">e472198b98210c5a2c9af0c33a4c82b6ab17addd6fefc194a8161583432d1635a8cb168fbcc36e1133c5802c470d7a4ee2744d69f63d505eb5b372081bf949d73a9c09019a7aa7659ee414311d78b7dfeb951562074f0da05000043afd01d2000378f17de31b667f3142487812afe79ef9a0f1f24efc37db0922248db0d19ed53b3679612c68746a79a297be5e820fee7a2921d23958e0da76c19120b79ba29cb977c7f35e7f06f49205fa5986723eaa100386298ca3ed3870abef39f569ac81e492faec78cd3dd98e6dc703fd4844982263f250ed8532baf1df57d7756e7580b8f484e80121ee35644de81e5ba568876e21e0bb9f6c653089bc198f9062b2f0c6b734aa603b0f41adfa6085862ef4a0c4d6183de20ee836f089e091f6253c57c764e232cc297d605052b31d7ad0425efc40a798db68291d0b6e6ef98b6f5406d843310b0e5d5b5cda865b5d145f344c6b4421386e46a9dc049f578cdb9cca2fb75768d640e7fb4e7cec26975f6cf6f207341bb276ce7c092bd36dde9c0bdf89be3bf6cf847a888434fa8c1c1769dac792c594f2e08129ebbc6eaeb5087394339382c784981e046aab101b32df93bc90d23e152e2b67283059e9ef52740f85f3d01c9e23a0b0c67ae9a80fb1f7faa764d11273050fe7dab7d4d3cc33d241bb1e3f98f178a031fcd881ec6faca489ab16e3cda1abb6de7021ad96c5a7578078ce64fb37ca5aa29c77aa62860df0519bc411d015c9221314daaea941234a9d3a8d5ce36242ed0c896c6659a56d5ac70b36ab652f72d8a94f369ce26cfed898ae388d31d4b57d9e8887b1e3c8ccf2dcb73c6b0a5d0a03dfec354eae8769b687a64462534db1371d623c9a780a5a3a8d34abd5b8ef01900cb03fb773143f9b3a6c79f7f64bae9f76b950889e3cedf5290b6089669cb151a81aa58d2e823df27059a3983ddf9f2f0a5bd457ad78e4418fcd8e8139b0b6fa315275f3a72c6685599c4379c94debed5cf61018568505ed1393b31f6b18380a773c246a4069226aeff4d8ad72fed7265cb1b2cdcd85ec691c99de764d71a0461be73bdde3ff9a20cda019eaa83718f073d7775fa00a2c1d5f522c430e0c153ddd7f1d708a71b8501ebab8b79415964210b60406ccd739a3abd0ca874dcb05267522353e545d462c691d22b5e8d047a04ab3e41fa9856c6e22a4e379153746235919e7eb20d4ebe4523eecf18a24cacbd3c9a6beefef79e2f05ca62796a8d9597cb86902fad703dc697089950c06a595f0a0286b3cd2ace31b7c54bbfd4f16052a489f6436e275cb91f147d9d229729979e4fb4906c6075239d6c5</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">请投喂我密码</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
     
@@ -244,6 +262,12 @@
       
     </categories>
     
+    
+    <tags>
+      
+      <tag>随笔</tag>
+      
+    </tags>
     
   </entry>
   
@@ -481,7 +505,7 @@
     
     <tags>
       
-      <tag>码题集</tag>
+      <tag>算法</tag>
       
     </tags>
     
@@ -1203,7 +1227,7 @@
     
     <tags>
       
-      <tag>蓝桥杯</tag>
+      <tag>算法</tag>
       
     </tags>
     
