@@ -11,6 +11,18 @@
         <content type="html"><![CDATA[<p><imgsrc="https://pic1.imgdb.cn/item/6805dcaa58cb8da5c8bb60f1.png" /></p><p><imgsrc="https://pic1.imgdb.cn/item/6805dcec58cb8da5c8bb61f4.png" /></p><p>“Convolutional Neural Networks for SentenceClassification”由纽约大学的YoonKim撰写。论文主要探讨了卷积神经网络（CNN）在句子分类任务中的应用，通过在预训练词向量基础上进行实验，验证了简单CNN模型的有效性，并提出了模型的改进方法和架构调整。</p><ol type="1"><li><p><strong>研究背景</strong>：深度学习在计算机视觉和语音识别领域成果显著，在自然语言处理（NLP）中，常通过神经语言模型学习词向量表示并用于分类任务。CNN能有效提取局部特征，在NLP多个任务中表现出色。本文在预训练词向量上训练简单CNN进行句子分类，利用预训练词向量的“通用”特征提取能力，通过微调学习任务特定向量，并对架构改进以同时使用特定任务向量和静态向量。</p></li><li><p><strong>模型架构</strong></p><ul><li><p><strong>基础架构</strong>：输入的句子由词向量连接构成，通过卷积操作生成特征，卷积核应用于多个词的窗口，得到特征图，再通过max-over-time池化操作获取每个特征图的最大值作为特征，多个特征构成倒数第二层，传入全连接softmax层得到标签的概率分布。</p></li><li><p><strong>多通道架构</strong>：一种模型变体有两个词向量“通道”，一个在训练中保持静态，另一个通过反向传播微调。每个滤波器应用于两个通道，结果相加计算特征。</p></li><li><p><strong>正则化</strong>：在倒数第二层使用Dropout，并对权重向量的(l_{2})范数进行约束，防止过拟合。</p></li></ul></li><li><p><strong>数据集和实验设置</strong></p><ul><li><p><strong>数据集</strong>：在多个基准数据集上测试模型，如MR（电影评论情感分类）、SST系列（斯坦福情感树库）、Subj（主观性分类）、TREC（问题分类）、CR（客户评论情感分类）、MPQA（意见极性检测）。</p></li><li><p><strong>超参数和训练</strong>：对所有数据集设置整流线性单元、特定大小的卷积窗口、Dropout概率、(l_{2})约束和小批量大小，通过在SST-2开发集上进行网格搜索确定。使用随机梯度下降和Adadelta更新规则训练，在开发集上提前停止训练。</p></li><li><p><strong>预训练词向量</strong>：使用在Google News1000亿单词上训练的公开word2vec向量，维度为300，未在预训练集中的单词随机初始化。</p></li><li><p><strong>模型变体</strong>：实验包括CNN-rand（所有单词随机初始化并在训练中修改）、CNN-static（使用预训练向量且保持静态，仅学习其他参数）、CNN-non-static（预训练向量针对每个任务微调）、CNN-multichannel（有两个词向量通道，一个微调一个静态）。</p></li></ul></li><li><p><strong>实验结果与讨论</strong></p><ul><li><p><strong>主要结果</strong>：CNN-rand表现不佳，CNN-static性能出色，与复杂深度学习模型相当，说明预训练向量是有效的特征提取器。微调预训练向量（CNN-non-static）和多通道模型（CNN-multichannel）进一步提升性能，在7个任务中的4个上超越了当前最优结果。</p></li><li><p><strong>多通道与单通道模型</strong>：多通道架构在防止过拟合方面效果不一，还需进一步研究微调过程的正则化。</p></li><li><p><strong>静态与非静态表示</strong>：非静态模型（包括单通道和多通道中的非静态部分）能通过微调使向量更贴合任务，对不在预训练集中的单词也能学习到更有意义的表示。</p></li><li><p><strong>其他观察</strong>：本文模型比类似架构的模型性能更好，归因于更多的卷积核宽度和特征图；Dropout是有效的正则化手段；不同的随机初始化方式对性能有影响；word2vec向量比其他公开向量性能更优；Adadelta与Adagrad效果相似，但训练轮数更少。</p></li></ul></li><li><p><strong>研究结论</strong>：本文实验表明，基于word2vec构建的简单一层卷积CNN，即使超参数调整很少，也能在句子分类任务中表现出色，证明了无监督预训练词向量在NLP深度学习中的重要性。</p></li></ol><p>参考资料：</p><ul><li><p>Text_CNN复现之路（一）：<br />https://zhuanlan.zhihu.com/p/676926840</p></li><li><p>【NLP入门】手把手带你CNN文本分类(附代码)：<br />https://mp.weixin.qq.com/s?__biz=MzI3ODgwODA2MA==&amp;mid=2247488163&amp;idx=4&amp;sn=5ad2454db800f12e09564b2de3ae524c&amp;chksm=eb500630dc278f263976590419bd9354815bc0249e81cfb1b721926ff163fe0e469e014dc9de&amp;mpshare=1&amp;scene=23&amp;srcid=0314rFaFU9ZiLpyyQU3rdVsB&amp;sharer_sharetime=1584435544460&amp;sharer_shareid=470498a3f8c258720b36d27077b3ab82#rd</p></li><li><p>【论文笔记】：Convolutional Neural Networks for SentenceClassification用CNN做句子分类:<br />https://www.cnblogs.com/liuxiangyan/p/12512644.html</p></li><li><p>cnn-text-classification-pytorch：<br />https://github.com/Shawn1993/cnn-text-classification-pytorch</p></li><li><p>CNN_sentence：<br />https://github.com/yoonkim/CNN_sentence?tab=readme-ov-file</p></li></ul>]]></content>
       
       
+      <categories>
+          
+          <category> 论文阅读 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> NLP </tag>
+            
+        </tags>
       
     </entry>
     
