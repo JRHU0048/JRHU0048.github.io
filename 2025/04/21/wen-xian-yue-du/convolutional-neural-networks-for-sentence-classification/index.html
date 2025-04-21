@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic1.imgdb.cn/item/6805dcaa58cb8da5c8bb60f1.png">
 <meta property="article:published_time" content="2025-04-21T05:45:35.000Z">
-<meta property="article:modified_time" content="2025-04-21T05:58:18.652Z">
+<meta property="article:modified_time" content="2025-04-21T07:48:44.817Z">
 <meta property="article:author" content="JR.HU">
 <meta property="article:tag" content="NLP">
 <meta name="twitter:card" content="summary_large_image">
@@ -232,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          1.3k 字
         
       </span>
     
@@ -243,7 +243,7 @@
         
         
         
-          10 分钟
+          11 分钟
         
       </span>
     
@@ -357,9 +357,18 @@ src="https://pic1.imgdb.cn/item/6805dcec58cb8da5c8bb61f4.png" srcset="/img/loadi
 Classification”由纽约大学的Yoon
 Kim撰写。论文主要探讨了卷积神经网络（CNN）在句子分类任务中的应用，通过在预训练词向量基础上进行实验，验证了简单CNN模型的有效性，并提出了模型的改进方法和架构调整。</p>
 <ol type="1">
-<li><p><strong>研究背景</strong>：深度学习在计算机视觉和语音识别领域成果显著，在自然语言处理（NLP）中，常通过神经语言模型学习词向量表示并用于分类任务。CNN能有效提取局部特征，在NLP多个任务中表现出色。本文在预训练词向量上训练简单CNN进行句子分类，利用预训练词向量的
+<li><strong>研究背景</strong>：深度学习在计算机视觉和语音识别领域成果显著，在自然语言处理（NLP）中，常通过神经语言模型学习词向量表示并用于分类任务。CNN能有效提取局部特征，在NLP多个任务中表现出色。本文在预训练词向量上训练简单CNN进行句子分类，利用预训练词向量的
 “通用”
-特征提取能力，通过微调学习任务特定向量，并对架构改进以同时使用特定任务向量和静态向量。</p></li>
+特征提取能力，通过微调学习任务特定向量，并对架构改进以同时使用特定任务向量和静态向量。</li>
+</ol>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/371147732">一文读懂：词向量
+Word2Vec</a></p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/julac/article/details/127767053">一篇文章入门Word2Vec</a>
+这篇内容讲解很详细，值得认真读</p></li>
+</ul>
+<ol start="2" type="1">
 <li><p><strong>模型架构</strong></p>
 <ul>
 <li><p><strong>基础架构</strong>：输入的句子由词向量连接构成，通过卷积操作生成特征，卷积核应用于多个词的窗口，得到特征图，再通过max-over-time池化操作获取每个特征图的最大值作为特征，多个特征构成倒数第二层，传入全连接softmax层得到标签的概率分布。</p></li>
@@ -387,19 +396,29 @@ L_{2} $
 </ul></li>
 <li><p><strong>研究结论</strong>：本文实验表明，基于word2vec构建的简单一层卷积CNN，即使超参数调整很少，也能在句子分类任务中表现出色，证明了无监督预训练词向量在NLP深度学习中的重要性。</p></li>
 </ol>
+<p>TextCNN的局限性：</p>
+<ul>
+<li><p>静态词向量+CNN的局限性：无法处理一词多义，使用Word2Vec/GloVe等静态嵌入时，无法处理一词多义（如"苹果"公司vs水果）</p></li>
+<li><p>仅使用固定窗口大小的卷积核（通常为2-5）捕捉局部n-gram特征，难以建模长距离依赖（如超过10个token的语义关系）</p></li>
+<li><p>位置不敏感，卷积操作的平移不变性导致丢失词序信息</p></li>
+<li><p>多尺度特征融合不足，不同filter
+sizes的特征在池化后简单拼接，缺乏跨尺度的特征交互机制</p></li>
+</ul>
 <p>参考资料：</p>
 <ul>
-<li><p>Text_CNN复现之路（一）：<br />
-https://zhuanlan.zhihu.com/p/676926840</p></li>
-<li><p>【NLP入门】手把手带你CNN文本分类(附代码)：<br />
-https://mp.weixin.qq.com/s?__biz=MzI3ODgwODA2MA==&amp;mid=2247488163&amp;idx=4&amp;sn=5ad2454db800f12e09564b2de3ae524c&amp;chksm=eb500630dc278f263976590419bd9354815bc0249e81cfb1b721926ff163fe0e469e014dc9de&amp;mpshare=1&amp;scene=23&amp;srcid=0314rFaFU9ZiLpyyQU3rdVsB&amp;sharer_sharetime=1584435544460&amp;sharer_shareid=470498a3f8c258720b36d27077b3ab82#rd</p></li>
-<li><p>【论文笔记】：Convolutional Neural Networks for Sentence
-Classification用CNN做句子分类:<br />
-https://www.cnblogs.com/liuxiangyan/p/12512644.html</p></li>
-<li><p>cnn-text-classification-pytorch：<br />
-https://github.com/Shawn1993/cnn-text-classification-pytorch</p></li>
-<li><p>CNN_sentence：<br />
-https://github.com/yoonkim/CNN_sentence?tab=readme-ov-file</p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/676926840">Text_CNN复现之路（一）</a></p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzI3ODgwODA2MA==&amp;mid=2247488163&amp;idx=4&amp;sn=5ad2454db800f12e09564b2de3ae524c&amp;chksm=eb500630dc278f263976590419bd9354815bc0249e81cfb1b721926ff163fe0e469e014dc9de&amp;mpshare=1&amp;scene=23&amp;srcid=0314rFaFU9ZiLpyyQU3rdVsB&amp;sharer_sharetime=1584435544460&amp;sharer_shareid=470498a3f8c258720b36d27077b3ab82#rd">【NLP入门】手把手带你CNN文本分类(附代码)</a></p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/liuxiangyan/p/12512644.html">【论文笔记】：Convolutional
+Neural Networks for Sentence Classification用CNN做句子分类</a></p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://github.com/Shawn1993/cnn-text-classification-pytorch">cnn-text-classification-pytorch</a></p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://github.com/yoonkim/CNN_sentence?tab=readme-ov-file">CNN_sentence</a></p></li>
+<li><p><a target="_blank" rel="noopener" href="https://aistudio.baidu.com/projectdetail/9049872">使用
+THUCNews 新闻标题，基于 Textcnn 完成文本分类模型</a></p></li>
 </ul>
 
                 
