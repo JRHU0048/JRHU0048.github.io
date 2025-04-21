@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic1.imgdb.cn/item/6805dcaa58cb8da5c8bb60f1.png">
 <meta property="article:published_time" content="2025-04-21T05:45:35.000Z">
-<meta property="article:modified_time" content="2025-04-21T05:55:03.748Z">
+<meta property="article:modified_time" content="2025-04-21T05:58:18.652Z">
 <meta property="article:author" content="JR.HU">
 <meta property="article:tag" content="NLP">
 <meta name="twitter:card" content="summary_large_image">
@@ -365,12 +365,15 @@ Kim撰写。论文主要探讨了卷积神经网络（CNN）在句子分类任�
 <li><p><strong>基础架构</strong>：输入的句子由词向量连接构成，通过卷积操作生成特征，卷积核应用于多个词的窗口，得到特征图，再通过max-over-time池化操作获取每个特征图的最大值作为特征，多个特征构成倒数第二层，传入全连接softmax层得到标签的概率分布。</p></li>
 <li><p><strong>多通道架构</strong>：一种模型变体有两个词向量
 “通道”，一个在训练中保持静态，另一个通过反向传播微调。每个滤波器应用于两个通道，结果相加计算特征。</p></li>
-<li><p><strong>正则化</strong>：在倒数第二层使用Dropout，并对权重向量的(l_{2})范数进行约束，防止过拟合。</p></li>
+<li><p><strong>正则化</strong>：在倒数第二层使用Dropout，并对权重向量的
+$ L_{2} $ 范数进行约束，防止过拟合。</p></li>
 </ul></li>
 <li><p><strong>数据集和实验设置</strong></p>
 <ul>
 <li><p><strong>数据集</strong>：在多个基准数据集上测试模型，如MR（电影评论情感分类）、SST系列（斯坦福情感树库）、Subj（主观性分类）、TREC（问题分类）、CR（客户评论情感分类）、MPQA（意见极性检测）。</p></li>
-<li><p><strong>超参数和训练</strong>：对所有数据集设置整流线性单元、特定大小的卷积窗口、Dropout概率、(l_{2})约束和小批量大小，通过在SST-2开发集上进行网格搜索确定。使用随机梯度下降和Adadelta更新规则训练，在开发集上提前停止训练。</p></li>
+<li><p><strong>超参数和训练</strong>：对所有数据集设置整流线性单元、特定大小的卷积窗口、Dropout概率、$
+L_{2} $
+约束和小批量大小，通过在SST-2开发集上进行网格搜索确定。使用随机梯度下降和Adadelta更新规则训练，在开发集上提前停止训练。</p></li>
 <li><p><strong>预训练词向量</strong>：使用在Google News
 1000亿单词上训练的公开word2vec向量，维度为300，未在预训练集中的单词随机初始化。</p></li>
 <li><p><strong>模型变体</strong>：实验包括CNN-rand（所有单词随机初始化并在训练中修改）、CNN-static（使用预训练向量且保持静态，仅学习其他参数）、CNN-non-static（预训练向量针对每个任务微调）、CNN-multichannel（有两个词向量通道，一个微调一个静态）。</p></li>
