@@ -1,0 +1,1008 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" >
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/hui.png">
+  <link rel="icon" href="/img/hui.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="JR.HU">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="下面的论文均围绕分布式深度学习展开，涵盖了联邦学习、分裂学习等技术在不同场景下的应用、性能评估和安全分析，对推动分布式深度学习技术的发展和应用具有重要指导意义。 Distributed learning of deep neural network over multiple agents   摘要：提出一种在多个数据源上训练深度神经网络的技术，可解决训练和部署神经网络时标记数据稀缺的问">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Split Learning Review">
+<meta property="og:url" content="http://jrhu0048.github.io/2025/04/21/wen-xian-yue-du/split-learning-review/index.html">
+<meta property="og:site_name" content="CHARMMY">
+<meta property="og:description" content="下面的论文均围绕分布式深度学习展开，涵盖了联邦学习、分裂学习等技术在不同场景下的应用、性能评估和安全分析，对推动分布式深度学习技术的发展和应用具有重要指导意义。 Distributed learning of deep neural network over multiple agents   摘要：提出一种在多个数据源上训练深度神经网络的技术，可解决训练和部署神经网络时标记数据稀缺的问">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic1.imgdb.cn/item/68070cc258cb8da5c8bdf267.png">
+<meta property="article:published_time" content="2025-04-21T09:52:34.000Z">
+<meta property="article:modified_time" content="2025-04-27T07:50:48.144Z">
+<meta property="article:author" content="JR.HU">
+<meta property="article:tag" content="Split Learning">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pic1.imgdb.cn/item/68070cc258cb8da5c8bdf267.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Split Learning Review - CHARMMY</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/scrollAnimation.css">
+<link rel="stylesheet" href="/css/textcolcor.css">
+<link rel="stylesheet" href="/css/cloudedGlass.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jrhu0048.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":60,"cursorChar":"⭐","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"❡"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2023-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body><!-- hexo injector body_begin start --><div id="web_bg"></div><!-- hexo injector body_begin end -->
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <!-- <strong>CHARMMY</strong> -->
+       <!-- 修改如下： -->
+      <strong class="navbar-title">CHARMMY</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/hei.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Split Learning Review"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        JR.HU
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-04-21 17:52" pubdate>
+          2025年4月21日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          44 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+
+    
+    
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="论文阅读"
+        id="heading-7545c85b0df88485ddabffad9bb45965" role="tab" data-toggle="collapse" href="#collapse-7545c85b0df88485ddabffad9bb45965"
+        aria-expanded="true"
+      >
+        论文阅读
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-7545c85b0df88485ddabffad9bb45965"
+           role="tabpanel" aria-labelledby="heading-7545c85b0df88485ddabffad9bb45965">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2025/04/21/wen-xian-yue-du/convolutional-neural-networks-for-sentence-classification/" title="Convolutional Neural Networks for Sentence Classification"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Convolutional Neural Networks for Sentence Classification</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2025/04/21/wen-xian-yue-du/split-learning-review/" title="Split Learning Review"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">Split Learning Review</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Split Learning Review</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>下面的论文均围绕分布式深度学习展开，涵盖了联邦学习、分裂学习等技术在不同场景下的应用、性能评估和安全分析，对推动分布式深度学习技术的发展和应用具有重要指导意义。</p>
+<h3
+id="distributed-learning-of-deep-neural-network-over-multiple-agents">Distributed
+learning of deep neural network over multiple agents</h3>
+<p><img
+src="https://pic1.imgdb.cn/item/68070cc258cb8da5c8bdf267.png" srcset="/img/loading.gif" lazyload /></p>
+<ol type="1">
+<li><p><strong>摘要</strong>：提出一种在多个数据源上训练深度神经网络的技术，可解决训练和部署神经网络时标记数据稀缺的问题，在不直接共享原始数据的情况下进行训练，实验证明其性能与单机训练相似，并分析了安全问题和半监督学习应用。</p></li>
+<li><p><strong>引言</strong>：深度学习在多领域有应用潜力，但训练面临数据和计算资源需求大以及隐私问题。本文旨在解决这些问题，提出使用多个数据源和单个超级计算资源训练神经网络的方法。</p></li>
+<li><p><strong>理论</strong></p>
+<ul>
+<li><p><strong>分布式训练算法</strong>：分别介绍了基于单个实体和多个实体的分布式训练算法，通过将数据编码传输到服务器进行训练，证明该算法与常规训练结果相同。</p></li>
+<li><p><strong>半监督应用</strong>：描述如何修改算法以结合半监督学习和生成损失，在少量标记数据的情况下进行训练，通过组合预测和自动编码器的损失来优化模型。</p></li>
+<li><p><strong>在线学习</strong>：算法可在线学习，通过共享权重更新种子和加密权重更新，减少网络开销并提高安全性。</p></li>
+<li><p><strong>安全分析</strong>：分析算法安全性，指出重建数据具有挑战性，只要客户端网络包含至少一个全连接层，服务器就难以发现客户端参数。</p></li>
+<li><p><strong>无标签传播训练</strong>：提出一种调整训练框架的方法，通过环绕网络末端层让客户端生成梯度，避免标签共享。</p></li>
+</ul></li>
+<li><p><strong>数据集和实现</strong>：使用标准json通信库和自定义协议实现算法，介绍了实验使用的数据集，包括Mixed
+NIST、Canadian Institute For Advanced Research和ILSVRC
+(ImageNet)</p></li>
+<li><p><strong>实验和应用</strong></p>
+<ul>
+<li><p><strong>实验验证</strong>：在多个数据集和拓扑结构上进行实验，验证了算法的正确性，分布式训练的网络收敛到与单机训练相似的准确率。</p></li>
+<li><p><strong>与现有方法比较</strong>：与现代先进方法比较，该算法在客户端计算成本和通信带宽上有显著优势，能在较少计算资源下实现更高的验证准确率和更快的收敛速度。</p></li>
+<li><p><strong>数据量对最终准确率的影响</strong>：实验表明，聚合多个数据源的数据可显著提高模型准确率。</p></li>
+</ul></li>
+<li><p><strong>结论和未来工作</strong>：提出的方法能在不共享原始数据的情况下训练深度神经网络，减少计算需求并适用于半监督学习。未来可扩展到训练分类器集成、使用学生
+- 教师方法共享网络知识、应用于回归和分割任务等。</p></li>
+</ol>
+<h3
+id="reducing-leakage-in-distributed-deep-learning-for-sensitive-health-data">Reducing
+Leakage in Distributed Deep Learning for Sensitive Health Data</h3>
+<p><img
+src="https://pic1.imgdb.cn/item/6806309758cb8da5c8bced31.png" srcset="/img/loading.gif" lazyload /></p>
+<p>“Reducing Leakage in Distributed Deep Learning for Sensitive Health
+Data”由Praneeth Vepakomma等人撰写，于2019年在ICLR AI for social good
+workshop上发表。论文聚焦于分布式深度学习中敏感健康数据的隐私保护问题，提出<strong>通过最小化原始数据与中间表示之间的距离相关性</strong>，在保障模型准确性的同时减少数据泄露风险。</p>
+<ol type="1">
+<li><p><strong>研究背景与相关工作</strong></p>
+<ul>
+<li><p><strong>研究背景</strong>：医疗领域数据共享和计算的安全性、隐私性至关重要。多模态数据由多个医疗实体持有，因敏感性和隐私问题，相互不信任，阻碍了分布式机器学习的发展。</p></li>
+<li><p><strong>相关工作</strong>：介绍了分布式深度学习方法，如分裂学习、联邦学习和大批次同步随机梯度下降。还阐述了距离相关性方法在不同领域的应用，其在深度学习中目标通常不是防止原始数据重建，而本文旨在填补这一空白。</p></li>
+</ul></li>
+<li><p><strong>研究贡献</strong>：提出一种新技术，利用距离相关性降低中间表示的可逆性（即减少数据泄露），并在分裂学习的背景下进行了验证。通过确保通信负载与原始输入数据的距离相关性较低，同时维持预测输出标签的准确性，还展示了最小化距离协方差可最小化中间表示与输入之间的KL散度乘积。</p></li>
+<li><p><strong>方法</strong></p>
+<ul>
+<li><p><strong>分裂学习</strong>：每个客户端将部分深度网络前向传播到特定的分裂层，分裂层输出发送给其他实体完成剩余训练，梯度反向传播后，分裂层梯度再传回客户端完成后续训练，训练过程中不共享原始数据。</p></li>
+<li><p><strong>改进方法</strong>：提出的方法在分裂学习基础上，通过结合距离相关性（DCOR）和分类交叉熵（CCE）构建损失函数，在训练网络时，最小化原始数据与分裂层激活之间的距离相关性对数，优化预测标签与真实标签之间的分类交叉熵。总损失函数为两者加权之和，平衡隐私保护和分类准确性。</p></li>
+</ul></li>
+<li><p><strong>距离相关性与可逆性的联系</strong>：使用Kullback-Leibler散度衡量数据的可逆性，推导了距离协方差与Kullback-Leibler散度、交叉熵之间的关系。证明最小化距离协方差可最小化KL散度的乘积，并通过对距离协方差进行正则化，给出了KL散度差异的上界，且说明可通过最小化相关范数来缩小该上界。</p></li>
+<li><p><strong>实验</strong>：通过对结直肠组织学图像数据集和MNIST手写数字识别数据集进行实验，验证了改进方法NoPeekNN的有效性。结果表明，NoPeekNN能大幅降低原始数据与中间表示（smashed
+data）之间的距离相关性，在结直肠组织学图像数据集中从0.92降至0.33，在MNIST数据集中从0.95降至0.19，同时保持相似的分类准确率。在自编码器实验中，也证明了私有化的分裂层可防止原始图像的重建。</p></li>
+<li><p><strong>研究结论</strong>：论文展示了如何在减少分类交叉熵的同时，最小化中间数据与原始输入之间的距离相关性。<strong>实验证明，在健康数据集上应用分裂学习时，该技术既能减少数据泄露，又能保证模型准确率</strong>，有望为偏远社区在应对健康威胁时安全地汇集健康数据提供解决方案。</p></li>
+</ol>
+<h3
+id="split-learning-for-health-distributed-deep-learning-without-sharing-raw-patient-data">Split
+learning for health: Distributed deep learning without sharing raw
+patient data</h3>
+<ol type="1">
+<li><p><strong>摘要</strong>：提出SplitNN的几种配置，用于实现医疗实体在不共享敏感原始数据的情况下协作训练深度学习模型，比较了SplitNN与其他分布式深度学习方法在性能和资源效率上的权衡，结果令人鼓舞。</p></li>
+<li><p><strong>引言</strong>：医疗领域的协作受信任、数据共享法规和患者同意等因素阻碍。深度学习在医疗领域应用广泛，但训练分布式深度学习模型时，既不能共享原始数据，也不能共享模型架构和参数。本文基于SplitNN提出适用于实际医疗场景的配置。</p></li>
+<li><p><strong>相关工作</strong>：介绍Federated Learning和Large Batch
+Synchronous Stochastic Gradient
+Descent等分布式深度学习技术，指出它们在某些非标准分布式深度学习场景下的适用性尚未得到研究，而本文将为这些场景提出SplitNN的配置。</p></li>
+<li><p><strong>SplitNN配置</strong></p>
+<ul>
+<li><p><strong>简单香草配置</strong>：客户端训练部分深度网络至特定切割层，将输出发送到服务器，服务器完成剩余训练，再将梯度传回客户端完成反向传播。</p></li>
+<li><p><strong>U型配置</strong>：无需客户端共享标签，通过将网络在服务器端的末端层环绕并将输出返回客户端，由客户端生成梯度进行反向传播，适用于标签包含敏感信息的情况。</p></li>
+<li><p><strong>垂直分区数据配置</strong>：适用于多个机构持有不同模态患者数据的场景，各机构训练部分模型，将切割层输出连接后发送到服务器完成剩余模型训练。</p></li>
+</ul></li>
+<li><p><strong>资源效率结果</strong>：在CIFAR 10和CIFAR
+100数据集上的实验表明，SplitNN在客户端计算资源需求大幅降低的同时，能保持较高的准确率，在计算资源效率上有显著提升。</p></li>
+<li><p><strong>结论和未来工作</strong>：简单的分布式深度学习配置无法满足医疗实体协作的实际需求，SplitNN在资源效率上优于现有方法，且具有多种灵活配置。未来可进一步探索其在更多场景的应用，结合神经网络压缩方法提升性能。</p></li>
+<li><p><strong>补充材料</strong>：提出更多SplitNN的分裂学习配置，包括扩展香草分裂学习、多任务分裂学习和类似Tor的多跳分裂学习。</p></li>
+</ol>
+<h3 id="splitnn-driven-vertical-partitioning">SplitNN-driven Vertical
+Partitioning</h3>
+<ol type="1">
+<li><p><strong>摘要</strong>：提出SplitNN驱动的垂直分区，这是一种分布式深度学习方法，能从垂直分布的特征中学习，在不共享原始数据和模型细节的情况下，让机构间进行训练，评估了多种合并分割模型输出的配置，并比较了性能和资源效率。</p></li>
+<li><p><strong>引言</strong>：金融机构利用深度学习优化业务，但面临数据利用和隐私保护的挑战。SplitNN架构为数据协作提供了新方式，本文旨在利用垂直分区数据学习共享模型并保护数据隐私。</p></li>
+<li><p><strong>相关工作</strong>：介绍垂直分区机器学习的相关技术，包括线性和逻辑回归、决策树、支持向量机等的垂直分区学习方法，以及垂直联邦学习。指出传统解决方案使用加密方案面临性能挑战和通信开销，而Split
+Learning能减少客户端的通信和计算开销。</p></li>
+<li><p><strong>垂直SplitNN</strong></p>
+<ul>
+<li><p><strong>架构与机制</strong>：在每个客户端训练部分神经网络，聚合其输出后输入到服务器端的组合模型。提出元素平均、最大、求和、乘法和连接五种聚合机制，各有优缺点
+。</p></li>
+<li><p><strong>实现与数据集</strong>：以SplitNN架构为基线，在三个金融数据集上进行实验，包括银行营销、信用预测和金融短语库数据集。</p></li>
+</ul></li>
+<li><p><strong>实验</strong></p>
+<ul>
+<li><p><strong>与集中式模型比较</strong>：使用最大池化合并技术，结果表明在大多数情况下，垂直分区和元素最大池化的性能与集中式模型相近，部分数据集有轻微提升。</p></li>
+<li><p><strong>合并策略比较</strong>：比较多种合并策略，发现连接策略虽简单但存在可行性问题，元素平均池化和简单元素相加可使用安全聚合协议，且性能损失较小，实际中平均池化更合适。</p></li>
+<li><p><strong>客户端随机掉线情况</strong>：客户端随机掉线会显著影响性能，掉线数量增加，性能下降更明显，甚至影响模型收敛。</p></li>
+<li><p><strong>通信和计算成本测量</strong>：通信成本取决于端点层输出大小，计算成本取决于架构和输入特征向量大小。在不同场景下，应根据瓶颈情况选择合适的训练策略。</p></li>
+</ul></li>
+<li><p><strong>结论</strong>：提出的方法能有效处理垂直分区数据，合并策略能得到与集中式模型性能相当的共享模型。最大池化总体最佳，平均池化考虑安全聚合协议时可接受，为训练垂直分区数据的模型提供了有效方式。</p></li>
+</ol>
+<h3 id="splitfed-when-federated-learning-meets-split-learning">SplitFed:
+When Federated Learning Meets Split Learning</h3>
+<ol type="1">
+<li><p><strong>摘要</strong>：提出SplitFed
+Learning，结合联邦学习和分裂学习的优点，通过改进架构配置和融入差分隐私、PixelDP技术，增强数据隐私和模型鲁棒性。分析和实验结果表明，该方法在测试准确性、通信效率和计算时间上表现良好。</p></li>
+<li><p><strong>引言</strong>：分布式协作机器学习（DCML）因数据隐私优势而受欢迎，联邦学习和分裂学习是其中的两种主要方法。联邦学习允许并行训练但存在客户端计算资源和模型隐私问题，分裂学习能减少客户端计算负担但训练时间长。本文提出SplitFed
+Learning以解决这些问题。</p></li>
+<li><p><strong>背景和相关工作</strong>：介绍联邦学习、分裂学习和差分隐私的基本概念。联邦学习通过客户端并行训练和服务器聚合更新模型；分裂学习将模型分割在客户端和服务器上分别训练；差分隐私用于定义隐私模型。</p></li>
+<li><p><strong>提出的框架</strong></p>
+<ul>
+<li><p><strong>总体结构</strong>：结合联邦学习的并行处理和分裂学习的网络分割优势，引入联邦服务器进行客户端模型更新的聚合和同步。客户端和服务器协同训练，通过多次迭代更新模型。</p></li>
+<li><p><strong>隐私保护</strong>：SFL通过模型到数据的方法和网络分割保护隐私，同时在客户端应用差分隐私和PixelDP技术，进一步增强数据隐私和模型鲁棒性。</p></li>
+<li><p><strong>总代价分析</strong>：分析了联邦学习、分裂学习和SFL在通信成本和模型训练时间上的差异，结果表明SFL在多客户端场景下计算时间更短。</p></li>
+</ul></li>
+<li><p><strong>实验</strong>：在多个公共图像数据集和流行模型上进行实验，包括HAM10000、MNIST等数据集和LeNet、AlexNet等模型。比较了联邦学习、分裂学习和SFL的性能，结果表明SFL在模型准确性和通信效率上与分裂学习相似，但计算时间更短。</p></li>
+<li><p><strong>结论</strong>：SplitFed
+Learning通过结合联邦学习和分裂学习的优势，提供了更好的模型隐私保护和更快的训练速度，在资源受限环境中具有应用潜力。未来可进一步研究隐私和效用的权衡以及集成同态加密等技术。</p></li>
+</ol>
+<h3
+id="end-to-end-evaluation-of-federated-learning-and-split-learning-for-internet-of-things">End-to-End
+Evaluation of Federated Learning and Split Learning for Internet of
+Things</h3>
+<ol type="1">
+<li><p><strong>摘要</strong>：首次在真实物联网环境中对联邦学习和SplitNN进行实证比较，评估学习性能和设备实现开销。结果表明，SplitNN在不平衡数据分布下学习性能更好，联邦学习在通信开销上更具优势，且两者在资源受限的物联网设备上应用复杂模型都存在困难。</p></li>
+<li><p><strong>引言</strong>：深度学习发展迅速，但数据隐私和安全问题突出。分布式学习技术可解决这些问题，本文聚焦联邦学习和SplitNN，旨在评估它们在物联网场景下的性能和实现开销。</p></li>
+<li><p><strong>分布式学习和数据集</strong>：介绍联邦学习、分裂学习和集成学习的基本原理，以及实验使用的数据集，包括语音命令（SC）和心电图（ECG）数据集。</p></li>
+<li><p><strong>学习性能评估</strong>：在不同数据分布（平衡、不平衡和非IID）下评估联邦学习和SplitNN的学习性能。</p>
+<ul>
+<li><p><strong>IID和平衡数据集</strong>：在理想数据分布下，SplitNN收敛速度比联邦学习快，但模型准确性无法达到集中式模型的基线水平。</p></li>
+<li><p><strong>不平衡数据分布</strong>：联邦学习在不平衡数据下难以达到基线准确性，收敛速度慢；SplitNN对不平衡数据更鲁棒，收敛速度快。</p></li>
+<li><p><strong>非IID数据分布</strong>：联邦学习在非IID数据下收敛波动大但仍能收敛，SplitNN在极端非IID数据下无法学习。</p></li>
+<li><p><strong>SplitNN集成学习</strong>：验证了SplitNN与集成学习的兼容性，集成学习可减少训练时间，且不影响学习准确性和收敛性能。</p></li>
+</ul></li>
+<li><p><strong>在树莓派上的实现开销评估</strong>：在树莓派设备上评估联邦学习和SplitNN的时间、功率、通信和内存开销。</p>
+<ul>
+<li><p><strong>实验设置</strong>：介绍实验使用的树莓派和服务器的配置，以及性能指标的测量方法。</p></li>
+<li><p><strong>实现考虑因素</strong>：指出在树莓派上运行复杂模型计算资源不足，推荐使用简单的1D
+CNN模型。</p></li>
+<li><p><strong>集成学习</strong>：集成学习可减少训练时间和功率消耗，但不减少通信开销。</p></li>
+<li><p><strong>客户端数量的影响</strong>：联邦学习的时间开销随客户端数量增加而减少，SplitNN则相反；联邦学习的通信开销与模型参数有关，SplitNN与本地数据大小有关。</p></li>
+<li><p><strong>SplitNN中分割层数的影响</strong>：增加SplitNN客户端的分割层数会增加时间和能量开销，通信开销不变。</p></li>
+<li><p><strong>不同模型的影响</strong>：复杂模型会增加联邦学习的开销，而SplitNN的开销相对稳定。</p></li>
+</ul></li>
+<li><p><strong>讨论和未来工作</strong></p>
+<ul>
+<li><p><strong>评估结果总结</strong>：SplitNN学习性能受多种因素影响，在不平衡数据下收敛快但在极端非IID数据下表现差；联邦学习通信开销低，更适合物联网场景，但两者在低容量物联网设备上训练复杂模型都不可行。</p></li>
+<li><p><strong>实现的优化</strong>：可使用XNOR -
+NET等技术优化模型，提高内存和计算效率。</p></li>
+<li><p><strong>分割顺序模型</strong>：探索SplitNN在顺序模型上的应用，如LSTM和RNN，目前存在困难，有待进一步研究。</p></li>
+</ul></li>
+<li><p><strong>结论</strong>：对联邦学习和SplitNN在真实物联网场景下进行了首次实证评估，为实际应用提供了参考，联邦学习在物联网场景中更实用，但两者在复杂模型训练上都面临挑战。</p></li>
+</ol>
+<h3 id="security-analysis-of-splitfed-learning">Security Analysis of
+SplitFed Learning</h3>
+<ol type="1">
+<li><p><strong>摘要</strong>：对SplitFed
+Learning进行首次实证分析，发现其模型更新维度比联邦学习小，在应对模型中毒攻击时更鲁棒，模型中毒攻击导致的准确率下降幅度比联邦学习低5倍。</p></li>
+<li><p><strong>引言</strong>：联邦学习和分裂学习是两种分布式协作学习技术，SplitFed
+Learning结合了两者优势。已有研究广泛探讨了联邦学习的安全漏洞，而对分裂学习和SplitFed
+Learning的安全性研究有限。本文对SplitFed
+Learning进行详细的安全分析。</p></li>
+<li><p><strong>背景</strong>：介绍联邦学习、分裂学习和SplitFed
+Learning的基本原理。联邦学习中客户端训练完整模型并与中央服务器共享更新；分裂学习将模型在客户端和服务器间分割，减少客户端计算负担和隐私风险；SplitFed
+Learning结合两者优点，客户端并行计算并与服务器交互 。</p></li>
+<li><p><strong>SplitFed上的中毒攻击</strong></p>
+<ul>
+<li><p><strong>威胁模型</strong>：攻击者控制部分客户端，注入恶意更新，假设服务器诚实，重点研究客户端模型中毒攻击。</p></li>
+<li><p><strong>基于优化的攻击</strong>：描述基于优化的模型中毒攻击方法，通过制定优化问题生成恶意更新，以突破稳健聚合机制。同时介绍了修剪均值和中位数聚合规则及其对应的攻击优化框架。</p></li>
+</ul></li>
+<li><p><strong>实现</strong>：在多种图像数据集和模型上实现针对SplitFed的中毒攻击，包括CIFAR10和FEMNIST数据集，Alexnet、VGG11等模型。详细说明了数据集、模型、可重复性、评估指标和实验设置等方面。</p></li>
+<li><p><strong>分析</strong></p>
+<ul>
+<li><p><strong>切割层和攻击有效性</strong>：切割层的选择对攻击效果影响巨大，客户端模型部分越小，攻击对整体准确率的影响越小。</p></li>
+<li><p><strong>防御的影响</strong>：比较修剪均值和中位数两种防御机制，发现中位数防御在所有设置下都比修剪均值防御表现更好。</p></li>
+<li><p><strong>IID与非IID数据</strong>：在非IID数据上进行攻击时，模型准确性受影响较大，但使用较低学习率和较小客户端模型部分可提高鲁棒性。</p></li>
+<li><p><strong>恶意客户端比例的影响</strong>：随着恶意客户端比例增加，模型准确率下降，且在相同恶意客户端比例下，联邦学习的准确率下降幅度比SplitFed
+Learning更大。</p></li>
+</ul></li>
+<li><p><strong>讨论和结论</strong>：提出可对恶意客户端发送的粉碎数据进行扰动以探索更多攻击空间。通过实验发现，SplitFed
+Learning在面对模型中毒攻击时比联邦学习更鲁棒，相同攻击在SplitFed中的效果更低。</p></li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" class="category-chain-item">论文阅读</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Split-Learning/" class="print-no-link">#Split Learning</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Split Learning Review</div>
+      <div>http://jrhu0048.github.io/2025/04/21/wen-xian-yue-du/split-learning-review/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>JR.HU</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年4月21日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2025年4月27日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/04/21/wen-xian-yue-du/convolutional-neural-networks-for-sentence-classification/" title="Convolutional Neural Networks for Sentence Classification">
+                        <span class="hidden-mobile">Convolutional Neural Networks for Sentence Classification</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"JRHU0048/comments_of_fluid","repo-id":"R_kgDONI1MlA","category":"Announcements","category-id":"DIC_kwDONI1MlM4Cj4Fj","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> <span><br></span>	
+<span>总访客&nbsp<span id="busuanzi_value_site_uv"></span>&nbsp人 &nbsp</span> <span>访问总量&nbsp<span id="busuanzi_value_site_pv"></span>&nbsp次</span> </div> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            // loader : {
+            //   load: ['ui/lazy']
+            // },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/scrollAnimation.js"></script>
+<script src="/js/star.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script src="/js/backgroundize.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"superSample":2,"width":200,"height":300,"position":"left","hOffset":0,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":0.5},"log":false});</script></body>
+</html>
