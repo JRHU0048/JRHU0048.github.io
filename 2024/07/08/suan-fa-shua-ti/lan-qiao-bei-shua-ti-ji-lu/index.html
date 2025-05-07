@@ -19,17 +19,18 @@
   <meta name="author" content="JR.HU">
   <meta name="keywords" content="">
   
-    <meta name="description" content="算法刷题记录 希望能够有所改变！ 1、数位递增的数 题目链接 1234567891011# 解法一n &#x3D; int(input())ans &#x3D; 0for i in range(1, n):    x &#x3D; str(i)    for j in range(len(x)-1):        if x[j] &gt; x[j+1]:            break    else:">
+    <meta name="description" content="1、数位递增的数 题目链接 1234567891011# 解法一n &#x3D; int(input())ans &#x3D; 0for i in range(1, n):    x &#x3D; str(i)    for j in range(len(x)-1):        if x[j] &gt; x[j+1]:            break    else:        ans +&#x3D; 1print(ans">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法刷题记录">
-<meta property="og:url" content="http://jrhu0048.github.io/2024/07/08/python/suan-fa-shua-ti-ji-lu/index.html">
+<meta property="og:title" content="蓝桥杯刷题记录">
+<meta property="og:url" content="http://jrhu0048.github.io/2024/07/08/suan-fa-shua-ti/lan-qiao-bei-shua-ti-ji-lu/index.html">
 <meta property="og:site_name" content="CHARMMY">
-<meta property="og:description" content="算法刷题记录 希望能够有所改变！ 1、数位递增的数 题目链接 1234567891011# 解法一n &#x3D; int(input())ans &#x3D; 0for i in range(1, n):    x &#x3D; str(i)    for j in range(len(x)-1):        if x[j] &gt; x[j+1]:            break    else:">
+<meta property="og:description" content="1、数位递增的数 题目链接 1234567891011# 解法一n &#x3D; int(input())ans &#x3D; 0for i in range(1, n):    x &#x3D; str(i)    for j in range(len(x)-1):        if x[j] &gt; x[j+1]:            break    else:        ans +&#x3D; 1print(ans">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic.imgdb.cn/item/66b3a9b2d9c307b7e9d0986c.png">
 <meta property="article:published_time" content="2024-07-08T09:53:40.000Z">
-<meta property="article:modified_time" content="2024-10-15T07:00:32.953Z">
+<meta property="article:modified_time" content="2025-05-07T01:15:28.413Z">
 <meta property="article:author" content="JR.HU">
+<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://pic.imgdb.cn/item/66b3a9b2d9c307b7e9d0986c.png">
   
@@ -37,7 +38,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>算法刷题记录 - CHARMMY</title>
+  <title>蓝桥杯刷题记录 - CHARMMY</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -203,7 +204,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="算法刷题记录"></span>
+            <span id="subtitle" data-typed-text="蓝桥杯刷题记录"></span>
           
         </div>
 
@@ -242,7 +243,7 @@
         
         
         
-          28 分钟
+          27 分钟
         
       </span>
     
@@ -291,14 +292,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">算法刷题记录</h1>
+            <h1 id="seo-header">蓝桥杯刷题记录</h1>
             
             
               <div class="markdown-body">
                 
-                <p>算法刷题记录</p>
-<p>希望能够有所改变！</p>
-<h2 id="数位递增的数">1、数位递增的数</h2>
+                <h2 id="数位递增的数">1、数位递增的数</h2>
 <p><a
 target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/145/learning/?page_size=10&amp;first_category_id=1&amp;tags=%E7%9C%81%E6%A8%A1%E6%8B%9F%E8%B5%9B&amp;origin=cup">题目链接</a></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 解法一</span><br>n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())<br>ans = <span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n):<br>    x = <span class="hljs-built_in">str</span>(i)<br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(x)-<span class="hljs-number">1</span>):<br>        <span class="hljs-keyword">if</span> x[j] &gt; x[j+<span class="hljs-number">1</span>]:<br>            <span class="hljs-keyword">break</span><br>    <span class="hljs-keyword">else</span>:<br>        ans += <span class="hljs-number">1</span><br><span class="hljs-built_in">print</span>(ans)<br></code></pre></td></tr></table></figure>
@@ -486,7 +485,7 @@ class="math inline">\(d\)</span> 是最大数的位数。</p>
     
       <span class="category-chain">
         
-  <a href="/categories/python/" class="category-chain-item">python</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/" class="category-chain-item">算法刷题</a>
   
   
 
@@ -498,6 +497,13 @@ class="math inline">\(d\)</span> 是最大数的位数。</p>
     </div>
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%AE%97%E6%B3%95/" class="print-no-link">#算法</a>
+      
+    </div>
+  
 </div>
 
 
@@ -506,8 +512,8 @@ class="math inline">\(d\)</span> 是最大数的位数。</p>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>算法刷题记录</div>
-      <div>http://jrhu0048.github.io/2024/07/08/python/suan-fa-shua-ti-ji-lu/</div>
+      <div>蓝桥杯刷题记录</div>
+      <div>http://jrhu0048.github.io/2024/07/08/suan-fa-shua-ti/lan-qiao-bei-shua-ti-ji-lu/</div>
     </div>
     <div class="license-meta">
       
@@ -525,7 +531,7 @@ class="math inline">\(d\)</span> 是最大数的位数。</p>
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年10月15日</div>
+          <div>2025年5月7日</div>
         </div>
       
       
