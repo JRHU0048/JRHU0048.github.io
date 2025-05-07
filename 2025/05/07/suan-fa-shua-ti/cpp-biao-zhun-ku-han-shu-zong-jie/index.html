@@ -1,0 +1,998 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" >
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/hui.png">
+  <link rel="icon" href="/img/hui.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="JR.HU">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="在解题中总是记不住那些复杂又难懂的cpp标准库函数用法,于是痛下决心写一个简单的总结记录下遇到过的常见用法（这该死的脑子总是不够用😭） 1. 容器相关 std::vector  功能：动态数组，可根据需要自动调整大小。  常用操作：  push_back()：在向量末尾添加元素。  pop_back()：移除向量末尾的元素。  size()：返回向量中元素的数量。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cpp标准库函数总结">
+<meta property="og:url" content="http://jrhu0048.github.io/2025/05/07/suan-fa-shua-ti/cpp-biao-zhun-ku-han-shu-zong-jie/index.html">
+<meta property="og:site_name" content="CHARMMY">
+<meta property="og:description" content="在解题中总是记不住那些复杂又难懂的cpp标准库函数用法,于是痛下决心写一个简单的总结记录下遇到过的常见用法（这该死的脑子总是不够用😭） 1. 容器相关 std::vector  功能：动态数组，可根据需要自动调整大小。  常用操作：  push_back()：在向量末尾添加元素。  pop_back()：移除向量末尾的元素。  size()：返回向量中元素的数量。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic1.imgdb.cn/item/67eba6750ba3d5a1d7e90f56.png">
+<meta property="article:published_time" content="2025-05-07T09:35:46.000Z">
+<meta property="article:modified_time" content="2025-05-07T09:43:48.884Z">
+<meta property="article:author" content="JR.HU">
+<meta property="article:tag" content="cpp标准库函数总结">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pic1.imgdb.cn/item/67eba6750ba3d5a1d7e90f56.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>cpp标准库函数总结 - CHARMMY</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/scrollAnimation.css">
+<link rel="stylesheet" href="/css/textcolcor.css">
+<link rel="stylesheet" href="/css/cloudedGlass.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jrhu0048.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":60,"cursorChar":"⭐","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"❡"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2023-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body><!-- hexo injector body_begin start --><div id="web_bg"></div><!-- hexo injector body_begin end -->
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <!-- <strong>CHARMMY</strong> -->
+       <!-- 修改如下： -->
+      <strong class="navbar-title">CHARMMY</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/hei.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="cpp标准库函数总结"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        JR.HU
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-05-07 17:35" pubdate>
+          2025年5月7日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          10 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+
+    
+    
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="算法刷题"
+        id="heading-2b00f7a0aac712f1b9f19756f6352276" role="tab" data-toggle="collapse" href="#collapse-2b00f7a0aac712f1b9f19756f6352276"
+        aria-expanded="true"
+      >
+        算法刷题
+        <span class="list-group-count">(7)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-2b00f7a0aac712f1b9f19756f6352276"
+           role="tabpanel" aria-labelledby="heading-2b00f7a0aac712f1b9f19756f6352276">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2025/03/12/suan-fa-shua-ti/leetcode-hot100/" title="Leetcode hot100 - 01"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Leetcode hot100 - 01</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2025/05/07/suan-fa-shua-ti/cpp-biao-zhun-ku-han-shu-zong-jie/" title="cpp标准库函数总结"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">cpp标准库函数总结</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2025/03/31/suan-fa-shua-ti/ji-shi-mo-ban-ti-zong-jie/" title="机试模板题总结"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">机试模板题总结</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2025/04/01/suan-fa-shua-ti/luo-gu-shua-ti/" title="洛谷刷题"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">洛谷刷题</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/10/15/suan-fa-shua-ti/ma-ti-ji-zhou-sai-1/" title="码题集周赛1"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">码题集周赛1</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/08/suan-fa-shua-ti/lan-qiao-bei-shua-ti-ji-lu/" title="蓝桥杯刷题记录"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">蓝桥杯刷题记录</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/03/20/suan-fa-shua-ti/lan-qiao-bei-bei-sai/" title="蓝桥杯备赛"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">蓝桥杯备赛</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">cpp标准库函数总结</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>在解题中总是记不住那些复杂又难懂的cpp标准库函数用法,于是痛下决心写一个简单的总结记录下遇到过的常见用法（这该死的脑子总是不够用😭）</p>
+<h3 id="容器相关">1. 容器相关</h3>
+<h4 id="stdvector"><code>std::vector</code></h4>
+<ul>
+<li><strong>功能</strong>：动态数组，可根据需要自动调整大小。<br />
+</li>
+<li><strong>常用操作</strong>：
+<ul>
+<li><code>push_back()</code>：在向量末尾添加元素。<br />
+</li>
+<li><code>pop_back()</code>：移除向量末尾的元素。<br />
+</li>
+<li><code>size()</code>：返回向量中元素的数量。<br />
+</li>
+<li><code>empty()</code>：判断向量是否为空。<br />
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;vector&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    std::vector&lt;<span class="hljs-type">int</span>&gt; vec;<br>    vec.<span class="hljs-built_in">push_back</span>(<span class="hljs-number">1</span>);<br>    vec.<span class="hljs-built_in">push_back</span>(<span class="hljs-number">2</span>);<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Size: &quot;</span> &lt;&lt; vec.<span class="hljs-built_in">size</span>() &lt;&lt; std::endl;<br>    vec.<span class="hljs-built_in">pop_back</span>();<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Is empty: &quot;</span> &lt;&lt; (vec.<span class="hljs-built_in">empty</span>() ? <span class="hljs-string">&quot;Yes&quot;</span> : <span class="hljs-string">&quot;No&quot;</span>) &lt;&lt; std::endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul></li>
+</ul>
+<h4 id="stdstack"><code>std::stack</code></h4>
+<ul>
+<li><strong>功能</strong>：实现后进先出（LIFO）的数据结构。<br />
+</li>
+<li><strong>常用操作</strong>：
+<ul>
+<li><code>push()</code>：将元素压入栈顶。<br />
+</li>
+<li><code>pop()</code>：移除栈顶元素。<br />
+</li>
+<li><code>top()</code>：返回栈顶元素的引用。<br />
+</li>
+<li><code>empty()</code>：判断栈是否为空。<br />
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stack&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    std::stack&lt;<span class="hljs-type">int</span>&gt; st;<br>    st.<span class="hljs-built_in">push</span>(<span class="hljs-number">1</span>);<br>    st.<span class="hljs-built_in">push</span>(<span class="hljs-number">2</span>);<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Top: &quot;</span> &lt;&lt; st.<span class="hljs-built_in">top</span>() &lt;&lt; std::endl;<br>    st.<span class="hljs-built_in">pop</span>();<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Is empty: &quot;</span> &lt;&lt; (st.<span class="hljs-built_in">empty</span>() ? <span class="hljs-string">&quot;Yes&quot;</span> : <span class="hljs-string">&quot;No&quot;</span>) &lt;&lt; std::endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul></li>
+</ul>
+<h4 id="stdqueue"><code>std::queue</code></h4>
+<ul>
+<li><strong>功能</strong>：实现先进先出（FIFO）的数据结构。<br />
+</li>
+<li><strong>常用操作</strong>：
+<ul>
+<li><code>push()</code>：将元素加入队列尾部。<br />
+</li>
+<li><code>pop()</code>：移除队列头部元素。<br />
+</li>
+<li><code>front()</code>：返回队列头部元素的引用。<br />
+</li>
+<li><code>empty()</code>：判断队列是否为空。<br />
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;queue&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    std::queue&lt;<span class="hljs-type">int</span>&gt; q;<br>    q.<span class="hljs-built_in">push</span>(<span class="hljs-number">1</span>);<br>    q.<span class="hljs-built_in">push</span>(<span class="hljs-number">2</span>);<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Front: &quot;</span> &lt;&lt; q.<span class="hljs-built_in">front</span>() &lt;&lt; std::endl;<br>    q.<span class="hljs-built_in">pop</span>();<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Is empty: &quot;</span> &lt;&lt; (q.<span class="hljs-built_in">empty</span>() ? <span class="hljs-string">&quot;Yes&quot;</span> : <span class="hljs-string">&quot;No&quot;</span>) &lt;&lt; std::endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul></li>
+</ul>
+<h4 id="stdpriority_queue"><code>std::priority_queue</code></h4>
+<ul>
+<li><strong>功能</strong>：优先队列，元素按照优先级排序，默认最大元素在队首。<br />
+</li>
+<li><strong>常用操作</strong>：
+<ul>
+<li><code>push()</code>：插入元素到优先队列中。<br />
+</li>
+<li><code>pop()</code>：移除队首元素。<br />
+</li>
+<li><code>top()</code>：返回队首元素的引用。<br />
+</li>
+<li><code>empty()</code>：判断优先队列是否为空。<br />
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;queue&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    std::priority_queue&lt;<span class="hljs-type">int</span>&gt; pq;<br>    pq.<span class="hljs-built_in">push</span>(<span class="hljs-number">3</span>);<br>    pq.<span class="hljs-built_in">push</span>(<span class="hljs-number">1</span>);<br>    pq.<span class="hljs-built_in">push</span>(<span class="hljs-number">2</span>);<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Top: &quot;</span> &lt;&lt; pq.<span class="hljs-built_in">top</span>() &lt;&lt; std::endl;<br>    pq.<span class="hljs-built_in">pop</span>();<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;New top: &quot;</span> &lt;&lt; pq.<span class="hljs-built_in">top</span>() &lt;&lt; std::endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul></li>
+</ul>
+<h3 id="算法相关">2. 算法相关</h3>
+<h4 id="stdsort"><code>std::sort</code></h4>
+<ul>
+<li><strong>功能</strong>：对指定范围内的元素进行排序，默认升序。<br />
+</li>
+<li><strong>常用操作</strong>：
+<ul>
+<li>可传入自定义比较函数实现降序或其他排序规则。<br />
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;vector&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;algorithm&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">compare</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> a &gt; b;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    std::vector&lt;<span class="hljs-type">int</span>&gt; vec = &#123;<span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>&#125;;<br>    std::<span class="hljs-built_in">sort</span>(vec.<span class="hljs-built_in">begin</span>(), vec.<span class="hljs-built_in">end</span>()); <span class="hljs-comment">// 升序</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : vec) &#123;<br>        std::cout &lt;&lt; num &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>    &#125;<br>    std::cout &lt;&lt; std::endl;<br>    std::<span class="hljs-built_in">sort</span>(vec.<span class="hljs-built_in">begin</span>(), vec.<span class="hljs-built_in">end</span>(), compare); <span class="hljs-comment">// 降序</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : vec) &#123;<br>        std::cout &lt;&lt; num &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>    &#125;<br>    std::cout &lt;&lt; std::endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul></li>
+</ul>
+<h4 id="stdbinary_search"><code>std::binary_search</code></h4>
+<ul>
+<li><strong>功能</strong>：在有序序列中进行二分查找，判断元素是否存在。<br />
+</li>
+<li><strong>返回值</strong>：如果找到元素返回
+<code>true</code>，否则返回 <code>false</code>。<br />
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;vector&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;algorithm&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    std::vector&lt;<span class="hljs-type">int</span>&gt; vec = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;;<br>    <span class="hljs-type">bool</span> found = std::<span class="hljs-built_in">binary_search</span>(vec.<span class="hljs-built_in">begin</span>(), vec.<span class="hljs-built_in">end</span>(), <span class="hljs-number">3</span>);<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Is 3 found: &quot;</span> &lt;&lt; (found ? <span class="hljs-string">&quot;Yes&quot;</span> : <span class="hljs-string">&quot;No&quot;</span>) &lt;&lt; std::endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="stdlower_bound-和-stdupper_bound"><code>std::lower_bound</code>
+和 <code>std::upper_bound</code></h4>
+<ul>
+<li><strong>功能</strong>：
+<ul>
+<li><code>std::lower_bound</code>：返回有序序列中第一个不小于给定值的元素的迭代
+器。<br />
+</li>
+<li><code>std::upper_bound</code>：返回有序序列中第一个大于给定值的元素的迭代
+器。<br />
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;vector&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;algorithm&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    std::vector&lt;<span class="hljs-type">int</span>&gt; vec = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>&#125;;<br>    <span class="hljs-keyword">auto</span> low = std::<span class="hljs-built_in">lower_bound</span>(vec.<span class="hljs-built_in">begin</span>(), vec.<span class="hljs-built_in">end</span>(), <span class="hljs-number">2</span>);<br>    <span class="hljs-keyword">auto</span> up = std::<span class="hljs-built_in">upper_bound</span>(vec.<span class="hljs-built_in">begin</span>(), vec.<span class="hljs-built_in">end</span>(), <span class="hljs-number">2</span>);<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Lower bound index: &quot;</span> &lt;&lt; low - vec.<span class="hljs-built_in">begin</span>() &lt;&lt; std::endl;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Upper bound index: &quot;</span> &lt;&lt; up - vec.<span class="hljs-built_in">begin</span>() &lt;&lt; std::endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul></li>
+</ul>
+<h3 id="字符串相关">3. 字符串相关</h3>
+<h4 id="stdto_string"><code>std::to_string</code></h4>
+<ul>
+<li><strong>功能</strong>：将基本数据类型转换为字符串。<br />
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-type">int</span> num = <span class="hljs-number">123</span>;<br>    std::string str = std::<span class="hljs-built_in">to_string</span>(num);<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Converted string: &quot;</span> &lt;&lt; str &lt;&lt; std::endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4
+id="stdstoistdstolstdstoll"><code>std::stoi</code>、<code>std::stol</code>、<code>std::stoll</code></h4>
+<ul>
+<li><strong>功能</strong>：将字符串转换为整数类型，分别对应
+<code>int</code>、<code>long</code>、<code>long long</code>。<br />
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    std::string str = <span class="hljs-string">&quot;123&quot;</span>;<br>    <span class="hljs-type">int</span> num = std::<span class="hljs-built_in">stoi</span>(str);<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Converted integer: &quot;</span> &lt;&lt; num &lt;&lt; std::endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="数学相关">4. 数学相关</h3>
+<h4 id="stdmax-和-stdmin"><code>std::max</code> 和
+<code>std::min</code></h4>
+<ul>
+<li><strong>功能</strong>：返回两个值中的最大值或最小值。<br />
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;algorithm&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-type">int</span> a = <span class="hljs-number">1</span>, b = <span class="hljs-number">2</span>;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Max: &quot;</span> &lt;&lt; std::<span class="hljs-built_in">max</span>(a, b) &lt;&lt; std::endl;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Min: &quot;</span> &lt;&lt; std::<span class="hljs-built_in">min</span>(a, b) &lt;&lt; std::endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="stdabs"><code>std::abs</code></h4>
+<ul>
+<li><strong>功能</strong>：返回一个数的绝对值。<br />
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;cmath&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-type">int</span> num = <span class="hljs-number">-5</span>;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Absolute value: &quot;</span> &lt;&lt; std::<span class="hljs-built_in">abs</span>(num) &lt;&lt; std::endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/" class="category-chain-item">算法刷题</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/cpp%E6%A0%87%E5%87%86%E5%BA%93%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93/" class="print-no-link">#cpp标准库函数总结</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>cpp标准库函数总结</div>
+      <div>http://jrhu0048.github.io/2025/05/07/suan-fa-shua-ti/cpp-biao-zhun-ku-han-shu-zong-jie/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>JR.HU</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年5月7日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2025年5月7日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/04/21/wen-xian-yue-du/split-learning-review/" title="Split Learning Review">
+                        <span class="hidden-mobile">Split Learning Review</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"JRHU0048/comments_of_fluid","repo-id":"R_kgDONI1MlA","category":"Announcements","category-id":"DIC_kwDONI1MlM4Cj4Fj","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> <span><br></span>	
+<span>总访客&nbsp<span id="busuanzi_value_site_uv"></span>&nbsp人 &nbsp</span> <span>访问总量&nbsp<span id="busuanzi_value_site_pv"></span>&nbsp次</span> </div> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            // loader : {
+            //   load: ['ui/lazy']
+            // },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/scrollAnimation.js"></script>
+<script src="/js/star.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start --><script src="/js/backgroundize.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"superSample":2,"width":200,"height":300,"position":"left","hOffset":0,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":1,"opacityOnHover":0.5},"log":false});</script></body>
+</html>
